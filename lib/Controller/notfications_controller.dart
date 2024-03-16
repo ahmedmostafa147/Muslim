@@ -35,9 +35,9 @@ class NotificationController extends GetxController {
       prefs.setBool('notificationState', value);
 
       if (value) {
-        await _schedulePrayerNotifications();
+        await schedulePrayerNotifications();
       } else {
-        await _cancelPrayerNotifications();
+        await cancelPrayerNotifications();
       }
     }
   }
@@ -49,19 +49,18 @@ class NotificationController extends GetxController {
       prefs.setBool('AzkarState', value);
 
       if (value) {
-        await _scheduleAzkarNotifications();
+        await scheduleAzkarNotifications();
       } else {
-        await _cancelAzkarNotifications();
+        await cancelAzkarNotifications();
       }
     }
   }
 
-  Future<void> _schedulePrayerNotifications() async {
+  Future<void> schedulePrayerNotifications() async {
     await locationController.getCurrentLocation();
-    NotificationService.initializeNotification();
     try {
+      NotificationService.initializeNotification();
       prayerTimesControllerForRow.schedulePrayerNotifications();
-
       Get.snackbar(
         'Success',
         'Prayer notifications scheduled successfully',
@@ -80,7 +79,7 @@ class NotificationController extends GetxController {
     }
   }
 
-  Future<void> _cancelPrayerNotifications() async {
+  Future<void> cancelPrayerNotifications() async {
     try {
       NotificationService.cancelAllNotifications();
       Get.snackbar(
@@ -101,7 +100,7 @@ class NotificationController extends GetxController {
     }
   }
 
-  Future<void> _scheduleAzkarNotifications() async {
+  Future<void> scheduleAzkarNotifications() async {
     NotificationService.initializeNotification();
     try {
       Workmanager().initialize(
@@ -130,7 +129,7 @@ class NotificationController extends GetxController {
     }
   }
 
-  Future<void> _cancelAzkarNotifications() async {
+  Future<void> cancelAzkarNotifications() async {
     try {
       Workmanager().cancelByUniqueName("periodic-task-identifier");
       Get.snackbar(

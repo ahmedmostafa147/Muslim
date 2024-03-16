@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:Muslim/Controller/location_geo_controller.dart';
+import 'package:Muslim/Controller/notfications_controller.dart';
 import 'package:Muslim/Core/services/notification_service.dart';
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:adhan/adhan.dart';
 import 'package:get/get.dart';
@@ -11,6 +11,8 @@ class PrayerTimesControllerForRow extends GetxController {
   final LocationController locationController = Get.put<LocationController>(
     LocationController(),
   );
+  final NotificationController notificationController =
+      Get.put<NotificationController>(NotificationController());
   @override
   void onInit() {
     super.onInit();
@@ -19,9 +21,6 @@ class PrayerTimesControllerForRow extends GetxController {
 
     ever(locationController.latitude, (_) => fetchPrayerTimes());
     ever(locationController.longitude, (_) => fetchPrayerTimes());
-
-    // Schedule prayer notifications
-    schedulePrayerNotifications();
   }
 
   Future<void> fetchPrayerTimes() async {
@@ -33,26 +32,15 @@ class PrayerTimesControllerForRow extends GetxController {
     try {
       // Fetch prayer times
       prayerTimes.value = PrayerTimes.today(myCoordinates, params);
+      notificationController.cancelPrayerNotifications();
+
+      notificationController.isNotificationOn.value
+          ? schedulePrayerNotifications()
+          : null;
     } catch (e) {}
   }
 
   Future<void> schedulePrayerNotifications() async {
-    debugPrint(
-      "fajr: ${prayerTimes.value!.fajr}",
-    );
-    debugPrint(
-      "dhuhr: ${prayerTimes.value!.dhuhr}",
-    );
-    debugPrint(
-      "asr: ${prayerTimes.value!.asr}",
-    );
-    debugPrint(
-      "maghrib: ${prayerTimes.value!.maghrib}",
-    );
-    debugPrint(
-      "isha: ${prayerTimes.value!.isha}",
-    );
-
     showPrayerNotification(
       title: "صلاة الفجر",
       body:
