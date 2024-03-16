@@ -11,8 +11,7 @@ class PrayerTimesControllerForRow extends GetxController {
   final LocationController locationController = Get.put<LocationController>(
     LocationController(),
   );
-  final NotificationController notificationController =
-      Get.put<NotificationController>(NotificationController());
+
   @override
   void onInit() {
     super.onInit();
@@ -32,11 +31,9 @@ class PrayerTimesControllerForRow extends GetxController {
     try {
       // Fetch prayer times
       prayerTimes.value = PrayerTimes.today(myCoordinates, params);
-      notificationController.cancelPrayerNotifications();
 
-      notificationController.isNotificationOn.value
-          ? schedulePrayerNotifications()
-          : null;
+      // Schedule prayer notifications
+      schedulePrayerNotifications();
     } catch (e) {}
   }
 
