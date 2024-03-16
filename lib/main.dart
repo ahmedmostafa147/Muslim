@@ -21,7 +21,7 @@ void main() async {
     statusBarIconBrightness: Brightness.light,
   );
 
-  initializeDateFormatting('ar_EG').then((_) => runApp(
+  initializeDateFormatting('ar').then((_) => runApp(
       DevicePreview(enabled: false, builder: (context) => const Muslim())));
 }
 
