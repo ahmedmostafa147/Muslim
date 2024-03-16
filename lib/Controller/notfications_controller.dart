@@ -1,6 +1,5 @@
 import 'package:Muslim/Controller/location_geo_controller.dart';
 import 'package:Muslim/Controller/prayer_time_controller.dart';
-import 'package:Muslim/widgets/time_prayer_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../Core/services/notification_service.dart';

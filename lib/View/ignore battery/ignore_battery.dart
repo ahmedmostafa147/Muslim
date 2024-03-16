@@ -30,12 +30,12 @@ class _IgnoreBatteryState extends State<IgnoreBattery> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("تنبيه"),
-          content: Text(
+          title: const Text("تنبيه"),
+          content: const Text(
               "لتشغيل التطبيق بشكل صحيح، يجب تعطيل تحسينات البطارية. يرجى الانتقال إلى إعدادات الهاتف وتعطيل تحسينات البطارية لتطبيقنا."),
           actions: <Widget>[
             TextButton(
-              child: Text("فتح الإعدادات"),
+              child: const Text("فتح الإعدادات"),
               onPressed: () {
                 DisableBatteryOptimization.showDisableAllOptimizationsSettings(
                     "تحسينات البطارية",
@@ -45,7 +45,7 @@ class _IgnoreBatteryState extends State<IgnoreBattery> {
               },
             ),
             TextButton(
-              child: Text("إغلاق"),
+              child: const Text("إغلاق"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -63,13 +63,13 @@ class _IgnoreBatteryState extends State<IgnoreBattery> {
         children: <Widget>[
           isBatteryOptimizationDisabled
               ? ElevatedButton(
-                  child: Text("تعطيل تحسينات البطارية"),
+                  child: const Text("تعطيل تحسينات البطارية"),
                   onPressed: () {
                     showBatteryOptimizationDialog();
                   },
                 )
               : ElevatedButton(
-                  child: Text("فحص تحسينات البطارية"),
+                  child: const Text("فحص تحسينات البطارية"),
                   onPressed: () async {
                     await checkBatteryOptimization();
                   },

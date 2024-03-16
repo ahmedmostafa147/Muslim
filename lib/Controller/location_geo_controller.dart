@@ -47,7 +47,7 @@ class LocationController extends GetxController {
       List<Placemark> placemarks = await placemarkFromCoordinates(
         position.latitude,
         position.longitude,
-        localeIdentifier: 'ar_EG',
+        
       );
 
       Placemark place = placemarks.first;

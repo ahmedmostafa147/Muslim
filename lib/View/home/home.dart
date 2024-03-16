@@ -1,5 +1,4 @@
 import 'package:Muslim/Core/constant/Images.dart';
-import 'package:Muslim/View/ignore%20battery/ignore_battery.dart';
 
 import '../../widgets/check_notification.dart';
 import 'package:flutter/material.dart';

@@ -42,7 +42,7 @@ class Muslim extends StatelessWidget {
             darkTheme: darkTheme,
             themeMode: ThemeMode.light,
             title: 'Muslim',
-            home: SplashScreen(),
+            home: const SplashScreen(),
             debugShowCheckedModeBanner: false,
           );
         });

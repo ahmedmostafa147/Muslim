@@ -46,7 +46,7 @@ class HomeLocationWidget extends StatelessWidget {
               onTap: () {
                 Get.to(() => Salah());
               },
-              child: PrayerTimeRow()),
+              child: const PrayerTimeRow()),
         ],
       ),
     );

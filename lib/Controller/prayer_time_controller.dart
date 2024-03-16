@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:Muslim/Controller/location_geo_controller.dart';
 import 'package:Muslim/Core/services/notification_service.dart';
 import 'package:flutter/material.dart';

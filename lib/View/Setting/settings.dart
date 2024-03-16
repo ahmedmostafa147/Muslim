@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../widgets/check_notification.dart';
 
 
 class SettingsScreen extends StatefulWidget {
