@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:Muslim/Controller/location_geo_controller.dart';
-import 'package:Muslim/Controller/notfications_controller.dart';
 import 'package:Muslim/Core/services/notification_service.dart';
 import 'package:intl/intl.dart';
 import 'package:adhan/adhan.dart';
@@ -31,6 +30,8 @@ class PrayerTimesControllerForRow extends GetxController {
     try {
       // Fetch prayer times
       prayerTimes.value = PrayerTimes.today(myCoordinates, params);
+
+      NotificationService.cancelAllNotifications();
 
       // Schedule prayer notifications
       schedulePrayerNotifications();

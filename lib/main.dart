@@ -12,14 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
 
-  const SystemUiOverlayStyle(
-    statusBarColor: Colors.white,
-    statusBarIconBrightness: Brightness.dark,
-  );
-  const SystemUiOverlayStyle(
-    statusBarColor: Colors.black,
-    statusBarIconBrightness: Brightness.light,
-  );
+  
 
   initializeDateFormatting('ar').then((_) => runApp(
       DevicePreview(enabled: false, builder: (context) => const Muslim())));
