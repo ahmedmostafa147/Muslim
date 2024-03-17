@@ -1,12 +1,16 @@
 import 'dart:async';
 import 'package:Muslim/Controller/location_geo_controller.dart';
+import 'package:Muslim/Controller/notfications_controller.dart';
 import 'package:Muslim/Core/services/notification_service.dart';
+import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
 import 'package:adhan/adhan.dart';
 import 'package:get/get.dart';
 
 class PrayerTimesControllerForRow extends GetxController {
-  var prayerTimes = Rx<PrayerTimes?>(null); // Initialize as null
+  var prayerTimes = Rx<PrayerTimes?>(null);
+
   final LocationController locationController = Get.put<LocationController>(
     LocationController(),
   );
@@ -14,9 +18,7 @@ class PrayerTimesControllerForRow extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Fetch prayer times initially
     fetchPrayerTimes();
-
     ever(locationController.latitude, (_) => fetchPrayerTimes());
     ever(locationController.longitude, (_) => fetchPrayerTimes());
   }
@@ -30,15 +32,33 @@ class PrayerTimesControllerForRow extends GetxController {
     try {
       // Fetch prayer times
       prayerTimes.value = PrayerTimes.today(myCoordinates, params);
-
-      NotificationService.cancelAllNotifications();
-
-      // Schedule prayer notifications
-      schedulePrayerNotifications();
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
+}
 
+class PrayerTimesControllerForColumn extends GetxController {
+  var prayerTimes = Rx<PrayerTimes?>(null);
+  var nextPrayer = Prayer.fajr.obs;
+  var nextPrayerName = 'الفجر'.obs;
+  var arabicNextPrayerName = 'الفجر'.obs;
+  var nextPrayerTime = DateTime.now().obs;
+  var timeRemaining = const Duration(seconds: 0).obs;
+  late Timer timer;
+  LocationController locationController = Get.find<LocationController>();
+
+  final prayerNameArabicMap = {
+    'Prayer.none': 'الفجر',
+    'Prayer.fajr': 'الفجر',
+    'Prayer.sunrise': 'الشروق',
+    'Prayer.dhuhr': 'الظهر',
+    'Prayer.asr': 'العصر',
+    'Prayer.maghrib': 'المغرب',
+    'Prayer.isha': 'العشاء',
+  };
   Future<void> schedulePrayerNotifications() async {
+    debugPrint(prayerTimes.value!.fajr.toString());
     showPrayerNotification(
       title: "صلاة الفجر",
       body:
@@ -92,26 +112,6 @@ class PrayerTimesControllerForRow extends GetxController {
       date: date,
     );
   }
-}
-
-class PrayerTimesControllerForColumn extends GetxController {
-  var prayerTimes = Rx<PrayerTimes?>(null);
-  var nextPrayer = Prayer.fajr.obs;
-  var nextPrayerName = 'الفجر'.obs;
-  var arabicNextPrayerName = 'الفجر'.obs;
-  var nextPrayerTime = DateTime.now().obs;
-  var timeRemaining = const Duration(seconds: 0).obs;
-  late Timer timer;
-
-  final prayerNameArabicMap = {
-    'Prayer.none': 'الفجر',
-    'Prayer.fajr': 'الفجر',
-    'Prayer.sunrise': 'الشروق',
-    'Prayer.dhuhr': 'الظهر',
-    'Prayer.asr': 'العصر',
-    'Prayer.maghrib': 'المغرب',
-    'Prayer.isha': 'العشاء',
-  };
 
   @override
   void onInit() {
@@ -124,8 +124,6 @@ class PrayerTimesControllerForColumn extends GetxController {
   }
 
   Future<void> fetchPrayerTimes() async {
-    LocationController locationController = Get.find<LocationController>();
-
     var myCoordinates = Coordinates(
         locationController.latitude.value, locationController.longitude.value);
     var params = CalculationMethod.egyptian.getParameters();

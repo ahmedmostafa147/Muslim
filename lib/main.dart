@@ -11,9 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
 
-  
-
-  initializeDateFormatting('ar').then((_) => runApp(
+  initializeDateFormatting('ar_EG').then((_) => runApp(
       DevicePreview(enabled: false, builder: (context) => const Muslim())));
 }
 
@@ -28,7 +26,6 @@ class Muslim extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return GetMaterialApp(
-            fallbackLocale: const Locale('ar'),
             locale: const Locale('ar'),
             theme: lightTheme,
             darkTheme: darkTheme,

@@ -2,7 +2,6 @@ import 'package:Muslim/Controller/location_geo_controller.dart';
 import 'package:Muslim/Controller/prayer_time_controller.dart';
 import 'package:disable_battery_optimization/disable_battery_optimization.dart';
 import 'package:flutter/material.dart';
-
 import '../Core/services/notification_service.dart';
 import '../Core/services/work_manger_service.dart.dart';
 import 'package:get/get.dart';
@@ -12,10 +11,6 @@ import 'package:workmanager/workmanager.dart';
 class NotificationController extends GetxController {
   var isNotificationOn = false.obs;
   var isAzkarOn = false.obs;
-  final PrayerTimesControllerForRow prayerTimesControllerForRow =
-      Get.put<PrayerTimesControllerForRow>(PrayerTimesControllerForRow());
-  final LocationController locationController =
-      Get.put<LocationController>(LocationController());
 
   @override
   void onInit() {
@@ -61,11 +56,15 @@ class NotificationController extends GetxController {
   }
 
   Future<void> schedulePrayerNotifications() async {
+    final LocationController locationController =
+        Get.find<LocationController>();
+    final PrayerTimesControllerForColumn prayerTimesControllerForColumn =
+        Get.find<PrayerTimesControllerForColumn>();
     await locationController.getCurrentLocation();
-
+    await checkBatteryOptimization();
+    NotificationService.initializeNotification();
     try {
-      NotificationService.initializeNotification();
-      prayerTimesControllerForRow.schedulePrayerNotifications();
+      prayerTimesControllerForColumn.schedulePrayerNotifications();
       Get.snackbar(
         'Success',
         'Prayer notifications scheduled successfully',
@@ -73,7 +72,6 @@ class NotificationController extends GetxController {
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
-      await checkBatteryOptimization();
     } catch (e) {
       Get.snackbar(
         'Error',
@@ -175,12 +173,8 @@ class NotificationController extends GetxController {
           TextButton(
             child: const Text("فتح الإعدادات"),
             onPressed: () {
-              DisableBatteryOptimization.showDisableAllOptimizationsSettings(
-                "تحسينات البطارية",
-                "اتبع الخطوات التالية لتعطيل تحسينات البطارية لتطبيقنا:",
-                "تحسينات البطارية",
-                "اتبع الخطوات التالية لتعطيل تحسينات البطارية لتطبيقنا:",
-              );
+              DisableBatteryOptimization
+                  .showDisableBatteryOptimizationSettings();
             },
           ),
           TextButton(
