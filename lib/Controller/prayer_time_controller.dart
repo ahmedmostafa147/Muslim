@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:Muslim/Controller/location_geo_controller.dart';
-import 'package:Muslim/Controller/notfications_controller.dart';
 import 'package:Muslim/Core/services/notification_service.dart';
 import 'package:flutter/material.dart';
 
@@ -10,10 +9,65 @@ import 'package:get/get.dart';
 
 class PrayerTimesControllerForRow extends GetxController {
   var prayerTimes = Rx<PrayerTimes?>(null);
-
   final LocationController locationController = Get.put<LocationController>(
     LocationController(),
   );
+
+  Future<void> schedulePrayerNotifications() async {
+    debugPrint(prayerTimes.value!.fajr.toString());
+    showPrayerNotification(
+      title: "صلاة الفجر",
+      body:
+          " وقت صلاة الفجر حسب ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
+        prayerTimes.value!.fajr,
+      )} ",
+      date: prayerTimes.value!.fajr,
+    );
+    showPrayerNotification(
+      title: "صلاة الظهر",
+      body:
+          " وقت صلاة الظهر حسب ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
+        prayerTimes.value!.dhuhr,
+      )} ",
+      date: prayerTimes.value!.dhuhr,
+    );
+    showPrayerNotification(
+      title: "صلاة العصر",
+      body:
+          " وقت صلاة العصر حسب ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
+        prayerTimes.value!.asr,
+      )}  ",
+      date: prayerTimes.value!.asr,
+    );
+    showPrayerNotification(
+      title: "صلاة المغرب",
+      body:
+          " وقت صلاة المغرب حسب ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
+        prayerTimes.value!.maghrib,
+      )}  ",
+      date: prayerTimes.value!.maghrib,
+    );
+    showPrayerNotification(
+      title: "صلاة العشاء",
+      body:
+          " وقت صلاة العشاء حسب ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
+        prayerTimes.value!.isha,
+      )}  ",
+      date: prayerTimes.value!.isha,
+    );
+  }
+
+  void showPrayerNotification({
+    required String title,
+    required String body,
+    required DateTime date,
+  }) {
+    NotificationService.salah(
+      title: title,
+      body: body,
+      date: date,
+    );
+  }
 
   @override
   void onInit() {
@@ -30,11 +84,12 @@ class PrayerTimesControllerForRow extends GetxController {
     params.madhab = Madhab.shafi;
 
     try {
-      // Fetch prayer times
       prayerTimes.value = PrayerTimes.today(myCoordinates, params);
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
+
+    
   }
 }
 
@@ -57,61 +112,6 @@ class PrayerTimesControllerForColumn extends GetxController {
     'Prayer.maghrib': 'المغرب',
     'Prayer.isha': 'العشاء',
   };
-  Future<void> schedulePrayerNotifications() async {
-    debugPrint(prayerTimes.value!.fajr.toString());
-    showPrayerNotification(
-      title: "صلاة الفجر",
-      body:
-          " وقت صلاة الفجر حسب  ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
-        prayerTimes.value!.fajr,
-      )} ",
-      date: prayerTimes.value!.fajr,
-    );
-    showPrayerNotification(
-      title: "صلاة الظهر",
-      body:
-          " وقت صلاة الظهر حسب   ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
-        prayerTimes.value!.dhuhr,
-      )} ",
-      date: prayerTimes.value!.dhuhr,
-    );
-    showPrayerNotification(
-      title: "صلاة العصر",
-      body:
-          " وقت صلاة العصر حسب  ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
-        prayerTimes.value!.asr,
-      )}  ",
-      date: prayerTimes.value!.asr,
-    );
-    showPrayerNotification(
-      title: "صلاة المغرب",
-      body:
-          " وقت صلاة المغرب حسب  ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
-        prayerTimes.value!.maghrib,
-      )}  ",
-      date: prayerTimes.value!.maghrib,
-    );
-    showPrayerNotification(
-      title: "صلاة العشاء",
-      body:
-          " وقت صلاة العشاء حسب  ${locationController.address.value}s في وقت  ${DateFormat.jm("ar").format(
-        prayerTimes.value!.isha,
-      )}  ",
-      date: prayerTimes.value!.isha,
-    );
-  }
-
-  void showPrayerNotification({
-    required String title,
-    required String body,
-    required DateTime date,
-  }) {
-    NotificationService.salah(
-      title: title,
-      body: body,
-      date: date,
-    );
-  }
 
   @override
   void onInit() {

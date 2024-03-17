@@ -4,13 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class NotificationClass extends StatelessWidget {
-  final NotificationController notificationController =
-      Get.put(NotificationController());
-
-  NotificationClass({super.key});
+  const NotificationClass({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final NotificationController notificationController =
+        Get.put(NotificationController());
     return Padding(
       padding: EdgeInsets.all(10.r),
       child: Column(

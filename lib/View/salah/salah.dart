@@ -56,7 +56,7 @@ class Salah extends StatelessWidget {
                 ]),
                 SizedBox(height: 10.h),
                 const ColumnPrayerTime(),
-                NotificationClass(),
+                const NotificationClass(),
               ]),
             ),
           ]),

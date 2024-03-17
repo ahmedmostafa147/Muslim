@@ -58,13 +58,13 @@ class NotificationController extends GetxController {
   Future<void> schedulePrayerNotifications() async {
     final LocationController locationController =
         Get.find<LocationController>();
-    final PrayerTimesControllerForColumn prayerTimesControllerForColumn =
-        Get.find<PrayerTimesControllerForColumn>();
+    final PrayerTimesControllerForRow prayerTimesControllerForRow =
+        Get.find<PrayerTimesControllerForRow>();
     await locationController.getCurrentLocation();
     await checkBatteryOptimization();
     NotificationService.initializeNotification();
     try {
-      prayerTimesControllerForColumn.schedulePrayerNotifications();
+      prayerTimesControllerForRow.schedulePrayerNotifications();
       Get.snackbar(
         'Success',
         'Prayer notifications scheduled successfully',

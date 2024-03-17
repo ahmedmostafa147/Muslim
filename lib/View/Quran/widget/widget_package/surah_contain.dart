@@ -31,14 +31,14 @@ class _SurahContainState extends State<SurahContainList> {
 
   @override
   Widget build(BuildContext context) {
-    final ScrollController _scrollController = ScrollController();
+    final ScrollController scrollController = ScrollController();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.surahName),
         centerTitle: true,
       ),
       body: ListView.builder(
-          controller: _scrollController,
+          controller: scrollController,
           physics: const BouncingScrollPhysics(),
           addAutomaticKeepAlives: true,
           addRepaintBoundaries: true,
@@ -121,13 +121,13 @@ class _SurahContainState extends State<SurahContainList> {
         onPressed: () {
           final versesCount = widget.surahVerseCount;
           final verseDuration = Duration(seconds: versesCount * 10);
-          _scrollController.animateTo(
-            _scrollController.position.maxScrollExtent,
+          scrollController.animateTo(
+            scrollController.position.maxScrollExtent,
             duration: verseDuration,
             curve: Curves.linear,
           );
         },
-        child: Text("تمرير"),
+        child: const Text("تمرير"),
       ),
     );
   }

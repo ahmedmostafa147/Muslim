@@ -10,7 +10,7 @@ import 'package:Muslim/Core/constant/text_style.dart';
 class AzkarItem extends StatefulWidget {
   final String zekr;
   final String hint;
-  int number;
+   int number;
 
   AzkarItem({
     Key? key,
