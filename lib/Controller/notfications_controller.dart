@@ -1,5 +1,6 @@
 import 'package:Muslim/Controller/location_geo_controller.dart';
 import 'package:Muslim/Controller/prayer_time_controller.dart';
+import 'package:disable_battery_optimization/disable_battery_optimization.dart';
 import 'package:flutter/material.dart';
 
 import '../Core/services/notification_service.dart';
@@ -26,6 +27,9 @@ class NotificationController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     isNotificationOn.value = prefs.getBool('notificationState') ?? false;
     isAzkarOn.value = prefs.getBool('AzkarState') ?? false;
+    if (isNotificationOn.value) {
+      await checkBatteryOptimization();
+    }
   }
 
   void toggleNotification(bool? value) async {
@@ -58,6 +62,7 @@ class NotificationController extends GetxController {
 
   Future<void> schedulePrayerNotifications() async {
     await locationController.getCurrentLocation();
+
     try {
       NotificationService.initializeNotification();
       prayerTimesControllerForRow.schedulePrayerNotifications();
@@ -68,6 +73,7 @@ class NotificationController extends GetxController {
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
+      await checkBatteryOptimization();
     } catch (e) {
       Get.snackbar(
         'Error',
@@ -148,5 +154,43 @@ class NotificationController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+
+  Future<void> checkBatteryOptimization() async {
+    bool? isOptimizationDisabled =
+        await DisableBatteryOptimization.isBatteryOptimizationDisabled;
+
+    if (!isOptimizationDisabled!) {
+      showBatteryOptimizationDialog();
+    }
+  }
+
+  void showBatteryOptimizationDialog() {
+    Get.dialog(
+      AlertDialog(
+        title: const Text("تنبيه"),
+        content: const Text(
+            "لتشغيل التطبيق بشكل صحيح، يجب تعطيل تحسينات البطارية. يرجى الانتقال إلى إعدادات الهاتف وتعطيل تحسينات البطارية لتطبيقنا."),
+        actions: <Widget>[
+          TextButton(
+            child: const Text("فتح الإعدادات"),
+            onPressed: () {
+              DisableBatteryOptimization.showDisableAllOptimizationsSettings(
+                "تحسينات البطارية",
+                "اتبع الخطوات التالية لتعطيل تحسينات البطارية لتطبيقنا:",
+                "تحسينات البطارية",
+                "اتبع الخطوات التالية لتعطيل تحسينات البطارية لتطبيقنا:",
+              );
+            },
+          ),
+          TextButton(
+            child: const Text("إغلاق"),
+            onPressed: () {
+              Get.back();
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
