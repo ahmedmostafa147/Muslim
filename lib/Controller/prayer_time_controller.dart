@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:Muslim/Controller/location_geo_controller.dart';
-import 'package:Muslim/Core/services/notification_service.dart';
 import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
 import 'package:adhan/adhan.dart';
 import 'package:get/get.dart';
@@ -12,62 +10,6 @@ class PrayerTimesControllerForRow extends GetxController {
   final LocationController locationController = Get.put<LocationController>(
     LocationController(),
   );
-
-  Future<void> schedulePrayerNotifications() async {
-    debugPrint(prayerTimes.value!.fajr.toString());
-    showPrayerNotification(
-      title: "صلاة الفجر",
-      body:
-          " وقت صلاة الفجر حسب ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
-        prayerTimes.value!.fajr,
-      )} ",
-      date: prayerTimes.value!.fajr,
-    );
-    showPrayerNotification(
-      title: "صلاة الظهر",
-      body:
-          " وقت صلاة الظهر حسب ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
-        prayerTimes.value!.dhuhr,
-      )} ",
-      date: prayerTimes.value!.dhuhr,
-    );
-    showPrayerNotification(
-      title: "صلاة العصر",
-      body:
-          " وقت صلاة العصر حسب ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
-        prayerTimes.value!.asr,
-      )}  ",
-      date: prayerTimes.value!.asr,
-    );
-    showPrayerNotification(
-      title: "صلاة المغرب",
-      body:
-          " وقت صلاة المغرب حسب ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
-        prayerTimes.value!.maghrib,
-      )}  ",
-      date: prayerTimes.value!.maghrib,
-    );
-    showPrayerNotification(
-      title: "صلاة العشاء",
-      body:
-          " وقت صلاة العشاء حسب ${locationController.address.value} في وقت  ${DateFormat.jm("ar").format(
-        prayerTimes.value!.isha,
-      )}  ",
-      date: prayerTimes.value!.isha,
-    );
-  }
-
-  void showPrayerNotification({
-    required String title,
-    required String body,
-    required DateTime date,
-  }) {
-    NotificationService.salah(
-      title: title,
-      body: body,
-      date: date,
-    );
-  }
 
   @override
   void onInit() {
@@ -82,14 +24,11 @@ class PrayerTimesControllerForRow extends GetxController {
         locationController.latitude.value, locationController.longitude.value);
     var params = CalculationMethod.egyptian.getParameters();
     params.madhab = Madhab.shafi;
-
     try {
       prayerTimes.value = PrayerTimes.today(myCoordinates, params);
     } catch (e) {
       debugPrint(e.toString());
     }
-
-    
   }
 }
 
@@ -134,11 +73,9 @@ class PrayerTimesControllerForColumn extends GetxController {
 
   void calculateNextPrayer() {
     if (prayerTimes.value != null) {
-      // الحصول على صلاة اليوم القادم
       nextPrayer.value = prayerTimes.value!.nextPrayer();
 
       if (nextPrayer.value == Prayer.none) {
-        // إذا كانت صلاة اليوم القادم فارغة، يتم الحصول على أوقات الصلاة لليوم التالي
         LocationController locationController = Get.find<LocationController>();
         var myCoordinates = Coordinates(
           locationController.latitude.value,
@@ -147,31 +84,26 @@ class PrayerTimesControllerForColumn extends GetxController {
         var params = CalculationMethod.egyptian.getParameters();
         params.madhab = Madhab.shafi;
 
-        // حساب تاريخ اليوم التالي
         DateTime tomorrow = DateTime.now().add(const Duration(days: 1));
         DateComponents dateComponents =
             DateComponents(tomorrow.year, tomorrow.month, tomorrow.day);
 
-        // الحصول على أوقات الصلاة لليوم التالي
         PrayerTimes tomorrowPrayerTimes = PrayerTimes(
           myCoordinates,
           dateComponents,
           params,
         );
 
-        // تعيين صلاة اليوم التالي
         nextPrayer.value = tomorrowPrayerTimes.nextPrayer();
-        // تعيين وقت الصلاة القادمة لليوم التالي
+
         nextPrayerTime.value =
             tomorrowPrayerTimes.timeForPrayer(nextPrayer.value)!;
       } else {
-        // إذا كانت هناك صلاة لليوم الحالي، يتم استخدام الأوقات المحسوبة بالفعل
         nextPrayer.value = prayerTimes.value!.nextPrayer();
         nextPrayerTime.value =
             prayerTimes.value!.timeForPrayer(nextPrayer.value)!;
       }
 
-      // تحديث اسم الصلاة واسمها باللغة العربية
       nextPrayerName.value = nextPrayer.value.toString();
       arabicNextPrayerName.value = prayerNameArabicMap[nextPrayerName]!;
       updateRemainingTime();

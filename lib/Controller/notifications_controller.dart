@@ -1,5 +1,3 @@
-import 'package:Muslim/Controller/location_geo_controller.dart';
-import 'package:Muslim/Controller/prayer_time_controller.dart';
 import 'package:disable_battery_optimization/disable_battery_optimization.dart';
 import 'package:flutter/material.dart';
 import '../Core/services/notification_service.dart';
@@ -22,8 +20,9 @@ class NotificationController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     isNotificationOn.value = prefs.getBool('notificationState') ?? false;
     isAzkarOn.value = prefs.getBool('AzkarState') ?? false;
+
     if (isNotificationOn.value) {
-      await checkBatteryOptimization();
+      await schedulePrayerNotifications();
     }
   }
 
@@ -56,15 +55,14 @@ class NotificationController extends GetxController {
   }
 
   Future<void> schedulePrayerNotifications() async {
-    final LocationController locationController =
-        Get.find<LocationController>();
-    final PrayerTimesControllerForRow prayerTimesControllerForRow =
-        Get.find<PrayerTimesControllerForRow>();
-    await locationController.getCurrentLocation();
     await checkBatteryOptimization();
     NotificationService.initializeNotification();
     try {
-      prayerTimesControllerForRow.schedulePrayerNotifications();
+      NotificationService().fajr();
+      NotificationService().dhuhr();
+      NotificationService().asr();
+      NotificationService().maghrib();
+      NotificationService().isha();
       Get.snackbar(
         'Success',
         'Prayer notifications scheduled successfully',
@@ -85,7 +83,7 @@ class NotificationController extends GetxController {
 
   Future<void> cancelPrayerNotifications() async {
     try {
-      NotificationService.cancelAllNotifications();
+      await NotificationService().cancelAllNotifications();
       Get.snackbar(
         'Success',
         'All notifications canceled successfully',

@@ -1,4 +1,5 @@
 import 'package:Muslim/Core/constant/Images.dart';
+import 'package:Muslim/widgets/check_notification.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -84,6 +85,7 @@ class _HomeState extends State<Home> {
                 text: "إذاعة القرآن الكريم ",
                 icon: Assets.imagesRadio,
               ),
+              const NotificationClass(),
             ]),
       ),
     );

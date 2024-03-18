@@ -1,3 +1,5 @@
+import 'package:Muslim/View/Radio/radio_home.dart';
+
 import '../Core/constant/Images.dart';
 import '../Core/constant/themes.dart';
 
@@ -32,7 +34,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
         const QuranHomePage(),
         const Home(),
         AzkarHome(),
-        ReaderList(),
+        const RadioHomeScreen(),
       ];
 
   List<PersistentBottomNavBarItem> _navBarsItems() => [
