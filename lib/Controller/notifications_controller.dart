@@ -22,7 +22,12 @@ class NotificationController extends GetxController {
     isAzkarOn.value = prefs.getBool('AzkarState') ?? false;
 
     if (isNotificationOn.value) {
-      await schedulePrayerNotifications();
+      await NotificationService().cancelAllNotifications();
+      NotificationService().fajr();
+      NotificationService().dhuhr();
+      NotificationService().asr();
+      NotificationService().maghrib();
+      NotificationService().isha();
     }
   }
 
@@ -64,16 +69,16 @@ class NotificationController extends GetxController {
       NotificationService().maghrib();
       NotificationService().isha();
       Get.snackbar(
-        'Success',
-        'Prayer notifications scheduled successfully',
+        'نجح',
+        'تم جدولة التنبيهات بنجاح',
         backgroundColor: Colors.teal,
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
     } catch (e) {
       Get.snackbar(
-        'Error',
-        'Failed to schedule prayer notifications',
+        'خطأ',
+        'فشل في جدولة التنبيهات',
         backgroundColor: Colors.red,
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -85,16 +90,16 @@ class NotificationController extends GetxController {
     try {
       await NotificationService().cancelAllNotifications();
       Get.snackbar(
-        'Success',
-        'All notifications canceled successfully',
+        'نجح',
+        'تم إلغاء جميع التنبيهات بنجاح',
         backgroundColor: Colors.teal,
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
     } catch (e) {
       Get.snackbar(
-        'Error',
-        'Failed to cancel all notifications',
+        'خطأ',
+        'فشل في إلغاء جميع التنبيهات',
         backgroundColor: Colors.red,
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -173,6 +178,7 @@ class NotificationController extends GetxController {
             onPressed: () {
               DisableBatteryOptimization
                   .showDisableBatteryOptimizationSettings();
+              Get.back();
             },
           ),
           TextButton(

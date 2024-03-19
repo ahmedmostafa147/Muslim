@@ -57,7 +57,6 @@ class PrayerTimesControllerForColumn extends GetxController {
     super.onInit();
     startCountdown();
     fetchPrayerTimes();
-    LocationController locationController = Get.find<LocationController>();
     ever(locationController.latitude, (_) => fetchPrayerTimes());
     ever(locationController.longitude, (_) => fetchPrayerTimes());
   }

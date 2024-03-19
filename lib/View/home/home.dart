@@ -78,6 +78,8 @@ class _HomeState extends State<Home> {
               const HomeGridViewIcons(),
               SizedBox(height: 10.h),
               const DoaCardWidget(),
+              SizedBox(height: 10.h),
+              const NotificationClass(),
               CardTextIconWidget(
                 onTap: () {
                   Get.to(() => const RadioHomeScreen());
@@ -85,7 +87,7 @@ class _HomeState extends State<Home> {
                 text: "إذاعة القرآن الكريم ",
                 icon: Assets.imagesRadio,
               ),
-              const NotificationClass(),
+              
             ]),
       ),
     );

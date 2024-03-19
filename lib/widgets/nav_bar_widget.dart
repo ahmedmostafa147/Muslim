@@ -6,7 +6,6 @@ import '../Core/constant/themes.dart';
 import '../View/Azkar/azkar_home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../View/home/home.dart';
-import '../View/Quran/screen/reader_screen.dart';
 import '../View/Quran/screen/master_quran.dart';
 import '../View/Salah/salah.dart';
 
