@@ -1,4 +1,4 @@
-import 'package:Muslim/Core/constant/Images.dart';
+import 'package:Muslim/Core/constant/images.dart';
 import 'package:Muslim/widgets/card_text_icon_widget.dart';
 import 'package:flutter/material.dart';
 

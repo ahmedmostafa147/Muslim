@@ -86,7 +86,7 @@ flutter_launcher_icons:
 flutter_assets:
   assets_path: assets/Images/
   output_path: lib/Core/constant
-  filename: Images.dart
+  filename: images.dart
   field_prefix: null
 # The following section is specific to Flutter packages.
 flutter:

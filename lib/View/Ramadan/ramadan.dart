@@ -1,7 +1,7 @@
 import 'ramadan_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:Muslim/Core/constant/Images.dart';
+import 'package:Muslim/Core/constant/images.dart';
 class RamadanHome extends StatelessWidget {
   const RamadanHome({super.key});
 

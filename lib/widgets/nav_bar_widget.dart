@@ -1,6 +1,6 @@
 import 'package:Muslim/View/Radio/radio_home.dart';
 
-import '../Core/constant/Images.dart';
+import '../Core/constant/images.dart';
 import '../Core/constant/themes.dart';
 
 import '../View/Azkar/azkar_home.dart';

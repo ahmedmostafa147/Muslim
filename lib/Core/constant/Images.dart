@@ -105,6 +105,10 @@ class Assets {
   /// assets/Images/isha.png
   static const String imagesIsha = "assets/Images/isha.png";
 
+  /// Assets for imagesLogo
+  /// assets/Images/logo.png
+  static const String imagesLogo = "assets/Images/logo.png";
+
   /// Assets for imagesMaghrib
   /// assets/Images/maghrib.png
   static const String imagesMaghrib = "assets/Images/maghrib.png";

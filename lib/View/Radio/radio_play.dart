@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:Muslim/Core/constant/Images.dart';
+import 'package:Muslim/Core/constant/images.dart';
 import 'package:just_audio/just_audio.dart';
 import '../../widgets/loading_widget.dart';
 import 'package:share_plus/share_plus.dart';
 
 class AudioPlayerController extends GetxController {
-  final player = AudioPlayer();
+  final _player = AudioPlayer();
   var isPlaying = false.obs;
   var isLoading = false.obs;
   var sleepDuration = 0.obs;
@@ -19,8 +19,14 @@ class AudioPlayerController extends GetxController {
   void play(String? url) async {
     if (url != null) {
       isLoading.value = true;
-      player.setUrl(url);
-      await player.play();
+      _player.playbackEventStream.listen((event) {
+        if (event.processingState == ProcessingState.completed) {
+          isPlaying.value = false;
+          isLoading.value = false;
+        }
+      });
+      _player.setAudioSource(AudioSource.uri(Uri.parse(url)));
+      await _player.play();
       isPlaying.value = true;
       isLoading.value = false;
     }
@@ -28,7 +34,7 @@ class AudioPlayerController extends GetxController {
 
   void stop() async {
     isLoading.value = true;
-    await player.stop();
+    await _player.stop();
     isPlaying.value = false;
     isLoading.value = false;
   }
@@ -79,7 +85,7 @@ class PlayRadio extends StatelessWidget {
     return PopScope(
       onPopInvoked: (didPop) {
         if (didPop) {
-          controller.player.dispose();
+          controller._player.dispose();
         }
       },
       child: Scaffold(

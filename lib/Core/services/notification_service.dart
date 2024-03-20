@@ -23,8 +23,6 @@ class NotificationService {
           channelDescription: "قناة إشعارات الفجر",
           importance: NotificationImportance.High,
           ledColor: Colors.teal,
-          enableLights: true,
-          enableVibration: true,
           criticalAlerts: true,
         ),
         NotificationChannel(
@@ -33,8 +31,6 @@ class NotificationService {
           channelDescription: "قناة إشعارات الظهر",
           importance: NotificationImportance.High,
           ledColor: Colors.teal,
-          enableLights: true,
-          enableVibration: true,
           criticalAlerts: true,
         ),
         NotificationChannel(
@@ -43,9 +39,6 @@ class NotificationService {
           channelDescription: "قناة إشعارات العصر",
           importance: NotificationImportance.High,
           ledColor: Colors.teal,
-          enableLights: true,
-          enableVibration: true,
-          onlyAlertOnce: true,
           criticalAlerts: true,
         ),
         NotificationChannel(
@@ -54,8 +47,6 @@ class NotificationService {
           channelDescription: "قناة إشعارات المغرب",
           importance: NotificationImportance.High,
           ledColor: Colors.teal,
-          enableLights: true,
-          enableVibration: true,
           criticalAlerts: true,
         ),
         NotificationChannel(
@@ -64,8 +55,6 @@ class NotificationService {
           channelDescription: "قناة إشعارات العشاء",
           importance: NotificationImportance.High,
           ledColor: Colors.teal,
-          enableLights: true,
-          enableVibration: true,
           criticalAlerts: true,
         ),
         NotificationChannel(
@@ -74,8 +63,6 @@ class NotificationService {
           channelDescription: "قناة إشعارات الأذكار",
           importance: NotificationImportance.High,
           ledColor: Colors.teal,
-          enableLights: true,
-          enableVibration: true,
           criticalAlerts: true,
         ),
       ],
@@ -115,11 +102,13 @@ class NotificationService {
           fullScreenIntent: true,
           criticalAlert: true,
         ),
-        schedule: NotificationCalendar.fromDate(
-            date: prayerTimesControllerForRow.prayerTimes.value!.fajr.toLocal(),
-            allowWhileIdle: true,
-            repeats: true,
-            preciseAlarm: true));
+        schedule: NotificationCalendar(
+          timeZone: await AwesomeNotifications().getLocalTimeZoneIdentifier(),
+          hour: prayerTimesControllerForRow.prayerTimes.value!.fajr.hour,
+          minute: prayerTimesControllerForRow.prayerTimes.value!.fajr.minute,
+          allowWhileIdle: true,
+          preciseAlarm: true,
+        ));
   }
 
   Future<void> dhuhr() async {
@@ -138,11 +127,11 @@ class NotificationService {
           fullScreenIntent: true,
           criticalAlert: true,
         ),
-        schedule: NotificationCalendar.fromDate(
-            date:
-                prayerTimesControllerForRow.prayerTimes.value!.dhuhr.toLocal(),
+        schedule: NotificationCalendar(
+            timeZone: await AwesomeNotifications().getLocalTimeZoneIdentifier(),
+            hour: prayerTimesControllerForRow.prayerTimes.value!.dhuhr.hour,
+            minute: prayerTimesControllerForRow.prayerTimes.value!.dhuhr.minute,
             allowWhileIdle: true,
-            repeats: true,
             preciseAlarm: true));
   }
 
@@ -162,10 +151,11 @@ class NotificationService {
           fullScreenIntent: true,
           criticalAlert: true,
         ),
-        schedule: NotificationCalendar.fromDate(
-            date: prayerTimesControllerForRow.prayerTimes.value!.asr.toLocal(),
+        schedule: NotificationCalendar(
+            timeZone: await AwesomeNotifications().getLocalTimeZoneIdentifier(),
+            hour: prayerTimesControllerForRow.prayerTimes.value!.asr.hour,
+            minute: prayerTimesControllerForRow.prayerTimes.value!.asr.minute,
             allowWhileIdle: true,
-            repeats: true,
             preciseAlarm: true));
   }
 
@@ -185,11 +175,12 @@ class NotificationService {
           fullScreenIntent: true,
           criticalAlert: true,
         ),
-        schedule: NotificationCalendar.fromDate(
-            date: prayerTimesControllerForRow.prayerTimes.value!.maghrib
-                .toLocal(),
+        schedule: NotificationCalendar(
+            timeZone: await AwesomeNotifications().getLocalTimeZoneIdentifier(),
+            hour: prayerTimesControllerForRow.prayerTimes.value!.maghrib.hour,
+            minute:
+                prayerTimesControllerForRow.prayerTimes.value!.maghrib.minute,
             allowWhileIdle: true,
-            repeats: true,
             preciseAlarm: true));
   }
 
@@ -209,10 +200,11 @@ class NotificationService {
           fullScreenIntent: true,
           criticalAlert: true,
         ),
-        schedule: NotificationCalendar.fromDate(
-            date: prayerTimesControllerForRow.prayerTimes.value!.isha.toLocal(),
+        schedule: NotificationCalendar(
+            timeZone: await AwesomeNotifications().getLocalTimeZoneIdentifier(),
+            hour: prayerTimesControllerForRow.prayerTimes.value!.isha.hour,
+            minute: prayerTimesControllerForRow.prayerTimes.value!.isha.minute,
             allowWhileIdle: true,
-            repeats: true,
             preciseAlarm: true));
   }
 

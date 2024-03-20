@@ -1,4 +1,4 @@
-import '../Core/constant/Images.dart';
+import '../Core/constant/images.dart';
 import 'package:adhan/adhan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

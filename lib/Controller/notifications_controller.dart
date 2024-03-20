@@ -22,7 +22,7 @@ class NotificationController extends GetxController {
     isAzkarOn.value = prefs.getBool('AzkarState') ?? false;
 
     if (isNotificationOn.value) {
-      await NotificationService().cancelAllNotifications();
+        await NotificationService().cancelAllNotifications();
       NotificationService().fajr();
       NotificationService().dhuhr();
       NotificationService().asr();

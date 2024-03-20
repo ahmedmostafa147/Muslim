@@ -1,4 +1,4 @@
-import 'package:Muslim/Core/constant/Images.dart';
+import 'package:Muslim/Core/constant/images.dart';
 
 import 'pray_details.dart';
 import '../../widgets/card_text_icon_widget.dart';
