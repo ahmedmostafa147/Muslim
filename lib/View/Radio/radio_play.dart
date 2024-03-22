@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,8 @@ class AudioPlayerController extends GetxController {
   void play(String? url) async {
     if (url != null) {
       isLoading.value = true;
+      final session = await AudioSession.instance;
+      await session.configure(const AudioSessionConfiguration.speech());
       _player.playbackEventStream.listen((event) {
         if (event.processingState == ProcessingState.completed) {
           isPlaying.value = false;
@@ -39,8 +42,11 @@ class AudioPlayerController extends GetxController {
     isLoading.value = false;
   }
 
-  void share(String url) async {
-    final result = await Share.shareWithResult(url);
+  void share(String name, String url) async {
+    final result = await Share.shareWithResult(
+      'تستمع إلى $name على تطبيق المسلم: $url',
+      subject: 'استمع إلى $name',
+    );
     if (result.status == ShareResultStatus.success) {
       Get.snackbar("نجح", "تم مشاركة الراديو بنجاح");
     } else {
@@ -50,7 +56,7 @@ class AudioPlayerController extends GetxController {
 
   void sleep(int minutes) async {
     sleepDuration.value = minutes;
-    countdown.value = minutes; // Convert minutes to seconds
+    countdown.value = minutes;
     timer = Timer.periodic(
         const Duration(
           minutes: 1,
@@ -71,12 +77,15 @@ class AudioPlayerController extends GetxController {
 }
 
 class PlayRadio extends StatelessWidget {
-  final Widget radioName;
-  final String? radioUrl;
-  final String? radioTitle;
+  final String radioName;
+  final String radioUrl;
+  final String radioTitle;
 
   const PlayRadio(
-      {Key? key, required this.radioName, this.radioUrl, this.radioTitle})
+      {Key? key,
+      required this.radioName,
+      required this.radioUrl,
+      required this.radioTitle})
       : super(key: key);
 
   @override
@@ -90,7 +99,7 @@ class PlayRadio extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: radioTitle != null ? Text(radioTitle!) : radioName,
+          title: Text(radioTitle),
         ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -111,7 +120,13 @@ class PlayRadio extends StatelessWidget {
                   )),
               SizedBox(height: 10.h),
               const Spacer(),
-              radioName,
+              Text(
+                radioName,
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const Spacer(),
               Container(
                 decoration: BoxDecoration(
@@ -124,7 +139,7 @@ class PlayRadio extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-                        controller.share(radioUrl ?? '');
+                        controller.share(radioName, radioUrl);
                       },
                       icon: Icon(
                         Icons.share,
@@ -169,26 +184,25 @@ class PlayRadio extends StatelessWidget {
 }
 
 class BottomSheetTimer extends StatelessWidget {
-  const BottomSheetTimer({
-    super.key,
-  });
+  const BottomSheetTimer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put<AudioPlayerController>(
-      AudioPlayerController(),
-      permanent: true,
-    );
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("وقت النوم"),
+    final controller = Get.find<AudioPlayerController>();
+    return Container(
+      width: double.infinity,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
       ),
-      body: Center(
+      child: Padding(
+        padding: EdgeInsets.all(10.h),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
           children: [
+            const Text("وقت النوم"),
             Obx(() {
               if (controller.countdown.value > 0) {
                 return Padding(
@@ -205,7 +219,7 @@ class BottomSheetTimer extends StatelessWidget {
                 return const SizedBox.shrink();
               }
             }),
-            for (int minutes in [10, 20, 30, 40, 50, 60])
+            for (int minutes in [5, 15, 30, 45, 60])
               InkWell(
                 onTap: () {
                   controller.sleep(minutes);
@@ -216,11 +230,14 @@ class BottomSheetTimer extends StatelessWidget {
                     snackPosition: SnackPosition.BOTTOM,
                   );
                 },
-                child: Text(
-                  '$minutes دقيقة',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                child: Padding(
+                  padding: EdgeInsets.all(10.0.h),
+                  child: Text(
+                    '$minutes دقيقة',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),

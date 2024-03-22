@@ -5,11 +5,15 @@ import 'radio_play.dart';
 import 'widget/radio_list.dart';
 
 class RadioNameAndUrl extends StatelessWidget {
-  final String? radioTitle;
+  final String radioTitle;
   final List<RadioItemNew>? radioItems;
   final Widget radioName;
 
-  const RadioNameAndUrl({Key? key, this.radioItems, required this.radioName, this.radioTitle})
+  const RadioNameAndUrl(
+      {Key? key,
+      required this.radioItems,
+      required this.radioName,
+      required this.radioTitle})
       : super(key: key);
 
   @override
@@ -25,17 +29,15 @@ class RadioNameAndUrl extends StatelessWidget {
           final name = item.name;
           final url = item.url;
 
-          return RadioListUi(title:
-            name!,
+          return RadioListUi(
+            title: name!,
             onTap: () {
-              Get.to(()=>PlayRadio(
-                radioTitle: radioTitle,
-                radioName: Text(name),
-                radioUrl: url,
-              ));
+              Get.to(() => PlayRadio(
+                  radioTitle: radioTitle,
+                  radioName: name,
+                  radioUrl: url.toString()));
             },
-          ); 
-        
+          );
         },
       ),
     );

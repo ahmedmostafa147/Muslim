@@ -51,7 +51,6 @@ dependencies:
   just_audio: ^0.9.36
   audio_session: ^0.1.18
   quran: ^1.2.3
-  audio_video_progress_bar: ^2.0.1
   adhan: ^2.0.0+1
   rxdart: ^0.27.7
   permission_handler: ^11.3.0

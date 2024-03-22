@@ -22,7 +22,7 @@ class TitleListRadio extends StatelessWidget {
             title: title!,
             onTap: () {
               Get.to(() => RadioNameAndUrl(
-                    radioTitle: station.title,
+                    radioTitle: station.title.toString(),
                     radioItems: station.radio,
                     radioName: Text(title),
                   ));

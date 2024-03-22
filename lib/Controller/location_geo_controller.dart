@@ -50,7 +50,7 @@ class LocationController extends GetxController {
       );
 
       Placemark place = placemarks.first;
-      address.value = "${place.locality},${place.country}";
+      address.value = "${place.locality} ${place.country}";
 
       latitude.value = position.latitude;
       longitude.value = position.longitude;

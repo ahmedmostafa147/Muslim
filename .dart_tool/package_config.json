@@ -38,12 +38,6 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "audio_video_progress_bar",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/audio_video_progress_bar-2.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "awesome_notifications",
       "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/awesome_notifications-0.8.2",
       "packageUri": "lib/",
@@ -716,7 +710,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-03-19T17:23:40.326440Z",
+  "generated": "2024-03-22T02:43:09.109824Z",
   "generator": "pub",
   "generatorVersion": "3.3.1"
 }

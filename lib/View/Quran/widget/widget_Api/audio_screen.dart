@@ -57,9 +57,26 @@ class _AudioScreenState extends State<AudioScreen> {
     super.dispose();
   }
 
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.paused) {
-      _player.stop();
+  Future<void> _initAudioPlayer(
+    String ind,
+    Reader reader,
+  ) async {
+    final session = await AudioSession.instance;
+    await session.configure(const AudioSessionConfiguration.speech());
+    // Listen to errors during playback.
+    _player.playbackEventStream.listen((event) {},
+        onError: (Object e, StackTrace stackTrace) {
+      print('A stream error occurred: $e');
+    });
+
+    try {
+      var url =
+          "https://download.quranicaudio.com/quran/${reader.relativePath}$ind.mp3";
+      print('url $url');
+      defaultDuration =
+          (await _player.setAudioSource(AudioSource.uri(Uri.parse(url))))!;
+    } catch (e) {
+      print("Error loading audio source: $e");
     }
   }
 
@@ -98,6 +115,7 @@ class _AudioScreenState extends State<AudioScreen> {
                           ? const Color(0XFFD4A331)
                           : Colors.teal,
                       fontSize: 15.sp,
+                      fontFamily: TextFontStyle.quranFont,
                     ),
                   ),
                 ],
@@ -203,7 +221,24 @@ class _AudioScreenState extends State<AudioScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: const LoadingWidget());
+                          child: InkWell(
+                            onTap: () => _player.seek(
+                              defaultDuration,
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? const Color.fromARGB(44, 212, 163, 49)
+                                    : const Color.fromARGB(44, 0, 150, 135),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Icon(
+                                Icons.replay,
+                              ),
+                            ),
+                          ));
                     }),
                 IconButton(
                   onPressed: () {
@@ -313,28 +348,5 @@ class _AudioScreenState extends State<AudioScreen> {
         ],
       ),
     );
-  }
-
-  void _initAudioPlayer(
-    String ind,
-    Reader reader,
-  ) async {
-    final session = await AudioSession.instance;
-    await session.configure(const AudioSessionConfiguration.speech());
-    // Listen to errors during playback.
-    _player.playbackEventStream.listen((event) {},
-        onError: (Object e, StackTrace stackTrace) {
-      print('A stream error occurred: $e');
-    });
-
-    try {
-      var url =
-          "https://download.quranicaudio.com/quran/${reader.relativePath}$ind.mp3";
-      print('url $url');
-      defaultDuration =
-          (await _player.setAudioSource(AudioSource.uri(Uri.parse(url))))!;
-    } catch (e) {
-      print("Error loading audio source: $e");
-    }
   }
 }
