@@ -26,6 +26,7 @@ class _ListSurahNamePackageState extends State<ListSurahNamePackage> {
                     child: ListView.builder(
                       itemCount: quran.totalSurahCount,
                       itemBuilder: (context, index) {
+                        
                         final surahNameArabic =
                             quran.getSurahNameArabic(index + 1);
                         final surahVerseCount = quran.getVerseCount(index + 1);

@@ -39,7 +39,7 @@
     },
     {
       "name": "awesome_notifications",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/awesome_notifications-0.8.2",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/awesome_notifications-0.9.3+1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -98,18 +98,6 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "device_frame",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/device_frame-1.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "device_preview",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/device_preview-1.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "disable_battery_optimization",
       "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/disable_battery_optimization-1.1.1",
       "packageUri": "lib/",
@@ -159,15 +147,9 @@
     },
     {
       "name": "flutter_lints",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-2.0.3",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-3.0.1",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
-    },
-    {
-      "name": "flutter_localizations",
-      "rootUri": "file:///C:/src/flutter/packages/flutter_localizations",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.0"
     },
     {
       "name": "flutter_screenutil",
@@ -194,12 +176,6 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "freezed_annotation",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/freezed_annotation-2.4.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
       "name": "geocoding",
       "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geocoding-3.0.0",
       "packageUri": "lib/",
@@ -213,7 +189,7 @@
     },
     {
       "name": "geocoding_ios",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geocoding_ios-3.0.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geocoding_ios-3.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -231,13 +207,13 @@
     },
     {
       "name": "geolocator_android",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_android-4.5.2",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_android-4.5.4",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
     {
       "name": "geolocator_apple",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_apple-2.3.6",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_apple-2.3.7",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -291,9 +267,9 @@
     },
     {
       "name": "intl",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.19.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "js",
@@ -345,7 +321,7 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.1",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/lints-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -378,12 +354,6 @@
       "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/mime-1.0.5",
       "packageUri": "lib/",
       "languageVersion": "3.2"
-    },
-    {
-      "name": "nested",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/nested-1.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "page_transition",
@@ -447,7 +417,7 @@
     },
     {
       "name": "permission_handler_apple",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_apple-9.4.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_apple-9.4.2",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -500,14 +470,8 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "provider",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.1.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "quran",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/quran-1.2.3",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/quran-1.2.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -519,13 +483,13 @@
     },
     {
       "name": "share_plus",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus-7.2.2",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus-8.0.2",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.3"
     },
     {
       "name": "share_plus_platform_interface",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_platform_interface-3.3.1",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_platform_interface-3.4.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -710,7 +674,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-03-22T02:43:09.109824Z",
+  "generated": "2024-03-22T05:13:09.376039Z",
   "generator": "pub",
   "generatorVersion": "3.3.1"
 }

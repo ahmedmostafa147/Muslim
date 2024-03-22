@@ -11,7 +11,7 @@ import '../widget/widget_package/surah_name_p.dart';
 import 'reader_screen.dart';
 
 class QuranHomePage extends StatefulWidget {
-  const QuranHomePage({Key? key}) : super(key: key);
+  const QuranHomePage({super.key});
 
   @override
   State<QuranHomePage> createState() => _QuranHomePageState();

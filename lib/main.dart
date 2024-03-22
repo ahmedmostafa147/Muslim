@@ -1,7 +1,6 @@
 import 'Core/constant/themes.dart';
 import 'Core/services/services.dart';
 import 'View/Splash%20Screen/splash_screen.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -11,12 +10,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
 
-  initializeDateFormatting('ar_EG').then((_) => runApp(
-      DevicePreview(enabled: false, builder: (context) => const Muslim())));
+  initializeDateFormatting().then((_) => runApp(const Muslim()));
 }
 
 class Muslim extends StatelessWidget {
-  const Muslim({Key? key}) : super(key: key);
+  const Muslim({super.key});
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
