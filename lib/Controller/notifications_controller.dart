@@ -22,7 +22,7 @@ class NotificationController extends GetxController {
     isAzkarOn.value = prefs.getBool('AzkarState') ?? false;
 
     if (isNotificationOn.value) {
-        await NotificationService().cancelAllNotifications();
+      await NotificationService().cancelAllNotifications();
       NotificationService().fajr();
       NotificationService().dhuhr();
       NotificationService().asr();
@@ -116,7 +116,7 @@ class NotificationController extends GetxController {
       Workmanager().registerPeriodicTask(
         "periodic-task-identifier",
         "simplePeriodicTask",
-        frequency: const Duration(minutes: 30),
+        frequency: const Duration(hours: 4),
       );
       Get.snackbar(
         'Success',
@@ -138,6 +138,7 @@ class NotificationController extends GetxController {
 
   Future<void> cancelAzkarNotifications() async {
     try {
+     await NotificationService(). cancelNotificationZekr();
       Workmanager().cancelByUniqueName("periodic-task-identifier");
       Get.snackbar(
         'Success',

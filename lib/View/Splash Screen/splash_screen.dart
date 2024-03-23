@@ -10,8 +10,9 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return AnimatedSplashScreen(
-      duration: 2500,
+      duration: 3000,
       splashIconSize: 250.r,
       splash: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -86,6 +86,11 @@ class NotificationService {
         .cancelNotificationsByChannelKey('isha_channel');
   }
 
+  Future<void> cancelNotificationZekr() async {
+    await AwesomeNotifications()
+        .cancelNotificationsByChannelKey('azkar_channel');
+  }
+
   Future<void> fajr() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;

@@ -3,32 +3,52 @@
     "title": "القراء",
     "radio": [
       {
-        "name": "عبدالباسط عبدالصمد -مجود",
-        "url": "https://qurango.net/radio/abdulbasit_abdulsamad_mojawwad"
-      },
-      {
         "name": "عبدالباسط عبدالصمد ",
         "url": "https://Qurango.net/radio/abdulbasit_abdulsamad"
       },
       {
-        "name": "محمد صديق المنشاوي -مجود",
-        "url": "https://qurango.net/radio/mohammed_siddiq_alminshawi_mojawwad"
+        "name": "عبدالباسط عبدالصمد -مجود",
+        "url": "https://qurango.net/radio/abdulbasit_abdulsamad_mojawwad"
       },
       {
         "name": "محمد صديق المنشاوي",
         "url": "https://Qurango.net/radio/mohammed_siddiq_alminshawi"
       },
       {
-        "name": "فارس عباد",
-        "url": "https://Qurango.net/radio/fares_abbad"
+        "name": "محمد صديق المنشاوي -مجود",
+        "url": "https://qurango.net/radio/mohammed_siddiq_alminshawi_mojawwad"
       },
       {
         "name": "محمود خليل الحصري",
         "url": "https://Qurango.net/radio/mahmoud_khalil_alhussary"
       },
       {
-        "name": "محمود خليل الحصري",
+        "name": "محمود خليل الحصري -مجود",
         "url": "https://Qurango.net/radio/mahmoud_khalil_alhussary_mojawwad"
+      },
+      {
+        "name": "محمود علي البنا",
+        "url": "https://Qurango.net/radio/mahmoud_ali__albanna"
+      },
+      {
+        "name": "محمود علي البنا -مجود",
+        "url": "https://Qurango.net/radio/mahmoud_ali__albanna_mojawwad"
+      },
+      {
+        "name": "أحمد نعينع",
+        "url": "https://Qurango.net/radio/ahmad_nauina"
+      },
+      {
+        "name": "محمد الطبلاوي",
+        "url": "https://Qurango.net/radio/mohammad_altablaway"
+      },
+      {
+        "name": "مصطفى إسماعيل",
+        "url": "https://Qurango.net/radio/mustafa_ismail"
+      },
+      {
+        "name": "فارس عباد",
+        "url": "https://Qurango.net/radio/fares_abbad"
       },
       {
         "name": "ماهر المعيقلي",
@@ -39,16 +59,8 @@
         "url": "https://Qurango.net/radio/mohammed_ayyub"
       },
       {
-        "name": "محمد أيوب",
-        "url": "https://qurango.net/radio/ayyoub2"
-      },
-      {
         "name": "محمد عبدالكريم",
         "url": "https://Qurango.net/radio/mohammad_abdullkarem"
-      },
-      {
-        "name": "محمد الطبلاوي",
-        "url": "https://Qurango.net/radio/mohammad_altablaway"
       },
       {
         "name": "محمد جبريل",
@@ -61,10 +73,6 @@
       {
         "name": "أحمد بن علي العجمي",
         "url": "https://Qurango.net/radio/ahmad_alajmy"
-      },
-      {
-        "name": "أحمد نعينع",
-        "url": "https://Qurango.net/radio/ahmad_nauina"
       },
       {
         "name": "إدريس أبكر",
@@ -83,20 +91,8 @@
         "url": "https://Qurango.net/radio/yasser_aldosari"
       },
       {
-        "name": "محمود علي البنا",
-        "url": "https://Qurango.net/radio/mahmoud_ali__albanna"
-      },
-      {
-        "name": "محمود علي البنا",
-        "url": "https://Qurango.net/radio/mahmoud_ali__albanna_mojawwad"
-      },
-      {
         "name": "مشاري العفاسي",
         "url": "https://Qurango.net/radio/mishary_alafasi"
-      },
-      {
-        "name": "مصطفى إسماعيل",
-        "url": "https://Qurango.net/radio/mustafa_ismail"
       },
       {
         "name": "علي الحذيفي",

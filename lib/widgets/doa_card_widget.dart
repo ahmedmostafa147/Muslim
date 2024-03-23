@@ -60,19 +60,9 @@ class _DoaCardWidgetState extends State<DoaCardWidget> {
                 SizedBox(
                   height: 10.h,
                 ),
-                RichText(
-                  text: const TextSpan(
-                    children: <InlineSpan>[
-                      WidgetSpan(
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(""),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const RowAyaCopyShareShare(),
+                 RowDoaCopyShareShare(
+                  doaText: StaticVars().smallDo3a2[index],
+                 ),
               ],
             ),
           ),

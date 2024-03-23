@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import '../Controller/prayer_time_controller.dart';
 
 class PrayerTimeRow extends StatelessWidget {
-  const PrayerTimeRow({Key? key}) : super(key: key);
+  const PrayerTimeRow({super.key});
 
   @override
   Widget build(BuildContext context) {

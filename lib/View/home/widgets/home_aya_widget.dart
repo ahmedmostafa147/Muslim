@@ -60,7 +60,12 @@ class HomeAyaWidget extends StatelessWidget {
                 SizedBox(
                   height: 10.h,
                 ),
-                const RowAyaCopyShareShare(),
+                 RowAyaCopyShareShare(
+
+                  surahName: surahName,
+                  verseNumber: verseNumber.toString(),
+                  verseText: verseText,
+                ),
               ],
             ),
           ),
