@@ -1,4 +1,4 @@
-import 'package:Muslim/Core/constant/doe_verser.dart';
+import '../../../../Core/constant/doe_verser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

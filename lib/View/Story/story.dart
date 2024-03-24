@@ -2,7 +2,7 @@ import 'story_details.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:Muslim/Core/constant/images.dart';
+import '../../Core/constant/images.dart';
 
 class StoryHome extends StatelessWidget {
   const StoryHome({super.key});

@@ -1,4 +1,4 @@
-import 'package:Muslim/View/Quran/widget/widget_Api/audio_screen.dart';
+import 'audio_screen.dart';
 import 'package:get/get.dart';
 
 import '../../../../Models/surah_sound_load_data.dart';
@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../widget_package/stack_of_number.dart';
 import '../../../../Models/reader_load_data.dart';
-import 'package:Muslim/Core/constant/text_style.dart';
+import '../../../../Core/constant/text_style.dart';
 
 class AudioSurahScreen extends StatelessWidget {
   AudioSurahScreen({Key? key, required this.reader}) : super(key: key);

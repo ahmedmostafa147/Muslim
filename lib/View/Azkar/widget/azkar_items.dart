@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:Muslim/Core/constant/text_style.dart';
+import '../../../Core/constant/text_style.dart';
 
 class AzkarItem extends StatefulWidget {
   final String zekr;

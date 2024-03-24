@@ -1,9 +1,9 @@
-import 'package:Muslim/View/Quran/screen/surah_screen_package.dart';
+import '../../screen/surah_screen_package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'stack_of_number.dart';
-import 'package:Muslim/Core/constant/text_style.dart';
+import '../../../../Core/constant/text_style.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 

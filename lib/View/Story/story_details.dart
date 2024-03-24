@@ -1,7 +1,8 @@
-import '../../Models/story_load_data.dart';
-import 'widget/story_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../Models/story_load_data.dart';
+import 'widget/story_item.dart';
 
 class StoryDetails extends StatelessWidget {
   final String filePath;

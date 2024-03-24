@@ -1,1 +1,0 @@
- D:\\Flutter\ apps\\muslim_pro\\.dart_tool\\flutter_build\\a63ed36d4c753dafdf534b027b66f17d\\native_assets.yaml: 

@@ -1,9 +1,10 @@
 import 'dart:math';
 
-import '../Core/constant/doe_verser.dart';
-import '../Core/constant/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../Core/constant/doe_verser.dart';
+import '../Core/constant/text_style.dart';
 import '../View/Quran/widget/widget_package/row_aya_copy_love_share.dart';
 
 class DoaCardWidget extends StatefulWidget {

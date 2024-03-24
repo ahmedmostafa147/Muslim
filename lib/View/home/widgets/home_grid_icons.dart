@@ -1,18 +1,16 @@
-import 'package:Muslim/Core/constant/images.dart';
-
-import '../../Story/story.dart';
-
-import '../../Pray/pray_grid_view_home.dart';
-import '../../Qibla/qibla.dart';
-import '../../Radio/radio_home.dart';
-import '../../Ramadan/ramadan.dart';
-import '../../Quran/screen/reader_screen.dart';
-import '../../Quran/screen/master_quran.dart';
+import '../../../Core/constant/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../Azkar/azkar_home.dart';
 
+import '../../Azkar/azkar_home.dart';
+import '../../Pray/pray_grid_view_home.dart';
+import '../../Qibla/qibla.dart';
+import '../../Quran/screen/master_quran.dart';
+import '../../Quran/screen/reader_screen.dart';
+import '../../Radio/radio_home.dart';
+import '../../Ramadan/ramadan.dart';
 import '../../Salah/salah.dart';
+import '../../Story/story.dart';
 import 'home_icon_text_for_grid.dart';
 
 class HomeGridViewIcons extends StatelessWidget {

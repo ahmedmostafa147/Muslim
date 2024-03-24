@@ -1,10 +1,11 @@
-import 'Core/constant/themes.dart';
-import 'Core/services/services.dart';
-import 'View/Splash%20Screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
+
+import 'Core/constant/themes.dart';
+import 'Core/services/services.dart';
+import 'View/Splash%20Screen/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

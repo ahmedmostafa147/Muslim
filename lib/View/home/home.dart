@@ -1,5 +1,5 @@
-import 'package:Muslim/Core/constant/images.dart';
-import 'package:Muslim/widgets/check_notification.dart';
+import '../../Core/constant/images.dart';
+import '../../widgets/check_notification.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

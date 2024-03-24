@@ -1,4 +1,4 @@
-import 'package:Muslim/View/Radio/radio_home.dart';
+import '../View/Radio/radio_home.dart';
 
 import '../Core/constant/images.dart';
 import '../Core/constant/themes.dart';

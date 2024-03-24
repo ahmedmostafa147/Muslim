@@ -1,4 +1,4 @@
-import 'package:Muslim/View/Quran/widget/widget_package/favorite_list.dart';
+import '../widget/widget_package/favorite_list.dart';
 
 import '../../../Models/bookmark_quran.dart';
 import '../../../Models/favorite_quran.dart';

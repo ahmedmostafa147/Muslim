@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:Muslim/Controller/location_geo_controller.dart';
+import 'location_geo_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:adhan/adhan.dart';

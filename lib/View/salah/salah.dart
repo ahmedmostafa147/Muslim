@@ -1,4 +1,4 @@
-import 'package:Muslim/widgets/check_notification.dart';
+import '../../widgets/check_notification.dart';
 
 import '../../Controller/location_geo_controller.dart';
 import 'package:flutter/material.dart';

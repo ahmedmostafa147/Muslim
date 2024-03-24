@@ -1,11 +1,13 @@
 import 'dart:math';
-import 'package:Muslim/Controller/location_geo_controller.dart';
-import 'package:Muslim/Controller/prayer_time_controller.dart';
+
+import '../../Controller/location_geo_controller.dart';
+import '../../Controller/prayer_time_controller.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
+
 import '../constant/doe_verser.dart';
 
 class NotificationService {

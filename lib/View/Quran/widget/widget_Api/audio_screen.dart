@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:Muslim/Core/constant/text_style.dart';
-import 'package:Muslim/Models/reader_load_data.dart';
-import 'package:Muslim/Models/surah_sound_load_data.dart';
-import 'package:Muslim/View/Quran/widget/widget_Api/seek_bar.dart';
-import 'package:Muslim/View/Radio/radio_play.dart';
-import 'package:Muslim/widgets/loading_widget.dart';
+import '../../../../Core/constant/text_style.dart';
+import '../../../../Models/reader_load_data.dart';
+import '../../../../Models/surah_sound_load_data.dart';
+import 'seek_bar.dart';
+import '../../../Radio/radio_play.dart';
+import '../../../../widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
