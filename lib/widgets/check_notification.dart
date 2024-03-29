@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class NotificationClass extends StatelessWidget {
-  const NotificationClass({Key? key}) : super(key: key);
+  const NotificationClass({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -13,11 +13,11 @@ class AzkarItem extends StatefulWidget {
    int number;
 
   AzkarItem({
-    Key? key,
+    super.key,
     required this.zekr,
     required this.hint,
     required this.number,
-  }) : super(key: key);
+  });
 
   @override
   State<AzkarItem> createState() => _AzkarItemState();
@@ -101,7 +101,7 @@ class _AzkarItemState extends State<AzkarItem> {
                             CircleAvatar(
                               radius: 25.r,
                               backgroundColor:
-                                  Color.fromARGB(95, 213, 212, 212),
+                                  const Color.fromARGB(95, 213, 212, 212),
                               child: InkWell(
                                   onTap: () {
                                     if (currentNumber > 0) {

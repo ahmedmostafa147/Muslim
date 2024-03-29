@@ -64,7 +64,7 @@ class PrayerTimeRow extends StatelessWidget {
 }
 
 class ColumnPrayerTime extends StatelessWidget {
-  const ColumnPrayerTime({Key? key}) : super(key: key);
+  const ColumnPrayerTime({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -266,12 +266,12 @@ class BuildPrayerTimeItemColumn extends StatelessWidget {
   final String time;
   final Color containerColor;
   const BuildPrayerTimeItemColumn({
-    Key? key,
+    super.key,
     required this.name,
     required this.imagePath,
     required this.time,
     required this.containerColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

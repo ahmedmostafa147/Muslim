@@ -14,7 +14,7 @@ import '../../Story/story.dart';
 import 'home_icon_text_for_grid.dart';
 
 class HomeGridViewIcons extends StatelessWidget {
-  const HomeGridViewIcons({Key? key}) : super(key: key);
+  const HomeGridViewIcons({super.key});
   @override
   Widget build(BuildContext context) {
     return GridView(

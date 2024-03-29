@@ -8,8 +8,7 @@ import 'widget/radio_list.dart';
 class TitleListRadio extends StatelessWidget {
   final List<RadioStationNew> radioStations;
 
-  const TitleListRadio({Key? key, required this.radioStations})
-      : super(key: key);
+  const TitleListRadio({super.key, required this.radioStations});
 
   @override
   Widget build(BuildContext context) {

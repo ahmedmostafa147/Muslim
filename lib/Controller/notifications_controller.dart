@@ -87,24 +87,14 @@ class NotificationController extends GetxController {
   }
 
   Future<void> cancelPrayerNotifications() async {
-    try {
-      await NotificationService().cancelAllNotifications();
-      Get.snackbar(
-        'نجح',
-        'تم إلغاء جميع التنبيهات بنجاح',
-        backgroundColor: Colors.teal,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    } catch (e) {
-      Get.snackbar(
-        'خطأ',
-        'فشل في إلغاء جميع التنبيهات',
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    }
+    await NotificationService().cancelAllNotifications();
+    Get.snackbar(
+      'نجح',
+      'تم إلغاء جميع التنبيهات بنجاح',
+      backgroundColor: Colors.teal,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+    );
   }
 
   Future<void> scheduleAzkarNotifications() async {
@@ -119,16 +109,16 @@ class NotificationController extends GetxController {
         frequency: const Duration(hours: 4),
       );
       Get.snackbar(
-        'Success',
-        'Azkar notifications scheduled successfully',
+        'نجح',
+        'تم جدولة التنبيهات بنجاح',
         backgroundColor: Colors.teal,
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
     } catch (e) {
       Get.snackbar(
-        'Error',
-        'Failed to schedule Azkar notifications',
+        'خطأ',
+        'فشل في جدولة التنبيهات',
         backgroundColor: Colors.red,
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -137,25 +127,15 @@ class NotificationController extends GetxController {
   }
 
   Future<void> cancelAzkarNotifications() async {
-    try {
-     await NotificationService(). cancelNotificationZekr();
-      Workmanager().cancelByUniqueName("periodic-task-identifier");
-      Get.snackbar(
-        'Success',
-        'Azkar notifications canceled successfully',
-        backgroundColor: Colors.teal,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    } catch (e) {
-      Get.snackbar(
-        'Error',
-        'Failed to cancel Azkar notifications',
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    }
+    await NotificationService().cancelNotificationZekr();
+    Workmanager().cancelByUniqueName("periodic-task-identifier");
+    Get.snackbar(
+      'نجح',
+      'تم الغاء اشعارات الاذكار',
+      backgroundColor: Colors.teal,
+      colorText: Colors.white,
+      snackPosition: SnackPosition.BOTTOM,
+    );
   }
 
   Future<void> checkBatteryOptimization() async {
@@ -179,7 +159,6 @@ class NotificationController extends GetxController {
             onPressed: () {
               DisableBatteryOptimization
                   .showDisableBatteryOptimizationSettings();
-              Get.back();
             },
           ),
           TextButton(

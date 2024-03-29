@@ -22,12 +22,6 @@ class AudioPlayerController extends GetxController {
       isLoading.value = true;
       final session = await AudioSession.instance;
       await session.configure(const AudioSessionConfiguration.speech());
-      _player.playbackEventStream.listen((event) {
-        if (event.processingState == ProcessingState.completed) {
-          isPlaying.value = false;
-          isLoading.value = false;
-        }
-      });
       _player.setAudioSource(AudioSource.uri(Uri.parse(url)));
       await _player.play();
       isPlaying.value = true;
@@ -82,11 +76,10 @@ class PlayRadio extends StatelessWidget {
   final String radioTitle;
 
   const PlayRadio(
-      {Key? key,
+      {super.key,
       required this.radioName,
       required this.radioUrl,
-      required this.radioTitle})
-      : super(key: key);
+      required this.radioTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +141,7 @@ class PlayRadio extends StatelessWidget {
                     ),
                     Obx(() => controller.isLoading.value
                         ? const LoadingWidget()
-                        : IconButton(
+                        : IconButton.outlined(
                             onPressed: () {
                               if (controller.isPlaying.value) {
                                 controller.stop();
@@ -184,7 +177,7 @@ class PlayRadio extends StatelessWidget {
 }
 
 class BottomSheetTimer extends StatelessWidget {
-  const BottomSheetTimer({Key? key}) : super(key: key);
+  const BottomSheetTimer({super.key});
 
   @override
   Widget build(BuildContext context) {

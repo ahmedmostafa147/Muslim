@@ -111,9 +111,9 @@
     },
     {
       "name": "flutter_lints",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-3.0.1",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-3.0.2",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.1"
     },
     {
       "name": "flutter_screenutil",
@@ -351,7 +351,7 @@
     },
     {
       "name": "permission_handler",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler-11.3.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler-11.3.1",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -363,7 +363,7 @@
     },
     {
       "name": "permission_handler_apple",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_apple-9.4.2",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_apple-9.4.4",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -375,7 +375,7 @@
     },
     {
       "name": "permission_handler_platform_interface",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_platform_interface-4.2.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_platform_interface-4.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -596,7 +596,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-03-24T04:12:49.790154Z",
+  "generated": "2024-03-29T04:59:11.640071Z",
   "generator": "pub",
   "generatorVersion": "3.3.1"
 }

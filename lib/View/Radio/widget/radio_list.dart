@@ -8,10 +8,10 @@ class RadioListUi extends StatelessWidget {
   final VoidCallback onTap;
 
   const RadioListUi({
-    Key? key,
+    super.key,
     required this.title,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

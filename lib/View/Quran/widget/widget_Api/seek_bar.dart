@@ -32,7 +32,7 @@ class _SeekBarState extends State<SeekBar> {
             inactiveTrackColor: const Color.fromARGB(255, 11, 89, 71),
             trackHeight: 5.0,
             thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
-            overlayShape: const RoundSliderOverlayShape(overlayRadius: 14.0),
+            overlayShape: const RoundSliderOverlayShape(overlayRadius: 10.0),
           ),
           child: Slider(
             min: 0.0,
@@ -102,7 +102,7 @@ void showSliderDialog({
             children: [
               Text('${snapshot.data?.toStringAsFixed(1)}$valueSuffix',
                   style: TextStyle(
-                      fontFamily: 'Fixed',
+                     
                       fontWeight: FontWeight.bold,
                       fontSize: 24.0.sp)),
               Slider(

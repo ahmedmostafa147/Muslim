@@ -10,11 +10,10 @@ class RadioNameAndUrl extends StatelessWidget {
   final Widget radioName;
 
   const RadioNameAndUrl(
-      {Key? key,
+      {super.key,
       required this.radioItems,
       required this.radioName,
-      required this.radioTitle})
-      : super(key: key);
+      required this.radioTitle});
 
   @override
   Widget build(BuildContext context) {

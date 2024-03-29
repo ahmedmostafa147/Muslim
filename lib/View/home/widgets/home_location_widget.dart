@@ -7,7 +7,7 @@ import '../../../widgets/loading_widget.dart';
 import '../../../widgets/time_prayer_widget.dart';
 
 class HomeLocationWidget extends StatelessWidget {
-  HomeLocationWidget({Key? key}) : super(key: key);
+  HomeLocationWidget({super.key});
 
   final LocationController locationController = Get.put(LocationController());
 

@@ -43,7 +43,11 @@ class AudioSurahScreen extends StatelessWidget {
                               reader: reader,
                               index: index + 1,
                               list: surah,
-                            ));
+                            )
+                            
+
+                            );
+
                           })),
                 ),
               ],

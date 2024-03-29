@@ -14,7 +14,7 @@ import 'widgets/home_aya_widget.dart';
 import '../Quran/screen/master_quran.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
