@@ -1,9 +1,11 @@
+import 'package:muslim/widgets/loading_widget.dart';
+
 import '../../screen/surah_screen_package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'stack_of_number.dart';
-import '../../../../Core/constant/text_style.dart';
+import '../../../../Core/constant/style.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -26,7 +28,6 @@ class _ListSurahNamePackageState extends State<ListSurahNamePackage> {
                     child: ListView.builder(
                       itemCount: quran.totalSurahCount,
                       itemBuilder: (context, index) {
-                        
                         final surahNameArabic =
                             quran.getSurahNameArabic(index + 1);
                         final surahVerseCount = quran.getVerseCount(index + 1);
@@ -54,10 +55,10 @@ class _ListSurahNamePackageState extends State<ListSurahNamePackage> {
                                   Container(
                                     padding: const EdgeInsets.all(8.0),
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
                                       borderRadius: BorderRadius.circular(10),
                                       border: Border.all(
-                                          color: Colors.teal, width: 1.5),
+                                          color: Theme.of(context).primaryColor,
+                                          width: 1.5),
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(10.0),
@@ -79,7 +80,7 @@ class _ListSurahNamePackageState extends State<ListSurahNamePackage> {
                                                     "$surahNameArabic ",
                                                     style: TextStyle(
                                                       fontSize: 18.sp,
-                                                      fontFamily: TextFontStyle
+                                                      fontFamily: TextFontType
                                                           .quranFont,
                                                     ),
                                                   ),
@@ -90,11 +91,8 @@ class _ListSurahNamePackageState extends State<ListSurahNamePackage> {
                                                 style: TextStyle(
                                                   fontSize: 12.sp,
                                                   color: Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.dark
-                                                      ? const Color(0XFFD4A331)
-                                                      : Colors.teal,
-                                                  fontFamily: TextFontStyle
+                                                              .primaryColor,
+                                                  fontFamily: TextFontType
                                                       .notoNastaliqUrduFont,
                                                 ),
                                               )
@@ -110,7 +108,7 @@ class _ListSurahNamePackageState extends State<ListSurahNamePackage> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: 12.sp,
-                                                fontFamily: TextFontStyle
+                                                fontFamily: TextFontType
                                                     .notoNastaliqUrduFont,
                                               ),
                                             ),
@@ -127,13 +125,7 @@ class _ListSurahNamePackageState extends State<ListSurahNamePackage> {
                   ),
                 ],
               )
-            : Center(
-                child: LoadingAnimationWidget.twistingDots(
-                  leftDotColor: Colors.teal,
-                  rightDotColor: const Color(0XFFD4A331),
-                  size: 25.h,
-                ),
-              ),
+            : const LoadingWidget()
       ),
     );
   }

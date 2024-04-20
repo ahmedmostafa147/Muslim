@@ -63,9 +63,9 @@ class _SurahContainState extends State<SurahContainList> {
                 child: Container(
                   padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+              
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.teal, width: 1.5),
+                    border: Border.all(color: Theme.of(context).primaryColor, width: 1.5),
                   ),
                   child: (Column(
                     children: [

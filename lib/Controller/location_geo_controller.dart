@@ -16,22 +16,9 @@ class LocationController extends GetxController {
     _getLocationFromPreferences();
   }
 
-  Future<void> _getLocationFromPreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String savedAddress =
-        prefs.getString('address') ?? 'اضغط هنا لتحديد الموقع الحالي';
-    double savedLatitude = prefs.getDouble('latitude') ?? 0.0;
-    double savedLongitude = prefs.getDouble('longitude') ?? 0.0;
-
-    address.value = savedAddress;
-    latitude.value = savedLatitude;
-    longitude.value = savedLongitude;
-  }
-
   Future<void> getCurrentLocation() async {
     try {
       isLoading.value = true;
-
       LocationPermission permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         address.value = 'Permission denied';
@@ -78,5 +65,17 @@ class LocationController extends GetxController {
     prefs.setString('address', address);
     prefs.setDouble('latitude', latitude);
     prefs.setDouble('longitude', longitude);
+  }
+
+   Future<void> _getLocationFromPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String savedAddress =
+        prefs.getString('address') ?? 'اضغط هنا لتحديد الموقع الحالي';
+    double savedLatitude = prefs.getDouble('latitude') ?? 0.0;
+    double savedLongitude = prefs.getDouble('longitude') ?? 0.0;
+
+    address.value = savedAddress;
+    latitude.value = savedLatitude;
+    longitude.value = savedLongitude;
   }
 }

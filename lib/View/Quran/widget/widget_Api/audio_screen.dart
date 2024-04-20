@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:muslim/Core/constant/text_style.dart';
+import 'package:muslim/Core/constant/style.dart';
 
 import '../../../../Models/reader_load_data.dart';
 import '../../../../Models/surah_sound_load_data.dart';
@@ -185,7 +185,6 @@ class AudioScreen extends StatelessWidget {
     ));
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-      color: Colors.white,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -199,11 +198,9 @@ class AudioScreen extends StatelessWidget {
                       controller
                           .list![controller.currentIndex.value].englishName!,
                       style: TextStyle(
-                        fontFamily: TextFontStyle.quranFont,
+                        fontFamily: TextFontType.quranFont,
                         fontSize: 15.sp,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? const Color(0XFFD4A331)
-                            : Colors.teal,
+                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                   ),
@@ -211,10 +208,8 @@ class AudioScreen extends StatelessWidget {
                     () => Text(
                       controller.list![controller.currentIndex.value].name!,
                       style: TextStyle(
-                        fontFamily: TextFontStyle.quranFont,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? const Color(0XFFD4A331)
-                            : Colors.teal,
+                        fontFamily: TextFontType.quranFont,
+                        color: Theme.of(context).primaryColor,
                         fontSize: 15.sp,
                       ),
                     ),
@@ -223,11 +218,7 @@ class AudioScreen extends StatelessWidget {
               ),
             ],
           ),
-          Divider(
-            color: Theme.of(context).brightness == Brightness.dark
-                ? const Color(0XFFD4A331)
-                : Colors.teal,
-          ),
+          const Divider(),
           SizedBox(
             height: 10.h,
           ),
@@ -256,7 +247,7 @@ class AudioScreen extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.teal.shade300),
+              border: Border.all(color: Theme.of(context).primaryColor),
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Row(
@@ -322,9 +313,11 @@ class BottomSheetTimer extends StatelessWidget {
     final controller = Get.find<AudioController>();
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? ColorsStyleApp.darkBackground
+            : ColorsStyleApp.lightBackground,
+        borderRadius: const BorderRadius.all(
           Radius.circular(10),
         ),
       ),
@@ -340,9 +333,9 @@ class BottomSheetTimer extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "تبقى ${controller.countdown.value} دقيقة للنوم",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.teal,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                 );

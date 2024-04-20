@@ -1,8 +1,9 @@
-import '../../../../Core/constant/doe_verser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
+
+import '../../../../Core/constant/style.dart';
 
 class RowAyaCopyShareShare extends StatelessWidget {
   final String surahName;
@@ -20,17 +21,17 @@ class RowAyaCopyShareShare extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8.0.r),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(color: Colors.teal, width: 1.0),
-      ),
+      
+
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? ColorsStyleApp.black
+                  : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Row(
@@ -47,9 +48,6 @@ class RowAyaCopyShareShare extends StatelessWidget {
                     );
                   },
                   icon: const Icon(Icons.copy),
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? const Color(0XFFD4A331)
-                      : Colors.teal,
                 ),
               ],
             ),
@@ -57,7 +55,9 @@ class RowAyaCopyShareShare extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? ColorsStyleApp.black
+                  : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Row(
@@ -69,9 +69,6 @@ class RowAyaCopyShareShare extends StatelessWidget {
                     Share.share("$verseText\n$surahName, الآية $verseNumber");
                   },
                   icon: const Icon(Icons.share),
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? const Color(0XFFD4A331)
-                      : Colors.teal,
                 ),
               ],
             ),
@@ -91,17 +88,15 @@ class RowDoaCopyShareShare extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8.0.r),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(color: Colors.teal, width: 1.0),
-      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? ColorsStyleApp.black
+                  : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Row(
@@ -118,9 +113,6 @@ class RowDoaCopyShareShare extends StatelessWidget {
                     );
                   },
                   icon: const Icon(Icons.copy),
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? const Color(0XFFD4A331)
-                      : Colors.teal,
                 ),
               ],
             ),
@@ -128,7 +120,9 @@ class RowDoaCopyShareShare extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? ColorsStyleApp.black
+                  : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Row(
@@ -140,9 +134,6 @@ class RowDoaCopyShareShare extends StatelessWidget {
                     await Share.share(doaText);
                   },
                   icon: const Icon(Icons.share),
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? const Color(0XFFD4A331)
-                      : Colors.teal,
                 ),
               ],
             ),

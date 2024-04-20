@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:muslim/widgets/loading_widget.dart';
 
 import '../../../Models/reader_load_data.dart';
 import '../widget/widget_Api/audio_surah_screen.dart';
@@ -25,13 +26,7 @@ class ReaderList extends StatelessWidget {
         future: _readerListFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: LoadingAnimationWidget.twistingDots(
-                leftDotColor: Colors.teal,
-                rightDotColor: const Color(0XFFD4A331),
-                size: 25.h,
-              ),
-            );
+            return LoadingWidget();
           } else if (snapshot.hasError) {
             return Center(
               child: Text('حدث خطأ أثناء تحميل البيانات: ${snapshot.error}'),

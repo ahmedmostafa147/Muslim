@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim/Core/constant/style.dart';
 
 class IconAndTextGridView extends StatelessWidget {
   IconAndTextGridView(
@@ -22,8 +23,8 @@ class IconAndTextGridView extends StatelessWidget {
             padding: EdgeInsets.all(10.r),
             decoration: BoxDecoration(
               color: Theme.of(context).brightness == Brightness.dark
-                  ? const Color.fromARGB(44, 212, 163, 49)
-                  : const Color.fromARGB(44, 0, 150, 135),
+                  ? ColorsStyleApp.hoverDark
+                  : ColorsStyleApp.hoverLight,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Image.asset(

@@ -1,4 +1,4 @@
-import '../../../../Core/constant/text_style.dart';
+import '../../../../Core/constant/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,9 +30,7 @@ class _ReaderCustomTileState extends State<ReaderCustomTile> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? const Color(0XFFD4A331)
-                          : Colors.teal,
+                      color:Theme.of(context).primaryColor,
                       width: 1.5),
                 ),
                 child: Column(
@@ -63,11 +61,8 @@ class _ReaderCustomTileState extends State<ReaderCustomTile> {
                             widget.reader.name ?? '',
                             style: TextStyle(
                               fontSize: 12.sp,
-                              color: Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? const Color(0XFFD4A331)
-                                  : Colors.teal,
-                              fontFamily: TextFontStyle.notoNastaliqUrduFont,
+                              color: Theme.of(context).primaryColor,
+                              fontFamily: TextFontType.notoNastaliqUrduFont,
                             ),
                             textAlign: TextAlign.left,
                           ),

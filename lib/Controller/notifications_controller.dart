@@ -22,12 +22,12 @@ class NotificationController extends GetxController {
     isAzkarOn.value = prefs.getBool('AzkarState') ?? false;
 
     if (isNotificationOn.value) {
-      await NotificationService().cancelAllNotifications();
-      NotificationService().fajr();
-      NotificationService().dhuhr();
-      NotificationService().asr();
-      NotificationService().maghrib();
-      NotificationService().isha();
+      await NotificationService.cancelAllNotifications();
+      NotificationService.fajr();
+      NotificationService.dhuhr();
+      NotificationService.asr();
+      NotificationService.maghrib();
+      NotificationService.isha();
     }
   }
 
@@ -63,11 +63,11 @@ class NotificationController extends GetxController {
     await checkBatteryOptimization();
     NotificationService.initializeNotification();
     try {
-      NotificationService().fajr();
-      NotificationService().dhuhr();
-      NotificationService().asr();
-      NotificationService().maghrib();
-      NotificationService().isha();
+      NotificationService.fajr();
+      NotificationService.dhuhr();
+      NotificationService.asr();
+      NotificationService.maghrib();
+      NotificationService.isha();
       Get.snackbar(
         'نجح',
         'تم جدولة التنبيهات بنجاح',
@@ -87,7 +87,7 @@ class NotificationController extends GetxController {
   }
 
   Future<void> cancelPrayerNotifications() async {
-    await NotificationService().cancelAllNotifications();
+    await NotificationService.cancelAllNotifications();
     Get.snackbar(
       'نجح',
       'تم إلغاء جميع التنبيهات بنجاح',
@@ -127,7 +127,7 @@ class NotificationController extends GetxController {
   }
 
   Future<void> cancelAzkarNotifications() async {
-    await NotificationService().cancelNotificationZekr();
+    await NotificationService.cancelNotificationZekr();
     Workmanager().cancelByUniqueName("periodic-task-identifier");
     Get.snackbar(
       'نجح',

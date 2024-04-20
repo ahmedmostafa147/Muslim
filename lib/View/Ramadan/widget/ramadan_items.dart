@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../Core/constant/text_style.dart';
+import '../../../Core/constant/style.dart';
 
 class RamadanItems extends StatelessWidget {
   final String number;
@@ -20,7 +20,7 @@ class RamadanItems extends StatelessWidget {
           number,
           style: TextStyle(
             fontSize: 18.sp,
-            fontFamily: TextFontStyle.arefRuqaaFont,
+            fontFamily: TextFontType.arefRuqaaFont,
           ),
         ),
       ),
@@ -42,7 +42,7 @@ class RamadanItems extends StatelessWidget {
               label,
               style: TextStyle(
                 fontSize: 18.sp,
-                fontFamily: TextFontStyle.arefRuqaaFont,
+                fontFamily: TextFontType.arefRuqaaFont,
               ),
             ),
           ),

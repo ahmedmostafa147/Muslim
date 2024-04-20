@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../Core/constant/text_style.dart';
+import '../../../../Core/constant/style.dart';
 
 import '../../screen/surah_screen_package.dart';
-
 
 class BookmarkScreen extends StatefulWidget {
   final BookmarkManager bookmarkManager;
@@ -55,19 +54,23 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                 elevation: 5,
                 child: ListTile(
                   contentPadding: EdgeInsets.all(10.sp),
-              
                   title: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         bookmark.surahName,
-                        style:  TextStyle(fontSize: 20.sp,fontFamily: TextFontStyle.quranFont,fontWeight: FontWeight.bold,color:Theme.of(context).brightness==Brightness.dark?Colors.amber:Colors.teal, ),
-                        
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontFamily: TextFontType.quranFont,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).primaryColor,
+                        ),
                       ),
-                       SizedBox(height: 10.h),
-                      
+                      SizedBox(height: 10.h),
                       Text(' ${bookmark.verseText}',
-                          style:  TextStyle(fontSize: 15.sp,fontFamily: TextFontStyle.quranFont)),
+                          style: TextStyle(
+                              fontSize: 15.sp,
+                              fontFamily: TextFontType.quranFont)),
                     ],
                   ),
                   onTap: () {

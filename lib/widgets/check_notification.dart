@@ -1,3 +1,5 @@
+import 'package:muslim/Core/constant/style.dart';
+
 import '../Controller/notifications_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,7 +18,11 @@ class NotificationClass extends StatelessWidget {
               padding: EdgeInsets.all(10.r),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.teal, width: 1.0),
+                border: Border.all(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? ColorsStyleApp.darkPrimary
+                        : ColorsStyleApp.lightPrimary,
+                    width: 1.0),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,17 +36,17 @@ class NotificationClass extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? const Color.fromARGB(44, 212, 163, 49)
-                          : const Color.fromARGB(44, 0, 150, 135),
+                          ? ColorsStyleApp.hoverDark
+                          : ColorsStyleApp.hoverLight,
                       borderRadius: BorderRadius.circular(10.r),
                     ),
                     child: Checkbox(
                       value: notificationController.isNotificationOn.value,
                       onChanged: notificationController.toggleNotification,
                       activeColor:
-                          (Theme.of(context).brightness == Brightness.dark
-                              ? const Color(0XFFD4A331)
-                              : Colors.teal),
+                          Theme.of(context).brightness == Brightness.dark
+                              ? ColorsStyleApp.darkPrimary
+                              : ColorsStyleApp.lightPrimary,
                     ),
                   ),
                 ],
@@ -53,7 +59,11 @@ class NotificationClass extends StatelessWidget {
               padding: EdgeInsets.all(10.r),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.teal, width: 1.0),
+                border: Border.all(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? ColorsStyleApp.darkPrimary
+                        : ColorsStyleApp.lightPrimary,
+                    width: 1.0),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,18 +77,17 @@ class NotificationClass extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? const Color.fromARGB(44, 212, 163, 49)
-                          : const Color.fromARGB(44, 0, 150, 135),
+                          ? ColorsStyleApp.hoverDark
+                          : ColorsStyleApp.hoverLight,
                       borderRadius: BorderRadius.circular(10.r),
                     ),
                     child: Checkbox(
-                      value: notificationController.isAzkarOn.value,
-                      onChanged: notificationController.toggleAzkar,
-                      activeColor:
-                          (Theme.of(context).brightness == Brightness.dark
-                              ? const Color(0XFFD4A331)
-                              : Colors.teal),
-                    ),
+                        value: notificationController.isAzkarOn.value,
+                        onChanged: notificationController.toggleAzkar,
+                        activeColor:
+                            (Theme.of(context).brightness == Brightness.dark
+                                ? ColorsStyleApp.darkPrimary
+                                : ColorsStyleApp.lightPrimary)),
                   ),
                 ],
               ),

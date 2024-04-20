@@ -1,4 +1,4 @@
-import '../../../../Core/constant/text_style.dart';
+import '../../../../Core/constant/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,7 +22,7 @@ class VerseText extends StatelessWidget {
                 verseText,
                 style: TextStyle(
                   fontSize: 20.sp,
-                  fontFamily: TextFontStyle.quranFont,
+                  fontFamily: TextFontType.quranFont,
                 ),
               ),
             ),
@@ -40,10 +40,8 @@ class VerseText extends StatelessWidget {
                   verseText1,
                   style: TextStyle(
                     fontSize: 15.sp,
-                    fontFamily: TextFontStyle.notoNastaliqUrduFont,
-                   color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.amber
-                        : Colors.teal,
+                    fontFamily: TextFontType.notoNastaliqUrduFont,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),

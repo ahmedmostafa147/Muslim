@@ -1,3 +1,5 @@
+import 'package:muslim/widgets/loading_widget.dart';
+
 import 'audio_screen.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../widget_package/stack_of_number.dart';
 import '../../../../Models/reader_load_data.dart';
-import '../../../../Core/constant/text_style.dart';
+import '../../../../Core/constant/style.dart';
 
 class AudioSurahScreen extends StatelessWidget {
   AudioSurahScreen({Key? key, required this.reader}) : super(key: key);
@@ -43,23 +45,13 @@ class AudioSurahScreen extends StatelessWidget {
                               reader: reader,
                               index: index + 1,
                               list: surah,
-                            )
-                            
-
-                            );
-
+                            ));
                           })),
                 ),
               ],
             );
           }
-          return Center(
-            child: LoadingAnimationWidget.twistingDots(
-              leftDotColor: Colors.teal,
-              rightDotColor: const Color(0XFFD4A331),
-              size: 25.h,
-            ),
-          );
+          return LoadingWidget();
         },
       ),
     );
@@ -100,7 +92,7 @@ class AudioTittle extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.teal, width: 1.5),
+                  border: Border.all(color: Theme.of(context).primaryColor, width: 1.5),
                 ),
                 child: Column(
                   children: [
@@ -119,7 +111,7 @@ class AudioTittle extends StatelessWidget {
                               "$surahName",
                               style: TextStyle(
                                 fontSize: 18.sp,
-                                fontFamily: TextFontStyle.quranFont,
+                                fontFamily: TextFontType.quranFont,
                               ),
                             ),
                           ],
@@ -129,10 +121,8 @@ class AudioTittle extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 12.sp,
                             color:
-                                Theme.of(context).brightness == Brightness.dark
-                                    ? const Color(0XFFD4A331)
-                                    : Colors.teal,
-                            fontFamily: TextFontStyle.notoNastaliqUrduFont,
+                                Theme.of(context).primaryColor,
+                            fontFamily: TextFontType.notoNastaliqUrduFont,
                           ),
                         )
                       ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../Core/constant/text_style.dart';
+import '../../../../Core/constant/style.dart';
 
 class StackOfNumber extends StatelessWidget {
   const StackOfNumber({super.key, required this.surahIndex});
@@ -24,10 +24,8 @@ class StackOfNumber extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
-                  fontFamily: TextFontStyle.notoNastaliqUrduFont,
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? const Color(0XFFD4A331)
-                      : Colors.teal,
+                  fontFamily: TextFontType.notoNastaliqUrduFont,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             ),

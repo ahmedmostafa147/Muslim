@@ -1,8 +1,7 @@
 import '../../../../Models/favorite_quran.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../Core/constant/text_style.dart';
-
+import '../../../../Core/constant/style.dart';
 
 class FavoriteScreen extends StatefulWidget {
   final FavoriteManager favoriteManager;
@@ -53,15 +52,17 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   children: [
                     Text(
                       '${favorite.surahName} ',
-                      style:  TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20.sp,
-                        color:Theme.of(context).brightness==Brightness.dark?Colors.amber:Colors.teal,
-
+                        color:Theme.of(context).primaryColor,
                       ),
                     ),
                     SizedBox(height: 10.h),
-                    Text(favorite.verseText,style:  TextStyle(fontSize: 15.sp,fontFamily: TextFontStyle.quranFont)),
+                    Text(favorite.verseText,
+                        style: TextStyle(
+                            fontSize: 15.sp,
+                            fontFamily: TextFontType.quranFont)),
                   ],
                 ),
                 trailing: IconButton(

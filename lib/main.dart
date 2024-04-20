@@ -28,7 +28,7 @@ class Muslim extends StatelessWidget {
             locale: const Locale('ar'),
             theme: lightTheme,
             darkTheme: darkTheme,
-            themeMode: ThemeMode.light,
+            themeMode: ThemeMode.system,
             title: 'Muslim',
             home: const SplashScreen(),
             debugShowCheckedModeBanner: false,

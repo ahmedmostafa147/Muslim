@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../Core/constant/text_style.dart';
+import '../../../../Core/constant/style.dart';
 import 'package:quran/quran.dart';
 
 class BasmalaCardSurah extends StatelessWidget {
@@ -15,7 +15,7 @@ class BasmalaCardSurah extends StatelessWidget {
           " $basmala",
           style: TextStyle(
             fontSize: 20.sp,
-            fontFamily: TextFontStyle.quranFont,
+            fontFamily: TextFontType.quranFont,
           ),
         ),
       ),

@@ -34,6 +34,7 @@ class PrayerTimesControllerForRow extends GetxController {
 
 class PrayerTimesControllerForColumn extends GetxController {
   var prayerTimes = Rx<PrayerTimes?>(null);
+  var sunnahTimes = Rx<SunnahTimes?>(null);
   var nextPrayer = Prayer.fajr.obs;
   var nextPrayerName = 'الفجر'.obs;
   var arabicNextPrayerName = 'الفجر'.obs;
@@ -57,6 +58,7 @@ class PrayerTimesControllerForColumn extends GetxController {
     super.onInit();
     startCountdown();
     fetchPrayerTimes();
+    fetchSunnahTimes();
     ever(locationController.latitude, (_) => fetchPrayerTimes());
     ever(locationController.longitude, (_) => fetchPrayerTimes());
   }
@@ -67,7 +69,19 @@ class PrayerTimesControllerForColumn extends GetxController {
     var params = CalculationMethod.egyptian.getParameters();
     params.madhab = Madhab.shafi;
     prayerTimes.value = PrayerTimes.today(myCoordinates, params);
+
     calculateNextPrayer();
+  }
+
+  Future<void> fetchSunnahTimes() async {
+    var myCoordinates = Coordinates(
+        locationController.latitude.value, locationController.longitude.value);
+    var params = CalculationMethod.egyptian.getParameters();
+    params.madhab = Madhab.shafi;
+    sunnahTimes.value = SunnahTimes(PrayerTimes.today(
+      myCoordinates,
+      params,
+    ));
   }
 
   void calculateNextPrayer() {

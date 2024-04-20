@@ -5,12 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../../Core/constant/text_style.dart';
+import '../../../Core/constant/style.dart';
 
 class AzkarItem extends StatefulWidget {
   final String zekr;
   final String hint;
-   int number;
+  int number;
 
   AzkarItem({
     super.key,
@@ -45,9 +45,9 @@ class _AzkarItemState extends State<AzkarItem> {
           child: Container(
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.teal, width: 1.5),
+              border:
+                  Border.all(color: Theme.of(context).primaryColor, width: 1.5),
             ),
             child: Column(
               children: [
@@ -58,23 +58,20 @@ class _AzkarItemState extends State<AzkarItem> {
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                     wordSpacing: 2,
-                    fontFamily: TextFontStyle.arefRuqaaFont,
+                    fontFamily: TextFontType.arefRuqaaFont,
                   ),
                 ),
                 SizedBox(
                   height: 10.h,
                 ),
-                const Divider(
-                  color: Colors.teal,
-                  thickness: 1.5,
-                ),
+                const Divider(),
                 Column(
                   children: [
                     Text(
                       widget.hint,
                       style: TextStyle(
                           fontSize: 15.sp,
-                          fontFamily: TextFontStyle.arefRuqaaFont),
+                          fontFamily: TextFontType.arefRuqaaFont),
                     ),
                     SizedBox(
                       height: 10.h,
@@ -91,7 +88,7 @@ class _AzkarItemState extends State<AzkarItem> {
                           if (currentNumber == 0)
                             CircleAvatar(
                               radius: 15.r,
-                              backgroundColor: Colors.teal,
+                              backgroundColor: Theme.of(context).primaryColor,
                               child: const Icon(
                                 Icons.check,
                                 color: Colors.white,

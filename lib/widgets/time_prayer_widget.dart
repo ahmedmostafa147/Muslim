@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import '../Core/constant/images.dart';
 import 'package:adhan/adhan.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../Controller/prayer_time_controller.dart';
+import '../Core/constant/style.dart';
 
 class PrayerTimeRow extends StatelessWidget {
   const PrayerTimeRow({super.key});
@@ -141,7 +144,9 @@ class ColumnPrayerTime extends StatelessWidget {
                 containerColor:
                     prayerTimesControllerForColumn.nextPrayer.value ==
                             Prayer.fajr
-                        ? Colors.teal[50]!
+                        ? Theme.of(context).brightness == Brightness.dark
+                            ? ColorsStyleApp.hoverDark
+                            : ColorsStyleApp.hoverLight
                         : Colors.transparent,
               ),
               SizedBox(
@@ -156,7 +161,9 @@ class ColumnPrayerTime extends StatelessWidget {
                 containerColor:
                     prayerTimesControllerForColumn.nextPrayer.value ==
                             Prayer.sunrise
-                        ? const Color.fromARGB(255, 203, 227, 226)
+                        ? Theme.of(context).brightness == Brightness.dark
+                            ? ColorsStyleApp.hoverDark
+                            : ColorsStyleApp.hoverLight
                         : Colors.transparent,
               ),
               SizedBox(
@@ -171,7 +178,9 @@ class ColumnPrayerTime extends StatelessWidget {
                 containerColor:
                     prayerTimesControllerForColumn.nextPrayer.value ==
                             Prayer.dhuhr
-                        ? Colors.teal[50]!
+                        ? Theme.of(context).brightness == Brightness.dark
+                            ? ColorsStyleApp.hoverDark
+                            : ColorsStyleApp.hoverLight
                         : Colors.transparent,
               ),
               SizedBox(
@@ -186,7 +195,9 @@ class ColumnPrayerTime extends StatelessWidget {
                 containerColor:
                     prayerTimesControllerForColumn.nextPrayer.value ==
                             Prayer.asr
-                        ? Colors.teal[50]!
+                        ? Theme.of(context).brightness == Brightness.dark
+                            ? ColorsStyleApp.hoverDark
+                            : ColorsStyleApp.hoverLight
                         : Colors.transparent,
               ),
               SizedBox(
@@ -201,7 +212,9 @@ class ColumnPrayerTime extends StatelessWidget {
                 containerColor:
                     prayerTimesControllerForColumn.nextPrayer.value ==
                             Prayer.maghrib
-                        ? Colors.teal[50]!
+                        ? Theme.of(context).brightness == Brightness.dark
+                            ? ColorsStyleApp.hoverDark
+                            : ColorsStyleApp.hoverLight
                         : Colors.transparent,
               ),
               SizedBox(
@@ -216,10 +229,94 @@ class ColumnPrayerTime extends StatelessWidget {
                 containerColor:
                     prayerTimesControllerForColumn.nextPrayer.value ==
                             Prayer.isha
-                        ? Colors.teal[50]!
+                        ? Theme.of(context).brightness == Brightness.dark
+                            ? ColorsStyleApp.hoverDark
+                            : ColorsStyleApp.hoverLight
                         : Colors.transparent,
               ),
             ],
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            prayerTimesControllerForColumn
+                        .sunnahTimes.value!.middleOfTheNight !=
+                    null
+                ? Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                          color: Theme.of(context).primaryColor, width: 1.0),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          " منتصف الليل",
+                          style: TextStyle(
+                            fontSize: 13.sp,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Text(
+                          DateFormat.jm("ar").format(
+                            prayerTimesControllerForColumn
+                                .sunnahTimes.value!.middleOfTheNight,
+                          ),
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Container(),
+            prayerTimesControllerForColumn
+                        .sunnahTimes.value!.lastThirdOfTheNight !=
+                    null
+                ? Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                          color: Theme.of(context).primaryColor, width: 1.0),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "الثلث الأخير من الليل",
+                          style: TextStyle(
+                            fontSize: 13.sp,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Text(
+                          DateFormat.jm("ar").format(
+                            prayerTimesControllerForColumn
+                                .sunnahTimes.value!.lastThirdOfTheNight,
+                          ),
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Container(),
+          ]),
+          SizedBox(
+            height: 10.h,
           ),
         ],
       );
@@ -280,7 +377,7 @@ class BuildPrayerTimeItemColumn extends StatelessWidget {
       decoration: BoxDecoration(
         color: containerColor,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.teal, width: 1.0),
+        border: Border.all(color: Theme.of(context).primaryColor, width: 1.0),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

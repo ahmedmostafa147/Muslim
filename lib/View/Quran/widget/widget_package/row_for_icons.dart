@@ -100,9 +100,8 @@ class _RowIconVerseState extends State<RowIconVerse> {
             icon: Icon(
               isBookmark ? Icons.bookmark : Icons.bookmark_border,
               color: isBookmark
-                  ? Theme.of(context).brightness == Brightness.dark
-                      ? const Color(0XFFD4A331)
-                      : Colors.teal
+                  ? Theme.of(context).primaryColor
+
                   : null,
             ),
           ),

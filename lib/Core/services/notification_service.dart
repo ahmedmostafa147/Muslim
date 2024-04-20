@@ -11,8 +11,8 @@ import 'package:permission_handler/permission_handler.dart';
 import '../constant/doe_verser.dart';
 
 class NotificationService {
-  final locationController = Get.find<LocationController>();
-  final PrayerTimesControllerForRow prayerTimesControllerForRow =
+  static final locationController = Get.find<LocationController>();
+  static final PrayerTimesControllerForRow prayerTimesControllerForRow =
       Get.find<PrayerTimesControllerForRow>();
 
   static Future<void> initializeNotification() async {
@@ -76,7 +76,7 @@ class NotificationService {
     }
   }
 
-  Future<void> cancelAllNotifications() async {
+  static Future<void> cancelAllNotifications() async {
     await AwesomeNotifications()
         .cancelNotificationsByChannelKey('fajr_channel');
     await AwesomeNotifications()
@@ -88,12 +88,12 @@ class NotificationService {
         .cancelNotificationsByChannelKey('isha_channel');
   }
 
-  Future<void> cancelNotificationZekr() async {
+  static Future<void> cancelNotificationZekr() async {
     await AwesomeNotifications()
         .cancelNotificationsByChannelKey('azkar_channel');
   }
 
-  Future<void> fajr() async {
+  static Future<void> fajr() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;
     await AwesomeNotifications().createNotification(
@@ -118,7 +118,7 @@ class NotificationService {
         ));
   }
 
-  Future<void> dhuhr() async {
+ static Future<void> dhuhr() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;
     await AwesomeNotifications().createNotification(
@@ -142,7 +142,7 @@ class NotificationService {
             preciseAlarm: true));
   }
 
-  Future<void> asr() async {
+static  Future<void> asr() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;
     await AwesomeNotifications().createNotification(
@@ -166,7 +166,7 @@ class NotificationService {
             preciseAlarm: true));
   }
 
-  Future<void> maghrib() async {
+ static Future<void> maghrib() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;
     await AwesomeNotifications().createNotification(
@@ -191,7 +191,7 @@ class NotificationService {
             preciseAlarm: true));
   }
 
-  Future<void> isha() async {
+ static Future<void> isha() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;
     await AwesomeNotifications().createNotification(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'text_style.dart';
+import 'package:muslim/Core/constant/style.dart';
 
 final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
+  splashColor: Colors.white,
   primaryColor: Colors.teal,
   colorScheme: const ColorScheme.light(
     primary: Colors.teal,
@@ -29,8 +29,7 @@ final ThemeData lightTheme = ThemeData(
   ),
   switchTheme: SwitchThemeData(
     thumbColor: MaterialStateProperty.all<Color>(Colors.teal),
-    trackColor: MaterialStateProperty.all<Color>(
-        const Color.fromARGB(255, 255, 255, 255)),
+    trackColor: MaterialStateProperty.all<Color>(Colors.white),
     trackOutlineColor: MaterialStateProperty.all<Color>(Colors.teal),
   ),
   iconTheme: const IconThemeData(color: Colors.teal),
@@ -46,7 +45,7 @@ final ThemeData lightTheme = ThemeData(
     color: Colors.teal,
     thickness: 1.5,
   ),
-  fontFamily: TextFontStyle.cairoFont,
+  fontFamily: TextFontType.cairoFont,
   useMaterial3: true,
   brightness: Brightness.light,
   appBarTheme: const AppBarTheme(
@@ -60,13 +59,14 @@ final ThemeData lightTheme = ThemeData(
 );
 
 final ThemeData darkTheme = ThemeData(
-  scaffoldBackgroundColor: Colors.black,
+  scaffoldBackgroundColor: const Color.fromARGB(186, 52, 55, 78),
+  splashColor: const Color.fromARGB(186, 52, 55, 78),
   primaryColor: const Color(0XFFD4A331),
   colorScheme: const ColorScheme.dark(
     primary: Color(0XFFD4A331),
     secondary: Color(0XFFD4A331),
     surface: Colors.black,
-    background: Colors.black,
+    background: Color.fromRGBO(32, 33, 37, 255),
     error: Colors.red,
     onPrimary: Colors.black,
     onSecondary: Colors.black,
@@ -75,9 +75,18 @@ final ThemeData darkTheme = ThemeData(
     onError: Colors.white,
     brightness: Brightness.dark,
   ),
+  cardTheme: const CardTheme(
+    color: Color.fromARGB(186, 52, 55, 78),
+    elevation: 2,
+    shadowColor: Color.fromARGB(186, 52, 55, 78),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+  ),
   switchTheme: SwitchThemeData(
     thumbColor: MaterialStateProperty.all<Color>(Colors.amber),
     trackColor: MaterialStateProperty.all<Color>(Colors.white),
+    trackOutlineColor: MaterialStateProperty.all<Color>(Colors.amber),
   ),
   iconTheme: const IconThemeData(color: Colors.amber),
   iconButtonTheme: IconButtonThemeData(
@@ -90,9 +99,9 @@ final ThemeData darkTheme = ThemeData(
   ),
   dividerTheme: const DividerThemeData(
     color: Color(0XFFD4A331),
-    thickness: 1.0,
+    thickness: 1.5,
   ),
-  fontFamily: TextFontStyle.cairoFont,
+  fontFamily: TextFontType.cairoFont,
   useMaterial3: true,
   brightness: Brightness.dark,
   appBarTheme: const AppBarTheme(

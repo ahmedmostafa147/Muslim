@@ -1,3 +1,5 @@
+import 'package:muslim/Core/constant/style.dart';
+
 import '../../Core/constant/images.dart';
 
 import 'pray_details.dart';
@@ -87,8 +89,8 @@ class PrayHome extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? const Color.fromARGB(44, 212, 163, 49)
-                                    : const Color.fromARGB(44, 0, 150, 135),
+                                    ? ColorsStyleApp.hoverDark
+                                    : ColorsStyleApp.hoverLight,
                                 borderRadius: BorderRadius.circular(10.w),
                               ),
                               child: Image.asset(gridData[index]['image'],
@@ -165,7 +167,7 @@ class ListPray extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.teal, width: 1.0),
+          border: Border.all(color: Theme.of(context).primaryColor, width: 1.0),
         ),
         child: ListView.builder(
           shrinkWrap: true,

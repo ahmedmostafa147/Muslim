@@ -40,10 +40,7 @@ class Salah extends StatelessWidget {
                             locationController.address.value,
                             style: TextStyle(
                               fontSize: 15.sp,
-                              color: Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? const Color(0XFFD4A331)
-                                  : Colors.teal,
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
                         ),

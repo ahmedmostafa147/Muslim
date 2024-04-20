@@ -41,9 +41,7 @@ class QiblaScreen extends StatelessWidget {
                     locationController.address.value,
                     style: TextStyle(
                       fontSize: 15.sp,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? const Color(0XFFD4A331)
-                          : Colors.teal,
+                      color:Theme.of(context).primaryColor,
                     ),
                   ),
                 ),
@@ -134,7 +132,7 @@ class QiblaCompassWidget extends StatelessWidget {
                     'اتجاه القبلة: ${qiblaDirection.toStringAsFixed(0)}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.teal,
+                      color: Theme.of(context).primaryColor,
                       fontSize: 15.sp,
                       fontWeight: FontWeight.bold,
                     ),
@@ -143,7 +141,7 @@ class QiblaCompassWidget extends StatelessWidget {
                     'الاتجاه الحالي ${compassHeading.toStringAsFixed(0)}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: isCorrectDirection ? Colors.teal : Colors.red,
+                      color: isCorrectDirection ? Theme.of(context).primaryColor : Colors.red,
                       fontSize: 15.sp,
                       fontWeight: FontWeight.bold,
                     ),
@@ -154,7 +152,7 @@ class QiblaCompassWidget extends StatelessWidget {
                         : 'الاتجاه خاطئ حتي الان',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: isCorrectDirection ? Colors.teal : Colors.red,
+                      color: isCorrectDirection ? Theme.of(context).primaryColor: Colors.red,
                       fontSize: 15.sp,
                       fontWeight: FontWeight.bold,
                     ),
@@ -199,7 +197,7 @@ class QiblaCompassWidget extends StatelessWidget {
                 " حرك الهاتف حتي يتطابق ايقونة القبلة مع اتجاة السهم الاخضر\nو تظهر جملة الاتجاه صحيح و يهتز الهاتف",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.teal,
+                  color: Theme.of(context).primaryColor,
                   fontSize: 15.sp,
                   fontWeight: FontWeight.bold,
                 ),

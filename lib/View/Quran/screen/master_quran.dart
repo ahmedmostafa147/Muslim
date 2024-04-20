@@ -49,12 +49,8 @@ class _QuranHomePageState extends State<QuranHomePage>
               tabAlignment: TabAlignment.center,
               isScrollable: true,
               controller: _tabController,
-              labelColor: Theme.of(context).brightness == Brightness.dark
-                  ? const Color(0XFFD4A331)
-                  : Colors.teal,
-              indicatorColor: Theme.of(context).brightness == Brightness.dark
-                  ? const Color(0XFFD4A331)
-                  : Colors.teal,
+              labelColor: Theme.of(context).primaryColor,
+              indicatorColor: Theme.of(context).primaryColor,
               tabs: const [
                 Tab(icon: Icon(Icons.phone_iphone_rounded), text: 'المصحف'),
                 Tab(icon: Icon(Icons.headphones), text: 'إستماع'),

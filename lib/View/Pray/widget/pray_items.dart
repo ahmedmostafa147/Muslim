@@ -1,4 +1,4 @@
-import '../../../Core/constant/text_style.dart';
+import '../../../Core/constant/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,9 +22,9 @@ class PrayItems extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+            
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.teal, width: 1.5),
+              border: Border.all(color: Theme.of(context).primaryColor, width: 1.5),
             ),
             child: Column(
               children: [
@@ -32,7 +32,7 @@ class PrayItems extends StatelessWidget {
                   pray,
                   style: TextStyle(
                     fontSize: 18.sp,
-                    fontFamily: TextFontStyle.arefRuqaaFont,
+                    fontFamily: TextFontType.arefRuqaaFont,
                   ),
                 ),
                 Row(

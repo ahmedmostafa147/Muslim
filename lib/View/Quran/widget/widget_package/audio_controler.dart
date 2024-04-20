@@ -1,3 +1,5 @@
+import 'package:muslim/Core/constant/style.dart';
+
 import '../widget_Api/seek_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -88,10 +90,10 @@ class QuranicVersePlayerController extends GetxController {
 
 class QuranicVersePlayer extends StatelessWidget {
   const QuranicVersePlayer({
-    Key? key,
+    super.key,
     required this.surahNumber,
     required this.verseNumber,
-  }) : super(key: key);
+  });
 
   final int surahNumber;
   final int verseNumber;
@@ -106,7 +108,9 @@ class QuranicVersePlayer extends StatelessWidget {
         height: 200.h,
         padding: const EdgeInsets.all(20.0),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).brightness == Brightness.dark
+              ? ColorsStyleApp.darkBackground
+              : ColorsStyleApp.lightBackground,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -137,9 +141,11 @@ class QuranicVersePlayer extends StatelessWidget {
             SizedBox(height: 10.0.h),
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.black),
-              ),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: Theme.of(context).primaryColor,
+                    width: 1.5,
+                  )),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
