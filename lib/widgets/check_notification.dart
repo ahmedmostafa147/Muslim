@@ -19,10 +19,7 @@ class NotificationClass extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? ColorsStyleApp.darkPrimary
-                        : ColorsStyleApp.lightPrimary,
-                    width: 1.0),
+                    color: Theme.of(context).primaryColor, width: 1.0),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,10 +40,7 @@ class NotificationClass extends StatelessWidget {
                     child: Checkbox(
                       value: notificationController.isNotificationOn.value,
                       onChanged: notificationController.toggleNotification,
-                      activeColor:
-                          Theme.of(context).brightness == Brightness.dark
-                              ? ColorsStyleApp.darkPrimary
-                              : ColorsStyleApp.lightPrimary,
+                      activeColor: Theme.of(context).primaryColor,
                     ),
                   ),
                 ],
@@ -60,10 +54,7 @@ class NotificationClass extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? ColorsStyleApp.darkPrimary
-                        : ColorsStyleApp.lightPrimary,
-                    width: 1.0),
+                    color: Theme.of(context).primaryColor, width: 1.0),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,10 +75,7 @@ class NotificationClass extends StatelessWidget {
                     child: Checkbox(
                         value: notificationController.isAzkarOn.value,
                         onChanged: notificationController.toggleAzkar,
-                        activeColor:
-                            (Theme.of(context).brightness == Brightness.dark
-                                ? ColorsStyleApp.darkPrimary
-                                : ColorsStyleApp.lightPrimary)),
+                        activeColor: Theme.of(context).primaryColor),
                   ),
                 ],
               ),

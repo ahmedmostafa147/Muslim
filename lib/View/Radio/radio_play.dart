@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../Core/constant/images.dart';
 import 'package:just_audio/just_audio.dart';
+import '../../Core/constant/style.dart';
 import '../../widgets/loading_widget.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -123,9 +124,12 @@ class PlayRadio extends StatelessWidget {
               const Spacer(),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? ColorsStyleApp.darkBackground
+                      : ColorsStyleApp.lightBackground,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.teal, width: 1.5),
+                  border: Border.all(
+                      color: Theme.of(context).primaryColor, width: 1.5),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -184,8 +188,10 @@ class BottomSheetTimer extends StatelessWidget {
     final controller = Get.find<AudioPlayerController>();
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? ColorsStyleApp.darkBackground
+            : ColorsStyleApp.lightBackground,
         borderRadius: BorderRadius.all(
           Radius.circular(10),
         ),
@@ -202,9 +208,9 @@ class BottomSheetTimer extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "تبقى ${controller.countdown.value} دقيقة للنوم",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.teal,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                 );
@@ -227,9 +233,8 @@ class BottomSheetTimer extends StatelessWidget {
                   padding: EdgeInsets.all(10.0.h),
                   child: Text(
                     '$minutes دقيقة',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -258,7 +263,6 @@ class BottomSheetTimer extends StatelessWidget {
                     'إلغاء وقت النوم',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
                     ),
                   ),
                 ),

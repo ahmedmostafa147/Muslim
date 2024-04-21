@@ -92,7 +92,8 @@ class AudioTittle extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Theme.of(context).primaryColor, width: 1.5),
+                  border: Border.all(
+                      color: Theme.of(context).primaryColor, width: 1.5),
                 ),
                 child: Column(
                   children: [
@@ -120,8 +121,6 @@ class AudioTittle extends StatelessWidget {
                           "$surahNameen",
                           style: TextStyle(
                             fontSize: 12.sp,
-                            color:
-                                Theme.of(context).primaryColor,
                             fontFamily: TextFontType.notoNastaliqUrduFont,
                           ),
                         )

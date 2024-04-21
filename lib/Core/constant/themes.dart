@@ -6,6 +6,7 @@ final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   splashColor: Colors.white,
   primaryColor: Colors.teal,
+  
   colorScheme: const ColorScheme.light(
     primary: Colors.teal,
     secondary: Colors.teal,

@@ -23,9 +23,7 @@ class _DoaCardWidgetState extends State<DoaCardWidget> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-            color: Theme.of(context).brightness == Brightness.dark
-                ? ColorsStyleApp.darkPrimary
-                : ColorsStyleApp.lightPrimary,
+            color: Theme.of(context).primaryColor,
             width: 1.0),
       ),
       child: Column(
@@ -48,9 +46,7 @@ class _DoaCardWidgetState extends State<DoaCardWidget> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20.sp,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? ColorsStyleApp.darkPrimary
-                            : ColorsStyleApp.lightPrimary,
+                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                     SizedBox(

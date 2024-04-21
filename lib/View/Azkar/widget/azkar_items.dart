@@ -111,6 +111,8 @@ class _AzkarItemState extends State<AzkarItem> {
                                   child: CustomPaint(
                                     size: Size(50.w, 50.h),
                                     painter: CirclePointer(
+                                      primaryColor:
+                                          Theme.of(context).primaryColor,
                                       animation: currentNumber / widget.number,
                                       text: currentNumber.toString(),
                                     ),
@@ -136,10 +138,12 @@ class _AzkarItemState extends State<AzkarItem> {
 class CirclePointer extends CustomPainter {
   final double animation;
   final String text;
+  final Color primaryColor;
 
   CirclePointer({
     required this.animation,
     required this.text,
+    required this.primaryColor,
   });
 
   @override
@@ -148,7 +152,7 @@ class CirclePointer extends CustomPainter {
     final radius = min(size.width / 2, size.height / 2);
 
     final paint = Paint()
-      ..color = Colors.teal
+      ..color = primaryColor // Use primary color here
       ..strokeWidth = 3
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;
@@ -164,7 +168,9 @@ class CirclePointer extends CustomPainter {
 
     // Draw the time text
     TextSpan span = TextSpan(
-      style: TextStyle(fontSize: 15.0.sp, color: Colors.black),
+      style: TextStyle(
+        fontSize: 15.0.sp,
+      ),
       text: text,
     );
     TextPainter tp = TextPainter(

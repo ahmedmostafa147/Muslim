@@ -1,3 +1,5 @@
+import 'package:muslim/routes.dart';
+
 import '../../Core/constant/images.dart';
 import '../../widgets/check_notification.dart';
 
@@ -7,6 +9,7 @@ import 'package:get/get.dart';
 import '../Radio/radio_home.dart';
 import '../../widgets/card_text_icon_widget.dart';
 import '../../widgets/date_row_class.dart';
+import 'Drawer/drawer.dart';
 import 'widgets/home_grid_icons.dart';
 import 'widgets/home_location_widget.dart';
 import '../../widgets/doa_card_widget.dart';
@@ -28,13 +31,16 @@ class _HomeState extends State<Home> {
         title: const Text("الرئيسية"),
         actions: [
           IconButton(
+              onPressed: () {
+                Get.changeThemeMode(
+                    Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
+              },
+              icon: const Icon(Icons.dark_mode)),
+          IconButton(
               onPressed: () {}, icon: const Icon(Icons.ios_share_outlined))
         ],
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        ),
       ),
+      drawer: const DrawerScreen(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
@@ -66,7 +72,7 @@ class _HomeState extends State<Home> {
               SizedBox(height: 10.h),
               CardTextIconWidget(
                 onTap: () {
-                  Get.to(() => const QuranHomePage());
+                  Get.toNamed(AppRoute.quran);
                 },
                 text: "القرآن الكريم",
                 icon: Assets.imagesHolyQuran,

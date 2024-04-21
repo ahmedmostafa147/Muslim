@@ -66,7 +66,7 @@ class StoryHome extends StatelessWidget {
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                        color: Colors.teal,
+                        color: Theme.of(context).primaryColor,
                         width: 1,
                       ),
                     ),

@@ -11,7 +11,7 @@ class LoadingWidget extends StatelessWidget {
     return Center(
       child: LoadingAnimationWidget.waveDots(
         size: 25.h,
-        color: Colors.teal,
+        color: Theme.of(context).primaryColor,
       ),
     );
   }

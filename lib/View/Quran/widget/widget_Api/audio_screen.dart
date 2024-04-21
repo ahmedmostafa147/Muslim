@@ -184,6 +184,9 @@ class AudioScreen extends StatelessWidget {
       list: list,
     ));
     return Container(
+        color: Theme.of(context).brightness == Brightness.dark
+              ? ColorsStyleApp.darkBackground
+              : ColorsStyleApp.lightBackground,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -360,7 +363,7 @@ class BottomSheetTimer extends StatelessWidget {
                     '$minutes دقيقة',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                    
                     ),
                   ),
                 ),
@@ -389,7 +392,7 @@ class BottomSheetTimer extends StatelessWidget {
                     'إلغاء وقت النوم',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                    
                     ),
                   ),
                 ),

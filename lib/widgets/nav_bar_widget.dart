@@ -1,3 +1,5 @@
+import 'package:muslim/routes.dart';
+
 import '../View/Radio/radio_home.dart';
 
 import '../Core/constant/images.dart';
@@ -50,9 +52,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
         ),
         PersistentBottomNavBarItem(
           inactiveColorPrimary: Colors.grey,
-          activeColorPrimary: Theme.of(context).brightness == Brightness.dark
-              ? darkTheme.primaryColor
-              : lightTheme.primaryColor,
+          activeColorPrimary: Theme.of(context).primaryColor,
           iconSize: 30.r,
           icon: const ImageIcon(
             AssetImage(Assets.imagesCatalogMagazine),
@@ -60,9 +60,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
         ),
         PersistentBottomNavBarItem(
           inactiveColorPrimary: Colors.grey,
-          activeColorPrimary: Theme.of(context).brightness == Brightness.dark
-              ? darkTheme.primaryColor
-              : lightTheme.primaryColor,
+          activeColorPrimary: Theme.of(context).primaryColor,
           iconSize: 30.r,
           icon: const ImageIcon(
             AssetImage(Assets.imagesHouseBlank),
@@ -70,9 +68,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
         ),
         PersistentBottomNavBarItem(
           inactiveColorPrimary: Colors.grey,
-          activeColorPrimary: Theme.of(context).brightness == Brightness.dark
-              ? darkTheme.primaryColor
-              : lightTheme.primaryColor,
+          activeColorPrimary: Theme.of(context).primaryColor,
           iconSize: 30.r,
           icon: const ImageIcon(
             AssetImage(Assets.imagesPersonPraying),
@@ -80,9 +76,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
         ),
         PersistentBottomNavBarItem(
           inactiveColorPrimary: Colors.grey,
-          activeColorPrimary: Theme.of(context).brightness == Brightness.dark
-              ? darkTheme.primaryColor
-              : lightTheme.primaryColor,
+          activeColorPrimary: Theme.of(context).primaryColor,
           iconSize: 30.r,
           icon: const ImageIcon(
             AssetImage(Assets.imagesCircleWaveformLines),
@@ -95,16 +89,12 @@ class _NavBarWidgetState extends State<NavBarWidget> {
       controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
-      backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? darkTheme.scaffoldBackgroundColor
-          : lightTheme.scaffoldBackgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       navBarHeight: 60.h,
       bottomScreenMargin: 60.h,
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Theme.of(context).brightness == Brightness.dark
-            ? darkTheme.scaffoldBackgroundColor
-            : lightTheme.scaffoldBackgroundColor,
+        colorBehindNavBar: Theme.of(context).scaffoldBackgroundColor,
       ),
       itemAnimationProperties: const ItemAnimationProperties(
         duration: Duration(milliseconds: 300),

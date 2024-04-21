@@ -34,9 +34,11 @@ class RamadanItems extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? ColorsStyleApp.darkBackground
+                  : ColorsStyleApp.lightBackground,
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.teal, width: 1.5),
+              border: Border.all(color: Theme.of(context).primaryColor, width: 1.5),
             ),
             child: Text(
               label,

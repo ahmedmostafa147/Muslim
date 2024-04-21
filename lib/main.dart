@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:muslim/routes.dart';
 
 import 'Core/constant/themes.dart';
 import 'Core/services/services.dart';
@@ -30,7 +31,8 @@ class Muslim extends StatelessWidget {
             darkTheme: darkTheme,
             themeMode: ThemeMode.system,
             title: 'Muslim',
-            home: const SplashScreen(),
+            routes: routes,
+            initialRoute: AppRoute.splash,
             debugShowCheckedModeBanner: false,
           );
         });

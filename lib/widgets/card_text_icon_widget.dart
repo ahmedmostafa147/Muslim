@@ -1,22 +1,19 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CardTextIconWidget extends StatelessWidget {
-  const CardTextIconWidget({super.key, required this.text, required this.icon,required this.onTap});
+  const CardTextIconWidget(
+      {super.key, required this.text, required this.icon, required this.onTap});
   final String text;
   final String icon;
   final VoidCallback onTap;
-
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        color: Theme.of(context).brightness == Brightness.dark
-            ? const Color(0XFFD4A331)
-            : Colors.teal,
+        color: Theme.of(context).primaryColor,
         elevation: 5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
