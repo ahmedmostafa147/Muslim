@@ -20,6 +20,13 @@ class NotificationService {
       null,
       [
         NotificationChannel(
+          channelKey: 'basic_channel',
+          channelName: 'Basic notifications',
+          channelDescription: 'Notification channel for basic notifications',
+          defaultColor: Color(0xFF9D50DD),
+          ledColor: Colors.white,
+        ),
+        NotificationChannel(
           channelKey: 'fajr_channel',
           channelName: 'الفجر',
           channelDescription: "قناة إشعارات الفجر",
@@ -93,6 +100,8 @@ class NotificationService {
         .cancelNotificationsByChannelKey('azkar_channel');
   }
 
+ 
+
   static Future<void> fajr() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;
@@ -118,7 +127,7 @@ class NotificationService {
         ));
   }
 
- static Future<void> dhuhr() async {
+  static Future<void> dhuhr() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;
     await AwesomeNotifications().createNotification(
@@ -142,7 +151,7 @@ class NotificationService {
             preciseAlarm: true));
   }
 
-static  Future<void> asr() async {
+  static Future<void> asr() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;
     await AwesomeNotifications().createNotification(
@@ -166,7 +175,7 @@ static  Future<void> asr() async {
             preciseAlarm: true));
   }
 
- static Future<void> maghrib() async {
+  static Future<void> maghrib() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;
     await AwesomeNotifications().createNotification(
@@ -191,7 +200,7 @@ static  Future<void> asr() async {
             preciseAlarm: true));
   }
 
- static Future<void> isha() async {
+  static Future<void> isha() async {
     final random = Random();
     final id = random.nextInt(100000) + 1;
     await AwesomeNotifications().createNotification(
@@ -232,3 +241,6 @@ static  Future<void> asr() async {
     );
   }
 }
+
+
+

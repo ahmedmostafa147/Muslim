@@ -1,7 +1,8 @@
-import '../../../../Models/favorite_quran.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../Core/constant/style.dart';
+import '../../../../Models/favorite_quran.dart';
 
 class FavoriteScreen extends StatefulWidget {
   final FavoriteManager favoriteManager;

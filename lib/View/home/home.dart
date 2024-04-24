@@ -1,4 +1,4 @@
-import 'package:muslim/routes.dart';
+import '../../routes.dart';
 
 import '../../Core/constant/images.dart';
 import '../../widgets/check_notification.dart';

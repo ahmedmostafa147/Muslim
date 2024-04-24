@@ -1,4 +1,4 @@
-import 'package:muslim/routes.dart';
+import '../routes.dart';
 
 import '../View/Radio/radio_home.dart';
 

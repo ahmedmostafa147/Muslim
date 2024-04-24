@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:muslim/Core/constant/style.dart';
+import '../../../../Core/constant/style.dart';
 
 import '../../../../Models/reader_load_data.dart';
 import '../../../../Models/surah_sound_load_data.dart';
@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:audio_session/audio_session.dart';
 import 'package:rxdart/rxdart.dart' as rxdart;
+import 'package:just_audio_background/just_audio_background.dart';
 
 class AudioController extends GetxController {
   final _player = AudioPlayer();
@@ -48,7 +49,10 @@ class AudioController extends GetxController {
       ind = index.toString();
     }
     _initAudioPlayer(ind!, reader);
+   
   }
+
+ 
 
   Future<void> _initAudioPlayer(
     String ind,
@@ -71,7 +75,13 @@ class AudioController extends GetxController {
           "https://download.quranicaudio.com/quran/${reader.relativePath}$ind.mp3";
 
       defaultDuration =
-          (await _player.setAudioSource(AudioSource.uri(Uri.parse(url))))!;
+          (await _player.setAudioSource(AudioSource.uri(Uri.parse(url),
+              tag: MediaItem(
+                id: url,
+                album: reader.name,
+                title: list![currentIndex.value].name!,
+                genre: reader.name,
+              ))))!;
     } catch (e) {}
   }
 
@@ -184,9 +194,9 @@ class AudioScreen extends StatelessWidget {
       list: list,
     ));
     return Container(
-        color: Theme.of(context).brightness == Brightness.dark
-              ? ColorsStyleApp.darkBackground
-              : ColorsStyleApp.lightBackground,
+      color: Theme.of(context).brightness == Brightness.dark
+          ? ColorsStyleApp.darkBackground
+          : ColorsStyleApp.lightBackground,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -363,7 +373,6 @@ class BottomSheetTimer extends StatelessWidget {
                     '$minutes دقيقة',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                    
                     ),
                   ),
                 ),
@@ -392,7 +401,6 @@ class BottomSheetTimer extends StatelessWidget {
                     'إلغاء وقت النوم',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                    
                     ),
                   ),
                 ),

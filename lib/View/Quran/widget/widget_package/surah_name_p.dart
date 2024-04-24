@@ -1,4 +1,4 @@
-import 'package:muslim/widgets/loading_widget.dart';
+import '../../../../widgets/loading_widget.dart';
 
 import '../../screen/surah_screen_package.dart';
 import 'package:flutter/material.dart';

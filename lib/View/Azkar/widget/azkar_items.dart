@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -5,14 +6,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:share_plus/share_plus.dart';
+
 import '../../../Core/constant/style.dart';
 
 class AzkarItem extends StatefulWidget {
   final String zekr;
   final String hint;
-  int number;
+  final int number;
 
-  AzkarItem({
+  const AzkarItem({
     super.key,
     required this.zekr,
     required this.hint,

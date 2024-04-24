@@ -1,4 +1,4 @@
-import 'package:muslim/Core/constant/style.dart';
+import '../../../../Core/constant/style.dart';
 
 import '../widget_Api/seek_bar.dart';
 import 'package:flutter/material.dart';

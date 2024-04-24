@@ -1,4 +1,4 @@
-import 'package:muslim/Core/constant/style.dart';
+import '../../Core/constant/style.dart';
 
 import '../../Core/constant/images.dart';
 

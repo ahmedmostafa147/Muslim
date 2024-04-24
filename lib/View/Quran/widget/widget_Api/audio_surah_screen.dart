@@ -1,4 +1,4 @@
-import 'package:muslim/widgets/loading_widget.dart';
+import '../../../../widgets/loading_widget.dart';
 
 import 'audio_screen.dart';
 import 'package:get/get.dart';

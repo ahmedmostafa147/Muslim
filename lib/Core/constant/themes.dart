@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:muslim/Core/constant/style.dart';
+import 'style.dart';
 
 final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
