@@ -1,7 +1,8 @@
-import '../../Models/ramadan_load_data.dart';
-import 'widget/ramadan_items.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../Models/ramadan_load_data.dart';
+import 'widget/ramadan_items.dart';
 
 class RamadanDetails extends StatelessWidget {
   final String filePath;

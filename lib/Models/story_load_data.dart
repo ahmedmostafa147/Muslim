@@ -29,7 +29,7 @@ class StoryController extends GetxController {
       stories
           .assignAll(jsonList.map((json) => Story.fromJson(json)).toList());
     } catch (e) {
-      print('Error fetching Story: $e');
+     
     }
   }
 }

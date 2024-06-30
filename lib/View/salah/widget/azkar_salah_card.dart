@@ -8,9 +8,7 @@ class AzkarSalahCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CardTextIconWidget(
-      onTap: () {
-        
-      },
+      onTap: () {},
       text: "أذكار الصلاة",
       icon: Assets.images14703159,
     );

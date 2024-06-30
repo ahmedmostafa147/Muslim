@@ -1,6 +1,6 @@
-import '../Core/constant/style.dart';
+import '../Controller/notification.dart';
 
-import '../Controller/notifications_controller.dart';
+import '../Core/constant/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -32,16 +32,14 @@ class NotificationClass extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? ColorsStyleApp.hoverDark
-                          : ColorsStyleApp.hoverLight,
+                      color: ColorsStyleApp.hoverLight,
                       borderRadius: BorderRadius.circular(10.r),
                     ),
-                    child: Checkbox(
-                      value: notificationController.isNotificationOn.value,
-                      onChanged: notificationController.toggleNotification,
-                      activeColor: Theme.of(context).primaryColor,
-                    ),
+                    child: Obx(() => Checkbox(
+                          value: notificationController.isNotificationOn.value,
+                          onChanged: notificationController.toggleNotification,
+                          activeColor: Theme.of(context).primaryColor,
+                        )),
                   ),
                 ],
               ),
@@ -67,15 +65,14 @@ class NotificationClass extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? ColorsStyleApp.hoverDark
-                          : ColorsStyleApp.hoverLight,
+                      color: ColorsStyleApp.hoverLight,
                       borderRadius: BorderRadius.circular(10.r),
                     ),
-                    child: Checkbox(
-                        value: notificationController.isAzkarOn.value,
-                        onChanged: notificationController.toggleAzkar,
-                        activeColor: Theme.of(context).primaryColor),
+                    child: Obx(() => Checkbox(
+                          value: notificationController.isAzkarOn.value,
+                          onChanged: notificationController.toggleAzkar,
+                          activeColor: Theme.of(context).primaryColor,
+                        )),
                   ),
                 ],
               ),

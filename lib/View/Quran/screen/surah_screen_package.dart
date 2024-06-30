@@ -7,11 +7,11 @@ class SurahPage extends StatelessWidget {
   final String surahName;
 
   const SurahPage({
-    Key? key,
+    super.key,
     required this.surahIndex,
     required this.surahVerseCount,
     required this.surahName,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,8 @@ class SurahPage extends StatelessWidget {
       surahIndex: surahIndex,
       surahVerseCount: surahVerseCount,
       surahName: surahName,
+      
     ));
   }
+  
 }

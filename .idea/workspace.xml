@@ -16,28 +16,35 @@
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/b78aba174e421da7aebcccd12c8fd39c/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/b78aba174e421da7aebcccd12c8fd39c/flutter_assets.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/b78aba174e421da7aebcccd12c8fd39c/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/b78aba174e421da7aebcccd12c8fd39c/kernel_snapshot.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/b78aba174e421da7aebcccd12c8fd39c/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/b78aba174e421da7aebcccd12c8fd39c/kernel_snapshot.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/b78aba174e421da7aebcccd12c8fd39c/outputs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/b78aba174e421da7aebcccd12c8fd39c/outputs.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Controller/location_geo_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Controller/location_geo_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Controller/notifications_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Controller/notifications_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Core/constant/Images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Core/constant/Images.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Core/constant/themes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Core/constant/themes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Core/services/notification_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Core/services/notification_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Models/story_load_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Models/story_load_data.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/View/Pray/pray_grid_view_home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Pray/pray_grid_view_home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/Qibla/qibla.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Qibla/qibla.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/View/Quran/screen/reader_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/screen/reader_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/View/Quran/widget/widget_Api/audio_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/widget/widget_Api/audio_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/Quran/screen/surah_screen_package.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/screen/surah_screen_package.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/View/Quran/widget/widget_Api/audio_surah_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/widget/widget_Api/audio_surah_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/View/Quran/widget/widget_Api/seek_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/widget/widget_Api/seek_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/audio_controler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/audio_controler.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/favorite_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/favorite_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/bookmark_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/bookmark_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/row_aya_copy_love_share.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/row_aya_copy_love_share.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/row_for_icons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/row_for_icons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/surah_contain.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/surah_contain.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/surah_name_p.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Quran/widget/widget_package/surah_name_p.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/View/Ramadan/widget/ramadan_items.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Ramadan/widget/ramadan_items.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/View/Splash Screen/splash_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Splash Screen/splash_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/Radio/radio_home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Radio/radio_home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/Radio/radio_play.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/Radio/radio_play.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/home/Drawer/drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/home/Drawer/drawer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/View/home/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/home/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/View/home/widgets/home_icon_text_for_grid.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/home/widgets/home_icon_text_for_grid.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/check_notification.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/check_notification.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/home/widgets/home_location_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/home/widgets/home_location_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/View/salah/widget/azkar_salah_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/View/salah/widget/azkar_salah_card.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/nav_bar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/nav_bar_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/time_prayer_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/time_prayer_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,27 +88,26 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "flutter.performance.tool.window.visible": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "D:/Flutter apps/muslim_pro",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.kotlinCompiler",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Flutter apps/muslim_pro&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;device.mirroring&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

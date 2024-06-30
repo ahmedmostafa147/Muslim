@@ -117,6 +117,10 @@ class Assets {
   /// assets/Images/mecca.png
   static const String imagesMecca = "assets/Images/mecca.png";
 
+  /// Assets for imagesMo
+  /// assets/Images/mo.jpg
+  static const String imagesMo = "assets/Images/mo.jpg";
+
   /// Assets for imagesMortarboard
   /// assets/Images/mortarboard.png
   static const String imagesMortarboard = "assets/Images/mortarboard.png";

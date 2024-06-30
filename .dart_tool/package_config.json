@@ -119,11 +119,11 @@
       "name": "flutter",
       "rootUri": "file:///C:/src/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "flutter_cache_manager",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_cache_manager-3.3.1",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_cache_manager-3.3.2",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -141,7 +141,7 @@
     },
     {
       "name": "flutter_screenutil",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screenutil-5.9.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screenutil-5.9.3",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -149,7 +149,7 @@
       "name": "flutter_test",
       "rootUri": "file:///C:/src/flutter/packages/flutter_test",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "flutter_vibrate",
@@ -171,7 +171,7 @@
     },
     {
       "name": "geocoding_android",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geocoding_android-3.3.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geocoding_android-3.3.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -189,13 +189,13 @@
     },
     {
       "name": "geolocator",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator-11.0.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator-11.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
     {
       "name": "geolocator_android",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_android-4.5.4",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_android-4.6.0",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -207,7 +207,7 @@
     },
     {
       "name": "geolocator_platform_interface",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_platform_interface-4.2.2",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_platform_interface-4.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -261,45 +261,45 @@
     },
     {
       "name": "just_audio",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/just_audio-0.9.37",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/just_audio-0.9.38",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "just_audio_background",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/just_audio_background-0.0.1-beta.11",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/just_audio_background-0.0.1-beta.12",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "just_audio_platform_interface",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/just_audio_platform_interface-4.2.2",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/just_audio_platform_interface-4.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "just_audio_web",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/just_audio_web-0.4.9",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/just_audio_web-0.4.11",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-10.0.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-10.0.4",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_flutter_testing",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_flutter_testing-2.0.1",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.3",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_testing",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_testing-2.0.1",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_testing-3.0.1",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.2"
     },
     {
       "name": "lints",
@@ -312,6 +312,12 @@
       "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/loading_animation_widget-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.16"
+    },
+    {
+      "name": "logging",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "matcher",
@@ -327,7 +333,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.11.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.12.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -357,15 +363,15 @@
     },
     {
       "name": "path_provider_android",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_android-2.2.4",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_android-2.2.6",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.4"
     },
     {
       "name": "path_provider_foundation",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.3.2",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.4.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "path_provider_linux",
@@ -393,13 +399,13 @@
     },
     {
       "name": "permission_handler_android",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_android-12.0.5",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_android-12.0.7",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
     {
       "name": "permission_handler_apple",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_apple-9.4.4",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/permission_handler_apple-9.4.5",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -429,9 +435,9 @@
     },
     {
       "name": "platform",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/platform-3.1.4",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/platform-3.1.5",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "plugin_platform_interface",
@@ -441,7 +447,7 @@
     },
     {
       "name": "quran",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/quran-1.2.5",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/quran-1.2.9",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -471,15 +477,15 @@
     },
     {
       "name": "shared_preferences_android",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.2.2",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.2.3",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.4"
     },
     {
       "name": "shared_preferences_foundation",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_foundation-2.3.5",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_foundation-2.4.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "shared_preferences_linux",
@@ -525,7 +531,7 @@
     },
     {
       "name": "sqflite",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite-2.3.3",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite-2.3.3+1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -567,7 +573,7 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.6.1",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.7.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -615,9 +621,9 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-13.0.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-14.2.1",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "web",
@@ -627,9 +633,9 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.4.0",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.5.1",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.4"
     },
     {
       "name": "workmanager",
@@ -650,7 +656,10 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-04-23T21:38:55.141657Z",
+  "generated": "2024-06-29T12:31:45.036321Z",
   "generator": "pub",
-  "generatorVersion": "3.3.1"
+  "generatorVersion": "3.4.3",
+  "flutterRoot": "file:///C:/src/flutter",
+  "flutterVersion": "3.22.2",
+  "pubCache": "file:///C:/Users/spark/AppData/Local/Pub/Cache"
 }

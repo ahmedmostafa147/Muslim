@@ -21,8 +21,6 @@ class RowAyaCopyShareShare extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8.0.r),
-      
-
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -33,6 +31,7 @@ class RowAyaCopyShareShare extends StatelessWidget {
                   ? ColorsStyleApp.black
                   : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
+              border: Border.all(color: Theme.of(context).primaryColor, width: 1.0),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -59,6 +58,7 @@ class RowAyaCopyShareShare extends StatelessWidget {
                   ? ColorsStyleApp.black
                   : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
+              border: Border.all(color: Theme.of(context).primaryColor, width: 1.0),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -98,6 +98,7 @@ class RowDoaCopyShareShare extends StatelessWidget {
                   ? ColorsStyleApp.black
                   : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
+              border: Border.all(color: Theme.of(context).primaryColor, width: 1.0),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -124,6 +125,7 @@ class RowDoaCopyShareShare extends StatelessWidget {
                   ? ColorsStyleApp.black
                   : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
+              border: Border.all(color: Theme.of(context).primaryColor, width: 1.0),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

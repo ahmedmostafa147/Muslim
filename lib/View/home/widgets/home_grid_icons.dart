@@ -1,3 +1,5 @@
+import '../../salah/home_salah.dart';
+
 import '../../../Core/constant/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,7 +11,6 @@ import '../../Quran/screen/master_quran.dart';
 import '../../Quran/screen/reader_screen.dart';
 import '../../Radio/radio_home.dart';
 import '../../Ramadan/ramadan.dart';
-import '../../Salah/salah.dart';
 import '../../Story/story.dart';
 import 'home_icon_text_for_grid.dart';
 
@@ -47,7 +48,9 @@ class HomeGridViewIcons extends StatelessWidget {
         ),
         IconAndTextGridView(
           onTap: () {
-            Get.to(Salah());
+            Get.to( PrayerTimesScreen(
+         
+        ),);
           },
           image: Assets.imagesGridmosque,
           text: 'الصلاة',

@@ -9,7 +9,7 @@ import 'audio_controler.dart';
 
 class RowIconVerse extends StatefulWidget {
   const RowIconVerse({
-    Key? key,
+    super.key,
     required this.favoriteManager,
     required this.bookManger,
     required this.verseTextForSurah,
@@ -19,7 +19,7 @@ class RowIconVerse extends StatefulWidget {
     required this.verseNumber,
     required this.onTapFavorite,
     required this.onTapBookmark,
-  }) : super(key: key);
+  });
 
   final FavoriteManager favoriteManager;
   final BookmarkManager bookManger;

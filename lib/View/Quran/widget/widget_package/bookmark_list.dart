@@ -10,8 +10,7 @@ import '../../screen/surah_screen_package.dart';
 class BookmarkScreen extends StatefulWidget {
   final BookmarkManager bookmarkManager;
 
-  const BookmarkScreen({Key? key, required this.bookmarkManager})
-      : super(key: key);
+  const BookmarkScreen({super.key, required this.bookmarkManager});
 
   @override
   State<BookmarkScreen> createState() => _BookmarkScreenState();

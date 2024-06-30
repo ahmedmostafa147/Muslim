@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../Controller/location_geo_controller.dart';
-import '../../../Core/constant/style.dart';
-import '../../Salah/salah.dart';
+import '../../../Controller/prayer_times.dart';
+import '../../salah/home_salah.dart';
+import '../../../Controller/location.dart';
 import '../../../widgets/loading_widget.dart';
 import '../../../widgets/time_prayer_widget.dart';
 
 class HomeLocationWidget extends StatelessWidget {
   HomeLocationWidget({super.key});
 
+  final PrayerTimesController prayerTimesController =
+      Get.put(PrayerTimesController());
   final LocationController locationController = Get.put(LocationController());
 
   @override
@@ -19,9 +21,7 @@ class HomeLocationWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-            color:Theme.of(context).primaryColor,
-            width: 1.5),
+        border: Border.all(color: Theme.of(context).primaryColor, width: 1.5),
       ),
       child: Column(
         children: [
@@ -32,6 +32,7 @@ class HomeLocationWidget extends StatelessWidget {
               return TextButton(
                 onPressed: () async {
                   await locationController.getCurrentLocation();
+                  await prayerTimesController.updatePrayerTimes();
                 },
                 child: Text(
                   locationController.address.value,
@@ -45,7 +46,7 @@ class HomeLocationWidget extends StatelessWidget {
           }),
           GestureDetector(
               onTap: () {
-                Get.to(() => Salah());
+                Get.to(() => PrayerTimesScreen());
               },
               child: const PrayerTimeRow()),
         ],

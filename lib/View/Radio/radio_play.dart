@@ -204,7 +204,7 @@ class BottomSheetTimer extends StatelessWidget {
         color: Theme.of(context).brightness == Brightness.dark
             ? ColorsStyleApp.darkBackground
             : ColorsStyleApp.lightBackground,
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(10),
         ),
       ),
@@ -245,7 +245,7 @@ class BottomSheetTimer extends StatelessWidget {
                   padding: EdgeInsets.all(10.0.h),
                   child: Text(
                     '$minutes دقيقة',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -4,7 +4,7 @@ import '../../Models/radio_load_data.dart';
 import 'radio_title.dart';
 
 class RadioHomeScreen extends StatefulWidget {
-  const RadioHomeScreen({Key? key}) : super(key: key);
+  const RadioHomeScreen({super.key});
 
   @override
   State<RadioHomeScreen> createState() => _RadioHomeScreenState();

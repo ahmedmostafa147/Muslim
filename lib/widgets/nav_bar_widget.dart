@@ -1,16 +1,11 @@
-import '../routes.dart';
-
+import '../View/salah/home_salah.dart';
 import '../View/Radio/radio_home.dart';
-
 import '../Core/constant/images.dart';
 import '../Core/constant/themes.dart';
-
 import '../View/Azkar/azkar_home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../View/home/home.dart';
 import '../View/Quran/screen/master_quran.dart';
-import '../View/Salah/salah.dart';
-
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +26,9 @@ class _NavBarWidgetState extends State<NavBarWidget> {
   }
 
   List<Widget> _buildScreens() => [
-        Salah(),
+        PrayerTimesScreen(
+         
+        ),
         const QuranHomePage(),
         const Home(),
         AzkarHome(),

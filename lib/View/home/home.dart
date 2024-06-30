@@ -14,7 +14,6 @@ import 'widgets/home_grid_icons.dart';
 import 'widgets/home_location_widget.dart';
 import '../../widgets/doa_card_widget.dart';
 import 'widgets/home_aya_widget.dart';
-import '../Quran/screen/master_quran.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

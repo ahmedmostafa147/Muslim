@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import '../../../../Models/surah_sound_load_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../widget_package/stack_of_number.dart';
 import '../../../../Models/reader_load_data.dart';
 import '../../../../Core/constant/style.dart';

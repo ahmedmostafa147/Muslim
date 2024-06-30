@@ -7,11 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:get/get.dart';
 
-import '../../Controller/location_geo_controller.dart';
+import '../../Controller/location.dart';
 import '../../Core/constant/images.dart';
 
 class QiblaScreen extends StatelessWidget {
-  const QiblaScreen({Key? key}) : super(key: key);
+  const QiblaScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

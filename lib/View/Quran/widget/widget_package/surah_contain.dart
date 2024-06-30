@@ -1,3 +1,5 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../../../Models/bookmark_quran.dart';
 import '../../../../Models/favorite_quran.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +17,11 @@ class SurahContainList extends StatefulWidget {
   final String surahName;
 
   const SurahContainList({
-    Key? key,
+    super.key,
     required this.surahIndex,
     required this.surahVerseCount,
     required this.surahName,
-  }) : super(key: key);
+  });
 
   @override
   State<SurahContainList> createState() => _SurahContainState();
@@ -28,6 +30,38 @@ class SurahContainList extends StatefulWidget {
 class _SurahContainState extends State<SurahContainList> {
   FavoriteManager favoriteManager = FavoriteManager();
   BookmarkManager bookmarkManager = BookmarkManager();
+  int? lastIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    loadLastReadItem();
+  }
+
+  // Save the index of the last item read
+  Future<void> saveLastReadIndex(int lastIndex) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('lastIndex', lastIndex);
+  }
+
+  // Retrieve the index of the last item read
+  Future<int?> getLastReadIndex() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt('lastIndex');
+  }
+
+  // Call this function whenever the user reads a new item
+  void onItemRead(int itemIndex) {
+    saveLastReadIndex(itemIndex);
+  }
+
+  // Call this function when the app starts to load the last read item
+  void loadLastReadItem() async {
+    lastIndex = await getLastReadIndex();
+    setState(() {
+      lastIndex = lastIndex;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,43 +72,50 @@ class _SurahContainState extends State<SurahContainList> {
         centerTitle: true,
       ),
       body: ListView.builder(
-          controller: scrollController,
-          physics: const BouncingScrollPhysics(),
-          addAutomaticKeepAlives: true,
-          addRepaintBoundaries: true,
-          itemCount: widget.surahVerseCount,
-          itemBuilder: (context, verseIndex) {
-            final verseNumber = verseIndex + 1;
-            final verseText = quran.getVerse(widget.surahIndex, verseNumber,
-                verseEndSymbol: true);
-            final verseText1 = quran.getVerseTranslation(
-              widget.surahIndex,
-              verseNumber,
-            );
+        controller: scrollController,
+        physics: const BouncingScrollPhysics(),
+        addAutomaticKeepAlives: true,
+        addRepaintBoundaries: true,
+        itemCount: widget.surahVerseCount,
+        itemBuilder: (context, verseIndex) {
+          final verseNumber = verseIndex + 1;
+          final verseText = quran.getVerse(widget.surahIndex, verseNumber,
+              verseEndSymbol: true);
+          final verseText1 = quran.getVerseTranslation(
+            widget.surahIndex,
+            verseNumber,
+          );
 
-            final bool isBismillahRequired = widget.surahIndex != 1 &&
-                widget.surahIndex != 9 &&
-                verseNumber == 1;
+          final bool isBismillahRequired = widget.surahIndex != 1 &&
+              widget.surahIndex != 9 &&
+              verseNumber == 1;
 
-            return Column(children: [
+          final bool isLastRead = lastIndex == verseNumber;
+
+          onItemRead(verseNumber - 1);
+
+          return Column(
+            children: [
               if (isBismillahRequired) const BasmalaCardSurah(),
               Padding(
                 padding: EdgeInsets.fromLTRB(7.w, 10.w, 7.w, 10.w),
                 child: Container(
                   padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-              
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Theme.of(context).primaryColor, width: 1.5),
+                    border: Border.all(
+                        color: isLastRead
+                            ? Colors.blue
+                            : Theme.of(context).primaryColor,
+                        width: 1.5),
+                    color: isLastRead ? Colors.blue.withOpacity(0.1) : null,
                   ),
-                  child: (Column(
+                  child: Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          StackOfNumber(
-                            surahIndex: verseNumber.toString(),
-                          ),
+                          StackOfNumber(surahIndex: verseNumber.toString()),
                           RowIconVerse(
                             bookManger: bookmarkManager,
                             favoriteManager: favoriteManager,
@@ -112,11 +153,13 @@ class _SurahContainState extends State<SurahContainList> {
                         ),
                       ),
                     ],
-                  )),
+                  ),
                 ),
               ),
-            ]);
-          }),
+            ],
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           final versesCount = widget.surahVerseCount;
