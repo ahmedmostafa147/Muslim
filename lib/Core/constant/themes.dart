@@ -66,12 +66,10 @@ final ThemeData darkTheme = ThemeData(
     primary: Colors.teal,
     secondary: Colors.teal,
     surface: Color(0xFF212121),
-    background: Color(0xFF121212),
     error: Colors.red,
     onPrimary: Colors.white,
     onSecondary: Colors.white,
     onSurface: Colors.white,
-    onBackground: Colors.white,
     onError: Colors.white,
   ),
   buttonTheme: ButtonThemeData(
@@ -81,8 +79,8 @@ final ThemeData darkTheme = ThemeData(
   iconTheme: const IconThemeData(color: Colors.white),
   iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(
-      iconColor: MaterialStateProperty.all<Color>(Colors.teal),
-      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.zero),
+      iconColor: WidgetStateProperty.all<Color>(Colors.teal),
+      padding: WidgetStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.zero),
     ),
   ),
   fontFamily: TextFontType.cairoFont,
@@ -95,6 +93,9 @@ final ThemeData darkTheme = ThemeData(
     iconTheme: const IconThemeData(color: Colors.white),
     backgroundColor: Colors.blueGrey[900],
     foregroundColor: Colors.black,
-    titleTextStyle: TextStyle(color: Colors.white, fontSize: 16.sp),
+    titleTextStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 16.sp,
+        fontFamily: TextFontType.cairoFont),
   ),
 );

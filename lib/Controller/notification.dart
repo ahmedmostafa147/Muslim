@@ -1,6 +1,6 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:muslim/Core/services/notification_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:intl/intl.dart';
@@ -8,48 +8,41 @@ import 'package:intl/intl.dart';
 class NotificationController extends GetxController {
   var isNotificationOn = false.obs;
   var isAzkarOn = false.obs;
+  var selectedTone = 'default'.obs; // ملاحظة: تغيير اسم المتغير
+
+  late NotificationService notificationService;
 
   @override
   void onInit() {
     super.onInit();
-    // استرجاع حالة التبديل للإشعارات
+    notificationService = NotificationService();
     getNotificationStatus();
-    // استرجاع حالة التبديل للأذكار
     getAzkarStatus();
-
-    AwesomeNotifications().initialize(
-      'resource://drawable/res_app_icon',
-      [
-        NotificationChannel(
-          channelKey: 'prayer_channel',
-          channelName: 'Prayer Notifications',
-          channelDescription: 'Notification channel for prayer times',
-          defaultColor: Color(0xFF9D50DD),
-          ledColor: Colors.white,
-          importance: NotificationImportance.High,
-        )
-      ],
-    );
+   
   }
 
   void getNotificationStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? storedValue = prefs.getBool('isNotificationOn');
     isNotificationOn.value = storedValue ?? false;
+    print('Notification status: $isNotificationOn');
   }
 
   void getAzkarStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? storedValue = prefs.getBool('isAzkarOn');
     isAzkarOn.value = storedValue ?? false;
+    print('Azkar status: $isAzkarOn');
   }
+
+ 
 
   void toggleNotification(bool? value) async {
     isNotificationOn.value = value ?? false;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isNotificationOn', isNotificationOn.value);
+
     if (isNotificationOn.value) {
-      // جدولة الإشعارات
       await schedulePrayerNotifications();
       Get.snackbar(
         'تنبيه',
@@ -58,9 +51,9 @@ class NotificationController extends GetxController {
         backgroundColor: Colors.green,
         colorText: Colors.white,
       );
+      print('Notifications enabled');
     } else {
-      // ألغاء جميع الإشعارات
-      cancelAllNotifications();
+      notificationService.cancelAllNotifications();
       Get.snackbar(
         'تنبيه',
         'تم تعطيل الإشعارات',
@@ -68,6 +61,7 @@ class NotificationController extends GetxController {
         backgroundColor: Colors.red,
         colorText: Colors.white,
       );
+      print('Notifications disabled');
     }
   }
 
@@ -75,32 +69,15 @@ class NotificationController extends GetxController {
     isAzkarOn.value = value ?? false;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isAzkarOn', isAzkarOn.value);
+    print('Azkar toggled: $isAzkarOn');
     if (isAzkarOn.value) {
-      // جدولة إشعارات الأذكار
-      scheduleAzkarNotifications();
+      // scheduleAzkarNotifications();
     } else {
-      // إلغاء جميع إشعارات الأذكار
-      cancelAllAzkarNotifications();
+      // cancelNotificationZekr();
     }
   }
 
-  void schedulePrayerNotification({
-    required int id,
-    required String title,
-    required String body,
-    required DateTime dateTime,
-  }) {
-    AwesomeNotifications().createNotification(
-      content: NotificationContent(
-        id: id,
-        channelKey: 'prayer_channel',
-        title: title,
-        body: body,
-        notificationLayout: NotificationLayout.Default,
-      ),
-      schedule: NotificationCalendar.fromDate(date: dateTime),
-    );
-  }
+  
 
   Future<void> schedulePrayerNotifications() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -127,27 +104,41 @@ class NotificationController extends GetxController {
           prayerTime.minute,
         );
 
-        if (prayerDateTime.isAfter(now)) {
-          schedulePrayerNotification(
-            id: prayer.hashCode,
-            title: 'وقت الصلاة',
-            body: 'حان الآن وقت صلاة $prayer',
-            dateTime: prayerDateTime,
-          );
+        // Ensure the prayer time is in the future
+        if (prayerDateTime.isBefore(now)) {
+          prayerDateTime = prayerDateTime.add(const Duration(days: 1));
         }
+
+        notificationService.schedulePrayerNotification(
+          id: prayer.hashCode,
+          title: 'وقت الصلاة',
+          body: 'حان الآن وقت صلاة $prayer',
+          dateTime: prayerDateTime,
+        );
+        print('Scheduled notification for $prayer at $prayerDateTime');
       });
     }
   }
 
-  void scheduleAzkarNotifications() {
-    // جدولة إشعارات الأذكار هنا
-  }
+  // Schedule a test notification after 10 seconds
+  void scheduleTestNotification() {
+    final now = DateTime.now();
+    final testNotificationTime = now.add(const Duration(seconds: 10));
 
-  void cancelAllNotifications() {
-    AwesomeNotifications().cancelAllSchedules();
-  }
+    notificationService.schedulePrayerNotification(
+      id: 1001,
+      title: 'Test Notification',
+      body: 'This is a test notification scheduled 10 seconds from now',
+      dateTime: testNotificationTime,
+    );
 
-  void cancelAllAzkarNotifications() {
-    // إلغاء جميع إشعارات الأذكار هنا
+    Get.snackbar(
+      'Test Notification Scheduled',
+      'An notification will appear after 10 seconds',
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.blue,
+      colorText: Colors.white,
+    );
+    print('Test notification scheduled');
   }
 }

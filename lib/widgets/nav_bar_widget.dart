@@ -26,9 +26,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
   }
 
   List<Widget> _buildScreens() => [
-        PrayerTimesScreen(
-         
-        ),
+        PrayerTimesScreen(),
         const QuranHomePage(),
         const Home(),
         AzkarHome(),
@@ -50,7 +48,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
         PersistentBottomNavBarItem(
           inactiveColorPrimary: Colors.grey,
           activeColorPrimary: Theme.of(context).primaryColor,
-          iconSize: 30.r,
+          iconSize: 20.r,
           icon: const ImageIcon(
             AssetImage(Assets.imagesCatalogMagazine),
           ),
@@ -58,7 +56,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
         PersistentBottomNavBarItem(
           inactiveColorPrimary: Colors.grey,
           activeColorPrimary: Theme.of(context).primaryColor,
-          iconSize: 30.r,
+          iconSize: 20.r,
           icon: const ImageIcon(
             AssetImage(Assets.imagesHouseBlank),
           ),
@@ -66,7 +64,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
         PersistentBottomNavBarItem(
           inactiveColorPrimary: Colors.grey,
           activeColorPrimary: Theme.of(context).primaryColor,
-          iconSize: 30.r,
+          iconSize: 20.r,
           icon: const ImageIcon(
             AssetImage(Assets.imagesPersonPraying),
           ),
@@ -74,7 +72,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
         PersistentBottomNavBarItem(
           inactiveColorPrimary: Colors.grey,
           activeColorPrimary: Theme.of(context).primaryColor,
-          iconSize: 30.r,
+          iconSize: 20.r,
           icon: const ImageIcon(
             AssetImage(Assets.imagesCircleWaveformLines),
           ),

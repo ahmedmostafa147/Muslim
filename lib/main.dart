@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'routes.dart';
 import 'Core/constant/themes.dart';
 import 'Core/services/services.dart';
@@ -17,7 +17,7 @@ Future<void> main() async {
     androidNotificationChannelName: 'Audio playback',
     androidNotificationOngoing: true,
   );
-  initializeDateFormatting().then((_) => runApp(Muslim()));
+  initializeDateFormatting().then((_) => runApp(const Muslim()));
 }
 
 class Muslim extends StatelessWidget {

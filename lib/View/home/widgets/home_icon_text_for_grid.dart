@@ -1,16 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../Core/constant/style.dart';
 
 class IconAndTextGridView extends StatelessWidget {
-  IconAndTextGridView(
-      {super.key,
-      required this.text,
-      required this.image,
-      required this.onTap});
+  const IconAndTextGridView({
+    super.key,
+    required this.text,
+    required this.image,
+    this.onTap,
+  });
+
   final String text;
   final String image;
-  VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +26,7 @@ class IconAndTextGridView extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(10.r),
             decoration: BoxDecoration(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? ColorsStyleApp.hoverDark
-                  : ColorsStyleApp.hoverLight,
+              color: ColorsStyleApp.hoverLight,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Image.asset(

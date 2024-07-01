@@ -7,15 +7,11 @@ import '../Core/constant/doe_verser.dart';
 import '../Core/constant/style.dart';
 import '../View/Quran/widget/widget_package/row_aya_copy_love_share.dart';
 
-class DoaCardWidget extends StatefulWidget {
-  const DoaCardWidget({super.key});
+class DoaCardWidget extends StatelessWidget {
+   DoaCardWidget({super.key});
 
-  @override
-  State<DoaCardWidget> createState() => _DoaCardWidgetState();
-}
-
-class _DoaCardWidgetState extends State<DoaCardWidget> {
   final int index = Random().nextInt(StaticVars().smallDo3a2.length - 1);
+
   @override
   Widget build(BuildContext context) {
     return Container(

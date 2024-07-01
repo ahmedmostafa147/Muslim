@@ -192,7 +192,7 @@ class PrayerTimesController extends GetxController {
 
   void _startTimer(DateTime nextPrayerTime) {
     _timer?.cancel();
-    _timer = Timer.periodic(Duration(seconds: 1), (_) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
       final now = DateTime.now();
       final remaining = nextPrayerTime.difference(now);
 

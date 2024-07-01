@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'package:muslim/Controller/prayer_times.dart';
+import 'package:muslim/widgets/loading_widget.dart';
 import '../Core/constant/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,7 +17,7 @@ class PrayerTimeRow extends StatelessWidget {
         Get.put(PrayerTimesController());
     return Obx(() {
       if (prayerTimesController.prayerTimes.value == null) {
-        return const Center(child: CircularProgressIndicator());
+        return const Center(child: LoadingWidget());
       }
       return ListView(
         padding: const EdgeInsets.all(10.0),

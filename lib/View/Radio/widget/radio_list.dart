@@ -1,7 +1,8 @@
-import '../../../Core/constant/images.dart';
-import '../../../Core/constant/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../Core/constant/images.dart';
+import '../../../Core/constant/style.dart';
 
 class RadioListUi extends StatelessWidget {
   final String title;

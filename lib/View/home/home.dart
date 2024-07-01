@@ -1,8 +1,6 @@
 import '../../routes.dart';
 
 import '../../Core/constant/images.dart';
-import '../../widgets/check_notification.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -81,9 +79,8 @@ class _HomeState extends State<Home> {
               SizedBox(height: 10.h),
               const HomeGridViewIcons(),
               SizedBox(height: 10.h),
-              const DoaCardWidget(),
+              DoaCardWidget(),
               SizedBox(height: 10.h),
-              const NotificationClass(),
               CardTextIconWidget(
                 onTap: () {
                   Get.to(() => const RadioHomeScreen());
@@ -91,6 +88,7 @@ class _HomeState extends State<Home> {
                 text: "إذاعة القرآن الكريم ",
                 icon: Assets.imagesRadio,
               ),
+              SizedBox(height: 10.h),
             ]),
       ),
     );
