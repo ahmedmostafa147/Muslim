@@ -1,8 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../Core/constant/style.dart';
-
+import 'package:muslim/Core/constant/themes.dart';
 class SeekBar extends StatefulWidget {
   final Duration duration;
   final Duration position;

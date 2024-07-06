@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../Core/constant/style.dart';
+import 'package:muslim/Core/constant/themes.dart';
 import 'package:quran/quran.dart';
 
 class BasmalaCardSurah extends StatelessWidget {

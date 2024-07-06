@@ -8,8 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widget_package/stack_of_number.dart';
 import '../../../../Models/reader_load_data.dart';
-import '../../../../Core/constant/style.dart';
-
+import 'package:muslim/Core/constant/themes.dart';
 class AudioSurahScreen extends StatelessWidget {
   AudioSurahScreen({Key? key, required this.reader}) : super(key: key);
   final Reader reader;

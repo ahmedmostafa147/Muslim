@@ -1,5 +1,3 @@
-import '../../../../Models/bookmark_quran.dart';
-import '../../../../Models/favorite_quran.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -7,11 +5,9 @@ import 'package:share_plus/share_plus.dart';
 
 import 'audio_controler.dart';
 
-class RowIconVerse extends StatefulWidget {
+class RowIconVerse extends StatelessWidget {
   const RowIconVerse({
     super.key,
-    required this.favoriteManager,
-    required this.bookManger,
     required this.verseTextForSurah,
     required this.surahName,
     required this.surahNumber,
@@ -21,8 +17,6 @@ class RowIconVerse extends StatefulWidget {
     required this.onTapBookmark,
   });
 
-  final FavoriteManager favoriteManager;
-  final BookmarkManager bookManger;
   final String verseTextForSurah;
   final String surahName;
   final int surahNumber;
@@ -30,51 +24,6 @@ class RowIconVerse extends StatefulWidget {
   final int surahVerseCount;
   final VoidCallback onTapFavorite;
   final VoidCallback onTapBookmark;
-
-  @override
-  _RowIconVerseState createState() => _RowIconVerseState();
-}
-
-class _RowIconVerseState extends State<RowIconVerse> {
-  bool isFavorite = false;
-  bool isBookmark = false;
-
-  @override
-  void initState() {
-    super.initState();
-    checkFavorite();
-    checkBookmark();
-  }
-
-  void checkBookmark() async {
-    bool bookmark = await widget.bookManger.isBookmark(
-      BookmarkItem(
-        surahIndex: widget.surahNumber,
-        verseNumber: widget.verseNumber,
-        surahName: widget.surahName,
-        verseText: widget.verseTextForSurah,
-        surahVerseCount: widget.surahVerseCount,
-      ),
-    );
-    setState(() {
-      isBookmark = bookmark;
-    });
-  }
-
-  void checkFavorite() async {
-    bool favorite = await widget.favoriteManager.isFavorite(
-      FavoriteItem(
-        surahIndex: widget.surahNumber,
-        verseNumber: widget.verseNumber,
-        surahName: widget.surahName,
-        verseText: widget.verseTextForSurah,
-        surahVerseCount: widget.surahVerseCount,
-      ),
-    );
-    setState(() {
-      isFavorite = favorite;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,50 +34,26 @@ class _RowIconVerseState extends State<RowIconVerse> {
           IconButton(
             onPressed: () {
               Get.bottomSheet(QuranicVersePlayer(
-                surahNumber: widget.surahNumber,
-                verseNumber: widget.verseNumber,
+                surahNumber: surahNumber,
+                verseNumber: verseNumber,
               ));
             },
             icon: const Icon(Icons.headphones_outlined),
-          ),
-          IconButton(
-            onPressed: () {
-              toggleBookManger();
-
-              widget.onTapBookmark();
-            },
-            icon: Icon(
-              isBookmark ? Icons.bookmark : Icons.bookmark_border,
-              color: isBookmark
-                  ? Theme.of(context).primaryColor
-
-                  : null,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              toggleFavorite();
-              widget.onTapFavorite();
-            },
-            icon: Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: isFavorite ? Colors.red : null,
-            ),
           ),
           IconButton(
             icon: const Icon(
               Icons.copy_rounded,
             ),
             onPressed: () {
-              Clipboard.setData(ClipboardData(text: widget.verseTextForSurah));
-              Get.snackbar(widget.surahName, 'تم نسخ الآية');
+              Clipboard.setData(ClipboardData(text: verseTextForSurah));
+              Get.snackbar(surahName, 'تم نسخ الآية');
             },
           ),
           IconButton(
             icon: const Icon(
               Icons.share,
             ),
-            onPressed: () => _shareVerse(widget.verseTextForSurah),
+            onPressed: () => _shareVerse(verseTextForSurah),
           ),
         ],
       ),
@@ -136,64 +61,8 @@ class _RowIconVerseState extends State<RowIconVerse> {
   }
 
   void _shareVerse(String verseText) {
-    final String text = '${widget.surahName} - $verseText';
+    final String text = '$surahName - $verseText';
     const String subject = 'Quran';
     Share.share(text, subject: subject);
-  }
-
-  void toggleBookManger() {
-    setState(() {
-      isBookmark = !isBookmark;
-    });
-
-    if (isBookmark) {
-      widget.bookManger.addBookmark(
-        BookmarkItem(
-          surahIndex: widget.surahNumber,
-          verseNumber: widget.verseNumber,
-          surahName: widget.surahName,
-          verseText: widget.verseTextForSurah,
-          surahVerseCount: widget.surahVerseCount,
-        ),
-      );
-    } else {
-      widget.bookManger.removeBookmark(
-        BookmarkItem(
-          surahIndex: widget.surahNumber,
-          verseNumber: widget.verseNumber,
-          surahName: widget.surahName,
-          verseText: widget.verseTextForSurah,
-          surahVerseCount: widget.surahVerseCount,
-        ),
-      );
-    }
-  }
-
-  void toggleFavorite() {
-    setState(() {
-      isFavorite = !isFavorite;
-    });
-
-    if (isFavorite) {
-      widget.favoriteManager.addFavorite(
-        FavoriteItem(
-          surahIndex: widget.surahNumber,
-          verseNumber: widget.verseNumber,
-          surahName: widget.surahName,
-          verseText: widget.verseTextForSurah,
-          surahVerseCount: widget.surahVerseCount,
-        ),
-      );
-    } else {
-      widget.favoriteManager.removeFavorite(
-        FavoriteItem(
-          surahIndex: widget.surahNumber,
-          verseNumber: widget.verseNumber,
-          surahName: widget.surahName,
-          verseText: widget.verseTextForSurah,
-          surahVerseCount: widget.surahVerseCount,
-        ),
-      );
-    }
   }
 }

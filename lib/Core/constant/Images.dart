@@ -193,6 +193,10 @@ class Assets {
   /// assets/Images/rosary.png
   static const String imagesRosary = "assets/Images/rosary.png";
 
+  /// Assets for imagesSalahbetween
+  /// assets/Images/salahbetween.png
+  static const String imagesSalahbetween = "assets/Images/salahbetween.png";
+
   /// Assets for imagesSalahmuslim
   /// assets/Images/Salahmuslim.png
   static const String imagesSalahmuslim = "assets/Images/Salahmuslim.png";

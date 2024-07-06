@@ -1,4 +1,3 @@
-import '../../../../Core/constant/style.dart';
 
 import '../widget_Api/seek_bar.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:rxdart/rxdart.dart' as rxdart;
-
+import 'package:muslim/Core/constant/themes.dart';
 class PositionData {
   final Duration position;
   final Duration bufferedPosition;
@@ -40,7 +39,7 @@ class QuranicVersePlayerController extends GetxController {
       print('A stream error occurred: $e');
     });
     _audioPlayer.setAudioSource(AudioSource.uri(
-        Uri.parse(quran.getAudioURLByVerse(surahNumber, verseNumber))));
+        Uri.parse(quran.getAudioURLByVerse(surahNumber, verseNumber,))));
     _audioPlayer.playerStateStream.listen((playerState) {
       isPlaying.value = playerState.playing;
     });
@@ -57,7 +56,7 @@ class QuranicVersePlayerController extends GetxController {
   void playNextVerse() {
     if (verseNumber < quran.getVerseCount(surahNumber)) {
       verseNumber++;
-      _audioPlayer.setUrl(quran.getAudioURLByVerse(surahNumber, verseNumber));
+      _audioPlayer.setUrl(quran.getAudioURLByVerse(surahNumber, verseNumber,));
     }
   }
 
@@ -69,7 +68,7 @@ class QuranicVersePlayerController extends GetxController {
   void playPreviousVerse() {
     if (verseNumber > 1) {
       verseNumber--;
-      _audioPlayer.setUrl(quran.getAudioURLByVerse(surahNumber, verseNumber));
+      _audioPlayer.setUrl(quran.getAudioURLByVerse(surahNumber, verseNumber,));
     }
   }
 

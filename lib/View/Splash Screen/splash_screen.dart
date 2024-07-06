@@ -11,14 +11,14 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-        duration: 2000,
-        splashIconSize: 200.r,
+        duration: 1000,
+        splashIconSize: 250.r,
         splash: Image.asset(
           Assets.imagesSplashScreen,
         ),
         nextScreen: const NavBarWidget(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.theme,
-        backgroundColor: Theme.of(context).splashColor);
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor);
   }
 }

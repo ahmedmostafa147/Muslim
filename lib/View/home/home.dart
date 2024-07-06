@@ -1,5 +1,4 @@
 import '../../routes.dart';
-
 import '../../Core/constant/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,10 +54,11 @@ class _HomeState extends State<Home> {
                     child: Align(
                       alignment: Alignment.topRight,
                       child: Text(
-                        "يومك سعيد!",
+                        "يومك سعيد 👋",
                         style: TextStyle(
                           fontSize: 20.sp,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.teal,
                         ),
                       ),
                     ),

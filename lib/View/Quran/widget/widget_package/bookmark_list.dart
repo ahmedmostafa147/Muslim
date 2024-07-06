@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../Core/constant/style.dart';
-
+import 'package:muslim/Core/constant/themes.dart';
 import '../../screen/surah_screen_package.dart';
 
 class BookmarkScreen extends StatefulWidget {

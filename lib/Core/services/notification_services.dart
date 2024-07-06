@@ -33,20 +33,17 @@ class NotificationService {
     required String body,
     required DateTime dateTime,
   }) async {
-    final AndroidNotificationDetails androidPlatformChannelSpecifics =
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
       'prayer_channel', // id
       'Prayer Notifications', // title
       channelDescription: 'Notification channel for prayer times',
       importance: Importance.max,
       priority: Priority.max,
-      icon: '@mipmap/ic_launcher',
       enableLights: true,
-      sound: RawResourceAndroidNotificationSound('azan.mp3'.split('.').first),
-      playSound: true,
     );
 
-    final NotificationDetails platformChannelSpecifics =
+    const NotificationDetails platformChannelSpecifics =
         NotificationDetails(android: androidPlatformChannelSpecifics);
     tz.initializeTimeZones();
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();

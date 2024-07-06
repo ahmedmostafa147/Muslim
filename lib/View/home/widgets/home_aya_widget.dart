@@ -1,19 +1,28 @@
 import 'dart:math';
-import '../../../Core/constant/style.dart';
+import 'package:muslim/Core/constant/themes.dart';
 import '../../Quran/widget/widget_package/row_aya_copy_love_share.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran/quran.dart' as quran;
+
+class RandomVerse {
+  late int surahNumber;
+  late int verseNumber;
+  late String verse;
+
+  RandomVerse() {
+    surahNumber = Random().nextInt(114) + 1;
+    verseNumber = Random().nextInt(quran.getVerseCount(surahNumber)) + 1;
+    verse = quran.getVerse(surahNumber, verseNumber);
+  }
+}
 
 class HomeAyaWidget extends StatelessWidget {
   const HomeAyaWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final surahNumber = Random().nextInt(114) + 1;
-    final surahName = quran.getSurahNameArabic(surahNumber);
-    final verseNumber = Random().nextInt(quran.getVerseCount(surahNumber)) + 1;
-    final verseText = quran.getVerse(surahNumber, verseNumber);
+    RandomVerse randomVerse = RandomVerse();
 
     return Container(
       padding: const EdgeInsets.all(8.0),
@@ -46,13 +55,13 @@ class HomeAyaWidget extends StatelessWidget {
                     SizedBox(
                       height: 10.h,
                     ),
-                    Text(verseText,
+                    Text(randomVerse.verse,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 20.sp,
                             fontFamily: TextFontType.quran2Font)),
                     Text(
-                      '$surahName, الاية $verseNumber',
+                      '${quran.getSurahNameArabic(randomVerse.surahNumber)}, الاية ${randomVerse.verseNumber}',
                       style: TextStyle(
                         fontSize: 10.sp,
                         color: Theme.of(context).primaryColor,
@@ -70,9 +79,9 @@ class HomeAyaWidget extends StatelessWidget {
             height: 5.h,
           ),
           RowAyaCopyShareShare(
-            surahName: surahName,
-            verseNumber: verseNumber.toString(),
-            verseText: verseText,
+            surahName: quran.getSurahNameArabic(randomVerse.surahNumber),
+            verseNumber: randomVerse.verseNumber.toString(),
+            verseText: randomVerse.verse,
           ),
         ],
       ),

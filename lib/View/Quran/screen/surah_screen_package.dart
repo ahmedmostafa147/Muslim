@@ -20,8 +20,6 @@ class SurahPage extends StatelessWidget {
       surahIndex: surahIndex,
       surahVerseCount: surahVerseCount,
       surahName: surahName,
-      
     ));
   }
-  
 }

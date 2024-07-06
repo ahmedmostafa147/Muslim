@@ -1,6 +1,5 @@
 import 'dart:math' as math;
-
-import 'package:adhan/adhan.dart';
+import 'package:qibla_direction/qibla_direction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,7 +40,7 @@ class QiblaScreen extends StatelessWidget {
                     locationController.address.value,
                     style: TextStyle(
                       fontSize: 15.sp,
-                      color:Theme.of(context).primaryColor,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                 ),
@@ -141,7 +140,9 @@ class QiblaCompassWidget extends StatelessWidget {
                     'الاتجاه الحالي ${compassHeading.toStringAsFixed(0)}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: isCorrectDirection ? Theme.of(context).primaryColor : Colors.red,
+                      color: isCorrectDirection
+                          ? Theme.of(context).primaryColor
+                          : Colors.red,
                       fontSize: 15.sp,
                       fontWeight: FontWeight.bold,
                     ),
@@ -152,7 +153,9 @@ class QiblaCompassWidget extends StatelessWidget {
                         : 'الاتجاه خاطئ حتي الان',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: isCorrectDirection ? Theme.of(context).primaryColor: Colors.red,
+                      color: isCorrectDirection
+                          ? Theme.of(context).primaryColor
+                          : Colors.red,
                       fontSize: 15.sp,
                       fontWeight: FontWeight.bold,
                     ),
@@ -225,12 +228,10 @@ class QiblaController extends GetxController {
     LocationController locationController = Get.put<LocationController>(
       LocationController(),
     );
-    final qibla = Qibla(
-      Coordinates(
-        locationController.latitude.value,
-        locationController.longitude.value,
-      ),
+    final qibla = Coordinate(
+      locationController.latitude.value,
+      locationController.longitude.value,
     );
-    return qibla.direction;
+    return QiblaDirection.find(qibla);
   }
 }

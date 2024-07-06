@@ -8,8 +8,6 @@ import 'package:intl/intl.dart';
 class NotificationController extends GetxController {
   var isNotificationOn = false.obs;
   var isAzkarOn = false.obs;
-  var selectedTone = 'default'.obs; // ملاحظة: تغيير اسم المتغير
-
   late NotificationService notificationService;
 
   @override
@@ -18,7 +16,6 @@ class NotificationController extends GetxController {
     notificationService = NotificationService();
     getNotificationStatus();
     getAzkarStatus();
-   
   }
 
   void getNotificationStatus() async {
@@ -35,8 +32,6 @@ class NotificationController extends GetxController {
     print('Azkar status: $isAzkarOn');
   }
 
- 
-
   void toggleNotification(bool? value) async {
     isNotificationOn.value = value ?? false;
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -48,7 +43,7 @@ class NotificationController extends GetxController {
         'تنبيه',
         'تم تفعيل الإشعارات',
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.teal,
         colorText: Colors.white,
       );
       print('Notifications enabled');
@@ -71,13 +66,10 @@ class NotificationController extends GetxController {
     await prefs.setBool('isAzkarOn', isAzkarOn.value);
     print('Azkar toggled: $isAzkarOn');
     if (isAzkarOn.value) {
-      // scheduleAzkarNotifications();
     } else {
-      // cancelNotificationZekr();
+      ;
     }
   }
-
-  
 
   Future<void> schedulePrayerNotifications() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -120,25 +112,7 @@ class NotificationController extends GetxController {
     }
   }
 
-  // Schedule a test notification after 10 seconds
-  void scheduleTestNotification() {
-    final now = DateTime.now();
-    final testNotificationTime = now.add(const Duration(seconds: 10));
-
-    notificationService.schedulePrayerNotification(
-      id: 1001,
-      title: 'Test Notification',
-      body: 'This is a test notification scheduled 10 seconds from now',
-      dateTime: testNotificationTime,
-    );
-
-    Get.snackbar(
-      'Test Notification Scheduled',
-      'An notification will appear after 10 seconds',
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.blue,
-      colorText: Colors.white,
-    );
-    print('Test notification scheduled');
+  void cancelAllNotifications() {
+    notificationService.cancelAllNotifications();
   }
 }

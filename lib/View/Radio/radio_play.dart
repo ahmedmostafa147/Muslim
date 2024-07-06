@@ -7,8 +7,7 @@ import 'package:get/get.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import '../../Core/constant/images.dart';
 import 'package:just_audio/just_audio.dart';
-import '../../Core/constant/style.dart';
-import '../../widgets/loading_widget.dart';
+import 'package:muslim/Core/constant/themes.dart';import '../../widgets/loading_widget.dart';
 import 'package:share_plus/share_plus.dart';
 
 class AudioPlayerController extends GetxController {
@@ -48,7 +47,7 @@ class AudioPlayerController extends GetxController {
   }
 
   void share(String name, String url) async {
-    final result = await Share.shareWithResult(
+    final result = await Share.share(
       'تستمع إلى $name على تطبيق المسلم: $url',
       subject: 'استمع إلى $name',
     );

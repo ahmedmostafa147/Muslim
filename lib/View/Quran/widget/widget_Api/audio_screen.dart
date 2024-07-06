@@ -1,6 +1,5 @@
 import 'dart:async';
-import '../../../../Core/constant/style.dart';
-
+import 'package:muslim/Core/constant/themes.dart';
 import '../../../../Models/reader_load_data.dart';
 import '../../../../Models/surah_sound_load_data.dart';
 import 'seek_bar.dart';

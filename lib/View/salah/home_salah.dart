@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:muslim/View/salah/notification_prayer_settings_screen.dart';
 import 'package:muslim/widgets/matreial_button.dart';
-import 'setting_prayer.dart';
 import 'widget/prayer_column_items.dart';
 import '../../Controller/prayer_times.dart';
 import '../../Controller/location.dart';
 import '../../Core/constant/images.dart';
-import '../../Core/constant/style.dart';
-import '../../widgets/date_row_class.dart';
+import 'package:muslim/Core/constant/themes.dart';import '../../widgets/date_row_class.dart';
 
 class PrayerTimesScreen extends StatelessWidget {
   final PrayerTimesController prayerTimesController =
@@ -57,7 +57,6 @@ class PrayerTimesScreen extends StatelessWidget {
                       ),
                     ),
                   ]),
-                  SizedBox(height: 10.h),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -66,23 +65,85 @@ class PrayerTimesScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                            color: Theme.of(context).primaryColor, width: 1.0),
-                      ),
-                      child: Column(
-                        children: [
-                          Text("الوقت المتبقي للصلاة القادمة",
-                              style: TextStyle(fontSize: 17.sp)),
-                          SizedBox(height: 10.h),
-                          Text(
-                            prayerTimesController.timeRemaining.value,
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              color: Theme.of(context).primaryColor,
+                          color: Theme.of(context).primaryColor,
+                          width: 1.0,
+                        ),
+                        image: const DecorationImage(
+                            image: AssetImage(Assets.imagesMo),
+                            fit: BoxFit.cover,
+                            opacity: 0.4
+                            // Adjust the fit as needed
                             ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "الصلاة القادمة هي صلاة",
+                                style: TextStyle(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 5.h),
+                              Text(
+                                prayerTimesController.nextPrayerName.value,
+                                style: TextStyle(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                              ),
+                              SizedBox(height: 5.h),
+                              Text(
+                                "الوقت المتبقي",
+                                style: TextStyle(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 5.h),
+                              Text(
+                                prayerTimesController.timeRemaining.value,
+                                style: TextStyle(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                              ),
+                              SizedBox(height: 5.h),
+                            ],
                           ),
+                          Image(
+                              image: const AssetImage(Assets.imagesSalahbetween),
+                              width: 60.w,
+                              height: 60.h),
                         ],
                       ),
                     ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          prayerTimesController.decrementDate();
+                        },
+                        icon: const Icon(Icons.arrow_back_ios),
+                      ),
+                      Obx(() => Text(DateFormat('EEE dd MMM yyyy', 'ar')
+                          .format(prayerTimesController.selectedDate.value))),
+                      IconButton(
+                        onPressed: () {
+                          prayerTimesController.incrementDate();
+                        },
+                        icon: const Icon(Icons.navigate_next),
+                      ),
+                    ],
                   ),
                   BuildPrayerTimeItemColumn(
                     name: 'الفجر',
@@ -91,7 +152,7 @@ class PrayerTimesScreen extends StatelessWidget {
                         .toString(),
                     containerColor:
                         prayerTimesController.nextPrayer.value == 'Fajr'
-                            ? ColorsStyleApp.hoverLight
+                            ? Colors.teal
                             : Colors.transparent,
                   ),
                   BuildPrayerTimeItemColumn(
@@ -101,7 +162,7 @@ class PrayerTimesScreen extends StatelessWidget {
                         .toString(),
                     containerColor:
                         prayerTimesController.nextPrayer.value == 'Dhuhr'
-                            ? ColorsStyleApp.hoverLight
+                            ? Colors.teal
                             : Colors.transparent,
                   ),
                   BuildPrayerTimeItemColumn(
@@ -111,7 +172,7 @@ class PrayerTimesScreen extends StatelessWidget {
                         prayerTimesController.prayerTimes.value!.asr.toString(),
                     containerColor:
                         prayerTimesController.nextPrayer.value == 'Asr'
-                            ? ColorsStyleApp.hoverLight
+                            ? Colors.teal
                             : Colors.transparent,
                   ),
                   BuildPrayerTimeItemColumn(
@@ -121,7 +182,7 @@ class PrayerTimesScreen extends StatelessWidget {
                         .toString(),
                     containerColor:
                         prayerTimesController.nextPrayer.value == 'Maghrib'
-                            ? ColorsStyleApp.hoverLight
+                            ? Colors.teal
                             : Colors.transparent,
                   ),
                   BuildPrayerTimeItemColumn(
@@ -131,17 +192,17 @@ class PrayerTimesScreen extends StatelessWidget {
                         .toString(),
                     containerColor:
                         prayerTimesController.nextPrayer.value == 'Isha'
-                            ? ColorsStyleApp.hoverLight
+                            ? Colors.teal
                             : Colors.transparent,
                   ),
                   SizedBox(height: 10.h),
                   CustomMaterialButton(
                     fontAwesomeIcons: Icons.settings,
                     onPressed: () {
-                      Get.to(NotificationSettingsScreen());
+                      Get.to(NotificationAndPrayerTimesSettingsScreen());
                     },
                     buttonText: "إعدادات الصلاة و الاشعارات ",
-                  )
+                  ),
                 ],
               ),
             ],
