@@ -45,4 +45,14 @@ class QuranController extends GetxController {
     }
     return ayahs.isNotEmpty ? ayahs : null;
   }
+
+  Datum? getSurahByNumber(int number) {
+    for (var surah in quranData.value.data) {
+      if (surah.number == number) {
+        return surah;
+      }
+    }
+    return null;
+  }
+
 }

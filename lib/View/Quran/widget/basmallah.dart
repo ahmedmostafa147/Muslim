@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:muslim/Core/constant/images.dart';
 
 class Basmallah extends StatefulWidget {
-  int index;
-  Basmallah({super.key, required this.index});
+  const Basmallah({
+    super.key,
+  });
 
   @override
   State<Basmallah> createState() => _BasmallahState();
@@ -21,7 +23,7 @@ class _BasmallahState extends State<Basmallah> {
             top: 8,
             bottom: 2),
         child: Image.asset(
-          "assets/images/Basmala.png",
+          Assets.imagesBasmala,
           color: Colors.black,
           width: MediaQuery.of(context).size.width * .4,
         ),

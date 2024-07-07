@@ -1,36 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:muslim/View/Quran/screen/book/tafser.dart';
+import 'package:muslim/View/Quran/widget/basmallah.dart';
+import 'package:muslim/View/Quran/widget/widget_package/tafseer_package.dart';
 
 import 'package:quran/quran.dart' as quran;
 
-import 'basmala_card.dart';
 import 'row_for_icons.dart';
 import 'stack_of_number.dart';
 import 'verse_text.dart';
 
 class SurahContainList extends StatelessWidget {
-  final int surahIndex;
-  final int surahVerseCount;
-  final String surahName;
-  final bool isListView;
-
   const SurahContainList({
     super.key,
-    required this.surahIndex,
-    required this.surahVerseCount,
-    required this.surahName,
-    this.isListView = true,
   });
 
   @override
-  @override
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
+    final arguments = Get.arguments as Map<String, dynamic>;
+    final surahIndex = arguments['surahIndex'] as int;
+    final surahVerseCount = arguments['surahVerseCount'] as int;
+    final surahName = arguments['surahName'] as String;
 
     return Scaffold(
         appBar: AppBar(
           title: Text(surahName),
           centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Get.to(() => TafseerScreenPackage(), arguments: surahIndex);
+                },
+                icon: const Icon(Icons.book)),
+          ],
         ),
         body: ListView.builder(
           controller: scrollController,
@@ -49,7 +53,7 @@ class SurahContainList extends StatelessWidget {
 
             return Column(
               children: [
-                if (isBismillahRequired) const BasmalaCardSurah(),
+                if (isBismillahRequired) const Basmallah(),
                 Padding(
                   padding: EdgeInsets.fromLTRB(7.w, 10.w, 7.w, 10.w),
                   child: Container(
@@ -71,12 +75,6 @@ class SurahContainList extends StatelessWidget {
                               verseTextForSurah: verseText,
                               surahName: surahName,
                               surahVerseCount: surahVerseCount,
-                              onTapBookmark: () async {
-                                // Bookmark handling
-                              },
-                              onTapFavorite: () async {
-                                // Favorite handling
-                              },
                             ),
                           ],
                         ),

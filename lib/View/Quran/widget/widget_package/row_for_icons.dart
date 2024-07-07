@@ -13,8 +13,6 @@ class RowIconVerse extends StatelessWidget {
     required this.surahNumber,
     required this.surahVerseCount,
     required this.verseNumber,
-    required this.onTapFavorite,
-    required this.onTapBookmark,
   });
 
   final String verseTextForSurah;
@@ -22,8 +20,6 @@ class RowIconVerse extends StatelessWidget {
   final int surahNumber;
   final int verseNumber;
   final int surahVerseCount;
-  final VoidCallback onTapFavorite;
-  final VoidCallback onTapBookmark;
 
   @override
   Widget build(BuildContext context) {
