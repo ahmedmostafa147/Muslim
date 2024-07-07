@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:muslim/Controller/surah_search.dart';
+import 'package:muslim/View/Quran/screen/book/view.dart';
 import 'package:quran/quran.dart' as quran;
 import '../../../widgets/loading_widget.dart';
-import 'surah_screen_package.dart';
 import '../widget/widget_package/stack_of_number.dart';
 import 'package:muslim/Core/constant/themes.dart';
 
@@ -56,14 +56,11 @@ class ListSurahNamePackage extends StatelessWidget {
                   final surahVerseCount = quran.getVerseCount(surahIndex);
                   final surahNameEnglish = quran.getSurahName(surahIndex);
                   final surahPlace = quran.getPlaceOfRevelation(surahIndex);
+                  final numOfPage = quran.getPageNumber(surahIndex, 1);
 
                   return GestureDetector(
                     onTap: () {
-                      Get.to(() => SurahPage(
-                            surahIndex: surahIndex,
-                            surahVerseCount: surahVerseCount,
-                            surahName: surahNameArabic,
-                          ));
+                      Get.to(() => QuranImagesScreen(), arguments: numOfPage);
                     },
                     child: ListView(
                       padding: const EdgeInsets.all(10.0),
