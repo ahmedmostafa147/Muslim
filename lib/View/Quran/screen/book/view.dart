@@ -18,56 +18,53 @@ class QuranImagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    SystemChrome.setEnabledSystemUIMode(
-      SystemUiMode.immersiveSticky,
-    );
-
     final numOfPage = Get.arguments as int;
 
-    return Obx(() {
-      if (quranController.isLoading.value) {
-        return const LoadingWidget();
-      }
+    return Scaffold(
+      body: Obx(() {
+        if (quranController.isLoading.value) {
+          return const LoadingWidget();
+        }
 
-      return PreloadPageView.builder(
-        controller: PreloadPageController(initialPage: numOfPage - 1),
-        itemCount: quranViewController.surahNames.length,
-        preloadPagesCount: 2,
-        itemBuilder: (context, index) {
-          final surahName = quranViewController.surahNames[index];
-          final imageUrl = quranViewController.getSurahImageUrl(surahName);
-          if (index + 2 < quranViewController.surahNames.length) {
-            quranViewController.prefetchImages(index + 1, 2);
-          }
+        return PreloadPageView.builder(
+          controller: PreloadPageController(initialPage: numOfPage - 1),
+          itemCount: quranViewController.surahNames.length,
+          preloadPagesCount: 2,
+          itemBuilder: (context, index) {
+            final surahName = quranViewController.surahNames[index];
+            final imageUrl = quranViewController.getSurahImageUrl(surahName);
+            if (index + 2 < quranViewController.surahNames.length) {
+              quranViewController.prefetchImages(index + 1, 2);
+            }
 
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('القرآن'),
-              actions: [
-                IconButton(
-                  onPressed: () {
+            return Scaffold(
+              appBar: AppBar(
+                title: const Text('القرآن'),
+                actions: [
+                  IconButton(
+                    onPressed: () {
                       Get.to(() => TafseerScreen(), arguments: index + 1);
-                  },
-                  icon: const Icon(Icons.book),
-                ),
-              ],
-            ),
-            body: GestureDetector(
-              onTap: () {},
-              child: SafeArea(
-                child: CachedNetworkImage(
-                  color: Colors.teal,
-                  imageUrl: imageUrl,
-                  placeholder: (context, url) => const LoadingWidget(),
-                  errorWidget: (context, url, error) =>
-                      const Text("فشل التحميل"),
+                    },
+                    icon: const Icon(Icons.book),
+                  ),
+                ],
+              ),
+              body: GestureDetector(
+                onTap: () {},
+                child: SafeArea(
+                  child: CachedNetworkImage(
+                    color: Colors.teal,
+                    imageUrl: imageUrl,
+                    placeholder: (context, url) => const LoadingWidget(),
+                    errorWidget: (context, url, error) =>
+                        const Text("فشل التحميل"),
+                  ),
                 ),
               ),
-            ),
-          );
-        },
-      );
-    });
+            );
+          },
+        );
+      }),
+    );
   }
 }
