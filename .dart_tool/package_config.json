@@ -159,7 +159,7 @@
     },
     {
       "name": "flutter_local_notifications",
-      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_local_notifications-17.2.1",
+      "rootUri": "file:///C:/Users/spark/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_local_notifications-17.2.1+1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -740,7 +740,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-07-07T12:05:29.916861Z",
+  "generated": "2024-07-07T14:22:56.777889Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///C:/src/flutter",
