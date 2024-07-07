@@ -33,56 +33,43 @@ class QuranPageScreen extends StatelessWidget {
 
           return SingleChildScrollView(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (var ayah in ayahs) ...[
-                  Text(
-                    ' ${surah.name} الآية: ${ayah.numberInSurah}',
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      color: Colors.teal,
-                      fontFamily: TextFontType.quranFont,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 8.h),
-                  Text(
-                    ayah.text,
-                    style: TextStyle(
-                        fontSize: 20.sp, fontFamily: TextFontType.quranFont),
-                  ),
-                  SizedBox(height: 15.h),
-                  const Divider(),
-                  SizedBox(height: 15.h),
-                  Text(
-                    ayah.tafseer,
-                    style: TextStyle(
-                      fontSize: 15.sp,
-                      fontFamily: TextFontType.cairoFont,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'حزب: ${ayah.hizbQuarter}',
-                        style: const TextStyle(
-                          fontSize: 16,
-                        ),
+            child: Container(
+              
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  for (var ayah in ayahs) ...[
+                    Text(
+                      ' ${surah.name} الآية: ${ayah.numberInSurah}',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        color: Theme.of(context).primaryColor,
+                        fontFamily: TextFontType.quranFont,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Text(
-                        'صفحة: ${ayah.page}',
-                        style: const TextStyle(
-                          fontSize: 16,
-                        ),
+                    ),
+                    SizedBox(height: 8.h),
+                    Text(
+                      ayah.text,
+                      style: TextStyle(
+                          fontSize: 20.sp, fontFamily: TextFontType.quranFont),
+                    ),
+                    SizedBox(height: 15.h),
+                    const Divider(),
+                    SizedBox(height: 15.h),
+                    Text(
+                      ayah.tafseer,
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        fontFamily: TextFontType.cairoFont,
+                        color: Theme.of(context).primaryColor,
                       ),
-                    ],
-                  ),
-                  const Divider(),
+                    ),
+                    const SizedBox(height: 16),
+                    const Divider(),
+                  ],
                 ],
-              ],
+              ),
             ),
           );
         }),
