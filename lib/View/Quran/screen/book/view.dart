@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:muslim/Controller/get_tafser.dart';
@@ -17,30 +18,44 @@ class QuranImagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.immersiveSticky,
+    );
+
     final numOfPage = Get.arguments as int;
 
-    return Scaffold(
-      body: SafeArea(
-        child: Obx(() {
-          if (quranController.isLoading.value) {
-            return const LoadingWidget();
+    return Obx(() {
+      if (quranController.isLoading.value) {
+        return const LoadingWidget();
+      }
+
+      return PreloadPageView.builder(
+        controller: PreloadPageController(initialPage: numOfPage - 1),
+        itemCount: quranViewController.surahNames.length,
+        preloadPagesCount: 2,
+        itemBuilder: (context, index) {
+          final surahName = quranViewController.surahNames[index];
+          final imageUrl = quranViewController.getSurahImageUrl(surahName);
+          if (index + 2 < quranViewController.surahNames.length) {
+            quranViewController.prefetchImages(index + 1, 2);
           }
 
-          return PreloadPageView.builder(
-            controller: PreloadPageController(initialPage: numOfPage - 1),
-            itemCount: quranViewController.surahNames.length,
-            preloadPagesCount: 2,
-            itemBuilder: (context, index) {
-              final surahName = quranViewController.surahNames[index];
-              final imageUrl = quranViewController.getSurahImageUrl(surahName);
-              if (index + 2 < quranViewController.surahNames.length) {
-                quranViewController.prefetchImages(index + 1, 2);
-              }
-
-              return GestureDetector(
-                onTap: () {
-                  Get.to(() => QuranPageScreen(), arguments: index + 1);
-                },
+          return Scaffold(
+            appBar: AppBar(
+              title: const Text('القرآن'),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                      Get.to(() => TafseerScreen(), arguments: index + 1);
+                  },
+                  icon: const Icon(Icons.book),
+                ),
+              ],
+            ),
+            body: GestureDetector(
+              onTap: () {},
+              child: SafeArea(
                 child: CachedNetworkImage(
                   color: Colors.teal,
                   imageUrl: imageUrl,
@@ -48,11 +63,11 @@ class QuranImagesScreen extends StatelessWidget {
                   errorWidget: (context, url, error) =>
                       const Text("فشل التحميل"),
                 ),
-              );
-            },
+              ),
+            ),
           );
-        }),
-      ),
-    );
+        },
+      );
+    });
   }
 }

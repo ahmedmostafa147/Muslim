@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:muslim/Controller/get_tafser.dart';
 import 'package:muslim/Core/constant/themes.dart';
 
-class QuranPageScreen extends StatelessWidget {
+class TafseerScreen extends StatelessWidget {
   final QuranController quranController = Get.put(QuranController());
 
-  QuranPageScreen({super.key});
+  TafseerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,44 +32,55 @@ class QuranPageScreen extends StatelessWidget {
           }
 
           return SingleChildScrollView(
-            padding: const EdgeInsets.all(16.0),
-            child: Container(
-              
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  for (var ayah in ayahs) ...[
-                    Text(
-                      ' ${surah.name} الآية: ${ayah.numberInSurah}',
-                      style: TextStyle(
-                        fontSize: 18.sp,
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (var ayah in ayahs) ...[
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(
                         color: Theme.of(context).primaryColor,
-                        fontFamily: TextFontType.quranFont,
-                        fontWeight: FontWeight.bold,
+                        width: 1.0,
                       ),
                     ),
-                    SizedBox(height: 8.h),
-                    Text(
-                      ayah.text,
-                      style: TextStyle(
-                          fontSize: 20.sp, fontFamily: TextFontType.quranFont),
-                    ),
-                    SizedBox(height: 15.h),
-                    const Divider(),
-                    SizedBox(height: 15.h),
-                    Text(
-                      ayah.tafseer,
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        fontFamily: TextFontType.cairoFont,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    const Divider(),
-                  ],
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            ' ${surah.name} الآية: ${ayah.numberInSurah}',
+                            style: TextStyle(
+                              fontSize: 10.sp,
+                              color: Theme.of(context).primaryColor,
+                              fontFamily: TextFontType.quranFont,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8.h),
+                          Text(
+                            ayah.text,
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontFamily: TextFontType.quranFont),
+                          ),
+                          SizedBox(height: 15.h),
+                          Text(
+                            ayah.tafseer,
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              fontFamily: TextFontType.cairoFont,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ]),
+                  ),
+                  SizedBox(height: 15.h),
                 ],
-              ),
+              ],
             ),
           );
         }),
