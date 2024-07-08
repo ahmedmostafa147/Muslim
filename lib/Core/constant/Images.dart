@@ -177,6 +177,10 @@ class Assets {
   /// assets/Images/quran1.png
   static const String imagesQuran1 = "assets/Images/quran1.png";
 
+  /// Assets for imagesQuranforselecte
+  /// assets/Images/quranforselecte.png
+  static const String imagesQuranforselecte = "assets/Images/quranforselecte.png";
+
   /// Assets for imagesRadio
   /// assets/Images/radio.png
   static const String imagesRadio = "assets/Images/radio.png";
@@ -224,6 +228,10 @@ class Assets {
   /// Assets for imagesSleeping
   /// assets/Images/sleeping.png
   static const String imagesSleeping = "assets/Images/sleeping.png";
+
+  /// Assets for imagesSmartphone
+  /// assets/Images/smartphone.png
+  static const String imagesSmartphone = "assets/Images/smartphone.png";
 
   /// Assets for imagesSplashScreen
   /// assets/Images/SplashScreen.png
