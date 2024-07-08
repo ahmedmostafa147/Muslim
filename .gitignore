@@ -17191,3 +17191,12 @@ build/app/intermediates/project_dex_archive/debug/out/b1bb78eb343158fe9e9eac0d39
 build/app/intermediates/project_dex_archive/debug/out/b1bb78eb343158fe9e9eac0d395958f3d963265c5d3075f81153e4ddaa6bfefd_1.jar
 build/app/intermediates/project_dex_archive/debug/out/b1bb78eb343158fe9e9eac0d395958f3d963265c5d3075f81153e4ddaa6bfefd_2.jar
 build/app/intermediates/project_dex_archive/debug/out/b1bb78eb343158fe9e9eac0d395958f3d963265c5d3075f81153e4ddaa6bfefd_3.jar
+.dart_tool/
+.idea/
+.vscode/
+.flutter-plugins-dependencies
+.metadata
+build/
+android/.gradle/
+android/app/build/
+.gradle/
