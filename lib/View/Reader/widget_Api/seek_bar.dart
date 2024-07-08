@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:muslim/Core/constant/themes.dart';
+
 class SeekBar extends StatefulWidget {
   final Duration duration;
   final Duration position;
@@ -29,9 +30,6 @@ class _SeekBarState extends State<SeekBar> {
       children: [
         SliderTheme(
           data: SliderTheme.of(context).copyWith(
-            inactiveTrackColor: Theme.of(context).brightness == Brightness.dark
-                ? ColorsStyleApp.hoverDark
-                : ColorsStyleApp.hoverLight,
             trackHeight: 5.0,
             thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
             overlayShape: const RoundSliderOverlayShape(overlayRadius: 10.0),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/View/Quran/screen/book/tafser.dart';
-import 'package:muslim/View/Quran/widget/basmallah.dart';
-import 'package:muslim/View/Quran/widget/widget_package/tafseer_package.dart';
+import 'package:muslim/View/Quran/book/tafser.dart';
+import 'package:muslim/View/Quran/package/basmallah.dart';
+import 'package:muslim/View/Quran/package/tafseer_package.dart';
 
 import 'package:quran/quran.dart' as quran;
 

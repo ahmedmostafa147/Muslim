@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:muslim/Core/constant/themes.dart';
+
 class StackOfNumber extends StatelessWidget {
   const StackOfNumber({super.key, required this.surahIndex});
   final String surahIndex;

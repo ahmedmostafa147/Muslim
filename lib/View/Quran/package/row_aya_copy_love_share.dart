@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
 
 import 'package:muslim/Core/constant/themes.dart';
+
 class RowAyaCopyShareShare extends StatelessWidget {
   final String surahName;
   final String verseNumber;
@@ -26,9 +27,6 @@ class RowAyaCopyShareShare extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0),
             decoration: BoxDecoration(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? ColorsStyleApp.black
-                  : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
               border:
                   Border.all(color: Theme.of(context).primaryColor, width: 1.0),
@@ -54,9 +52,6 @@ class RowAyaCopyShareShare extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0),
             decoration: BoxDecoration(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? ColorsStyleApp.black
-                  : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
               border:
                   Border.all(color: Theme.of(context).primaryColor, width: 1.0),
@@ -95,9 +90,6 @@ class RowDoaCopyShareShare extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0),
             decoration: BoxDecoration(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? ColorsStyleApp.black
-                  : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
               border:
                   Border.all(color: Theme.of(context).primaryColor, width: 1.0),
@@ -123,9 +115,6 @@ class RowDoaCopyShareShare extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 0),
             decoration: BoxDecoration(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? ColorsStyleApp.black
-                  : ColorsStyleApp.white,
               borderRadius: BorderRadius.circular(10.r),
               border:
                   Border.all(color: Theme.of(context).primaryColor, width: 1.0),

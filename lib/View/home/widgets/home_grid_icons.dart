@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import '../../Azkar/azkar_home.dart';
 import '../../Pray/pray_grid_view_home.dart';
 import '../../Qibla/qibla.dart';
-import '../../Quran/screen/reader_screen.dart';
+import '../../Reader/reader_screen.dart';
 import '../../Radio/radio_home.dart';
 import '../../Ramadan/ramadan.dart';
 import '../../Story/story.dart';

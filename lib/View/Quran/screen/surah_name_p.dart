@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:muslim/Controller/surah_search.dart';
-import 'package:muslim/View/Quran/screen/book/view.dart';
 import 'package:muslim/View/Quran/screen/select_type.dart';
-import 'package:muslim/View/Quran/widget/widget_package/surah_contain.dart';
 import 'package:quran/quran.dart' as quran;
 import '../../../widgets/loading_widget.dart';
-import '../widget/widget_package/stack_of_number.dart';
+import '../package/stack_of_number.dart';
 import 'package:muslim/Core/constant/themes.dart';
 
 class ListSurahNamePackage extends StatelessWidget {
@@ -62,14 +60,28 @@ class ListSurahNamePackage extends StatelessWidget {
 
                   return GestureDetector(
                     onTap: () {
-                      Get.to(
-                        () => const SelectTypeReading(),
-                        arguments: {
-                          'surahIndex': surahIndex,
-                          'surahVerseCount': surahVerseCount,
-                          'surahName': surahNameArabic,
-                          'pageNumber': numOfPage,
-                        },
+                      Get.bottomSheet(
+                        settings: RouteSettings(
+                          arguments: {
+                            'surahIndex': surahIndex,
+                            'surahVerseCount': surahVerseCount,
+                            'surahName': surahNameArabic,
+                            'pageNumber': numOfPage,
+                          },
+                        ),
+                        const SelectTypeReading(),
+                        isScrollControlled: true,
+                        enterBottomSheetDuration:
+                            const Duration(milliseconds: 600),
+                        exitBottomSheetDuration:
+                            const Duration(milliseconds: 600),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(20),
+                          ),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        enableDrag: false,
                       );
                     },
                     child: ListView(

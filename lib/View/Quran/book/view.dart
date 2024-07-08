@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:muslim/Controller/get_tafser.dart';
 import 'package:muslim/Core/constant/themes.dart';
-import 'package:muslim/View/Quran/screen/book/tafser.dart';
+import 'package:muslim/View/Quran/book/tafser.dart';
 
 import 'package:muslim/Controller/surah_view.dart';
 import 'package:muslim/widgets/loading_widget.dart';

@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:muslim/Core/constant/themes.dart';
-import '../../Quran/widget/widget_package/row_aya_copy_love_share.dart';
+import '../../Quran/package/row_aya_copy_love_share.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran/quran.dart' as quran;

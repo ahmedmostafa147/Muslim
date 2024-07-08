@@ -11,8 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-
   flutter_screenutil: ^5.9.0
 
   get: ^4.6.6
@@ -45,17 +43,9 @@ dependencies:
 
   flutter_compass: ^0.8.0
 
-  just_audio: ^0.9.36
-
-  audio_session: ^0.1.18
-
-  rxdart: ^0.27.7
-
   permission_handler: ^11.3.0
 
   disable_battery_optimization: ^1.1.1
-
-  just_audio_background: ^0.0.1-beta.11
 
   flutter_local_notifications: ^17.2.1
 
@@ -65,14 +55,13 @@ dependencies:
 
   qibla_direction: ^1.0.1
 
-  string_validator: 
-
   quran: ^1.2.4
   
   cached_network_image: ^3.3.1
 
   preload_page_view: ^0.2.0
-
+  
+  audioplayers: ^6.0.0
   
  
 dev_dependencies:

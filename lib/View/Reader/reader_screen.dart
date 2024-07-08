@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import '../../../widgets/loading_widget.dart';
+import '../../widgets/loading_widget.dart';
 
-import '../../../Models/reader_load_data.dart';
-import '../widget/widget_Api/audio_surah_screen.dart';
-import '../widget/widget_Api/reader_custom_tile.dart';
+import '../../Models/reader_load_data.dart';
+import 'widget_Api/audio_surah_screen.dart';
+import 'widget_Api/reader_custom_tile.dart';
 
 class ReaderList extends StatelessWidget {
   ReaderList({Key? key}) : super(key: key);

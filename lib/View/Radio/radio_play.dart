@@ -1,13 +1,14 @@
 import 'dart:async';
 
-import 'package:audio_session/audio_session.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:just_audio_background/just_audio_background.dart';
+
 import '../../Core/constant/images.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:muslim/Core/constant/themes.dart';import '../../widgets/loading_widget.dart';
+
+import 'package:muslim/Core/constant/themes.dart';
+import '../../widgets/loading_widget.dart';
 import 'package:share_plus/share_plus.dart';
 
 class AudioPlayerController extends GetxController {
@@ -18,22 +19,11 @@ class AudioPlayerController extends GetxController {
   var countdown = 0.obs;
   late Timer timer;
 
- 
-
-  
-
   void play(String? url) async {
     if (url != null) {
       isLoading.value = true;
-      final session = await AudioSession.instance;
-      await session.configure(const AudioSessionConfiguration.speech());
-      _player.setAudioSource(AudioSource.uri(Uri.parse(url),
-          tag: MediaItem(
-            id: url,
-            title: "Radio",
-            album: "Radio",
-          )));
-      await _player.play();
+
+      await _player.play(UrlSource(url));
       isPlaying.value = true;
       isLoading.value = false;
     }

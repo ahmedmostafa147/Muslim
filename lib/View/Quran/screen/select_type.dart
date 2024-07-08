@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:muslim/Core/constant/images.dart';
-import 'package:muslim/View/Quran/screen/book/view.dart';
-import 'package:muslim/View/Quran/widget/widget_package/surah_contain.dart';
+import 'package:muslim/View/Quran/book/view.dart';
+import 'package:muslim/View/Quran/package/surah_contain.dart';
+import 'package:muslim/widgets/container_custom.dart';
 
 class SelectTypeReading extends StatelessWidget {
   const SelectTypeReading({super.key});
@@ -14,62 +16,82 @@ class SelectTypeReading extends StatelessWidget {
     final surahVerseCount = arguments['surahVerseCount'] as int;
     final surahName = arguments['surahName'] as String;
     final pageNumber = arguments['pageNumber'] as int;
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Select Type of Reading'),
-      ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            // Container for List Icon
-            InkWell(
-              onTap: () {
-                Get.to(() => const SurahContainList(), arguments: {
-                  'surahIndex': surahIndex,
-                  'surahVerseCount': surahVerseCount,
-                  'surahName': surahName
-                });
-              },
-              child: Container(
-                width: 150,
-                height: 150,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Center(
-                  child: Image(
-                    image: AssetImage(Assets.imagesSmartphone),
-                    width: 80,
-                    height: 80,
-                  ),
-                ),
-              ),
-            ),
-            // Container for Book Icon
-            InkWell(
-              onTap: () {
-                Get.to(() => QuranImagesScreen(), arguments: pageNumber);
-              },
-              child: Container(
-                width: 150,
-                height: 150,
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Center(
-                  child: Image(
-                    image: AssetImage(Assets.imagesQuranforselecte),
-                    width: 80,
-                    height: 80,
-                  ),
+
+    return CustomContainer(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("اختار وضعية القراءة المفضلة",
+              style: TextStyle(fontSize: 20.sp)),
+          SizedBox(height: 20.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              // Container for List Icon
+              InkWell(
+                onTap: () {
+                  Get.to(() => const SurahContainList(), arguments: {
+                    'surahIndex': surahIndex,
+                    'surahVerseCount': surahVerseCount,
+                    'surahName': surahName
+                  });
+                },
+                child: Column(
+                  children: [
+                    Container(
+                      width: 100.w,
+                      height: 100.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                            color: Theme.of(context).primaryColor, width: 2),
+                      ),
+                      child: Center(
+                        child: Image(
+                          image: const AssetImage(Assets.imagesSmartphone),
+                          width: 70.w,
+                          height: 70.h,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10.h),
+                    Text("قائمة", style: TextStyle(fontSize: 20.sp)),
+                  ],
                 ),
               ),
-            ),
-          ],
-        ),
+              // Container for Book Icon
+              InkWell(
+                onTap: () {
+                  Get.to(() => QuranImagesScreen(), arguments: pageNumber);
+                },
+                child: Column(
+                  children: [
+                    Container(
+                      width: 100.w,
+                      height: 100.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                            color: Theme.of(context).primaryColor, width: 2),
+                      ),
+                      child: Center(
+                        child: Image(
+                          image: const AssetImage(Assets.imagesQuranforselecte),
+                          width: 70.w,
+                          height: 70.h,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10.h),
+                    Text("المصحف", style: TextStyle(fontSize: 20.sp)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 10.h),
+        ],
       ),
     );
   }

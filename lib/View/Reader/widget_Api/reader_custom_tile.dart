@@ -1,7 +1,7 @@
 import 'package:muslim/Core/constant/themes.dart';import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../Models/reader_load_data.dart';
+import '../../../Models/reader_load_data.dart';
 
 class ReaderCustomTile extends StatefulWidget {
   const ReaderCustomTile({Key? key, required this.reader, required this.onTap})

@@ -1,16 +1,13 @@
 import 'dart:async';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:muslim/Core/constant/themes.dart';
-import '../../../../Models/reader_load_data.dart';
-import '../../../../Models/surah_sound_load_data.dart';
+import '../../../Models/reader_load_data.dart';
+import '../../../Models/surah_sound_load_data.dart';
 import 'seek_bar.dart';
-import '../../../../widgets/loading_widget.dart';
+import '../../../widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:audio_session/audio_session.dart';
-import 'package:rxdart/rxdart.dart' as rxdart;
-import 'package:just_audio_background/just_audio_background.dart';
 
 class AudioController extends GetxController {
   final _player = AudioPlayer();
@@ -48,55 +45,23 @@ class AudioController extends GetxController {
       ind = index.toString();
     }
     _initAudioPlayer(ind!, reader);
-   
   }
-
- 
 
   Future<void> _initAudioPlayer(
     String ind,
     Reader reader,
   ) async {
-    final session = await AudioSession.instance;
-    await session.configure(const AudioSessionConfiguration.speech());
-    _player.playbackEventStream.listen((event) {
-      final processingState = event.processingState;
-      if (processingState == ProcessingState.completed) {}
-      if (processingState == ProcessingState.loading) {
-        isLoading.value = true;
-      } else {
-        isLoading.value = false;
-      }
-    }, onError: (Object e, StackTrace stackTrace) {});
-
     try {
       var url =
           "https://download.quranicaudio.com/quran/${reader.relativePath}$ind.mp3";
-
-      defaultDuration =
-          (await _player.setAudioSource(AudioSource.uri(Uri.parse(url),
-              tag: MediaItem(
-                id: url,
-                album: reader.name,
-                title: list![currentIndex.value].name!,
-                genre: reader.name,
-              ))))!;
     } catch (e) {}
   }
 
-  Stream<PositionData> get positionDataStream =>
-      rxdart.Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
-        _player.positionStream,
-        _player.bufferedPositionStream,
-        _player.durationStream,
-        (position, bufferedPosition, duration) {
-          return PositionData(
-              position, bufferedPosition, duration ?? Duration.zero);
-        },
-      );
-
   void play() {
-    _player.play();
+    _player.play(
+      UrlSource(
+          "https://download.quranicaudio.com/quran/${reader.relativePath}$ind.mp3"),
+    );
     isPlaying.value = true;
   }
 
@@ -233,25 +198,6 @@ class AudioScreen extends StatelessWidget {
           const Divider(),
           SizedBox(
             height: 10.h,
-          ),
-          StreamBuilder<PositionData>(
-            stream: controller.positionDataStream,
-            builder: (context, snapshot) {
-              final positionData = snapshot.data;
-              return Material(
-                type: MaterialType.transparency,
-                child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    child: SeekBar(
-                      duration:
-                          positionData?.duration ?? controller.defaultDuration,
-                      position: positionData?.position ?? Duration.zero,
-                      bufferedPosition:
-                          positionData?.bufferedPosition ?? Duration.zero,
-                      onChanged: controller.seek,
-                    )),
-              );
-            },
           ),
           SizedBox(
             height: 10.h,
