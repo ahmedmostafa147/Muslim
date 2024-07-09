@@ -30,11 +30,14 @@ class _SeekBarState extends State<SeekBar> {
       children: [
         SliderTheme(
           data: SliderTheme.of(context).copyWith(
-            trackHeight: 5.0,
-            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
-            overlayShape: const RoundSliderOverlayShape(overlayRadius: 10.0),
+            trackHeight: 3.0,
+            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 7),
+            overlayShape: const RoundSliderOverlayShape(overlayRadius: 7),
           ),
           child: Slider(
+            thumbColor: Theme.of(context).primaryColor,
+            activeColor: Theme.of(context).primaryColor,
+            inactiveColor: Theme.of(context).dividerColor,
             min: 0.0,
             max: widget.duration.inMilliseconds.toDouble(),
             value: min(_dragValue ?? widget.position.inMilliseconds.toDouble(),
@@ -57,9 +60,19 @@ class _SeekBarState extends State<SeekBar> {
             children: [
               Text(
                 _positionText,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontFamily: TextFontType.notoNastaliqUrduFont,
+                  fontWeight: FontWeight.w300,
+                ),
               ),
               Text(
                 _durationText,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontFamily: TextFontType.notoNastaliqUrduFont,
+                  fontWeight: FontWeight.w300,
+                ),
               ),
             ],
           ),
@@ -97,12 +110,12 @@ void showSliderDialog({
       content: StreamBuilder<double>(
         stream: stream,
         builder: (context, snapshot) => SizedBox(
-          height: 100.0,
+          height: 100.0.h,
           child: Column(
             children: [
               Text('${snapshot.data?.toStringAsFixed(1)}$valueSuffix',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 24.0.sp)),
+                      fontWeight: FontWeight.bold, fontSize: 20.0.sp)),
               Slider(
                 divisions: divisions,
                 min: min,

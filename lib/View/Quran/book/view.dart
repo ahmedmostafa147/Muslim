@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:muslim/Controller/get_tafser.dart';
 import 'package:muslim/Core/constant/themes.dart';
+import 'package:muslim/Core/services/shared_perferance.dart';
 import 'package:muslim/View/Quran/book/tafser.dart';
 
 import 'package:muslim/Controller/surah_view.dart';
@@ -21,6 +22,8 @@ class QuranImagesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final numOfPage = Get.arguments as int;
+    final PreloadPageController pageController =
+        PreloadPageController(initialPage: numOfPage - 1);
 
     return Scaffold(
       body: Obx(() {
@@ -29,9 +32,13 @@ class QuranImagesScreen extends StatelessWidget {
         }
 
         return PreloadPageView.builder(
-          controller: PreloadPageController(initialPage: numOfPage - 1),
+          controller: pageController,
           itemCount: quranViewController.surahNames.length,
           preloadPagesCount: 2,
+          onPageChanged: (index) async {
+            // Save the current page number
+            await StorageService.setLastReadPage(index + 1);
+          },
           itemBuilder: (context, index) {
             final surahName = quranViewController.surahNames[index];
             final imageUrl = quranViewController.getSurahImageUrl(surahName);

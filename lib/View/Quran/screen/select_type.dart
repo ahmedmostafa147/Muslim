@@ -11,11 +11,11 @@ class SelectTypeReading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final arguments = Get.arguments as Map<String, dynamic>;
+    final arguments = Get.arguments;
     final surahIndex = arguments['surahIndex'] as int;
     final surahVerseCount = arguments['surahVerseCount'] as int;
     final surahName = arguments['surahName'] as String;
-    final pageNumber = arguments['pageNumber'] as int;
+    final pageNumber = arguments['pageNumber'];
 
     return CustomContainer(
       child: Column(
@@ -31,7 +31,7 @@ class SelectTypeReading extends StatelessWidget {
               // Container for List Icon
               InkWell(
                 onTap: () {
-                  Get.to(() => const SurahContainList(), arguments: {
+                  Get.to(() => SurahContainList(), arguments: {
                     'surahIndex': surahIndex,
                     'surahVerseCount': surahVerseCount,
                     'surahName': surahName

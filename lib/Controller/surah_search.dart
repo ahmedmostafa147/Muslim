@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:muslim/Core/services/shared_perferance.dart';
 import 'package:quran/quran.dart' as quran;
 
 class SurahController extends GetxController {
@@ -25,5 +26,33 @@ class SurahController extends GetxController {
     } else {
       filteredSurahNames.value = allSurahNames;
     }
+  }
+}
+
+
+class SurahControllerSave extends GetxController {
+  var surahNumber = 0.obs;
+  var verseNumber = 0.obs;
+  var pageNumber = 0.obs;
+
+  void setSurah(int surah) {
+    surahNumber.value = surah;
+    StorageService.setLastReadSurah(surah);
+  }
+
+  void setVerse(int verse) {
+    verseNumber.value = verse;
+    StorageService.setLastReadVerse(verse);
+  }
+
+  void setPage(int page) {
+    pageNumber.value = page;
+    StorageService.setLastReadPage(page);
+  }
+
+  Future<void> loadLastRead() async {
+    surahNumber.value = (await StorageService.getLastReadSurah()) ?? 0;
+    verseNumber.value = (await StorageService.getLastReadVerse()) ?? 0;
+    pageNumber.value = (await StorageService.getLastReadPage()) ?? 0;
   }
 }
