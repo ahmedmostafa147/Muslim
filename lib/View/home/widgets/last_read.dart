@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:muslim/Controller/surah_search.dart';
 import 'package:muslim/Core/constant/images.dart';
 import 'package:muslim/Core/constant/themes.dart';
@@ -42,9 +42,7 @@ class LastRead extends StatelessWidget {
                   if (surahController.lastReadMode.value == 'list') ...[
                     Row(
                       children: [
-                        const Text(
-                          "توقفت عند",
-                        ),
+                        const Text("توقفت عند"),
                         Text(
                           quran.getSurahNameArabic(
                               surahController.surahNumber.value),
@@ -58,7 +56,7 @@ class LastRead extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        const Text("توقفت عند الصفحة ",
+                        const Text("توقفت عند الأية ",
                             style: TextStyle(
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
@@ -73,8 +71,7 @@ class LastRead extends StatelessWidget {
                         ),
                       ],
                     )
-                  ] else if (surahController.lastReadMode.value ==
-                      'mushaf') ...[
+                  ] else if (surahController.lastReadMode.value == 'mushaf') ...[
                     Row(
                       children: [
                         const Text("توقفت عند  ",
@@ -121,12 +118,16 @@ class LastRead extends StatelessWidget {
                       if (lastMode == 'list' &&
                           lastSurahIndex > 0 &&
                           lastVerse > 0) {
-                        Get.to(() => SurahContainList(), arguments: {
-                          'surahIndex': lastSurahIndex,
-                          'surahVerseCount':
-                              quran.getVerseCount(lastSurahIndex),
-                          'surahName': quran.getSurahName(lastSurahIndex),
-                        });
+                        Get.to(
+                          () => SurahContainList(),
+                          arguments: {
+                            'surahIndex': lastSurahIndex,
+                            'surahVerseCount':
+                                quran.getVerseCount(lastSurahIndex),
+                            'surahName': quran.getSurahName(lastSurahIndex),
+                            'versenumberfromlastread': lastVerse,
+                          },
+                        );
                       } else {
                         Get.to(() => QuranImagesScreen(),
                             arguments: {'pageNumber': lastPage});

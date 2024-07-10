@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:muslim/Controller/sound_quran_package.dart';
 import 'package:muslim/Controller/surah_search.dart';
 import 'package:muslim/View/Quran/favourit_bookmark/bookmark.dart';
 import 'package:muslim/View/Quran/favourit_bookmark/fav.dart';
-import 'package:muslim/View/Quran/package/basmallah.dart';
+import 'package:muslim/View/Quran/package/audio_player.dart';
 import 'package:muslim/View/Quran/package/tafseer_package.dart';
-import 'package:quran/quran.dart' as quran;
-import 'package:muslim/View/Reader/widget_Api/seek_bar.dart';
-import 'package:muslim/widgets/container_custom.dart';
-import 'package:visibility_detector/visibility_detector.dart';
-import 'row_for_icons.dart';
-import 'stack_of_number.dart';
-import 'verse_text.dart';
+import 'package:muslim/View/Quran/package/verse_item.dart';
 
 class SurahContainList extends StatelessWidget {
   final ScrollController scrollController = ScrollController();
@@ -32,20 +25,12 @@ class SurahContainList extends StatelessWidget {
     final surahIndex = arguments['surahIndex'] as int;
     final surahVerseCount = arguments['surahVerseCount'] as int;
     final surahName = arguments['surahName'] as String;
-
+    final versenumberfromlastread = arguments;
     final quranController = Get.put(QuranicVersePlayerController());
     final surahController = Get.put(SurahControllerSave());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      surahController.setSurah(surahName);
-      surahController.setSurahIndex(surahIndex);
-      surahController.setVerse(1); // Initialize to 0 or the starting verse
-      surahController.lastReadMode.value = 'list';
-    });
-
     quranController.currentVerse.listen((verseNumber) {
       _scrollToCurrentVerse(verseNumber, context);
-      surahController.setVerse(verseNumber); // Update the last read verse
     });
 
     return Scaffold(
@@ -60,12 +45,20 @@ class SurahContainList extends StatelessWidget {
               addRepaintBoundaries: true,
               itemCount: surahVerseCount,
               itemBuilder: (context, verseIndex) {
-                return _buildVerseItem(context, surahIndex, verseIndex,
-                    surahName, surahVerseCount, quranController);
+                return VerseItem(
+                    key: keys[verseIndex],
+                    context: context,
+                    surahIndex: surahIndex,
+                    verseIndex: verseIndex,
+                    surahName: surahName,
+                    surahVerseCount: surahVerseCount,
+                    quranController: quranController,
+                    surahController: surahController,
+                    lastVisibleVerse: lastVisibleVerse);
               },
             ),
           ),
-          _buildAudioPlayer(quranController, surahController),
+          AudioPlayerWidget(quranController: quranController),
         ],
       ),
     );
@@ -96,156 +89,6 @@ class SurahContainList extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  Widget _buildVerseItem(
-      BuildContext context,
-      int surahIndex,
-      int verseIndex,
-      String surahName,
-      int surahVerseCount,
-      QuranicVersePlayerController quranController) {
-    final verseNumber = verseIndex + 1;
-    final verseText =
-        quran.getVerse(surahIndex, verseNumber, verseEndSymbol: true);
-    final verseText1 = quran.getVerseTranslation(surahIndex, verseNumber);
-    final bool isBismillahRequired =
-        surahIndex != 1 && surahIndex != 9 && verseNumber == 1;
-
-    return VisibilityDetector(
-      key: Key(verseNumber.toString()),
-      onVisibilityChanged: (VisibilityInfo info) {
-        if (info.visibleFraction > 0.0) {
-          lastVisibleVerse.value = verseNumber;
-        }
-      },
-      child: Column(
-        key: keys[verseIndex],
-        children: [
-          if (isBismillahRequired) const Basmallah(),
-          Padding(
-            padding: EdgeInsets.fromLTRB(7.w, 10.w, 7.w, 10.w),
-            child: Obx(() => Container(
-                  padding: const EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                        color: Theme.of(context).primaryColor, width: 1.5),
-                    color: quranController.currentVerse.value == verseNumber
-                        ? Colors.blue.withOpacity(0.3)
-                        : Colors.transparent,
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          StackOfNumber(surahIndex: verseNumber.toString()),
-                          RowIconVerse(
-                            verseNumber: verseNumber,
-                            surahNumber: surahIndex,
-                            verseTextForSurah: verseText,
-                            surahName: surahName,
-                            surahVerseCount: surahVerseCount,
-                            onHeadphonePressed: () {
-                              quranController.setVerse(surahIndex, verseNumber,
-                                  verseText, surahName);
-                              quranController.toggleAudioPlayerVisibility();
-                            },
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(7.w, 15.w, 7.w, 15.w),
-                        child: VerseText(
-                            verseText1: verseText1, verseText: verseText),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildAudioPlayer(QuranicVersePlayerController quranController,
-      SurahControllerSave surahController) {
-    return Obx(() {
-      if (quranController.isAudioPlayerVisible.value) {
-        return CustomContainer(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  IconButton.outlined(
-                    icon: const Icon(Icons.close),
-                    onPressed: () {
-                      quranController.toggleAudioPlayerVisibility();
-                    },
-                  ),
-                  SizedBox(height: 10.0.h),
-                  Text(
-                      'سورة ${quranController.currentSurahName.value} - الآية ${quranController.verseNumber.value}',
-                      style: TextStyle(
-                          fontSize: 15.sp, fontWeight: FontWeight.bold)),
-                ],
-              ),
-              SizedBox(height: 10.0.h),
-              Obx(() => SeekBar(
-                    duration: quranController.duration.value,
-                    position: quranController.position.value,
-                    bufferedPosition: quranController.bufferedPosition.value,
-                    onChanged: (newPosition) {
-                      quranController.seek(newPosition);
-                    },
-                  )),
-              SizedBox(height: 10.0.h),
-              if (quranController.isLoading.value)
-                const CircularProgressIndicator()
-              else
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.skip_next_sharp),
-                      onPressed: quranController.nextVerse,
-                    ),
-                    IconButton(
-                      icon: Icon(quranController.isPlaying.value
-                          ? Icons.pause
-                          : Icons.play_arrow),
-                      onPressed: quranController.isPlaying.value
-                          ? quranController.pause
-                          : quranController.play,
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.skip_previous_sharp),
-                      onPressed: quranController.previousVerse,
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.replay),
-                      onPressed: quranController.play,
-                    ),
-                    IconButton(
-                      icon: Icon(quranController.isRepeating.value
-                          ? Icons.repeat_on_sharp
-                          : Icons.repeat),
-                      onPressed: quranController.isRepeating.value
-                          ? quranController.stopRepeat
-                          : quranController.repeat,
-                    ),
-                  ],
-                ),
-            ],
-          ),
-        );
-      }
-      return Container();
-    });
   }
 
   void scrollToVerse(int surahIndex, int verseNumber) {
