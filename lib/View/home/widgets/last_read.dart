@@ -71,7 +71,8 @@ class LastRead extends StatelessWidget {
                         ),
                       ],
                     )
-                  ] else if (surahController.lastReadMode.value == 'mushaf') ...[
+                  ] else if (surahController.lastReadMode.value ==
+                      'mushaf') ...[
                     Row(
                       children: [
                         const Text("توقفت عند  ",
@@ -125,7 +126,7 @@ class LastRead extends StatelessWidget {
                             'surahVerseCount':
                                 quran.getVerseCount(lastSurahIndex),
                             'surahName': quran.getSurahName(lastSurahIndex),
-                            'versenumberfromlastread': lastVerse,
+                            'versenumberfromlastread': lastVerse - 1,
                           },
                         );
                       } else {

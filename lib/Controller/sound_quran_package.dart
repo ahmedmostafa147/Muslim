@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:quran/quran.dart' as quran;
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class QuranicVersePlayerController extends GetxController {
   final AudioPlayer _audioPlayer = AudioPlayer();
@@ -19,6 +21,16 @@ class QuranicVersePlayerController extends GetxController {
 
   QuranicVersePlayerController() {
     _setupAudioPlayer();
+  }
+
+  final ItemScrollController itemScrollController = ItemScrollController();
+
+  void scrollToActiveVerse() {
+    itemScrollController.scrollTo(
+      index: verseNumber.value - 1,
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOut,
+    );
   }
 
   void setVerse(

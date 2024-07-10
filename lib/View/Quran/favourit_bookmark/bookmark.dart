@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:muslim/Controller/bookmark_favourit_cont.dart';
 import 'package:muslim/Core/constant/themes.dart';
-
+import 'package:muslim/View/Quran/package/surah_contain.dart';
 import 'package:quran/quran.dart' as quran;
 
 class BookmarkListScreen extends StatelessWidget {
-  final Function(int surahIndex, int verseNumber) onVerseTap;
-
-  const BookmarkListScreen({super.key, required this.onVerseTap});
+  const BookmarkListScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +42,15 @@ class BookmarkListScreen extends StatelessWidget {
 
             return GestureDetector(
               onTap: () {
-                Get.back();
-                onVerseTap(surahNumber, verseNumber);
+                Get.to(
+                  () => SurahContainList(),
+                  arguments: {
+                    'surahIndex': surahNumber,
+                    'surahVerseCount': quran.getVerseCount(surahNumber),
+                    'surahName': surahName,
+                    'versenumberfromlastread': verseNumber - 1,
+                  },
+                );
               },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),

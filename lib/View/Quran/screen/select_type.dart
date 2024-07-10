@@ -34,7 +34,8 @@ class SelectTypeReading extends StatelessWidget {
                   Get.to(() => SurahContainList(), arguments: {
                     'surahIndex': surahIndex,
                     'surahVerseCount': surahVerseCount,
-                    'surahName': surahName
+                    'surahName': surahName,
+                    'versenumberfromlastread': 0
                   });
                 },
                 child: Column(

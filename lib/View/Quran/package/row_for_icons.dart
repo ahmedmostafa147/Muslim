@@ -33,7 +33,7 @@ class RowIconVerse extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
-            onPressed: onHeadphonePressed, // استدعاء الدالة بشكل صحيح هنا
+            onPressed: onHeadphonePressed, 
             icon: const Icon(Icons.headphones_outlined),
           ),
           IconButton(

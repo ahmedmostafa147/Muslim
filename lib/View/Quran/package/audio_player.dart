@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:muslim/Controller/sound_quran_package.dart';
 import 'package:muslim/View/Reader/widget_Api/seek_bar.dart';
 import 'package:muslim/widgets/container_custom.dart';
+
 class AudioPlayerWidget extends StatelessWidget {
   final QuranicVersePlayerController quranController;
 
@@ -36,13 +37,13 @@ class AudioPlayerWidget extends StatelessWidget {
               ),
               SizedBox(height: 10.0.h),
               Obx(() => SeekBar(
-                duration: quranController.duration.value,
-                position: quranController.position.value,
-                bufferedPosition: quranController.bufferedPosition.value,
-                onChanged: (newPosition) {
-                  quranController.seek(newPosition);
-                },
-              )),
+                    duration: quranController.duration.value,
+                    position: quranController.position.value,
+                    bufferedPosition: quranController.bufferedPosition.value,
+                    onChanged: (newPosition) {
+                      quranController.seek(newPosition);
+                    },
+                  )),
               SizedBox(height: 10.0.h),
               if (quranController.isLoading.value)
                 const CircularProgressIndicator()
@@ -52,19 +53,28 @@ class AudioPlayerWidget extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: const Icon(Icons.skip_next_sharp),
-                      onPressed: quranController.nextVerse,
+                      onPressed: () {
+                        quranController.nextVerse();
+                        quranController.scrollToActiveVerse();
+                      },
                     ),
                     IconButton(
                       icon: Icon(quranController.isPlaying.value
                           ? Icons.pause
                           : Icons.play_arrow),
-                      onPressed: quranController.isPlaying.value
-                          ? quranController.pause
-                          : quranController.play,
+                      onPressed: () {
+                        quranController.isPlaying.value
+                            ? quranController.pause()
+                            : quranController.play();
+                        quranController.scrollToActiveVerse();
+                      },
                     ),
                     IconButton(
                       icon: const Icon(Icons.skip_previous_sharp),
-                      onPressed: quranController.previousVerse,
+                      onPressed: () {
+                        quranController.previousVerse();
+                        quranController.scrollToActiveVerse();
+                      },
                     ),
                     IconButton(
                       icon: const Icon(Icons.replay),
