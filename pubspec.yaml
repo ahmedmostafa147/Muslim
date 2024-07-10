@@ -61,6 +61,8 @@ dependencies:
 
   scrollable_positioned_list: ^0.3.8
   
+  page_transition: any
+dev_dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter

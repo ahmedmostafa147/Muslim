@@ -22,8 +22,8 @@ class VerseItem extends StatelessWidget {
   final SurahControllerSave surahController;
   final RxInt lastVisibleVerse;
 
-  VerseItem({
-    Key? key,
+  const VerseItem({
+    super.key,
     required this.context,
     required this.surahIndex,
     required this.verseIndex,
@@ -32,7 +32,7 @@ class VerseItem extends StatelessWidget {
     required this.quranController,
     required this.surahController,
     required this.lastVisibleVerse,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

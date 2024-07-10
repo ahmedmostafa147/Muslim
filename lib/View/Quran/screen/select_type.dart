@@ -31,7 +31,7 @@ class SelectTypeReading extends StatelessWidget {
               // Container for List Icon
               InkWell(
                 onTap: () {
-                  Get.to(() => SurahContainList(), arguments: {
+                  Get.to(() => const SurahContainList(), arguments: {
                     'surahIndex': surahIndex,
                     'surahVerseCount': surahVerseCount,
                     'surahName': surahName,

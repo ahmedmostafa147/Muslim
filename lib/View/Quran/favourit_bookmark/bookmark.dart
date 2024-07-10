@@ -43,7 +43,7 @@ class BookmarkListScreen extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 Get.to(
-                  () => SurahContainList(),
+                  () => const SurahContainList(),
                   arguments: {
                     'surahIndex': surahNumber,
                     'surahVerseCount': quran.getVerseCount(surahNumber),

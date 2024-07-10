@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:muslim/Controller/sound_quran_package.dart';
@@ -11,7 +10,7 @@ import 'package:muslim/View/Quran/package/verse_item.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class SurahContainList extends StatelessWidget {
-  SurahContainList({super.key});
+  const SurahContainList({super.key});
 
   @override
   Widget build(BuildContext context) {

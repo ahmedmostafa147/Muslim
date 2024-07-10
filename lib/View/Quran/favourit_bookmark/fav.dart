@@ -41,7 +41,7 @@ class FavoriteListScreen extends StatelessWidget {
 
             return GestureDetector(
               onTap: () {
-                Get.to(() => SurahContainList(), arguments: {
+                Get.to(() => const SurahContainList(), arguments: {
                   'surahIndex': surahNumber,
                   'surahVerseCount': quran.getVerseCount(surahNumber),
                   'surahName': surahName,

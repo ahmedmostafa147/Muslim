@@ -28,7 +28,7 @@ class QuranicVersePlayerController extends GetxController {
   void scrollToActiveVerse() {
     itemScrollController.scrollTo(
       index: verseNumber.value - 1,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       curve: Curves.easeInOut,
     );
   }

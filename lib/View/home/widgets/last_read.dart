@@ -120,7 +120,7 @@ class LastRead extends StatelessWidget {
                           lastSurahIndex > 0 &&
                           lastVerse > 0) {
                         Get.to(
-                          () => SurahContainList(),
+                          () => const SurahContainList(),
                           arguments: {
                             'surahIndex': lastSurahIndex,
                             'surahVerseCount':
