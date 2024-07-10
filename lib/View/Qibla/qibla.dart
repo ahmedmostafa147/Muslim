@@ -58,7 +58,7 @@ class QiblaScreen extends StatelessWidget {
 }
 
 class QiblaCompass extends StatelessWidget {
-  const QiblaCompass({Key? key}) : super(key: key);
+  const QiblaCompass({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -110,10 +110,10 @@ class QiblaCompassWidget extends StatelessWidget {
   final double qiblaDirection;
 
   const QiblaCompassWidget({
-    Key? key,
+    super.key,
     required this.compassHeading,
     required this.qiblaDirection,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

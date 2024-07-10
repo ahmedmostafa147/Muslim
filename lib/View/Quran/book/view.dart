@@ -1,14 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:muslim/Controller/get_tafser.dart';
-import 'package:muslim/Core/constant/themes.dart';
-import 'package:muslim/Core/services/shared_perferance.dart';
-import 'package:muslim/View/Quran/book/tafser.dart';
-
+import 'package:muslim/Controller/surah_search.dart';
 import 'package:muslim/Controller/surah_view.dart';
+import 'package:muslim/Core/constant/themes.dart';
+import 'package:muslim/View/Quran/book/tafser.dart';
 import 'package:muslim/widgets/loading_widget.dart';
 import 'package:preload_page_view/preload_page_view.dart';
 
@@ -21,9 +20,10 @@ class QuranImagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final numOfPage = Get.arguments as int;
+    final int pageNumber = Get.arguments['pageNumber'];
     final PreloadPageController pageController =
-        PreloadPageController(initialPage: numOfPage - 1);
+        PreloadPageController(initialPage: pageNumber - 1);
+    final surahController = Get.put(SurahControllerSave());
 
     return Scaffold(
       body: Obx(() {
@@ -34,27 +34,29 @@ class QuranImagesScreen extends StatelessWidget {
         return PreloadPageView.builder(
           controller: pageController,
           itemCount: quranViewController.surahNames.length,
-          preloadPagesCount: 2,
-          onPageChanged: (index) async {
-            // Save the current page number
-            await StorageService.setLastReadPage(index + 1);
-          },
+          preloadPagesCount: 0,
           itemBuilder: (context, index) {
+            final currentPage = index + 1;
             final surahName = quranViewController.surahNames[index];
             final imageUrl = quranViewController.getSurahImageUrl(surahName);
+            final ayahs = quranController.getAyahsByPage(currentPage);
+            final surah = quranController.getSurahByPage(currentPage);
             if (index + 2 < quranViewController.surahNames.length) {
               quranViewController.prefetchImages(index + 1, 2);
             }
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              surahController.setSurah(surah!.name);
+              surahController.setPage(ayahs!.first.page);
+              surahController.lastReadMode.value = 'mushaf';
+            });
 
-            final ayahs = quranController.getAyahsByPage(index + 1);
-            final surah = quranController.getSurahByPage(index + 1);
             return Scaffold(
               appBar: AppBar(
                 title: const Text('القرآن'),
                 actions: [
                   IconButton(
                     onPressed: () {
-                      Get.to(() => TafseerScreen(), arguments: index + 1);
+                      Get.to(() => TafseerScreen(), arguments: currentPage);
                     },
                     icon: const Icon(Icons.book),
                   ),
@@ -104,7 +106,7 @@ class QuranImagesScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 15.h),
                     Text(
-                      '${ayahs.first.page}',
+                      '$currentPage',
                       style: TextStyle(
                         fontSize: 15.sp,
                         fontWeight: FontWeight.bold,

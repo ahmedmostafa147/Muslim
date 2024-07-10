@@ -8,7 +8,7 @@ import 'widget/prayer_column_items.dart';
 import '../../Controller/prayer_times.dart';
 import '../../Controller/location.dart';
 import '../../Core/constant/images.dart';
-import 'package:muslim/Core/constant/themes.dart';import '../../widgets/date_row_class.dart';
+import '../../widgets/date_row_class.dart';
 
 class PrayerTimesScreen extends StatelessWidget {
   final PrayerTimesController prayerTimesController =

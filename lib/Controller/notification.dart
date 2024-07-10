@@ -22,14 +22,14 @@ class NotificationController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? storedValue = prefs.getBool('isNotificationOn');
     isNotificationOn.value = storedValue ?? false;
-    print('Notification status: $isNotificationOn');
+    
   }
 
   void getAzkarStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? storedValue = prefs.getBool('isAzkarOn');
     isAzkarOn.value = storedValue ?? false;
-    print('Azkar status: $isAzkarOn');
+    
   }
 
   void toggleNotification(bool? value) async {
@@ -46,7 +46,7 @@ class NotificationController extends GetxController {
         backgroundColor: Colors.teal,
         colorText: Colors.white,
       );
-      print('Notifications enabled');
+   
     } else {
       notificationService.cancelAllNotifications();
       Get.snackbar(
@@ -56,7 +56,7 @@ class NotificationController extends GetxController {
         backgroundColor: Colors.red,
         colorText: Colors.white,
       );
-      print('Notifications disabled');
+    
     }
   }
 
@@ -64,10 +64,9 @@ class NotificationController extends GetxController {
     isAzkarOn.value = value ?? false;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isAzkarOn', isAzkarOn.value);
-    print('Azkar toggled: $isAzkarOn');
+  
     if (isAzkarOn.value) {
     } else {
-      ;
     }
   }
 
@@ -107,7 +106,7 @@ class NotificationController extends GetxController {
           body: 'حان الآن وقت صلاة $prayer',
           dateTime: prayerDateTime,
         );
-        print('Scheduled notification for $prayer at $prayerDateTime');
+
       });
     }
   }

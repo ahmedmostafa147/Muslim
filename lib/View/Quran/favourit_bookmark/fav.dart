@@ -7,6 +7,8 @@ import 'package:muslim/View/Quran/package/surah_contain.dart';
 import 'package:quran/quran.dart' as quran;
 
 class FavoriteListScreen extends StatelessWidget {
+  const FavoriteListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final favoriteController = Get.find<FavoriteController>();

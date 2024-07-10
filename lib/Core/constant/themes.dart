@@ -33,10 +33,10 @@ class ColorsStyleApp {
 }
 
 final ThemeData lightTheme = ThemeData(
-  scaffoldBackgroundColor: Color(0xFFFFFBF5), // Light beige color
-  splashColor: Color(0xFFAED9E0), // Light teal accent
-  primaryColor: Color(0xFF0F969C), // Teal color
-  colorScheme: ColorScheme.light(
+  scaffoldBackgroundColor: const Color(0xFFFFFBF5), // Light beige color
+  splashColor: const Color(0xFFAED9E0), // Light teal accent
+  primaryColor: const Color(0xFF0F969C), // Teal color
+  colorScheme: const ColorScheme.light(
     primary: Color(0xFF0F969C), // Teal color
     secondary: Color(0xFFAED9E0), // Light teal color
     surface: Colors.white, // White color
@@ -47,7 +47,7 @@ final ThemeData lightTheme = ThemeData(
     onError: Colors.white,
     brightness: Brightness.light,
   ),
-  cardTheme: CardTheme(
+  cardTheme: const CardTheme(
     color: Colors.white, // White color
     elevation: 2,
     shadowColor: Colors.black,
@@ -57,31 +57,31 @@ final ThemeData lightTheme = ThemeData(
   ),
   switchTheme: SwitchThemeData(
     thumbColor:
-        MaterialStateProperty.all<Color>(Color(0xFF0F969C)), // Teal color
+        WidgetStateProperty.all<Color>(const Color(0xFF0F969C)), // Teal color
     trackColor:
-        MaterialStateProperty.all<Color>(Color(0xFFAED9E0)), // Light teal color
+        WidgetStateProperty.all<Color>(const Color(0xFFAED9E0)), // Light teal color
     trackOutlineColor:
-        MaterialStateProperty.all<Color>(Color(0xFF0F969C)), // Teal color
+        WidgetStateProperty.all<Color>(const Color(0xFF0F969C)), // Teal color
   ),
-  iconTheme: IconThemeData(color: Color(0xFF0F969C)), // Teal color
+  iconTheme: const IconThemeData(color: Color(0xFF0F969C)), // Teal color
   iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(
       foregroundColor:
-          MaterialStateProperty.all<Color>(Color(0xFF0F969C)), // Teal color
+          WidgetStateProperty.all<Color>(const Color(0xFF0F969C)), // Teal color
     ),
   ),
   buttonTheme: ButtonThemeData(
-    buttonColor: Color(0xFF0F969C), // Teal color
+    buttonColor: const Color(0xFF0F969C), // Teal color
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
   ),
-  dividerTheme: DividerThemeData(
+  dividerTheme: const DividerThemeData(
     color: Color(0xFF0F969C), // Teal color
     thickness: 1.5,
   ),
   fontFamily: TextFontType.cairoFont,
   useMaterial3: true,
   brightness: Brightness.light,
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: Color(0xFFFFFBF5), // Light beige color
       statusBarIconBrightness: Brightness.dark,
@@ -98,7 +98,7 @@ final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primary: Color(0xFF0F969C),
     secondary: Color(0xFF0F969C),
-    surface: const Color(0xFF05161A),
+    surface: Color(0xFF05161A),
     error: Colors.red,
     onPrimary: Colors.white,
     onSecondary: Colors.white,
@@ -112,8 +112,8 @@ final ThemeData darkTheme = ThemeData(
   iconTheme: const IconThemeData(color: Colors.white),
   iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(
-      iconColor: MaterialStateProperty.all<Color>(const Color(0xFF0F969C)),
-      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.zero),
+      iconColor: WidgetStateProperty.all<Color>(const Color(0xFF0F969C)),
+      padding: WidgetStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.zero),
     ),
   ),
   fontFamily: TextFontType.cairoFont,

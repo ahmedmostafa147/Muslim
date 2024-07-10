@@ -10,7 +10,7 @@ import '../../Quran/package/stack_of_number.dart';
 import '../../../Models/reader_load_data.dart';
 import 'package:muslim/Core/constant/themes.dart';
 class AudioSurahScreen extends StatelessWidget {
-  AudioSurahScreen({Key? key, required this.reader}) : super(key: key);
+  AudioSurahScreen({super.key, required this.reader});
   final Reader reader;
 
   SurahSoundLoadData surahSoundLoadData = SurahSoundLoadData();
@@ -49,7 +49,7 @@ class AudioSurahScreen extends StatelessWidget {
               ],
             );
           }
-          return LoadingWidget();
+          return const LoadingWidget();
         },
       ),
     );

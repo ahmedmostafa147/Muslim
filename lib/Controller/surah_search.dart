@@ -29,30 +29,75 @@ class SurahController extends GetxController {
   }
 }
 
-
 class SurahControllerSave extends GetxController {
+  var surahName = ''.obs;
   var surahNumber = 0.obs;
   var verseNumber = 0.obs;
   var pageNumber = 0.obs;
+  var lastReadSurahVisible = false.obs;
+  var lastReadMode = ''.obs;
 
-  void setSurah(int surah) {
-    surahNumber.value = surah;
-    StorageService.setLastReadSurah(surah);
+  @override
+  void onInit() {
+    super.onInit();
+    loadLastRead();
+  }
+
+  void setSurah(String surah) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      surahName.value = surah;
+      StorageService.setLastReadSurah(surah);
+      updateLastReadVisibility();
+    });
+  }
+
+  void setSurahIndex(int surahIndex) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      surahNumber.value = surahIndex;
+      StorageService.setLastReadSurahIndex(surahIndex);
+      updateLastReadVisibility();
+    });
   }
 
   void setVerse(int verse) {
-    verseNumber.value = verse;
-    StorageService.setLastReadVerse(verse);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      verseNumber.value = verse;
+      StorageService.setLastReadVerse(verse);
+      StorageService.setLastReadMode('list');
+      lastReadMode.value = 'list';
+      updateLastReadVisibility();
+    });
   }
 
   void setPage(int page) {
-    pageNumber.value = page;
-    StorageService.setLastReadPage(page);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      pageNumber.value = page;
+      StorageService.setLastReadPage(page);
+      StorageService.setLastReadMode('mushaf');
+      lastReadMode.value = 'mushaf';
+      updateLastReadVisibility();
+    });
   }
 
   Future<void> loadLastRead() async {
-    surahNumber.value = (await StorageService.getLastReadSurah()) ?? 0;
+    surahName.value = (await StorageService.getLastReadSurah()) ?? '';
+    surahNumber.value = (await StorageService.getLastReadSurahIndex()) ?? 0;
     verseNumber.value = (await StorageService.getLastReadVerse()) ?? 0;
     pageNumber.value = (await StorageService.getLastReadPage()) ?? 0;
+    lastReadMode.value = (await StorageService.getLastReadMode()) ?? '';
+    updateLastReadVisibility();
+  }
+
+  void updateLastReadVisibility() {
+    lastReadSurahVisible.value = shouldShowLastRead();
+  }
+
+  bool shouldShowLastRead() {
+    return (lastReadMode.value == 'list' &&
+            surahNumber.value > 0 &&
+            verseNumber.value > 0) ||
+        (lastReadMode.value == 'mushaf' &&
+            surahNumber.value > 0 &&
+            pageNumber.value > 0);
   }
 }

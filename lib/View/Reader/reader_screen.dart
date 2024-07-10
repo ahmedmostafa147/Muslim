@@ -8,7 +8,7 @@ import 'widget_Api/audio_surah_screen.dart';
 import 'widget_Api/reader_custom_tile.dart';
 
 class ReaderList extends StatelessWidget {
-  ReaderList({Key? key}) : super(key: key);
+  ReaderList({super.key});
 
   late Future<List<Reader>> _readerListFuture;
 
@@ -23,7 +23,7 @@ class ReaderList extends StatelessWidget {
         future: _readerListFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return LoadingWidget();
+            return const LoadingWidget();
           } else if (snapshot.hasError) {
             return Center(
               child: Text('حدث خطأ أثناء تحميل البيانات: ${snapshot.error}'),

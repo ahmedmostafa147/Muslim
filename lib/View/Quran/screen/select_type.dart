@@ -63,7 +63,8 @@ class SelectTypeReading extends StatelessWidget {
               // Container for Book Icon
               InkWell(
                 onTap: () {
-                  Get.to(() => QuranImagesScreen(), arguments: pageNumber);
+                  Get.to(() => QuranImagesScreen(),
+                      arguments: {'pageNumber': pageNumber});
                 },
                 child: Column(
                   children: [

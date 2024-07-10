@@ -1,6 +1,5 @@
 // File: models/quran.dart
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 class Quran {

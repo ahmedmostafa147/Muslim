@@ -19,7 +19,8 @@ class PrayerTimesController extends GetxController {
   Timer? _timer;
   SharedPreferences? prefs;
 
-  final NotificationController notificationController = Get.put(NotificationController());
+  final NotificationController notificationController =
+      Get.put(NotificationController());
 
   @override
   void onInit() {
@@ -39,7 +40,8 @@ class PrayerTimesController extends GetxController {
     updatePrayerTimes();
   }
 
-  Future<void> fetchPrayerTimes(double latitude, double longitude, DateTime date) async {
+  Future<void> fetchPrayerTimes(
+      double latitude, double longitude, DateTime date) async {
     try {
       final response = await http.get(Uri.parse(
           'http://api.aladhan.com/v1/calendar/${date.year}/${date.month}?latitude=$latitude&longitude=$longitude&method=${calculationMethod.value}&school=${madhab.value == 'Shafi' ? '0' : '1'}'));
@@ -71,9 +73,8 @@ class PrayerTimesController extends GetxController {
       } else {
         throw Exception('Failed to load prayer times');
       }
-    } catch (e) {
-      print(e);
-    }
+      // ignore: empty_catches
+    } catch (e) {}
   }
 
   String _formatTime(String time) {
@@ -137,7 +138,8 @@ class PrayerTimesController extends GetxController {
     var cachedData = prefs!.getString('cachedPrayerTimes');
     if (cachedData != null) {
       var data = json.decode(cachedData);
-      var cacheTimestamp = DateTime.fromMillisecondsSinceEpoch(data['timestamp']);
+      var cacheTimestamp =
+          DateTime.fromMillisecondsSinceEpoch(data['timestamp']);
       var currentTime = DateTime.now();
 
       // تحميل البيانات فقط إذا كانت لم تتعدى الشهر
@@ -165,7 +167,8 @@ class PrayerTimesController extends GetxController {
 
     for (int i = 0; i < prayers.length; i++) {
       final prayerTime = DateFormat('hh:mm a').parse(prayers[i]['time']!);
-      final prayerDateTime = DateTime(now.year, now.month, now.day, prayerTime.hour, prayerTime.minute);
+      final prayerDateTime = DateTime(
+          now.year, now.month, now.day, prayerTime.hour, prayerTime.minute);
 
       if (now.isBefore(prayerDateTime)) {
         nextPrayerTime = prayerDateTime;
@@ -176,7 +179,8 @@ class PrayerTimesController extends GetxController {
 
     if (nextPrayerTime == null) {
       final fajrTime = DateFormat('hh:mm a').parse(prayerTimes.value!.fajr);
-      nextPrayerTime = DateTime(now.year, now.month, now.day + 1, fajrTime.hour, fajrTime.minute);
+      nextPrayerTime = DateTime(
+          now.year, now.month, now.day + 1, fajrTime.hour, fajrTime.minute);
       nextPrayerName = 'Fajr';
     }
 
@@ -198,7 +202,7 @@ class PrayerTimesController extends GetxController {
         final hours = remaining.inHours;
         final minutes = remaining.inMinutes.remainder(60);
         final seconds = remaining.inSeconds.remainder(60);
-        timeRemaining.value = '${hours} ساعة ${minutes} دقيقة ${seconds} ثانية';
+        timeRemaining.value = '$hours ساعة $minutes دقيقة $seconds ثانية';
       }
     });
   }
@@ -221,12 +225,12 @@ class PrayerTimesController extends GetxController {
   }
 
   void incrementDate() {
-    selectedDate.value = selectedDate.value.add(Duration(days: 1));
+    selectedDate.value = selectedDate.value.add(const Duration(days: 1));
     updatePrayerTimes();
   }
 
   void decrementDate() {
-    selectedDate.value = selectedDate.value.subtract(Duration(days: 1));
+    selectedDate.value = selectedDate.value.subtract(const Duration(days: 1));
     updatePrayerTimes();
   }
 

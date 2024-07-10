@@ -4,8 +4,10 @@ class StorageService {
   static const _bookmarksKey = 'bookmarks';
   static const _favoritesKey = 'favorites';
   static const _lastReadSurahKey = 'lastReadSurah';
+  static const _lastReadSurahIndexKey = 'lastReadSurahIndex';
   static const _lastReadPageKey = 'lastReadPage';
   static const _lastReadVerseKey = 'lastReadVerse';
+  static const _lastReadModeKey = 'lastReadMode';
 
   // Bookmark methods
   static Future<void> addBookmark(String verseKey) async {
@@ -52,14 +54,24 @@ class StorageService {
   }
 
   // Last read methods
-  static Future<void> setLastReadSurah(int surah) async {
+  static Future<void> setLastReadSurah(String surah) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(_lastReadSurahKey, surah);
+    await prefs.setString(_lastReadSurahKey, surah);
   }
 
-  static Future<int?> getLastReadSurah() async {
+  static Future<void> setLastReadSurahIndex(int surahIndex) async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getInt(_lastReadSurahKey);
+    await prefs.setInt(_lastReadSurahIndexKey, surahIndex);
+  }
+
+  static Future<String?> getLastReadSurah() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_lastReadSurahKey);
+  }
+
+  static Future<int?> getLastReadSurahIndex() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(_lastReadSurahIndexKey);
   }
 
   static Future<void> setLastReadPage(int page) async {
@@ -80,5 +92,15 @@ class StorageService {
   static Future<int?> getLastReadVerse() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getInt(_lastReadVerseKey);
+  }
+
+  static Future<void> setLastReadMode(String mode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_lastReadModeKey, mode);
+  }
+
+  static Future<String?> getLastReadMode() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_lastReadModeKey);
   }
 }
