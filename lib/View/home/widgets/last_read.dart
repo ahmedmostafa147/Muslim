@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:muslim/Controller/surah_search.dart';
 import 'package:muslim/Core/constant/images.dart';
+import 'package:muslim/Core/constant/themes.dart';
 import 'package:muslim/View/Quran/book/view.dart';
 import 'package:muslim/View/Quran/package/surah_contain.dart';
 import 'package:quran/quran.dart' as quran;
@@ -31,17 +32,83 @@ class LastRead extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("القراءه من حيث ما توقفت"),
+                  const Text(
+                    "القراءه من حيث ما توقفت",
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   if (surahController.lastReadMode.value == 'list') ...[
-                    Text(
-                        "توقفت عند سورة ${quran.getSurahNameArabic(surahController.surahNumber.value)}"),
-                    Text(
-                        "توقفت عند الآية ${surahController.verseNumber.value}"),
+                    Row(
+                      children: [
+                        const Text(
+                          "توقفت عند",
+                        ),
+                        Text(
+                          quran.getSurahNameArabic(
+                              surahController.surahNumber.value),
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Text("توقفت عند الصفحة ",
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        Text(
+                          surahController.verseNumber.value.toString(),
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      ],
+                    )
                   ] else if (surahController.lastReadMode.value ==
                       'mushaf') ...[
-                    Text("توقفت عند سورة ${surahController.surahName.value}"),
-                    Text(
-                        "توقفت عند الصفحة ${surahController.pageNumber.value}"),
+                    Row(
+                      children: [
+                        const Text("توقفت عند  ",
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        Text(
+                          (surahController.surahName.value),
+                          style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
+                              fontFamily: TextFontType.quran2Font),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Text("توقفت عند الصفحة ",
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        Text(
+                          surahController.pageNumber.value.toString(),
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                   ElevatedButton(
                     child: const Text("عرض"),

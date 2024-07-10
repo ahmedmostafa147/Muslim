@@ -34,19 +34,29 @@ class QuranImagesScreen extends StatelessWidget {
         return PreloadPageView.builder(
           controller: pageController,
           itemCount: quranViewController.surahNames.length,
-          preloadPagesCount: 0,
+          preloadPagesCount: 0, // تحميل مسبق لصفحتين قبل الصفحة الحالية وبعدها
           itemBuilder: (context, index) {
             final currentPage = index + 1;
             final surahName = quranViewController.surahNames[index];
             final imageUrl = quranViewController.getSurahImageUrl(surahName);
+
+            if (index > 0) {
+              final prevPageImageUrl = quranViewController
+                  .getSurahImageUrl(quranViewController.surahNames[index - 1]);
+              precacheImage(NetworkImage(prevPageImageUrl), context);
+            }
+            if (index + 1 < quranViewController.surahNames.length) {
+              final nextPageImageUrl = quranViewController
+                  .getSurahImageUrl(quranViewController.surahNames[index + 1]);
+              precacheImage(NetworkImage(nextPageImageUrl), context);
+            }
+
             final ayahs = quranController.getAyahsByPage(currentPage);
             final surah = quranController.getSurahByPage(currentPage);
-            if (index + 2 < quranViewController.surahNames.length) {
-              quranViewController.prefetchImages(index + 1, 2);
-            }
+
             WidgetsBinding.instance.addPostFrameCallback((_) {
               surahController.setSurah(surah!.name);
-              surahController.setPage(ayahs!.first.page);
+              surahController.setPage(currentPage);
               surahController.lastReadMode.value = 'mushaf';
             });
 
