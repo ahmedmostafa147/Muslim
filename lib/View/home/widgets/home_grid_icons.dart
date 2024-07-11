@@ -33,15 +33,15 @@ class HomeGridViewIcons extends StatelessWidget {
               const ListSurahNamePackage(),
             );
           },
-          image: Assets.imagesQuran,
-          text: 'القرآن',
+          image: Assets.imagesQuranforselecte,
+          text: 'القرآن الكريم',
         ),
         IconAndTextGridView(
             onTap: () {
               Get.to(ReaderList());
             },
             image: Assets.imagesAudioBook,
-            text: "القرآن مسموع"),
+            text: "القراء"),
         IconAndTextGridView(
           onTap: () {
             Get.to(const RadioHomeScreen());

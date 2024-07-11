@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:muslim/Core/constant/themes.dart';
+
 class IconAndTextGridView extends StatelessWidget {
   const IconAndTextGridView({
     super.key,
@@ -25,7 +26,7 @@ class IconAndTextGridView extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(10.r),
             decoration: BoxDecoration(
-              color: ColorsStyleApp.hoverLight,
+              color: Theme.of(context).primaryColor.withOpacity(0.5),
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Image.asset(

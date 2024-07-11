@@ -70,18 +70,11 @@ class ListSurahNamePackage extends StatelessWidget {
                           },
                         ),
                         const SelectTypeReading(),
-                        isScrollControlled: true,
-                        enterBottomSheetDuration:
-                            const Duration(milliseconds: 600),
-                        exitBottomSheetDuration:
-                            const Duration(milliseconds: 600),
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(20),
+                            top: Radius.circular(10),
                           ),
                         ),
-                        clipBehavior: Clip.antiAlias,
-                        enableDrag: false,
                       );
                     },
                     child: ListView(

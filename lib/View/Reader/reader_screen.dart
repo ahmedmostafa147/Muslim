@@ -18,7 +18,9 @@ class ReaderList extends StatelessWidget {
   Widget build(BuildContext context) {
     _readerListFuture = readerLoadData.getReaderList();
     return Scaffold(
-      
+      appBar: AppBar(
+        title: const Text('القراء'),
+      ),
       body: FutureBuilder<List<Reader>>(
         future: _readerListFuture,
         builder: (context, snapshot) {

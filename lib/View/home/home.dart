@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:muslim/View/home/widgets/grid_quran_screens.dart';
 import 'package:muslim/View/home/widgets/last_read.dart';
 
 import '../../routes.dart';
@@ -55,7 +56,6 @@ class Home extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.w900,
-                        color: Colors.teal,
                       ),
                     ),
                   ),
@@ -63,13 +63,8 @@ class Home extends StatelessWidget {
                 HomeLocationWidget(),
                 SizedBox(height: 10.h),
                 const LastRead(),
-                CardTextIconWidget(
-                  onTap: () {
-                    Get.toNamed(AppRoute.quran);
-                  },
-                  text: "القرآن الكريم",
-                  icon: Assets.imagesHolyQuran,
-                ),
+                SizedBox(height: 10.h),
+                const GridQuranScreens(),
                 SizedBox(height: 10.h),
                 const HomeAyaWidget(),
                 SizedBox(height: 10.h),

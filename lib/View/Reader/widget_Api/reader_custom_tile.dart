@@ -1,10 +1,12 @@
-import 'package:muslim/Core/constant/themes.dart';import 'package:flutter/material.dart';
+import 'package:muslim/Core/constant/themes.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../Models/reader_load_data.dart';
 
 class ReaderCustomTile extends StatefulWidget {
-  const ReaderCustomTile({super.key, required this.reader, required this.onTap});
+  const ReaderCustomTile(
+      {super.key, required this.reader, required this.onTap});
 
   final Reader reader;
   final VoidCallback onTap;
@@ -28,8 +30,7 @@ class _ReaderCustomTileState extends State<ReaderCustomTile> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                      color:Theme.of(context).primaryColor,
-                      width: 1.5),
+                      color: Theme.of(context).primaryColor, width: 1.5),
                 ),
                 child: Column(
                   children: [

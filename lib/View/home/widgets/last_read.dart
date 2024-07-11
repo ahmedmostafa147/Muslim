@@ -6,6 +6,7 @@ import 'package:muslim/Core/constant/images.dart';
 import 'package:muslim/Core/constant/themes.dart';
 import 'package:muslim/View/Quran/book/view.dart';
 import 'package:muslim/View/Quran/package/surah_contain.dart';
+import 'package:muslim/widgets/matreial_button.dart';
 import 'package:quran/quran.dart' as quran;
 
 class LastRead extends StatelessWidget {
@@ -23,48 +24,54 @@ class LastRead extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
             border: Border.all(
               color: Theme.of(context).primaryColor,
-              width: 3.0,
+              width: 2,
             ),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "القراءه من حيث ما توقفت",
+                  Text(
+                    "القراءة من حيث توقفت",
                     style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                   if (surahController.lastReadMode.value == 'list') ...[
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const Text("توقفت عند"),
+                        Text("توقفت عند",
+                            style: TextStyle(
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.w400,
+                            )),
+                        const SizedBox(width: 5.0),
                         Text(
                           quran.getSurahNameArabic(
                               surahController.surahNumber.value),
                           style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).primaryColor,
-                          ),
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
+                              fontFamily: TextFontType.quran2Font),
                         ),
                       ],
                     ),
                     Row(
                       children: [
-                        const Text("توقفت عند الأية ",
+                        Text("توقفت عند الأية ",
                             style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 12.0.sp,
+                              fontWeight: FontWeight.w400,
                             )),
                         Text(
                           surahController.verseNumber.value.toString(),
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 15.0.sp,
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).primaryColor,
                           ),
@@ -75,32 +82,32 @@ class LastRead extends StatelessWidget {
                       'mushaf') ...[
                     Row(
                       children: [
-                        const Text("توقفت عند  ",
+                        Text("توقفت عند  ",
                             style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.w400,
                             )),
                         Text(
                           (surahController.surahName.value),
                           style: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 12.0.sp,
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).primaryColor,
-                              fontFamily: TextFontType.quran2Font),
+                              fontFamily: TextFontType.quranFont),
                         ),
                       ],
                     ),
                     Row(
                       children: [
-                        const Text("توقفت عند الصفحة ",
+                        Text("توقفت عند الصفحة ",
                             style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.w400,
                             )),
                         Text(
                           surahController.pageNumber.value.toString(),
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 15.0.sp,
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).primaryColor,
                           ),
@@ -108,8 +115,11 @@ class LastRead extends StatelessWidget {
                       ],
                     )
                   ],
-                  ElevatedButton(
-                    child: const Text("عرض"),
+                  SizedBox(height: 10.0.h),
+                  CustomMaterialButton(
+                    buttonText: 'متابعة القراءة',
+                    color: Theme.of(context).primaryColor,
+                    height: 35.h,
                     onPressed: () {
                       final lastSurahIndex = surahController.surahNumber.value;
                       final lastVerse = surahController.verseNumber.value;

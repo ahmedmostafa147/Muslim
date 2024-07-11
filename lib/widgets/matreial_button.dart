@@ -6,19 +6,20 @@ class CustomMaterialButton extends StatelessWidget {
   final Function? onPressed;
   final Color? color;
   final IconData? fontAwesomeIcons;
+  final height;
 
   const CustomMaterialButton(
       {super.key,
       required this.buttonText,
       required this.onPressed,
       this.color,
-      this.fontAwesomeIcons});
+      this.fontAwesomeIcons,
+      this.height});
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      height: 50.h,
-      minWidth: double.infinity,
+      height: height ?? 50.h,
       color: color ?? Colors.teal,
       textColor: Colors.white,
       onPressed: onPressed as void Function()?,
