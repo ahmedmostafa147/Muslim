@@ -5,10 +5,6 @@ class Assets {
   /// assets/Images/14703159.png
   static const String images14703159 = "assets/Images/14703159.png";
 
-  /// Assets for images88802
-  /// assets/Images/888-02.png
-  static const String images88802 = "assets/Images/888-02.png";
-
   /// Assets for imagesAirplane
   /// assets/Images/airplane.png
   static const String imagesAirplane = "assets/Images/airplane.png";
@@ -169,13 +165,13 @@ class Assets {
   /// assets/Images/qiblaba.png
   static const String imagesQiblaba = "assets/Images/qiblaba.png";
 
-  /// Assets for imagesQuran
-  /// assets/Images/quran.png
-  static const String imagesQuran = "assets/Images/quran.png";
-
   /// Assets for imagesQuran1
   /// assets/Images/quran1.png
   static const String imagesQuran1 = "assets/Images/quran1.png";
+
+  /// Assets for imagesQuranBackground
+  /// assets/Images/QuranBackground.png
+  static const String imagesQuranBackground = "assets/Images/QuranBackground.png";
 
   /// Assets for imagesQuranforselecte
   /// assets/Images/quranforselecte.png

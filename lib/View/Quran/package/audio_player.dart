@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:muslim/Controller/sound_quran_package.dart';
-import 'package:muslim/View/Reader/widget_Api/seek_bar.dart';
+import 'package:muslim/View/Reader/seek_bar.dart';
 import 'package:muslim/widgets/container_custom.dart';
 
 class AudioPlayerWidget extends StatelessWidget {

@@ -5,7 +5,6 @@ import 'package:muslim/Core/constant/images.dart';
 import 'package:muslim/View/Quran/screen/surah_name_p.dart';
 import 'package:muslim/View/Radio/radio_home.dart';
 import 'package:muslim/View/Reader/RecitersListScreen.dart';
-import 'package:muslim/View/Reader/reader_screen.dart';
 import 'package:muslim/View/home/widgets/home_icon_text_for_grid.dart';
 
 class GridQuranScreens extends StatelessWidget {
@@ -53,7 +52,7 @@ class GridQuranScreens extends StatelessWidget {
               ),
               IconAndTextGridView(
                   onTap: () {
-                    Get.to(RecitersListScreen());
+                        Get.to(() => RecitersListScreen());
                   },
                   image: Assets.imagesAudioBook,
                   text: "القراء"),

@@ -10,8 +10,10 @@ import 'package:quran/quran.dart' as quran;
 
 class SurahListScreen extends StatelessWidget {
   final Moshaf moshaf;
+  final Reciter reciter;
 
-  SurahListScreen({Key? key, required this.moshaf}) : super(key: key);
+  SurahListScreen({Key? key, required this.moshaf, required this.reciter})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +40,15 @@ class SurahListScreen extends StatelessWidget {
                   number: surahId,
                   onTap: () {
                     String surahUrl = '${moshaf.server}$surahId.mp3';
-                    Get.bottomSheet(
-                      PlaySurah(surahUrl: surahUrl, surahName: surahNameArabic),
+
+                    PlaySurah(
+                      surahId: surahId,
+                      surahUrl: surahUrl,
+                      surahName: surahNameArabic,
+                      readerName: reciter.name ?? '',
+                      moshafName: moshaf.name ?? "",
+                      moshaf: moshaf,
+                      reciter: reciter,
                     );
                   },
                 );

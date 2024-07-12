@@ -50,8 +50,8 @@ class RecitersListScreen extends StatelessWidget {
                         final reciter = controller.filteredRecitersList[index];
                         if (reciter.moshaf != null &&
                             reciter.moshaf!.length == 1) {
-                          Get.to(() =>
-                              SurahListScreen(moshaf: reciter.moshaf![0]));
+                          Get.to(() => SurahListScreen(
+                              reciter: reciter, moshaf: reciter.moshaf![0]));
                         } else {
                           Get.to(() => MoshafListScreen(reciter: reciter));
                         }

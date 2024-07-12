@@ -47,7 +47,7 @@ class PrayHome extends StatelessWidget {
       'filePath': 'assets/database/ادعية نبوية.json',
     },
     {
-      'image': Assets.imagesQuran,
+      'image': Assets.imagesQuran1,
       'text': 'ادعية قرآنية',
       'filePath': 'assets/database/ادعية قرآنية.json',
     },

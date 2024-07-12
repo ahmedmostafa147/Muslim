@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:muslim/Models/api_reciters.dart';
 import 'package:muslim/View/Reader/list_surah.dart';
-
 
 class MoshafListScreen extends StatelessWidget {
   final Reciter reciter;
@@ -14,7 +12,7 @@ class MoshafListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Moshafs of ${reciter.name}'),
+        title: Text(reciter.name ?? ''),
       ),
       body: ListView.builder(
         itemCount: reciter.moshaf?.length ?? 0,
@@ -24,7 +22,7 @@ class MoshafListScreen extends StatelessWidget {
             title: Text(moshaf.name ?? ''),
             onTap: () {
               // Navigate to SurahListScreen or directly play
-              Get.to(() => SurahListScreen(moshaf: moshaf));
+              Get.to(() => SurahListScreen(moshaf: moshaf, reciter: reciter));
             },
           );
         },

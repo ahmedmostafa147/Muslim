@@ -1,4 +1,5 @@
 import 'package:muslim/View/Quran/screen/surah_name_p.dart';
+import 'package:muslim/View/Reader/RecitersListScreen.dart';
 
 import '../../salah/home_salah.dart';
 
@@ -9,7 +10,6 @@ import 'package:get/get.dart';
 import '../../Azkar/azkar_home.dart';
 import '../../Pray/pray_grid_view_home.dart';
 import '../../Qibla/qibla.dart';
-import '../../Reader/reader_screen.dart';
 import '../../Radio/radio_home.dart';
 import '../../Ramadan/ramadan.dart';
 import '../../Story/story.dart';
@@ -38,7 +38,8 @@ class HomeGridViewIcons extends StatelessWidget {
         ),
         IconAndTextGridView(
             onTap: () {
-              Get.to(ReaderList());
+                                Get.to(() => RecitersListScreen());
+
             },
             image: Assets.imagesAudioBook,
             text: "القراء"),

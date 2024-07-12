@@ -1,203 +1,168 @@
-import 'dart:async';
-
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:muslim/Controller/play_full_surah_controller.dart';
+import 'package:muslim/Core/constant/images.dart';
 import 'package:muslim/Core/constant/themes.dart';
-
-class PlaySurahController extends GetxController {
-  final AudioPlayer _player = AudioPlayer();
-  var isPlaying = false.obs;
-  var isLoading = false.obs;
-  var currentPosition = Duration.zero.obs;
-  var totalDuration = Duration.zero.obs;
-  final String surahUrl;
-  final String surahName;
-
-  var sleepDuration = 0.obs;
-  var countdown = 0.obs;
-  late Timer timer;
-
-  PlaySurahController({
-    required this.surahUrl,
-    required this.surahName,
-  });
-  @override
-  void onInit() {
-    super.onInit();
-    _setupAudioPlayer();
-  }
-
-  void _setupAudioPlayer() {
-    _player.onDurationChanged.listen((newDuration) {
-      totalDuration.value = newDuration;
-    });
-    _player.onPositionChanged.listen((newPosition) {
-      currentPosition.value = newPosition;
-    });
-    _player.onPlayerComplete.listen((event) {
-      isPlaying.value = false;
-    });
-    _player.onPlayerStateChanged.listen((state) {
-      isPlaying.value = state == PlayerState.playing;
-    });
-    _player.onLog.listen((msg) {
-      isLoading.value = false;
-      Get.snackbar("Audio Player Error", msg);
-    });
-  }
-
-  String formatSurahNumber(int number) {
-    return number.toString().padLeft(3, '0');
-  }
-
-  Future<void> play() async {
-    try {
-      isLoading.value = true;
-      final formattedSurahUrl =
-          surahUrl.replaceAllMapped(RegExp(r'/(\d+)\.mp3'), (match) {
-        final number = int.parse(match.group(1)!);
-        return '/${formatSurahNumber(number)}.mp3';
-      });
-      await _player.play(UrlSource(formattedSurahUrl));
-      isPlaying.value = true;
-      isLoading.value = false;
-    } catch (e) {
-      isLoading.value = false;
-      Get.snackbar("Error", e.toString());
-    }
-  }
-
-  Future<void> pause() async {
-    try {
-      await _player.pause();
-      isPlaying.value = false;
-    } catch (e) {
-      Get.snackbar("Error", e.toString());
-    }
-  }
-
-  Future<void> replay() async {
-    try {
-      await _player.seek(Duration.zero);
-      await play();
-    } catch (e) {
-      Get.snackbar("Error", e.toString());
-    }
-  }
-
-  Future<void> seek(Duration position) async {
-    try {
-      await _player.seek(position);
-      currentPosition.value = position;
-    } catch (e) {
-      Get.snackbar("Error", e.toString());
-    }
-  }
-
-  void sleep(int minutes) async {
-    sleepDuration.value = minutes;
-    countdown.value = minutes;
-    timer = Timer.periodic(
-      const Duration(minutes: 1),
-      (timer) {
-        countdown.value--;
-        if (countdown.value <= 0) {
-          timer.cancel();
-          pause();
-        }
-      },
-    );
-  }
-
-  void cancelSleep() {
-    countdown.value = 0;
-    timer.cancel();
-  }
-
-  @override
-  void onClose() {
-    _player.dispose();
-    super.onClose();
-  }
-}
+import 'package:muslim/Models/api_reciters.dart';
+import 'package:muslim/View/Reader/seek_bar.dart';
+import 'package:muslim/widgets/container_custom.dart';
 
 class PlaySurah extends StatelessWidget {
   final String surahUrl;
   final String surahName;
+  final String readerName;
+  final String moshafName;
+  final int surahId;
+  final Moshaf moshaf;
+  final Reciter reciter;
 
   const PlaySurah({
     super.key,
     required this.surahUrl,
     required this.surahName,
+    required this.readerName,
+    required this.moshafName,
+    required this.surahId,
+    required this.moshaf,
+    required this.reciter,
   });
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(PlaySurahController(
-      surahUrl: surahUrl,
-      surahName: surahName,
+      initialSurahUrl: surahUrl,
+      readerName: readerName,
+      moshafName: moshafName,
+      initialSurahNumber: surahId,
+      moshaf: moshaf,
+      reciter: reciter,
     ));
-    return SingleChildScrollView(
-      child: Container(
-        color: Theme.of(context).brightness == Brightness.dark
-            ? Colors.black
-            : Colors.white,
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      controller.surahName,
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("الإستماع للقرآن الكريم"),
+      ),
+      body: SingleChildScrollView(
+        child: CustomContainer(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image.asset(
+                Assets.imagesRamdan,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Obx(
+                    () => Text(
+                      controller.surahName.value,
                       style: TextStyle(
-                        fontFamily: 'QuranFont',
                         color: Theme.of(context).primaryColor,
                         fontSize: 15.sp,
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
-            const Divider(),
-            SizedBox(
-              height: 10.h,
-            ),
-            Obx(
-              () => controller.isLoading.value
-                  ? const CircularProgressIndicator()
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            if (controller.isPlaying.value) {
-                              controller.pause();
-                            } else {
-                              controller.play();
-                            }
-                          },
-                          icon: Icon(
-                            controller.isPlaying.value
-                                ? Icons.pause
-                                : Icons.play_arrow,
-                            size: 30.r,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: controller.replay,
-                          icon: const Icon(Icons.replay_outlined),
-                        ),
-                      ],
+                  ),
+                  Text(
+                    controller.readerName,
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 15.sp,
                     ),
-            ),
-          ],
+                  ),
+                  Text(
+                    controller.moshafName,
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 15.sp,
+                    ),
+                  ),
+                ],
+              ),
+              Obx(
+                () => SeekBar(
+                  duration: controller.totalDuration.value,
+                  position: controller.currentPosition.value,
+                  bufferedPosition: controller.currentPosition.value,
+                  onChanged: (newPosition) {
+                    controller.seek(newPosition);
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Obx(
+                    () => controller.isLoading.value
+                        ? const CircularProgressIndicator()
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                onPressed: controller.previousVerse,
+                                icon: const Icon(Icons.skip_previous),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  if (controller.isPlaying.value) {
+                                    controller.pause();
+                                  } else {
+                                    controller.play();
+                                  }
+                                },
+                                icon: Icon(
+                                  controller.isPlaying.value
+                                      ? Icons.pause
+                                      : Icons.play_arrow,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: controller.nextVerse,
+                                icon: const Icon(Icons.skip_next),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  if (controller.isRepeating.value) {
+                                    controller.stopRepeat();
+                                  } else {
+                                    controller.repeat();
+                                  }
+                                },
+                                icon: Icon(
+                                  controller.isRepeating.value
+                                      ? Icons.repeat_one
+                                      : Icons.repeat,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  Get.bottomSheet(const BottomSheetTimer());
+                                },
+                                icon: const Icon(Icons.timer_outlined),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  // Implement volume control here
+                                },
+                                icon: const Icon(Icons.volume_up_outlined),
+                              ),
+                              IconButton(
+                                onPressed: controller.replay,
+                                icon: const Icon(Icons.replay_outlined),
+                              ),
+                            ],
+                          ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
