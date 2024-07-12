@@ -98,7 +98,6 @@ class PlayRadio extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
             children: [
               Container(
                   height: 250.h,
@@ -107,70 +106,58 @@ class PlayRadio extends StatelessWidget {
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     image: DecorationImage(
-                      image: AssetImage(Assets.imagesRadioLogo),
+                      image: AssetImage(
+                        Assets.imagesRadioLogo,
+                      ),
                       fit: BoxFit.contain,
                     ),
                   )),
-              SizedBox(height: 10.h),
-              const Spacer(),
+              SizedBox(height: 40.h),
               Text(
                 radioName,
                 style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w800,
                 ),
               ),
-              const Spacer(),
-              Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? ColorsStyleApp.darkBackground
-                      : ColorsStyleApp.lightBackground,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                      color: Theme.of(context).primaryColor, width: 1.5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        controller.share(radioName, radioUrl);
-                      },
-                      icon: Icon(
-                        Icons.share,
-                        size: 40.r,
-                      ),
+              SizedBox(height: 40.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.share(radioName, radioUrl);
+                    },
+                    icon: const Icon(
+                      Icons.share,
                     ),
-                    Obx(() => controller.isLoading.value
-                        ? const LoadingWidget()
-                        : IconButton.outlined(
-                            onPressed: () {
-                              if (controller.isPlaying.value) {
-                                controller.stop();
-                              } else {
-                                controller.play(
-                                  radioUrl,
-                                );
-                              }
-                            },
-                            icon: Icon(
-                              controller.isPlaying.value
-                                  ? Icons.stop
-                                  : Icons.play_arrow,
-                              size: 40.r,
-                            ),
-                          )),
-                    IconButton(
-                        onPressed: () {
-                          Get.bottomSheet(const BottomSheetTimer());
-                        },
-                        icon: Icon(
-                          Icons.timer_outlined,
-                          size: 40.r,
-                        ))
-                  ],
-                ),
+                  ),
+                  Obx(() => controller.isLoading.value
+                      ? const LoadingWidget()
+                      : IconButton(
+                          onPressed: () {
+                            if (controller.isPlaying.value) {
+                              controller.stop();
+                            } else {
+                              controller.play(
+                                radioUrl,
+                              );
+                            }
+                          },
+                          icon: Icon(
+                            controller.isPlaying.value
+                                ? Icons.stop
+                                : Icons.play_arrow,
+                          ),
+                        )),
+                  IconButton(
+                      onPressed: () {
+                        Get.bottomSheet(const BottomSheetTimer());
+                      },
+                      icon: const Icon(
+                        Icons.timer_outlined,
+                      ))
+                ],
               ),
               SizedBox(height: 50.h),
             ],

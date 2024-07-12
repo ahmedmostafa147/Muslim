@@ -82,9 +82,7 @@ class AzkarHome extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(10.w),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? const Color.fromARGB(44, 212, 163, 49)
-                          : const Color.fromARGB(44, 0, 150, 135),
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(10.w),
                     ),
                     child: Image.asset(supplicationCategories[index]['image'],

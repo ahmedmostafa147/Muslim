@@ -58,8 +58,8 @@ final ThemeData lightTheme = ThemeData(
   switchTheme: SwitchThemeData(
     thumbColor:
         WidgetStateProperty.all<Color>(const Color(0xFF0F969C)), // Teal color
-    trackColor:
-        WidgetStateProperty.all<Color>(const Color(0xFFAED9E0)), // Light teal color
+    trackColor: WidgetStateProperty.all<Color>(
+        const Color(0xFFAED9E0)), // Light teal color
     trackOutlineColor:
         WidgetStateProperty.all<Color>(const Color(0xFF0F969C)), // Teal color
   ),
@@ -81,14 +81,22 @@ final ThemeData lightTheme = ThemeData(
   fontFamily: TextFontType.cairoFont,
   useMaterial3: true,
   brightness: Brightness.light,
-  appBarTheme: const AppBarTheme(
-    systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: Color(0xFFFFFBF5), // Light beige color
+  appBarTheme: AppBarTheme(
+    centerTitle: true,
+    backgroundColor: const Color(0xFFFFFBF5),
+    iconTheme: const IconThemeData(color: Color(0xFF0F969C)),
+    titleSpacing: 0.0,
+    systemOverlayStyle: const SystemUiOverlayStyle(
+      statusBarColor: Color(0xFFFFFBF5),
       statusBarIconBrightness: Brightness.dark,
     ),
-    centerTitle: true,
-    backgroundColor: Colors.transparent,
     elevation: 0,
+    titleTextStyle: TextStyle(
+      color: const Color(0xFF0F969C),
+      fontSize: 20.sp,
+      fontWeight: FontWeight.w500,
+      fontFamily: TextFontType.cairoFont,
+    ),
   ),
 );
 
@@ -120,16 +128,12 @@ final ThemeData darkTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.dark,
   appBarTheme: AppBarTheme(
-    centerTitle: false,
+    centerTitle: true,
     elevation: 0,
-    actionsIconTheme: const IconThemeData(color: Colors.white),
-    iconTheme: const IconThemeData(color: Colors.white),
-    backgroundColor: const Color(0xFF05161A),
-    foregroundColor: Colors.black,
     titleTextStyle: TextStyle(
-      color: Colors.white,
+      color: const Color(0xFF0F969C),
       fontSize: 20.sp,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w500,
       fontFamily: TextFontType.cairoFont,
     ),
   ),

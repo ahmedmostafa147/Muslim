@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../Core/constant/images.dart';
 import 'package:muslim/Core/constant/themes.dart';
+
 class RadioListUi extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
@@ -22,7 +23,6 @@ class RadioListUi extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Colors.transparent,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: Theme.of(context).primaryColor,
@@ -36,8 +36,9 @@ class RadioListUi extends StatelessWidget {
                 ImageIcon(
                   const AssetImage(Assets.imagesRadioLogo),
                   size: 30.r,
+                  color: Theme.of(context).primaryColor,
                 ),
-                const SizedBox(width: 10),
+                SizedBox(width: 10.w),
                 Flexible(
                   child: Text(
                     title,

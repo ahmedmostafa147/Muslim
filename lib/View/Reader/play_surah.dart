@@ -7,6 +7,7 @@ import 'package:muslim/Core/constant/themes.dart';
 import 'package:muslim/Models/api_reciters.dart';
 import 'package:muslim/View/Reader/seek_bar.dart';
 import 'package:muslim/widgets/container_custom.dart';
+import 'package:muslim/widgets/loading_widget.dart';
 
 class PlaySurah extends StatelessWidget {
   final String surahUrl;
@@ -43,64 +44,80 @@ class PlaySurah extends StatelessWidget {
       appBar: AppBar(
         title: const Text("الإستماع للقرآن الكريم"),
       ),
-      body: SingleChildScrollView(
-        child: CustomContainer(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      
+        children: [
+          Container(
+              height: 250.h,
+              width: double.infinity,
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                image: DecorationImage(
+                  image: AssetImage(Assets.imagesQuranBackground),
+                  fit: BoxFit.contain,
+                ),
+              )),
+          Column(
             children: [
-              Image.asset(
-                Assets.imagesRamdan,
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Obx(
-                    () => Text(
-                      controller.surahName.value,
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 15.sp,
-                      ),
-                    ),
-                  ),
-                  Text(
-                    controller.readerName,
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 15.sp,
-                    ),
-                  ),
-                  Text(
-                    controller.moshafName,
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 15.sp,
-                    ),
-                  ),
-                ],
-              ),
-              Obx(
-                () => SeekBar(
-                  duration: controller.totalDuration.value,
-                  position: controller.currentPosition.value,
-                  bufferedPosition: controller.currentPosition.value,
-                  onChanged: (newPosition) {
-                    controller.seek(newPosition);
-                  },
+              Text(
+                "الشيخ ${controller.readerName}",
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 15.sp,
+                  fontFamily: TextFontType.arefRuqaaFont,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(
-                height: 10.h,
+                height: 5.h,
+              ),
+              Text(
+                "( ${controller.moshafName} )",
+                style: TextStyle(
+                  fontSize: 12.sp,
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              Obx(
+                () => Text(
+                  "سورة ${controller.surahName.value}",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: TextFontType.quranFont,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Obx(
+                () => Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30.0.r),
+                  child: SeekBar(
+                    duration: controller.totalDuration.value,
+                    position: controller.currentPosition.value,
+                    bufferedPosition: controller.currentPosition.value,
+                    onChanged: (newPosition) {
+                      controller.seek(newPosition);
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Obx(
                     () => controller.isLoading.value
-                        ? const CircularProgressIndicator()
+                        ? const LoadingWidget()
                         : Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -163,7 +180,7 @@ class PlaySurah extends StatelessWidget {
               ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }

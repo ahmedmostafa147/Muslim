@@ -8,6 +8,7 @@ import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:share_plus/share_plus.dart';
 
 import 'package:muslim/Core/constant/themes.dart';
+
 class AzkarItem extends StatefulWidget {
   final String zekr;
   final String hint;
@@ -92,14 +93,14 @@ class _AzkarItemState extends State<AzkarItem> {
                               backgroundColor: Theme.of(context).primaryColor,
                               child: const Icon(
                                 Icons.check,
-                                color: Colors.white,
                               ),
                             )
                           else
                             CircleAvatar(
                               radius: 25.r,
-                              backgroundColor:
-                                  const Color.fromARGB(95, 213, 212, 212),
+                              backgroundColor: Theme.of(context)
+                                  .dividerColor
+                                  .withOpacity(0.2),
                               child: InkWell(
                                   onTap: () {
                                     if (currentNumber > 0) {

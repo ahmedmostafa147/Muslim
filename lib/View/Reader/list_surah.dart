@@ -40,15 +40,16 @@ class SurahListScreen extends StatelessWidget {
                   number: surahId,
                   onTap: () {
                     String surahUrl = '${moshaf.server}$surahId.mp3';
-
-                    PlaySurah(
-                      surahId: surahId,
-                      surahUrl: surahUrl,
-                      surahName: surahNameArabic,
-                      readerName: reciter.name ?? '',
-                      moshafName: moshaf.name ?? "",
-                      moshaf: moshaf,
-                      reciter: reciter,
+                    Get.to(
+                      () => PlaySurah(
+                        surahId: surahId,
+                        surahUrl: surahUrl,
+                        surahName: surahNameArabic,
+                        readerName: reciter.name ?? '',
+                        moshafName: moshaf.name ?? "",
+                        moshaf: moshaf,
+                        reciter: reciter,
+                      ),
                     );
                   },
                 );

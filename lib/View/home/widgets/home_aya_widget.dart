@@ -24,66 +24,54 @@ class HomeAyaWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     RandomVerse randomVerse = RandomVerse();
 
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Theme.of(context).primaryColor, width: 1.0),
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
       ),
-      child: Column(
-        children: [
-          Card(
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'من القرآن الكريم',
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(randomVerse.verse,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 20.sp,
-                            fontFamily: TextFontType.quran2Font)),
-                    Text(
-                      '${quran.getSurahNameArabic(randomVerse.surahNumber)}, الاية ${randomVerse.verseNumber}',
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                  ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'من القرآن الكريم',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
-            ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(randomVerse.verse,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 20.sp, fontFamily: TextFontType.quran2Font)),
+              Text(
+                '${quran.getSurahNameArabic(randomVerse.surahNumber)}, الاية ${randomVerse.verseNumber}',
+                style: TextStyle(
+                  fontSize: 10.sp,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              RowAyaCopyShareShare(
+                surahName: quran.getSurahNameArabic(randomVerse.surahNumber),
+                verseNumber: randomVerse.verseNumber.toString(),
+                verseText: randomVerse.verse,
+              ),
+            ],
           ),
-          SizedBox(
-            height: 5.h,
-          ),
-          RowAyaCopyShareShare(
-            surahName: quran.getSurahNameArabic(randomVerse.surahNumber),
-            verseNumber: randomVerse.verseNumber.toString(),
-            verseText: randomVerse.verse,
-          ),
-        ],
+        ),
       ),
     );
   }
