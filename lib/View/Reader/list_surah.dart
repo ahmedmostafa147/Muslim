@@ -1,4 +1,3 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -12,8 +11,7 @@ class SurahListScreen extends StatelessWidget {
   final Moshaf moshaf;
   final Reciter reciter;
 
-  SurahListScreen({Key? key, required this.moshaf, required this.reciter})
-      : super(key: key);
+  const SurahListScreen({super.key, required this.moshaf, required this.reciter});
 
   @override
   Widget build(BuildContext context) {

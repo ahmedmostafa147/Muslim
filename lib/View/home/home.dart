@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:muslim/View/home/widgets/grid_quran_screens.dart';
 import 'package:muslim/View/home/widgets/last_read.dart';
 
-import '../../routes.dart';
 import '../../Core/constant/images.dart';
 import '../Radio/radio_home.dart';
 import '../../widgets/card_text_icon_widget.dart';

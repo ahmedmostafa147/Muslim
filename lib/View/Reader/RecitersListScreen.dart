@@ -72,8 +72,7 @@ class ReaderCustomTile extends StatelessWidget {
   final Reciter reciter;
   final VoidCallback onTap;
 
-  const ReaderCustomTile({Key? key, required this.reciter, required this.onTap})
-      : super(key: key);
+  const ReaderCustomTile({super.key, required this.reciter, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

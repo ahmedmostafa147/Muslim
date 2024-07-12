@@ -6,7 +6,6 @@ import 'package:muslim/Core/constant/images.dart';
 import 'package:muslim/Core/constant/themes.dart';
 import 'package:muslim/Models/api_reciters.dart';
 import 'package:muslim/View/Reader/seek_bar.dart';
-import 'package:muslim/widgets/container_custom.dart';
 import 'package:muslim/widgets/loading_widget.dart';
 
 class PlaySurah extends StatelessWidget {
@@ -46,7 +45,6 @@ class PlaySurah extends StatelessWidget {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-      
         children: [
           Container(
               height: 250.h,
@@ -55,7 +53,7 @@ class PlaySurah extends StatelessWidget {
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 image: DecorationImage(
-                  image: AssetImage(Assets.imagesQuranBackground),
+                  image: AssetImage(Assets.imagesQuranforselecte),
                   fit: BoxFit.contain,
                 ),
               )),

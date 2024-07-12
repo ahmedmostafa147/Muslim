@@ -169,10 +169,6 @@ class Assets {
   /// assets/Images/quran1.png
   static const String imagesQuran1 = "assets/Images/quran1.png";
 
-  /// Assets for imagesQuranBackground
-  /// assets/Images/QuranBackground.png
-  static const String imagesQuranBackground = "assets/Images/QuranBackground.png";
-
   /// Assets for imagesQuranforselecte
   /// assets/Images/quranforselecte.png
   static const String imagesQuranforselecte = "assets/Images/quranforselecte.png";
