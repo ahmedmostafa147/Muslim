@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:muslim/View/Quran/screen/surah_name_p.dart';
 
 import '../Core/constant/images.dart';
-import '../Core/constant/themes.dart';
 import '../View/Azkar/azkar_home.dart';
 import '../View/Radio/radio_home.dart';
 import '../View/home/home.dart';

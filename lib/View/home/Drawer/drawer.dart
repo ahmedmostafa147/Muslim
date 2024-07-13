@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:muslim/View/Quran/favourit_bookmark/bookmark.dart';
+import 'package:muslim/View/Quran/favourit_bookmark/fav.dart';
 
 class DrawerScreen extends StatelessWidget {
   const DrawerScreen({super.key});
@@ -15,7 +18,9 @@ class DrawerScreen extends StatelessWidget {
             title: const Text("الانتقال إلي العلامة"),
             leading: const Icon(Icons.bookmark),
             onTap: () {
-              Navigator.pop(context);
+              Get.to(
+                () => const BookmarkListScreen(),
+              );
             },
           )),
           const Divider(),
@@ -24,67 +29,70 @@ class DrawerScreen extends StatelessWidget {
             title: const Text("المفضلة"),
             leading: const Icon(Icons.favorite),
             onTap: () {
-              Navigator.pop(context);
+              Get.to(
+                () => const FavoriteListScreen(),
+              );
             },
           )),
           const Divider(),
           DrawerRow(
             title: ListTile(
-              title: const Text("الوضع الليلي"),
+              title: const Text("تغير الوضع"),
               leading: const Icon(Icons.dark_mode),
               onTap: () {
-                Navigator.pop(context);
+                Get.changeThemeMode(
+                    Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
               },
             ),
           ),
-          const Divider(),
-          DrawerRow(
-            title: ListTile(
-              title: const Text("عن المطور"),
-              leading: const Icon(Icons.info),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          const Divider(),
-          DrawerRow(
-              title: ListTile(
-            title: const Text("تواصل معنا"),
-            leading: const Icon(Icons.contact_mail),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )),
-          const Divider(),
-          DrawerRow(
-            title: ListTile(
-              title: const Text("مشاركة التطبيق"),
-              leading: const Icon(Icons.share),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          const Divider(),
-          DrawerRow(
-            title: ListTile(
-              title: const Text("التقييم"),
-              leading: const Icon(Icons.star),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          const Divider(),
-          DrawerRow(
-              title: ListTile(
-            title: const Text("عن التطبيق"),
-            leading: const Icon(Icons.info),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ))
+          // const Divider(),
+          // DrawerRow(
+          //   title: ListTile(
+          //     title: const Text("عن المطور"),
+          //     leading: const Icon(Icons.info),
+          //     onTap: () {
+          //       Navigator.pop(context);
+          //     },
+          //   ),
+          // ),
+          // const Divider(),
+          // DrawerRow(
+          //     title: ListTile(
+          //   title: const Text("تواصل معنا"),
+          //   leading: const Icon(Icons.contact_mail),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //   },
+          // )),
+          // const Divider(),
+          // DrawerRow(
+          //   title: ListTile(
+          //     title: const Text("مشاركة التطبيق"),
+          //     leading: const Icon(Icons.share),
+          //     onTap: () {
+          //       Navigator.pop(context);
+          //     },
+          //   ),
+          // ),
+          // const Divider(),
+          // DrawerRow(
+          //   title: ListTile(
+          //     title: const Text("التقييم"),
+          //     leading: const Icon(Icons.star),
+          //     onTap: () {
+          //       Navigator.pop(context);
+          //     },
+          //   ),
+          // ),
+          // const Divider(),
+          // DrawerRow(
+          //     title: ListTile(
+          //   title: const Text("عن التطبيق"),
+          //   leading: const Icon(Icons.info),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //   },
+          // ))
         ],
       ),
     );

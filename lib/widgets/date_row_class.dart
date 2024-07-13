@@ -11,37 +11,40 @@ class DateRowClass extends StatelessWidget {
   Widget build(BuildContext context) {
     final DateController dateController = Get.put(DateController());
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Obx(
-          () => Text(
-            dateController.hijriDate.value,
-            style: TextStyle(
-              fontSize: 15.sp,
-              color: Theme.of(context).primaryColor,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Obx(
+            () => Text(
+              dateController.hijriDate.value,
+              style: TextStyle(
+                fontSize: 15.sp,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
           ),
-        ),
-        Obx(
-          () => Text(
-            dateController.formattedDate.value,
-            style: TextStyle(
-              fontSize: 15.sp,
-              color: Theme.of(context).primaryColor,
+          Obx(
+            () => Text(
+              dateController.formattedDate.value,
+              style: TextStyle(
+                fontSize: 15.sp,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
           ),
-        ),
-        Obx(
-          () => Text(
-            dateController.gregorianDate.value,
-            style: TextStyle(
-              fontSize: 15.sp,
-              color: Theme.of(context).primaryColor,
+          Obx(
+            () => Text(
+              dateController.gregorianDate.value,
+              style: TextStyle(
+                fontSize: 15.sp,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

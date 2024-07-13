@@ -10,7 +10,7 @@ import 'package:muslim/widgets/container_custom.dart';
 class MoshafListScreen extends StatelessWidget {
   final Reciter reciter;
 
-  const MoshafListScreen({Key? key, required this.reciter}) : super(key: key);
+  const MoshafListScreen({super.key, required this.reciter});
 
   @override
   Widget build(BuildContext context) {

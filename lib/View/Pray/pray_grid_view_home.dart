@@ -1,4 +1,3 @@
-import 'package:muslim/Core/constant/themes.dart';
 import '../../Core/constant/images.dart';
 
 import 'pray_details.dart';

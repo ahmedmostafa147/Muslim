@@ -11,7 +11,10 @@ Future<void> main() async {
 
   await initialServices();
 
-  initializeDateFormatting().then((_) => runApp(const Muslim()));
+  // Initialize date formatting with Arabic locale
+  await initializeDateFormatting('ar');
+
+  runApp(const Muslim());
 }
 
 class Muslim extends StatelessWidget {
@@ -22,20 +25,21 @@ class Muslim extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          return GetMaterialApp(
-            locale: const Locale('ar'),
-            theme: lightTheme,
-            darkTheme: darkTheme,
-            themeMode: ThemeMode.system,
-            title: 'Muslim',
-            routes: routes,
-            initialRoute: AppRoute.splash,
-            debugShowCheckedModeBanner: false,
-          );
-        });
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return GetMaterialApp(
+          locale: const Locale('ar'),
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: ThemeMode.system,
+          title: 'Muslim',
+          routes: routes,
+          initialRoute: AppRoute.splash,
+          debugShowCheckedModeBanner: false,
+        );
+      },
+    );
   }
 }

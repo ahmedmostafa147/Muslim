@@ -24,11 +24,14 @@ class Home extends StatelessWidget {
         title: const Text("الرئيسية"),
         actions: [
           IconButton(
-              onPressed: () {
-                Get.changeThemeMode(
-                    Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
-              },
-              icon: const Icon(Icons.dark_mode)),
+            onPressed: () {
+              Get.changeThemeMode(
+                  Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
+            },
+            icon: Get.isDarkMode
+                ? const Icon(Icons.dark_mode)
+                : const Icon(Icons.light_mode),
+          ),
           IconButton(
               onPressed: () {}, icon: const Icon(Icons.ios_share_outlined))
         ],

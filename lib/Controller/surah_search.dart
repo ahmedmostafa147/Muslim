@@ -97,7 +97,7 @@ class SurahControllerSave extends GetxController {
             surahNumber.value > 0 &&
             verseNumber.value > 0) ||
         (lastReadMode.value == 'mushaf' &&
-            surahNumber.value > 0 &&
+            surahName.value != '' &&
             pageNumber.value > 0);
   }
 }

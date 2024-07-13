@@ -9,7 +9,7 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: LoadingAnimationWidget.waveDots(
+      child: LoadingAnimationWidget.stretchedDots(
         size: 25.h,
         color: Theme.of(context).primaryColor,
       ),

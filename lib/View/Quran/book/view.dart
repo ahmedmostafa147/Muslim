@@ -54,9 +54,9 @@ class QuranImagesScreen extends StatelessWidget {
             final surah = quranController.getSurahByPage(currentPage);
 
             WidgetsBinding.instance.addPostFrameCallback((_) {
+              surahController.lastReadMode.value = 'mushaf';
               surahController.setSurah(surah!.name);
               surahController.setPage(currentPage);
-              surahController.lastReadMode.value = 'mushaf';
             });
 
             return Scaffold(
