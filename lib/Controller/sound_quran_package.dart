@@ -60,6 +60,7 @@ class QuranicVersePlayerController extends GetxController {
         _audioPlayer.resume();
       } else {
         nextVerse();
+        scrollToActiveVerse();
       }
     });
     _audioPlayer.onPlayerStateChanged.listen((state) {

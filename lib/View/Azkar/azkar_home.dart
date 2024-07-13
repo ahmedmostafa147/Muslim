@@ -78,6 +78,7 @@ class AzkarHome extends StatelessWidget {
                 );
               },
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     padding: EdgeInsets.all(10.w),

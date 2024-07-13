@@ -20,8 +20,7 @@ class CustomMaterialButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       height: height ?? 50.h,
-      color: color ?? Colors.teal,
-      textColor: Colors.white,
+      color: Theme.of(context).primaryColor,
       onPressed: onPressed as void Function()?,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),

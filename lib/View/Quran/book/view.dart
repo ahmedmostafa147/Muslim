@@ -33,7 +33,7 @@ class QuranImagesScreen extends StatelessWidget {
         return PreloadPageView.builder(
           controller: pageController,
           itemCount: quranViewController.surahNames.length,
-          preloadPagesCount: 0, // تحميل مسبق لصفحتين قبل الصفحة الحالية وبعدها
+          preloadPagesCount: 0,
           itemBuilder: (context, index) {
             final currentPage = index + 1;
             final surahName = quranViewController.surahNames[index];
@@ -106,7 +106,7 @@ class QuranImagesScreen extends StatelessWidget {
                         ),
                       ),
                       child: CachedNetworkImage(
-                        color: Colors.teal,
+                        color: Theme.of(context).primaryColor,
                         imageUrl: imageUrl,
                         placeholder: (context, url) => const LoadingWidget(),
                         errorWidget: (context, url, error) =>

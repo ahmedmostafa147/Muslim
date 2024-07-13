@@ -113,66 +113,92 @@ class PlaySurah extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Obx(
-                    () => controller.isLoading.value
-                        ? const LoadingWidget()
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              IconButton(
-                                onPressed: controller.previousVerse,
-                                icon: const Icon(Icons.skip_previous),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  if (controller.isPlaying.value) {
-                                    controller.pause();
-                                  } else {
-                                    controller.play();
-                                  }
-                                },
-                                icon: Icon(
-                                  controller.isPlaying.value
-                                      ? Icons.pause
-                                      : Icons.play_arrow,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: controller.nextVerse,
-                                icon: const Icon(Icons.skip_next),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  if (controller.isRepeating.value) {
-                                    controller.stopRepeat();
-                                  } else {
-                                    controller.repeat();
-                                  }
-                                },
-                                icon: Icon(
-                                  controller.isRepeating.value
-                                      ? Icons.repeat_one
-                                      : Icons.repeat,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  Get.bottomSheet(const BottomSheetTimer());
-                                },
-                                icon: const Icon(Icons.timer_outlined),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  // Implement volume control here
-                                },
-                                icon: const Icon(Icons.volume_up_outlined),
-                              ),
-                              IconButton(
-                                onPressed: controller.replay,
-                                icon: const Icon(Icons.replay_outlined),
-                              ),
-                            ],
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: controller.nextSurah,
+                            icon: const Icon(Icons.skip_next),
                           ),
+                          Obx(
+                            () => controller.isLoading.value
+                                ? const LoadingWidget()
+                                : IconButton(
+                                    onPressed: () {
+                                      if (controller.isPlaying.value) {
+                                        controller.pause();
+                                      } else {
+                                        controller.play();
+                                      }
+                                    },
+                                    icon: Icon(
+                                      controller.isPlaying.value
+                                          ? Icons.pause
+                                          : Icons.play_arrow,
+                                    ),
+                                  ),
+                          ),
+                          IconButton(
+                            onPressed: controller.previousSurah,
+                            icon: const Icon(Icons.skip_previous),
+                          ),
+                          IconButton(
+                            onPressed: controller.skipBackward,
+                            icon: const Icon(Icons.replay_10),
+                          ),
+                          IconButton(
+                            onPressed: controller.skipForward,
+                            icon: const Icon(Icons.forward_10),
+                          ),
+                          IconButton(
+                            onPressed: controller.replay,
+                            icon: const Icon(Icons.replay_outlined),
+                          ),
+                        ],
+                      ),
+                      Obx(
+                        () => Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                if (controller.isRepeating.value) {
+                                  controller.stopRepeat();
+                                } else {
+                                  controller.repeat();
+                                }
+                              },
+                              icon: Icon(
+                                controller.isRepeating.value
+                                    ? Icons.repeat_one
+                                    : Icons.repeat,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                if (controller.isMuted.value) {
+                                  controller.unmute();
+                                } else {
+                                  controller.mute();
+                                }
+                              },
+                              icon: Icon(
+                                controller.isMuted.value
+                                    ? Icons.volume_off
+                                    : Icons.volume_up,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                Get.bottomSheet(const BottomSheetTimer());
+                              },
+                              icon: const Icon(Icons.timer_outlined),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
                   ),
                 ],
               ),

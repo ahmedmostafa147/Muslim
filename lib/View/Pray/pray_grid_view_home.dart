@@ -47,7 +47,7 @@ class PrayHome extends StatelessWidget {
       'filePath': 'assets/database/ادعية نبوية.json',
     },
     {
-      'image': Assets.imagesQuran1,
+      'image': Assets.imagesQuranforselecte,
       'text': 'ادعية قرآنية',
       'filePath': 'assets/database/ادعية قرآنية.json',
     },
@@ -86,10 +86,9 @@ class PrayHome extends StatelessWidget {
                             Container(
                               padding: EdgeInsets.all(10.w),
                               decoration: BoxDecoration(
-                                color: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? ColorsStyleApp.hoverDark
-                                    : ColorsStyleApp.hoverLight,
+                                color: Theme.of(context)
+                                    .primaryColor
+                                    .withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(10.w),
                               ),
                               child: Image.asset(gridData[index]['image'],
@@ -161,53 +160,48 @@ class ListPray extends StatelessWidget {
       },
     ];
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Theme.of(context).primaryColor, width: 1.0),
+      appBar: AppBar(
+        title: const Text(
+          "مسائل الدعاء",
         ),
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: const BouncingScrollPhysics(),
-          addAutomaticKeepAlives: true,
-          addRepaintBoundaries: true,
-          itemBuilder: (context, index) {
-            String categoryTitle = listData[index]['text'];
-            String filePath = listData[index]['filePath'];
-            return Card(
-                elevation: 5.0,
-                child: InkWell(
-                  onTap: () {
-                    Get.to(
-                      PrayDetails(filePath: filePath),
-                    );
-                  },
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(listData[index]['image'],
-                            width: 50.r, height: 50.r),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      Text(
-                        categoryTitle,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                        ),
-                      ),
-                    ],
+      ),
+      body: ListView.builder(
+        shrinkWrap: true,
+        physics: const BouncingScrollPhysics(),
+        addAutomaticKeepAlives: true,
+        addRepaintBoundaries: true,
+        itemBuilder: (context, index) {
+          String categoryTitle = listData[index]['text'];
+          String filePath = listData[index]['filePath'];
+          return InkWell(
+            onTap: () {
+              Get.to(
+                PrayDetails(filePath: filePath),
+              );
+            },
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(listData[index]['image'],
+                      width: 50.r, height: 50.r),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Text(
+                  categoryTitle,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  style: TextStyle(
+                    fontSize: 12.sp,
                   ),
-                ));
-          },
-          itemCount: listData.length,
-        ),
+                ),
+              ],
+            ),
+          );
+        },
+        itemCount: listData.length,
       ),
     );
   }

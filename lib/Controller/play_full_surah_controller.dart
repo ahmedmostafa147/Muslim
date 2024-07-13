@@ -20,6 +20,7 @@ class PlaySurahController extends GetxController {
   var surahNumber = 0.obs;
   var sleepDuration = 0.obs;
   var countdown = 0.obs;
+  var isMuted = false.obs;
   Timer? timer;
 
   PlaySurahController({
@@ -48,8 +49,9 @@ class PlaySurahController extends GetxController {
     _player.onPositionChanged.listen((newPosition) {
       currentPosition.value = newPosition;
     });
-    _player.onPlayerComplete.listen((event) {
+    _player.onPlayerComplete.listen((event) async {
       isPlaying.value = false;
+      await nextSurah(); // تشغيل السورة التالية تلقائيًا عند الانتهاء
     });
     _player.onPlayerStateChanged.listen((state) {
       isPlaying.value = state == PlayerState.playing;
@@ -73,7 +75,7 @@ class PlaySurahController extends GetxController {
       isLoading.value = false;
     } catch (e) {
       isLoading.value = false;
-      Get.snackbar("Error", e.toString());
+      Get.snackbar("Error", "Failed to play: ${e.toString()}");
     }
   }
 
@@ -82,7 +84,25 @@ class PlaySurahController extends GetxController {
       await _player.pause();
       isPlaying.value = false;
     } catch (e) {
-      Get.snackbar("Error", e.toString());
+      Get.snackbar("Error", "Failed to pause: ${e.toString()}");
+    }
+  }
+
+  Future<void> mute() async {
+    try {
+      await _player.setVolume(0);
+      isMuted.value = true;
+    } catch (e) {
+      Get.snackbar("Error", "Failed to mute: ${e.toString()}");
+    }
+  }
+
+  Future<void> unmute() async {
+    try {
+      await _player.setVolume(1);
+      isMuted.value = false;
+    } catch (e) {
+      Get.snackbar("Error", "Failed to unmute: ${e.toString()}");
     }
   }
 
@@ -101,7 +121,7 @@ class PlaySurahController extends GetxController {
       await _player.seek(Duration.zero);
       await play();
     } catch (e) {
-      Get.snackbar("Error", e.toString());
+      Get.snackbar("Error", "Failed to replay: ${e.toString()}");
     }
   }
 
@@ -110,26 +130,49 @@ class PlaySurahController extends GetxController {
       await _player.seek(position);
       currentPosition.value = position;
     } catch (e) {
-      Get.snackbar("Error", e.toString());
+      Get.snackbar("Error", "Failed to seek: ${e.toString()}");
     }
   }
 
-  Future<void> nextVerse() async {
+  Future<void> skipForward() async {
+    try {
+      final newPosition = currentPosition.value + const Duration(seconds: 10);
+      if (newPosition < totalDuration.value) {
+        await seek(newPosition);
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Failed to skip forward: ${e.toString()}");
+    }
+  }
+
+  Future<void> skipBackward() async {
+    try {
+      final newPosition = currentPosition.value - const Duration(seconds: 10);
+      if (newPosition > Duration.zero) {
+        await seek(newPosition);
+      } else {
+        await seek(Duration.zero);
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Failed to skip backward: ${e.toString()}");
+    }
+  }
+
+  Future<void> nextSurah() async {
     try {
       isLoading.value = true;
       surahNumber.value++;
       surahName.value = quran.getSurahNameArabic(surahNumber.value);
       surahUrl.value = generateSurahUrl(surahNumber.value);
-
       await play();
       isLoading.value = false;
     } catch (e) {
       isLoading.value = false;
-      Get.snackbar("Error", e.toString());
+      Get.snackbar("Error", "Failed to play next surah: ${e.toString()}");
     }
   }
 
-  Future<void> previousVerse() async {
+  Future<void> previousSurah() async {
     try {
       isLoading.value = true;
       surahNumber.value--;
@@ -139,7 +182,7 @@ class PlaySurahController extends GetxController {
       isLoading.value = false;
     } catch (e) {
       isLoading.value = false;
-      Get.snackbar("Error", e.toString());
+      Get.snackbar("Error", "Failed to play previous surah: ${e.toString()}");
     }
   }
 

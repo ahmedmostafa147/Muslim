@@ -55,6 +55,7 @@ class Home extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.w900,
+                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                   ),

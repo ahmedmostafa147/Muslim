@@ -17,7 +17,7 @@ dependencies:
 
   intl: ^0.19.0
 
-  persistent_bottom_nav_bar: ^5.0.2
+  persistent_bottom_nav_bar: ^6.2.1
 
   loading_animation_widget: ^1.2.0+4
 
@@ -62,6 +62,9 @@ dependencies:
   scrollable_positioned_list: ^0.3.8
   
   page_transition: any
+  connectivity_plus: ^6.0.3
+
+  
 dev_dependencies:
 
   flutter_test:

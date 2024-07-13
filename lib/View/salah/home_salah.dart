@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:muslim/View/salah/notification_prayer_settings_screen.dart';
-import 'package:muslim/widgets/matreial_button.dart';
+import 'package:muslim/Controller/notification.dart';
+import 'package:muslim/Core/constant/themes.dart';
 import 'widget/prayer_column_items.dart';
 import '../../Controller/prayer_times.dart';
 import '../../Controller/location.dart';
@@ -14,7 +14,8 @@ class PrayerTimesScreen extends StatelessWidget {
   final PrayerTimesController prayerTimesController =
       Get.put(PrayerTimesController());
   final LocationController locationController = Get.put(LocationController());
-
+  final NotificationController notificationController =
+      Get.put(NotificationController());
   PrayerTimesScreen({super.key});
 
   @override
@@ -118,7 +119,8 @@ class PrayerTimesScreen extends StatelessWidget {
                             ],
                           ),
                           Image(
-                              image: const AssetImage(Assets.imagesSalahbetween),
+                              image:
+                                  const AssetImage(Assets.imagesSalahbetween),
                               width: 60.w,
                               height: 60.h),
                         ],
@@ -147,42 +149,42 @@ class PrayerTimesScreen extends StatelessWidget {
                   ),
                   BuildPrayerTimeItemColumn(
                     name: 'الفجر',
-                    imagePath: Assets.imagesIsha,
+                    imagePath: Assets.imagesFajr,
                     time: prayerTimesController.prayerTimes.value!.fajr
                         .toString(),
                     containerColor:
                         prayerTimesController.nextPrayer.value == 'Fajr'
-                            ? Colors.teal
+                            ? Theme.of(context).primaryColor
                             : Colors.transparent,
                   ),
                   BuildPrayerTimeItemColumn(
                     name: 'الظهر',
-                    imagePath: Assets.imagesIsha,
+                    imagePath: Assets.imagesDhuhr,
                     time: prayerTimesController.prayerTimes.value!.dhuhr
                         .toString(),
                     containerColor:
                         prayerTimesController.nextPrayer.value == 'Dhuhr'
-                            ? Colors.teal
+                            ? Theme.of(context).primaryColor
                             : Colors.transparent,
                   ),
                   BuildPrayerTimeItemColumn(
                     name: 'العصر',
-                    imagePath: Assets.imagesIsha,
+                    imagePath: Assets.imagesAsr,
                     time:
                         prayerTimesController.prayerTimes.value!.asr.toString(),
                     containerColor:
                         prayerTimesController.nextPrayer.value == 'Asr'
-                            ? Colors.teal
+                            ? Theme.of(context).primaryColor
                             : Colors.transparent,
                   ),
                   BuildPrayerTimeItemColumn(
                     name: 'المغرب',
-                    imagePath: Assets.imagesIsha,
+                    imagePath: Assets.imagesMaghrib,
                     time: prayerTimesController.prayerTimes.value!.maghrib
                         .toString(),
                     containerColor:
                         prayerTimesController.nextPrayer.value == 'Maghrib'
-                            ? Colors.teal
+                            ? Theme.of(context).primaryColor
                             : Colors.transparent,
                   ),
                   BuildPrayerTimeItemColumn(
@@ -192,17 +194,85 @@ class PrayerTimesScreen extends StatelessWidget {
                         .toString(),
                     containerColor:
                         prayerTimesController.nextPrayer.value == 'Isha'
-                            ? Colors.teal
+                            ? Theme.of(context).primaryColor
                             : Colors.transparent,
                   ),
                   SizedBox(height: 10.h),
-                  CustomMaterialButton(
-                    fontAwesomeIcons: Icons.settings,
-                    onPressed: () {
-                      Get.to(NotificationAndPrayerTimesSettingsScreen());
-                    },
-                    buttonText: "إعدادات الصلاة و الاشعارات ",
+                  Container(
+                    padding: EdgeInsets.all(10.r),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                          color: Theme.of(context).primaryColor, width: 1.0),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'تذكير بمواقيت الصلاة ',
+                          style: TextStyle(
+                            fontSize: 13.sp,
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: ColorsStyleApp.hoverLight,
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          child: Obx(() => Checkbox(
+                                value: notificationController
+                                    .isNotificationOn.value,
+                                onChanged:
+                                    notificationController.toggleNotification,
+                                activeColor: Theme.of(context).primaryColor,
+                              )),
+                        ),
+                      ],
+                    ),
                   ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.r),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                          color: Theme.of(context).primaryColor, width: 1.0),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'تذكير بالأذكار ',
+                          style: TextStyle(
+                            fontSize: 13.sp,
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: ColorsStyleApp.hoverLight,
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          child: Obx(() => Checkbox(
+                                value: notificationController.isAzkarOn.value,
+                                onChanged: notificationController.toggleAzkar,
+                                activeColor: Theme.of(context).primaryColor,
+                              )),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  // CustomMaterialButton(
+                  //   fontAwesomeIcons: Icons.settings,
+                  //   onPressed: () {
+                  //     Get.to(NotificationAndPrayerTimesSettingsScreen());
+                  //   },
+                  //   buttonText: "إعدادات الصلاة و الاشعارات ",
+                  // ),
                 ],
               ),
             ],

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:muslim/Controller/notification.dart';
-import 'package:muslim/Core/constant/themes.dart';import 'package:intl/intl.dart';
+import 'package:muslim/Core/constant/themes.dart';
+import 'package:intl/intl.dart';
 import 'package:muslim/Controller/prayer_times.dart';
 import 'package:muslim/Core/constant/images.dart';
 
@@ -64,7 +65,8 @@ class NotificationAndPrayerTimesSettingsScreen extends StatelessWidget {
                         child: Wrap(
                           children: [
                             ListTile(
-                              title: const Text('جامعة العلوم الإسلامية بكراتشي'),
+                              title:
+                                  const Text('جامعة العلوم الإسلامية بكراتشي'),
                               onTap: () => prayerTimesController
                                   .changeCalculationMethod('1'),
                             ),
@@ -79,12 +81,14 @@ class NotificationAndPrayerTimesSettingsScreen extends StatelessWidget {
                                   .changeCalculationMethod('3'),
                             ),
                             ListTile(
-                              title: const Text('الجمعية الإسلامية لأمريكا الشمالية'),
+                              title: const Text(
+                                  'الجمعية الإسلامية لأمريكا الشمالية'),
                               onTap: () => prayerTimesController
                                   .changeCalculationMethod('4'),
                             ),
                             ListTile(
-                              title: const Text('الهيئة المصرية العامة للمساحة'),
+                              title:
+                                  const Text('الهيئة المصرية العامة للمساحة'),
                               onTap: () => prayerTimesController
                                   .changeCalculationMethod('5'),
                             ),
@@ -247,7 +251,8 @@ class BuildPrayerTimeItemRow extends StatelessWidget {
   final String imagePath;
   final String time;
 
-  const BuildPrayerTimeItemRow({super.key, 
+  const BuildPrayerTimeItemRow({
+    super.key,
     required this.name,
     required this.imagePath,
     required this.time,
