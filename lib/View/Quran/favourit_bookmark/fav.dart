@@ -11,7 +11,9 @@ class FavoriteListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoriteController = Get.find<FavoriteController>();
+    Get.lazyPut(
+      () => FavoriteController(),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -19,7 +21,7 @@ class FavoriteListScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Obx(() {
-        final favorites = favoriteController.getFavoriteVerses();
+        final favorites = FavoriteController().getFavoriteVerses();
         if (favorites.isEmpty) {
           return const Center(child: Text("لا يوجد ايات مفضلة"));
         }
@@ -76,7 +78,7 @@ class FavoriteListScreen extends StatelessWidget {
                             Icons.delete,
                           ),
                           onPressed: () {
-                            favoriteController.toggleFavorite(verseKey);
+                            FavoriteController().toggleFavorite(verseKey);
                           },
                         ),
                       ],

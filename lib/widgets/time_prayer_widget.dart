@@ -1,4 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison
 
 import 'package:muslim/Controller/prayer_times.dart';
 import 'package:muslim/widgets/loading_widget.dart';
@@ -19,6 +18,7 @@ class PrayerTimeRow extends StatelessWidget {
       if (prayerTimesController.prayerTimes.value == null) {
         return const Center(child: LoadingWidget());
       }
+      
       return ListView(
         padding: const EdgeInsets.all(10.0),
         shrinkWrap: true,

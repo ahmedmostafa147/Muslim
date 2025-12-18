@@ -32,8 +32,8 @@ class Home extends StatelessWidget {
                 ? const Icon(Icons.dark_mode)
                 : const Icon(Icons.light_mode),
           ),
-          IconButton(
-              onPressed: () {}, icon: const Icon(Icons.ios_share_outlined))
+          // IconButton(
+          //     onPressed: () {}, icon: const Icon(Icons.ios_share_outlined))
         ],
       ),
       drawer: const DrawerScreen(),

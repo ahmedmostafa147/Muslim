@@ -36,15 +36,16 @@ class DrawerScreen extends StatelessWidget {
           )),
           const Divider(),
           DrawerRow(
-            title: ListTile(
-              title: const Text("تغير الوضع"),
-              leading: const Icon(Icons.dark_mode),
-              onTap: () {
-                Get.changeThemeMode(
-                    Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
-              },
-            ),
-          ),
+              title: ListTile(
+            title: const Text("تغير الوضع"),
+            leading: Get.isDarkMode
+                ? const Icon(Icons.dark_mode)
+                : const Icon(Icons.light_mode),
+            onTap: () {
+              Get.changeThemeMode(
+                  Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
+            },
+          )),
           // const Divider(),
           // DrawerRow(
           //   title: ListTile(

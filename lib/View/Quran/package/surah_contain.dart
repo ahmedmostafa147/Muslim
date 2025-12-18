@@ -9,6 +9,8 @@ import 'package:muslim/View/Quran/package/tafseer_package.dart';
 import 'package:muslim/View/Quran/package/verse_item.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import 'recorder.dart';
+
 class SurahContainList extends StatelessWidget {
   const SurahContainList({super.key});
 
@@ -59,6 +61,11 @@ class SurahContainList extends StatelessWidget {
                 );
               },
             ),
+          ),
+          RecordingWidget(
+            onRecordingComplete: (filePath) {
+              print("تم تسجيل الصوت وحفظه في: $filePath");
+            },
           ),
           AudioPlayerWidget(quranController: quranController),
         ],

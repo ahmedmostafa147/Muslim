@@ -4,10 +4,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:share_plus/share_plus.dart';
 
 import 'package:muslim/Core/constant/themes.dart';
+import 'package:vibration/vibration.dart';
 
 class AzkarItem extends StatefulWidget {
   final String zekr;
@@ -106,7 +106,7 @@ class _AzkarItemState extends State<AzkarItem> {
                                     if (currentNumber > 0) {
                                       setState(() {
                                         currentNumber--;
-                                        Vibrate.feedback(FeedbackType.success);
+                                         Vibration.vibrate(duration: 500);
                                       });
                                     }
                                   },

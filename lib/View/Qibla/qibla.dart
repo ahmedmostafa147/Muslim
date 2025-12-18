@@ -1,11 +1,10 @@
 import 'dart:math' as math;
 import 'package:qibla_direction/qibla_direction.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_compass/flutter_compass.dart';
+import 'package:sensors_plus/sensors_plus.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:get/get.dart';
-
+import 'package:vibration/vibration.dart';
 import '../../Controller/location.dart';
 import '../../Core/constant/images.dart';
 
@@ -65,8 +64,8 @@ class QiblaCompass extends StatelessWidget {
     return GetBuilder<QiblaController>(
       init: QiblaController(),
       builder: (controller) {
-        return StreamBuilder<CompassEvent>(
-          stream: FlutterCompass.events,
+        return StreamBuilder<GyroscopeEvent>(
+          stream: gyroscopeEvents,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Center(
@@ -80,19 +79,13 @@ class QiblaCompass extends StatelessWidget {
               );
             }
 
-            double? compassHeading = snapshot.data?.heading;
+            double compassHeading = snapshot.data?.z ?? 0.0; // استخدم زاوية الجيروسكوب
             double qiblaDirection = controller.getQiblaDirection();
 
-            // Check if compassHeading is null, indicating that the device does not support this sensor
-            if (compassHeading == null) {
-              return const Center(
-                child: Text("Device does not have sensors!"),
-              );
-            }
             // Check if the Qibla direction is within a certain threshold
             if ((qiblaDirection - compassHeading).abs() < 1) {
               // Vibrate when Qibla direction becomes correct
-              Vibrate.vibrate();
+              Vibration.vibrate(duration: 500);
             }
             return QiblaCompassWidget(
               compassHeading: compassHeading,

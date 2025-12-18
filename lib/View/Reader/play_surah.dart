@@ -145,11 +145,11 @@ class PlaySurah extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: controller.skipBackward,
-                            icon: const Icon(Icons.replay_10),
+                            icon: const Icon(Icons.forward_10),
                           ),
                           IconButton(
                             onPressed: controller.skipForward,
-                            icon: const Icon(Icons.forward_10),
+                            icon: const Icon(Icons.replay_10),
                           ),
                           IconButton(
                             onPressed: controller.replay,

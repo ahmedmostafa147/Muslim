@@ -13,7 +13,9 @@ class BookmarkListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bookmarkController = Get.find<BookmarkController>();
+    Get.lazyPut(
+      () => BookmarkController(),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -21,7 +23,7 @@ class BookmarkListScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Obx(() {
-        final bookmarks = bookmarkController.getBookmarkedVerses();
+        final bookmarks = BookmarkController().getBookmarkedVerses();
         if (bookmarks.isEmpty) {
           return const Center(child: Text('لا يوجد ايات تم حفظها'));
         }
@@ -81,7 +83,7 @@ class BookmarkListScreen extends StatelessWidget {
                             Icons.delete,
                           ),
                           onPressed: () {
-                            bookmarkController.toggleBookmark(verseKey);
+                            BookmarkController().toggleBookmark(verseKey);
                           },
                         ),
                       ],

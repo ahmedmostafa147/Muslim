@@ -11,7 +11,6 @@ Future<void> main() async {
 
   await initialServices();
 
-  // Initialize date formatting with Arabic locale
   await initializeDateFormatting('ar');
 
   runApp(const Muslim());

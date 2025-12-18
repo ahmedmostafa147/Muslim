@@ -50,6 +50,7 @@ class NotificationService {
     tz.setLocalLocation(tz.getLocation(currentTimeZone));
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       id,
       title,
       body,

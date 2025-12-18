@@ -47,7 +47,7 @@ final ThemeData lightTheme = ThemeData(
     onError: Colors.white,
     brightness: Brightness.light,
   ),
-  cardTheme: const CardTheme(
+  cardTheme: const CardThemeData(
     color: Colors.white, // White color
     elevation: 2,
     shadowColor: Colors.black,
