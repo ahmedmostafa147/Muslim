@@ -1,53 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import '../../../Controller/get_tafser.dart';
+import '../../../core/di/injection.dart';
 import '../../../Core/constant/themes.dart';
+import '../../../features/tafseer/presentation/cubit/tafseer_cubit.dart';
+import '../../../features/tafseer/presentation/cubit/tafseer_state.dart';
 
 class TafseerScreen extends StatelessWidget {
-  final QuranController quranController = Get.put(QuranController());
+  final int pageNumber;
 
-  TafseerScreen({super.key});
+  const TafseerScreen({super.key, required this.pageNumber});
 
   @override
   Widget build(BuildContext context) {
-    final pageNumber = Get.arguments as int;
+    return BlocProvider(
+      create: (_) => getIt<TafseerCubit>(),
+      child: _TafseerPageView(pageNumber: pageNumber),
+    );
+  }
+}
 
+class _TafseerPageView extends StatelessWidget {
+  final int pageNumber;
+
+  const _TafseerPageView({required this.pageNumber});
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('التفسير'),
-      ),
+      appBar: AppBar(title: const Text('التفسير')),
       body: SafeArea(
-        child: Obx(() {
-          if (quranController.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
-          }
+        child: BlocBuilder<TafseerCubit, TafseerState>(
+          builder: (context, state) {
+            if (state.status == TafseerStatus.loading) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-          final ayahs = quranController.getAyahsByPage(pageNumber);
-          final surah = quranController.getSurahByPage(pageNumber);
+            final ayahs = state.getAyahsByPage(pageNumber);
+            final surah = state.getSurahByPage(pageNumber);
 
-          if (ayahs == null || surah == null) {
-            return const Center(
-                child: Text('لم يتم العثور على بيانات لهذه الصفحة.'));
-          }
+            if (ayahs == null || surah == null) {
+              return const Center(
+                child: Text('لم يتم العثور على بيانات لهذه الصفحة.'),
+              );
+            }
 
-          return SingleChildScrollView(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (var ayah in ayahs) ...[
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(
-                        color: Theme.of(context).primaryColor,
-                        width: 1.0,
+            return SingleChildScrollView(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  for (var ayah in ayahs) ...[
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        border: Border.all(
+                          color: Theme.of(context).primaryColor,
+                          width: 1.0,
+                        ),
                       ),
-                    ),
-                    child: Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -63,8 +77,9 @@ class TafseerScreen extends StatelessWidget {
                           Text(
                             ayah.text,
                             style: TextStyle(
-                                fontSize: 20.sp,
-                                fontFamily: TextFontType.quranFont),
+                              fontSize: 20.sp,
+                              fontFamily: TextFontType.quranFont,
+                            ),
                           ),
                           SizedBox(height: 15.h),
                           Text(
@@ -76,14 +91,16 @@ class TafseerScreen extends StatelessWidget {
                               color: Theme.of(context).primaryColor,
                             ),
                           ),
-                        ]),
-                  ),
-                  SizedBox(height: 15.h),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 15.h),
+                  ],
                 ],
-              ],
-            ),
-          );
-        }),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

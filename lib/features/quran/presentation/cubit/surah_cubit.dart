@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:quran/quran.dart' as quran;
+
 import 'surah_state.dart';
 
 @injectable

@@ -35,9 +35,12 @@ import '../../features/prayer_times/presentation/cubit/prayer_times_cubit.dart'
 import '../../features/qibla/presentation/cubit/qibla_cubit.dart' as _i614;
 import '../../features/quran/presentation/cubit/last_read_cubit.dart' as _i1008;
 import '../../features/quran/presentation/cubit/surah_cubit.dart' as _i203;
+import '../../features/quran_audio/presentation/cubit/quran_audio_cubit.dart'
+    as _i406;
 import '../../features/radio/presentation/cubit/radio_player_cubit.dart'
     as _i123;
 import '../../features/reciters/presentation/cubit/reciters_cubit.dart' as _i59;
+import '../../features/tafseer/presentation/cubit/tafseer_cubit.dart' as _i999;
 import 'register_module.dart' as _i291;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -61,7 +64,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i468.FavoriteCubit>(() => _i468.FavoriteCubit());
     gh.factory<_i1008.LastReadCubit>(() => _i1008.LastReadCubit());
     gh.factory<_i203.SurahCubit>(() => _i203.SurahCubit());
+    gh.factory<_i406.QuranAudioCubit>(() => _i406.QuranAudioCubit());
     gh.factory<_i123.RadioPlayerCubit>(() => _i123.RadioPlayerCubit());
+    gh.factory<_i999.TafseerCubit>(() => _i999.TafseerCubit());
     gh.factory<_i369.NotificationCubit>(
         () => _i369.NotificationCubit(gh<_i460.SharedPreferences>()));
     gh.factory<_i59.RecitersCubit>(

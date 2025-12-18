@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../features/prayer_times/presentation/screens/prayer_times_screen.dart';
-import '../../features/home/presentation/screens/home_screen.dart';
-import '../../features/splash/presentation/screens/splash_screen.dart';
+
+import '../../View/Splash Screen/splash_screen.dart';
+import '../../View/home/home.dart';
 import '../../widgets/nav_bar_widget.dart';
 
 /// Application route paths
@@ -33,24 +32,18 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.splash,
       name: 'splash',
-      builder: (context, state) => const SplashScreenNew(),
+      builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
       path: AppRoutes.home,
       name: 'home',
-      builder: (context, state) => const HomeScreenNew(),
+      builder: (context, state) => const Home(),
     ),
     GoRoute(
       path: AppRoutes.bottomNavBar,
       name: 'main',
       builder: (context, state) => const NavBarWidget(),
     ),
-    GoRoute(
-      path: AppRoutes.prayerTimes,
-      name: 'prayer-times',
-      builder: (context, state) => const PrayerTimesScreenNew(),
-    ),
-    // TODO: Add remaining routes during feature migration
   ],
   errorBuilder: (context, state) => Scaffold(
     body: Center(

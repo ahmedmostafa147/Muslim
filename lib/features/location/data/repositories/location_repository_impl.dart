@@ -2,6 +2,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../domain/entities/location_entity.dart';
 import '../../domain/repositories/location_repository.dart';
 

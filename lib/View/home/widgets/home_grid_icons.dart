@@ -1,5 +1,6 @@
+import '../../Reader/reciters_list_screen.dart';
+
 import '../../Quran/screen/surah_name_p.dart';
-import '../../Reader/RecitersListScreen.dart';
 
 import '../../salah/home_salah.dart';
 

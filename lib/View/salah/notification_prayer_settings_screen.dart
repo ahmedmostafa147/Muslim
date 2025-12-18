@@ -1,282 +1,87 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import '../../Controller/notification.dart';
-import '../../Core/constant/themes.dart';
 import 'package:intl/intl.dart';
-import '../../Controller/prayer_times.dart';
-import '../../Core/constant/images.dart';
+import '../../core/di/injection.dart';
+import '../../Core/constant/themes.dart';
+import '../../features/notification/presentation/cubit/notification_cubit.dart';
+import '../../features/notification/presentation/cubit/notification_state.dart';
+import '../../features/prayer_times/presentation/cubit/prayer_times_cubit.dart';
+import '../../features/prayer_times/presentation/cubit/prayer_times_state.dart';
 
 class NotificationAndPrayerTimesSettingsScreen extends StatelessWidget {
-  final NotificationController notificationController =
-      Get.put(NotificationController());
-  final PrayerTimesController prayerTimesController =
-      Get.put(PrayerTimesController());
-
-  NotificationAndPrayerTimesSettingsScreen({super.key});
+  const NotificationAndPrayerTimesSettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('إعدادات الإشعارات'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<NotificationCubit>()),
+        BlocProvider(create: (_) => getIt<PrayerTimesCubit>()..init()),
+      ],
+      child: Scaffold(
+        appBar: AppBar(title: const Text('إعدادات الصلاة والإشعارات')),
+        body: ListView(
+          padding: EdgeInsets.all(16.r),
           children: [
-            Column(
-              children: [
-                // Date Picker
-                ListTile(
-                  title: const Text('اختر التاريخ'),
-                  trailing: Obx(() => Text(DateFormat('yyyy-MM-dd')
-                      .format(prayerTimesController.selectedDate.value))),
-                  onTap: () async {
-                    DateTime? pickedDate = await showDatePicker(
-                      context: context,
-                      initialDate: prayerTimesController.selectedDate.value,
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2100),
-                    );
-                    if (pickedDate != null) {
-                      prayerTimesController.changeDate(pickedDate);
-                    }
-                  },
-                ),
-                const Divider(),
-                // Calculation Method Picker
-                ListTile(
-                  title: const Text('طريقة الحساب'),
-                  trailing: Obx(() =>
-                      Text(prayerTimesController.calculationMethod.value)),
-                  onTap: () {
-                    Get.bottomSheet(
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.black,
-                          border: Border.all(
-                              color: Theme.of(context).primaryColor,
-                              width: 1.0),
-                        ),
-                        height: 250.h,
-                        width: 300.w,
-                        child: Wrap(
-                          children: [
-                            ListTile(
-                              title:
-                                  const Text('جامعة العلوم الإسلامية بكراتشي'),
-                              onTap: () => prayerTimesController
-                                  .changeCalculationMethod('1'),
-                            ),
-                            ListTile(
-                              title: const Text('رابطة العالم الإسلامي'),
-                              onTap: () => prayerTimesController
-                                  .changeCalculationMethod('2'),
-                            ),
-                            ListTile(
-                              title: const Text('جامعة أم القرى'),
-                              onTap: () => prayerTimesController
-                                  .changeCalculationMethod('3'),
-                            ),
-                            ListTile(
-                              title: const Text(
-                                  'الجمعية الإسلامية لأمريكا الشمالية'),
-                              onTap: () => prayerTimesController
-                                  .changeCalculationMethod('4'),
-                            ),
-                            ListTile(
-                              title:
-                                  const Text('الهيئة المصرية العامة للمساحة'),
-                              onTap: () => prayerTimesController
-                                  .changeCalculationMethod('5'),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                const Divider(),
-                // Madhab Picker
-                ListTile(
-                  title: const Text('المذهب'),
-                  trailing: Obx(() => Text(prayerTimesController.madhab.value)),
-                  onTap: () {
-                    Get.bottomSheet(
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.black,
-                          border: Border.all(
-                              color: Theme.of(context).primaryColor,
-                              width: 1.0),
-                        ),
-                        child: Wrap(
-                          children: [
-                            ListTile(
-                              title: const Text('شافعي'),
-                              onTap: () =>
-                                  prayerTimesController.changeMadhab('Shafi'),
-                            ),
-                            ListTile(
-                              title: const Text('حنفي'),
-                              onTap: () =>
-                                  prayerTimesController.changeMadhab('Hanafi'),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                const Divider(),
-              ],
-            ),
-            Obx(() {
-              if (prayerTimesController.prayerTimes.value == null) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              return Column(
-                children: [
-                  BuildPrayerTimeItemRow(
-                    name: 'الفجر',
-                    imagePath: Assets.imagesIsha,
-                    time: prayerTimesController.prayerTimes.value!.fajr
-                        .toString(),
-                  ),
-                  BuildPrayerTimeItemRow(
-                    name: 'الظهر',
-                    imagePath: Assets.imagesIsha,
-                    time: prayerTimesController.prayerTimes.value!.dhuhr
-                        .toString(),
-                  ),
-                  BuildPrayerTimeItemRow(
-                    name: 'العصر',
-                    imagePath: Assets.imagesIsha,
-                    time:
-                        prayerTimesController.prayerTimes.value!.asr.toString(),
-                  ),
-                  BuildPrayerTimeItemRow(
-                    name: 'المغرب',
-                    imagePath: Assets.imagesIsha,
-                    time: prayerTimesController.prayerTimes.value!.maghrib
-                        .toString(),
-                  ),
-                  BuildPrayerTimeItemRow(
-                    name: 'العشاء',
-                    imagePath: Assets.imagesIsha,
-                    time: prayerTimesController.prayerTimes.value!.isha
-                        .toString(),
-                  ),
-                ],
-              );
-            }),
-            Container(
-              padding: EdgeInsets.all(10.r),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                    color: Theme.of(context).primaryColor, width: 1.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'تذكير بمواقيت الصلاة ',
-                    style: TextStyle(
-                      fontSize: 13.sp,
+            BlocBuilder<PrayerTimesCubit, PrayerTimesState>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    ListTile(
+                      title: const Text('تاريخ الصلاة'),
+                      trailing: Text(
+                          DateFormat('yyyy-MM-dd').format(state.selectedDate)),
+                      onTap: () async {
+                        final pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: state.selectedDate,
+                          firstDate: DateTime(2020),
+                          lastDate: DateTime(2030),
+                        );
+                        if (pickedDate != null) {
+                          context
+                              .read<PrayerTimesCubit>()
+                              .changeDate(pickedDate);
+                        }
+                      },
                     ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: ColorsStyleApp.hoverLight,
-                      borderRadius: BorderRadius.circular(10.r),
+                    ListTile(
+                      title: const Text('طريقة الحساب'),
+                      trailing: Text(state.calculationMethod),
                     ),
-                    child: Obx(() => Checkbox(
-                          value: notificationController.isNotificationOn.value,
-                          onChanged: notificationController.toggleNotification,
-                          activeColor: Theme.of(context).primaryColor,
-                        )),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Container(
-              padding: EdgeInsets.all(10.r),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                    color: Theme.of(context).primaryColor, width: 1.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'تذكير بالأذكار ',
-                    style: TextStyle(
-                      fontSize: 13.sp,
+                    ListTile(
+                      title: const Text('المذهب'),
+                      trailing: Text(state.madhab),
                     ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: ColorsStyleApp.hoverLight,
-                      borderRadius: BorderRadius.circular(10.r),
+                  ],
+                );
+              },
+            ),
+            const Divider(),
+            BlocBuilder<NotificationCubit, NotificationState>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    SwitchListTile(
+                      title: const Text('تذكير بمواقيت الصلاة'),
+                      value: state.isNotificationOn,
+                      onChanged: (value) => context
+                          .read<NotificationCubit>()
+                          .toggleNotification(value),
+                      activeColor: Theme.of(context).primaryColor,
                     ),
-                    child: Obx(() => Checkbox(
-                          value: notificationController.isAzkarOn.value,
-                          onChanged: notificationController.toggleAzkar,
-                          activeColor: Theme.of(context).primaryColor,
-                        )),
-                  ),
-                ],
-              ),
+                    SwitchListTile(
+                      title: const Text('تذكير بالأذكار'),
+                      value: state.isAzkarOn,
+                      onChanged: (value) =>
+                          context.read<NotificationCubit>().toggleAzkar(value),
+                      activeColor: Theme.of(context).primaryColor,
+                    ),
+                  ],
+                );
+              },
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class BuildPrayerTimeItemRow extends StatelessWidget {
-  final String name;
-  final String imagePath;
-  final String time;
-
-  const BuildPrayerTimeItemRow({
-    super.key,
-    required this.name,
-    required this.imagePath,
-    required this.time,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Theme.of(context).primaryColor, width: 1.0),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(name, style: TextStyle(fontSize: 15.sp)),
-            Text(time,
-                style: TextStyle(
-                    fontSize: 15.sp, color: Theme.of(context).primaryColor)),
-            Image.asset(imagePath, width: 25, height: 25),
           ],
         ),
       ),

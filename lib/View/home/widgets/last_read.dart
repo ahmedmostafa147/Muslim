@@ -1,162 +1,179 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import '../../../Controller/surah_search.dart';
+import 'package:quran/quran.dart' as quran;
+import '../../../core/di/injection.dart';
 import '../../../Core/constant/images.dart';
 import '../../../Core/constant/themes.dart';
+import '../../../features/quran/presentation/cubit/last_read_cubit.dart';
+import '../../../features/quran/presentation/cubit/last_read_state.dart';
 import '../../Quran/book/view.dart';
 import '../../Quran/package/surah_contain.dart';
 import '../../../widgets/matreial_button.dart';
-import 'package:quran/quran.dart' as quran;
 
 class LastRead extends StatelessWidget {
   const LastRead({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final surahController = Get.put(SurahControllerSave());
-
-    return Obx(() {
-      if (surahController.lastReadSurahVisible.value) {
-        return Container(
-          padding: const EdgeInsets.all(10.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            border: Border.all(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "القراءة من حيث توقفت",
-                    style: TextStyle(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  if (surahController.lastReadMode.value == 'list') ...[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("توقفت عند",
-                            style: TextStyle(
-                              fontSize: 15.0.sp,
-                              fontWeight: FontWeight.w400,
-                            )),
-                        const SizedBox(width: 5.0),
-                        Text(
-                          quran.getSurahNameArabic(
-                              surahController.surahNumber.value),
-                          style: TextStyle(
-                              fontSize: 15.0.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).primaryColor,
-                              fontFamily: TextFontType.quran2Font),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text("توقفت عند الأية ",
-                            style: TextStyle(
-                              fontSize: 12.0.sp,
-                              fontWeight: FontWeight.w400,
-                            )),
-                        Text(
-                          surahController.verseNumber.value.toString(),
-                          style: TextStyle(
-                            fontSize: 15.0.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                      ],
-                    )
-                  ] else if (surahController.lastReadMode.value ==
-                      'mushaf') ...[
-                    Row(
-                      children: [
-                        Text("توقفت عند  ",
-                            style: TextStyle(
-                              fontSize: 15.0.sp,
-                              fontWeight: FontWeight.w400,
-                            )),
-                        Text(
-                          (surahController.surahName.value),
-                          style: TextStyle(
-                              fontSize: 12.0.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).primaryColor,
-                              fontFamily: TextFontType.quranFont),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text("توقفت عند الصفحة ",
-                            style: TextStyle(
-                              fontSize: 15.0.sp,
-                              fontWeight: FontWeight.w400,
-                            )),
-                        Text(
-                          surahController.pageNumber.value.toString(),
-                          style: TextStyle(
-                            fontSize: 15.0.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                  SizedBox(height: 10.0.h),
-                  CustomMaterialButton(
-                    buttonText: 'متابعة القراءة',
-                    color: Theme.of(context).primaryColor,
-                    height: 35.h,
-                    onPressed: () {
-                      final lastSurahIndex = surahController.surahNumber.value;
-                      final lastVerse = surahController.verseNumber.value;
-                      final lastPage = surahController.pageNumber.value;
-                      final lastMode = surahController.lastReadMode.value;
-
-                      if (lastMode == 'list' &&
-                          lastSurahIndex > 0 &&
-                          lastVerse > 0) {
-                        Get.to(
-                          () => const SurahContainList(),
-                          arguments: {
-                            'surahIndex': lastSurahIndex,
-                            'surahVerseCount':
-                                quran.getVerseCount(lastSurahIndex),
-                            'surahName': quran.getSurahName(lastSurahIndex),
-                            'versenumberfromlastread': lastVerse - 1,
-                          },
-                        );
-                      } else {
-                        Get.to(() => QuranImagesScreen(),
-                            arguments: {'pageNumber': lastPage});
-                      }
-                    },
-                  ),
-                ],
+    return BlocProvider(
+      create: (_) => getIt<LastReadCubit>(),
+      child: BlocBuilder<LastReadCubit, LastReadState>(
+        builder: (context, state) {
+          if (!state.isVisible) {
+            return const SizedBox.shrink();
+          }
+          return Container(
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              border: Border.all(
+                color: Theme.of(context).primaryColor,
+                width: 2,
               ),
-              const SizedBox(
-                  width: 10.0), // Add spacing between column and image
-              Image.asset(Assets.imagesRadioLogo, width: 80.w, height: 80.h),
-            ],
-          ),
-        );
-      } else {
-        return const SizedBox
-            .shrink(); // Return an empty widget if condition is not met
-      }
-    });
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "القراءة من حيث توقفت",
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    if (state.lastReadMode == 'list') ...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            "توقفت عند",
+                            style: TextStyle(
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          const SizedBox(width: 5.0),
+                          Text(
+                            quran.getSurahNameArabic(state.surahNumber),
+                            style: TextStyle(
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
+                              fontFamily: TextFontType.quran2Font,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "توقفت عند الأية ",
+                            style: TextStyle(
+                              fontSize: 12.0.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text(
+                            state.verseNumber.toString(),
+                            style: TextStyle(
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ],
+                      )
+                    ] else if (state.lastReadMode == 'mushaf') ...[
+                      Row(
+                        children: [
+                          Text(
+                            "توقفت عند  ",
+                            style: TextStyle(
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text(
+                            state.surahName,
+                            style: TextStyle(
+                              fontSize: 12.0.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
+                              fontFamily: TextFontType.quranFont,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "توقفت عند الصفحة ",
+                            style: TextStyle(
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text(
+                            state.pageNumber.toString(),
+                            style: TextStyle(
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                    SizedBox(height: 10.0.h),
+                    CustomMaterialButton(
+                      buttonText: 'متابعة القراءة',
+                      color: Theme.of(context).primaryColor,
+                      height: 35.h,
+                      onPressed: () {
+                        if (state.lastReadMode == 'list' &&
+                            state.surahNumber > 0 &&
+                            state.verseNumber > 0) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const SurahContainList(),
+                              settings: RouteSettings(arguments: {
+                                'surahIndex': state.surahNumber,
+                                'surahVerseCount':
+                                    quran.getVerseCount(state.surahNumber),
+                                'surahName':
+                                    quran.getSurahName(state.surahNumber),
+                                'versenumberfromlastread':
+                                    state.verseNumber - 1,
+                              }),
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => QuranImagesScreen(),
+                              settings: RouteSettings(arguments: {
+                                'pageNumber': state.pageNumber,
+                              }),
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 10.0),
+                Image.asset(Assets.imagesRadioLogo, width: 80.w, height: 80.h),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }

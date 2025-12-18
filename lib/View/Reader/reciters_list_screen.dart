@@ -1,32 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import '../../Controller/reciters_controller.dart';
+import '../../core/di/injection.dart';
+import '../../features/reciters/presentation/cubit/reciters_cubit.dart';
+import '../../features/reciters/presentation/cubit/reciters_state.dart';
 import '../../Models/api_reciters.dart';
+import '../../widgets/loading_widget.dart';
 import 'list_surah.dart';
 import 'type_mushaf.dart';
-import '../../widgets/loading_widget.dart';
 
 class RecitersListScreen extends StatelessWidget {
-  final RecitersController controller = Get.put(RecitersController());
+  const RecitersListScreen({super.key});
 
-  RecitersListScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => getIt<RecitersCubit>(),
+      child: const _RecitersListView(),
+    );
+  }
+}
+
+class _RecitersListView extends StatefulWidget {
+  const _RecitersListView();
+
+  @override
+  State<_RecitersListView> createState() => _RecitersListViewState();
+}
+
+class _RecitersListViewState extends State<_RecitersListView> {
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('القراء'),
-      ),
+      appBar: AppBar(title: const Text('القراء')),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
-              onChanged: (value) {
-                controller.searchQuery.value = value;
-                controller.filterReciters(value);
-              },
+              controller: _searchController,
+              onChanged: (value) =>
+                  context.read<RecitersCubit>().filterReciters(value),
               decoration: InputDecoration(
                 hintText: 'ابحث عن القارئ',
                 prefixIcon: const Icon(Icons.search),
@@ -37,30 +59,45 @@ class RecitersListScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Obx(() {
-              if (controller.isLoading.value) {
-                return const Center(child: LoadingWidget());
-              } else {
+            child: BlocBuilder<RecitersCubit, RecitersState>(
+              builder: (context, state) {
+                if (state.status == RecitersStatus.loading) {
+                  return const Center(child: LoadingWidget());
+                }
+
                 return ListView.builder(
-                  itemCount: controller.filteredRecitersList.length,
+                  itemCount: state.filteredRecitersList.length,
                   itemBuilder: (context, index) {
+                    final reciter = state.filteredRecitersList[index];
                     return ReaderCustomTile(
-                      reciter: controller.filteredRecitersList[index],
+                      reciter: reciter,
                       onTap: () {
-                        final reciter = controller.filteredRecitersList[index];
                         if (reciter.moshaf != null &&
                             reciter.moshaf!.length == 1) {
-                          Get.to(() => SurahListScreen(
-                              reciter: reciter, moshaf: reciter.moshaf![0]));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => SurahListScreen(
+                                reciter: reciter,
+                                moshaf: reciter.moshaf![0],
+                              ),
+                            ),
+                          );
                         } else {
-                          Get.to(() => MoshafListScreen(reciter: reciter));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  MoshafListScreen(reciter: reciter),
+                            ),
+                          );
                         }
                       },
                     );
                   },
                 );
-              }
-            }),
+              },
+            ),
           ),
         ],
       ),
@@ -72,7 +109,8 @@ class ReaderCustomTile extends StatelessWidget {
   final Reciter reciter;
   final VoidCallback onTap;
 
-  const ReaderCustomTile({super.key, required this.reciter, required this.onTap});
+  const ReaderCustomTile(
+      {super.key, required this.reciter, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

@@ -1,37 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:visibility_detector/visibility_detector.dart';
-
-import '../../../Controller/sound_quran_package.dart';
-import '../../../Controller/surah_search.dart';
+import '../../../features/quran/presentation/cubit/last_read_cubit.dart';
+import '../../../features/quran_audio/presentation/cubit/quran_audio_cubit.dart';
+import '../../../features/quran_audio/presentation/cubit/quran_audio_state.dart';
 import 'basmallah.dart';
-
 import 'row_for_icons.dart';
 import 'stack_of_number.dart';
 import 'verse_text.dart';
 
 class VerseItem extends StatelessWidget {
-  final BuildContext context;
   final int surahIndex;
   final int verseIndex;
   final String surahName;
   final int surahVerseCount;
-  final QuranicVersePlayerController quranController;
-  final SurahControllerSave surahController;
-  final RxInt lastVisibleVerse;
 
   const VerseItem({
     super.key,
-    required this.context,
     required this.surahIndex,
     required this.verseIndex,
     required this.surahName,
     required this.surahVerseCount,
-    required this.quranController,
-    required this.surahController,
-    required this.lastVisibleVerse,
   });
 
   @override
@@ -44,16 +35,13 @@ class VerseItem extends StatelessWidget {
         surahIndex != 1 && surahIndex != 9 && verseNumber == 1;
 
     return VisibilityDetector(
-      key: Key(verseNumber.toString()),
+      key: Key('$surahIndex:$verseNumber'),
       onVisibilityChanged: (VisibilityInfo info) {
-        if (info.visibleFraction > 0.0) {
-          lastVisibleVerse.value = verseNumber;
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            surahController.setSurah(surahName);
-            surahController.setSurahIndex(surahIndex);
-            surahController.setVerse(lastVisibleVerse.value);
-            surahController.lastReadMode.value = 'list';
-          });
+        if (info.visibleFraction > 0.5) {
+          final lastReadCubit = context.read<LastReadCubit>();
+          lastReadCubit.setSurah(surahName);
+          lastReadCubit.setSurahIndex(surahIndex);
+          lastReadCubit.setVerse(verseNumber);
         }
       },
       child: Column(
@@ -61,14 +49,21 @@ class VerseItem extends StatelessWidget {
           if (isBismillahRequired) const Basmallah(),
           Padding(
             padding: EdgeInsets.fromLTRB(7.w, 10.w, 7.w, 10.w),
-            child: Obx(() => Container(
+            child: BlocBuilder<QuranAudioCubit, QuranAudioState>(
+              buildWhen: (prev, curr) => prev.verseNumber != curr.verseNumber,
+              builder: (context, state) {
+                final isCurrentVerse = state.verseNumber == verseNumber &&
+                    state.surahNumber == surahIndex;
+                return Container(
                   padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                        color: Theme.of(context).primaryColor, width: 1.5),
-                    color: quranController.verseNumber.value == verseNumber
-                        ? Colors.blue.withOpacity(0.3)
+                      color: Theme.of(context).primaryColor,
+                      width: 1.5,
+                    ),
+                    color: isCurrentVerse
+                        ? Colors.blue.withValues(alpha: 0.3)
                         : Colors.transparent,
                   ),
                   child: Column(
@@ -84,9 +79,12 @@ class VerseItem extends StatelessWidget {
                             surahName: surahName,
                             surahVerseCount: surahVerseCount,
                             onHeadphonePressed: () {
-                              quranController.setVerse(surahIndex, verseNumber,
+                              final audioCubit =
+                                  context.read<QuranAudioCubit>();
+                              audioCubit.setVerse(surahIndex, verseNumber,
                                   verseText, surahName);
-                              quranController.toggleAudioPlayerVisibility();
+                              audioCubit.togglePlayerVisibility();
+                              audioCubit.play();
                             },
                           ),
                         ],
@@ -98,7 +96,9 @@ class VerseItem extends StatelessWidget {
                       ),
                     ],
                   ),
-                )),
+                );
+              },
+            ),
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../../domain/entities/location_entity.dart';
 
 enum LocationStatus { initial, loading, loaded, error }

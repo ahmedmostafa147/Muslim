@@ -1,98 +1,145 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../Controller/sound_quran_package.dart';
-import '../../../Controller/surah_search.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import '../../../core/di/injection.dart';
+import '../../../features/quran/presentation/cubit/last_read_cubit.dart';
+import '../../../features/quran_audio/presentation/cubit/quran_audio_cubit.dart';
 import '../favourit_bookmark/bookmark.dart';
 import '../favourit_bookmark/fav.dart';
 import 'audio_player.dart';
+import 'recorder.dart';
 import 'tafseer_package.dart';
 import 'verse_item.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-
-import 'recorder.dart';
 
 class SurahContainList extends StatelessWidget {
   const SurahContainList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ItemScrollController itemScrollController =
-        Get.put<QuranicVersePlayerController>(
-      QuranicVersePlayerController(),
-    ).itemScrollController;
-    final ItemPositionsListener itemPositionsListener =
-        ItemPositionsListener.create();
-    final RxInt lastVisibleVerse = (-1).obs;
-    final arguments = Get.arguments;
-    final surahIndex = arguments['surahIndex'] as int;
-    final surahVerseCount = arguments['surahVerseCount'] as int;
-    final surahName = arguments['surahName'] as String;
-    final versenumberfromlastread = arguments['versenumberfromlastread'] as int;
-    final quranController = Get.put(QuranicVersePlayerController());
-    final surahController = Get.put(SurahControllerSave());
+    final arguments =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>? ??
+            {};
+    final surahIndex = arguments['surahIndex'] as int? ?? 1;
+    final surahVerseCount = arguments['surahVerseCount'] as int? ?? 7;
+    final surahName = arguments['surahName'] as String? ?? 'الفاتحة';
+    final versenumberfromlastread =
+        arguments['versenumberfromlastread'] as int? ?? 0;
 
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<QuranAudioCubit>()),
+        BlocProvider(create: (_) => getIt<LastReadCubit>()),
+      ],
+      child: _SurahContainView(
+        surahIndex: surahIndex,
+        surahVerseCount: surahVerseCount,
+        surahName: surahName,
+        versenumberfromlastread: versenumberfromlastread,
+      ),
+    );
+  }
+}
+
+class _SurahContainView extends StatefulWidget {
+  final int surahIndex;
+  final int surahVerseCount;
+  final String surahName;
+  final int versenumberfromlastread;
+
+  const _SurahContainView({
+    required this.surahIndex,
+    required this.surahVerseCount,
+    required this.surahName,
+    required this.versenumberfromlastread,
+  });
+
+  @override
+  State<_SurahContainView> createState() => _SurahContainViewState();
+}
+
+class _SurahContainViewState extends State<_SurahContainView> {
+  final ItemScrollController _itemScrollController = ItemScrollController();
+  final ItemPositionsListener _itemPositionsListener =
+      ItemPositionsListener.create();
+
+  @override
+  void initState() {
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (versenumberfromlastread > 0) {
-        itemScrollController.jumpTo(index: versenumberfromlastread);
+      if (widget.versenumberfromlastread > 0 &&
+          _itemScrollController.isAttached) {
+        _itemScrollController.jumpTo(index: widget.versenumberfromlastread);
       }
     });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(surahName, surahIndex),
+      appBar: _buildAppBar(context),
       body: Column(
         children: [
           Expanded(
             child: ScrollablePositionedList.builder(
-              itemScrollController: itemScrollController,
-              itemPositionsListener: itemPositionsListener,
+              itemScrollController: _itemScrollController,
+              itemPositionsListener: _itemPositionsListener,
               physics: const BouncingScrollPhysics(),
               addAutomaticKeepAlives: true,
               addRepaintBoundaries: true,
-              itemCount: surahVerseCount,
+              itemCount: widget.surahVerseCount,
               itemBuilder: (context, verseIndex) {
                 return VerseItem(
-                  context: context,
-                  surahIndex: surahIndex,
+                  surahIndex: widget.surahIndex,
                   verseIndex: verseIndex,
-                  surahName: surahName,
-                  surahVerseCount: surahVerseCount,
-                  quranController: quranController,
-                  surahController: surahController,
-                  lastVisibleVerse: lastVisibleVerse,
+                  surahName: widget.surahName,
+                  surahVerseCount: widget.surahVerseCount,
                 );
               },
             ),
           ),
           RecordingWidget(
             onRecordingComplete: (filePath) {
-              print("تم تسجيل الصوت وحفظه في: $filePath");
+              debugPrint("تم تسجيل الصوت وحفظه في: $filePath");
             },
           ),
-          AudioPlayerWidget(quranController: quranController),
+          const AudioPlayerWidget(),
         ],
       ),
     );
   }
 
-  AppBar _buildAppBar(String surahName, int surahIndex) {
+  AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      title: Text(surahName),
+      title: Text(widget.surahName),
       centerTitle: true,
       actions: [
         IconButton(
           onPressed: () {
-            Get.to(() => TafseerScreenPackage(), arguments: surahIndex);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) =>
+                    TafseerScreenPackage(surahIndex: widget.surahIndex),
+              ),
+            );
           },
           icon: const Icon(Icons.book),
         ),
         IconButton(
           onPressed: () {
-            Get.to(() => const BookmarkListScreen());
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const BookmarkListScreen()),
+            );
           },
           icon: const Icon(Icons.bookmark),
         ),
         IconButton(
           onPressed: () {
-            Get.to(() => const FavoriteListScreen());
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const FavoriteListScreen()),
+            );
           },
           icon: const Icon(Icons.favorite),
         ),

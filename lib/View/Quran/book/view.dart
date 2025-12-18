@@ -1,62 +1,95 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import '../../../Controller/get_tafser.dart';
-import '../../../Controller/surah_search.dart';
-import '../../../Controller/surah_view.dart';
-import '../../../Core/constant/themes.dart';
-import 'tafser.dart';
-import '../../../widgets/loading_widget.dart';
 import 'package:preload_page_view/preload_page_view.dart';
+import '../../../core/di/injection.dart';
+import '../../../Core/constant/themes.dart';
+import '../../../features/quran/presentation/cubit/last_read_cubit.dart';
+import '../../../features/tafseer/presentation/cubit/tafseer_cubit.dart';
+import '../../../features/tafseer/presentation/cubit/tafseer_state.dart';
+import '../../../widgets/loading_widget.dart';
+import 'tafser.dart';
 
 class QuranImagesScreen extends StatelessWidget {
-  final QuranViewController quranViewController =
-      Get.put(QuranViewController());
-  final QuranController quranController = Get.put(QuranController());
-
-  QuranImagesScreen({super.key});
+  const QuranImagesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final int pageNumber = Get.arguments['pageNumber'];
-    final PreloadPageController pageController =
-        PreloadPageController(initialPage: pageNumber - 1);
-    final surahController = Get.put(SurahControllerSave());
+    final arguments =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>? ??
+            {};
+    final int pageNumber = arguments['pageNumber'] as int? ?? 1;
 
-    return Scaffold(
-      body: Obx(() {
-        if (quranController.isLoading.value) {
-          return const LoadingWidget();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<TafseerCubit>()),
+        BlocProvider(create: (_) => getIt<LastReadCubit>()),
+      ],
+      child: _QuranImagesView(initialPageNumber: pageNumber),
+    );
+  }
+}
+
+class _QuranImagesView extends StatefulWidget {
+  final int initialPageNumber;
+
+  const _QuranImagesView({required this.initialPageNumber});
+
+  @override
+  State<_QuranImagesView> createState() => _QuranImagesViewState();
+}
+
+class _QuranImagesViewState extends State<_QuranImagesView> {
+  late PreloadPageController _pageController;
+
+  // Quran page images follow a pattern based on page number
+  String getPageImageUrl(int pageNumber) {
+    final formattedPage = pageNumber.toString().padLeft(3, '0');
+    return 'https://cdn.islamic.network/quran/images/$formattedPage.png';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController =
+        PreloadPageController(initialPage: widget.initialPageNumber - 1);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<TafseerCubit, TafseerState>(
+      builder: (context, state) {
+        if (state.status == TafseerStatus.loading) {
+          return const Scaffold(body: LoadingWidget());
         }
 
         return PreloadPageView.builder(
-          controller: pageController,
-          itemCount: quranViewController.surahNames.length,
-          preloadPagesCount: 0,
+          controller: _pageController,
+          itemCount: 604, // Total pages in Quran
+          preloadPagesCount: 2,
           itemBuilder: (context, index) {
             final currentPage = index + 1;
-            final surahName = quranViewController.surahNames[index];
-            final imageUrl = quranViewController.getSurahImageUrl(surahName);
+            final imageUrl = getPageImageUrl(currentPage);
 
-            if (index > 0) {
-              final prevPageImageUrl = quranViewController
-                  .getSurahImageUrl(quranViewController.surahNames[index - 1]);
-              precacheImage(NetworkImage(prevPageImageUrl), context);
-            }
-            if (index + 1 < quranViewController.surahNames.length) {
-              final nextPageImageUrl = quranViewController
-                  .getSurahImageUrl(quranViewController.surahNames[index + 1]);
-              precacheImage(NetworkImage(nextPageImageUrl), context);
-            }
+            final ayahs =
+                context.read<TafseerCubit>().getAyahsByPage(currentPage);
+            final surah =
+                context.read<TafseerCubit>().getSurahByPage(currentPage);
 
-            final ayahs = quranController.getAyahsByPage(currentPage);
-            final surah = quranController.getSurahByPage(currentPage);
-
+            // Save last read position
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              surahController.lastReadMode.value = 'mushaf';
-              surahController.setSurah(surah!.name);
-              surahController.setPage(currentPage);
+              if (surah != null) {
+                final lastReadCubit = context.read<LastReadCubit>();
+                lastReadCubit.setSurah(surah.name);
+                lastReadCubit.setPage(currentPage);
+              }
             });
 
             return Scaffold(
@@ -65,7 +98,13 @@ class QuranImagesScreen extends StatelessWidget {
                 actions: [
                   IconButton(
                     onPressed: () {
-                      Get.to(() => TafseerScreen(), arguments: currentPage);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              TafseerScreen(pageNumber: currentPage),
+                        ),
+                      );
                     },
                     icon: const Icon(Icons.book),
                   ),
@@ -78,39 +117,45 @@ class QuranImagesScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text(
-                          'الجزء: ${ayahs!.first.juz}',
-                          style: TextStyle(
-                            fontSize: 15.sp,
-                            fontFamily: TextFontType.cairoFont,
+                        if (ayahs != null && ayahs.isNotEmpty)
+                          Text(
+                            'الجزء: ${ayahs.first.juz}',
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                              fontFamily: TextFontType.cairoFont,
+                            ),
                           ),
-                        ),
-                        Text(
-                          surah!.name,
-                          style: TextStyle(
-                            fontSize: 15.sp,
-                            fontFamily: TextFontType.quranFont,
+                        if (surah != null)
+                          Text(
+                            surah.name,
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                              fontFamily: TextFontType.quranFont,
+                            ),
                           ),
-                        ),
                       ],
                     ),
                     SizedBox(height: 20.h),
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        border: Border.all(
-                          color: Theme.of(context).primaryColor,
-                          width: 3.0,
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                            width: 3.0,
+                          ),
                         ),
-                      ),
-                      child: CachedNetworkImage(
-                        color: Theme.of(context).primaryColor,
-                        imageUrl: imageUrl,
-                        placeholder: (context, url) => const LoadingWidget(),
-                        errorWidget: (context, url, error) =>
-                            const Text("فشل التحميل"),
+                        child: CachedNetworkImage(
+                          color: Theme.of(context).primaryColor,
+                          imageUrl: imageUrl,
+                          placeholder: (context, url) => const LoadingWidget(),
+                          errorWidget: (context, url, error) =>
+                              const Text("فشل التحميل"),
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                     SizedBox(height: 15.h),
@@ -121,13 +166,14 @@ class QuranImagesScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    SizedBox(height: 10.h),
                   ],
                 ),
               ),
             );
           },
         );
-      }),
+      },
     );
   }
 }

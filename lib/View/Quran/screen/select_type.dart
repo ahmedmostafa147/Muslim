@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import '../../../Core/constant/images.dart';
 import '../book/view.dart';
 import '../package/surah_contain.dart';
 import '../../../widgets/container_custom.dart';
 
 class SelectTypeReading extends StatelessWidget {
-  const SelectTypeReading({super.key});
+  final int surahIndex;
+  final int surahVerseCount;
+  final String surahName;
+  final int pageNumber;
+
+  const SelectTypeReading({
+    super.key,
+    required this.surahIndex,
+    required this.surahVerseCount,
+    required this.surahName,
+    required this.pageNumber,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final arguments = Get.arguments;
-    final surahIndex = arguments['surahIndex'] as int;
-    final surahVerseCount = arguments['surahVerseCount'] as int;
-    final surahName = arguments['surahName'] as String;
-    final pageNumber = arguments['pageNumber'];
-
     return CustomContainer(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -31,12 +35,19 @@ class SelectTypeReading extends StatelessWidget {
               // Container for List Icon
               InkWell(
                 onTap: () {
-                  Get.to(() => const SurahContainList(), arguments: {
-                    'surahIndex': surahIndex,
-                    'surahVerseCount': surahVerseCount,
-                    'surahName': surahName,
-                    'versenumberfromlastread': 0
-                  });
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const SurahContainList(),
+                      settings: RouteSettings(arguments: {
+                        'surahIndex': surahIndex,
+                        'surahVerseCount': surahVerseCount,
+                        'surahName': surahName,
+                        'versenumberfromlastread': 0,
+                      }),
+                    ),
+                  );
                 },
                 child: Column(
                   children: [
@@ -46,7 +57,9 @@ class SelectTypeReading extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                            color: Theme.of(context).primaryColor, width: 2),
+                          color: Theme.of(context).primaryColor,
+                          width: 2,
+                        ),
                       ),
                       child: Center(
                         child: Image(
@@ -57,15 +70,22 @@ class SelectTypeReading extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10.h),
-                    Text("قائمة", style: TextStyle(fontSize: 20.sp)),
+                    Text("قائمة", style: TextStyle(fontSize: 20.sp)),
                   ],
                 ),
               ),
               // Container for Book Icon
               InkWell(
                 onTap: () {
-                  Get.to(() => QuranImagesScreen(),
-                      arguments: {'pageNumber': pageNumber});
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const QuranImagesScreen(),
+                      settings:
+                          RouteSettings(arguments: {'pageNumber': pageNumber}),
+                    ),
+                  );
                 },
                 child: Column(
                   children: [
@@ -75,7 +95,9 @@ class SelectTypeReading extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                            color: Theme.of(context).primaryColor, width: 2),
+                          color: Theme.of(context).primaryColor,
+                          width: 2,
+                        ),
                       ),
                       child: Center(
                         child: Image(

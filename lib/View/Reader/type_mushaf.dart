@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import '../../Core/constant/images.dart';
 import '../../Core/constant/themes.dart';
 import '../../Models/api_reciters.dart';
-import 'list_surah.dart';
 import '../../widgets/container_custom.dart';
+import 'list_surah.dart';
 
 class MoshafListScreen extends StatelessWidget {
   final Reciter reciter;

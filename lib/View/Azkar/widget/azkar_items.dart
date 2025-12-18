@@ -4,9 +4,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:share_plus/share_plus.dart';
-
 import 'package:muslim/Core/constant/themes.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:vibration/vibration.dart';
 
 class AzkarItem extends StatefulWidget {

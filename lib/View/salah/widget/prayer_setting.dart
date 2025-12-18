@@ -1,105 +1,117 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import '../../../Controller/prayer_times.dart';
+import '../../../core/di/injection.dart';
+import '../../../features/prayer_times/presentation/cubit/prayer_times_cubit.dart';
+import '../../../features/prayer_times/presentation/cubit/prayer_times_state.dart';
 
 class PrayerTimesSettingsScreen extends StatelessWidget {
-  final PrayerTimesController prayerTimesController =
-      Get.put(PrayerTimesController());
-
-  PrayerTimesSettingsScreen({super.key});
+  const PrayerTimesSettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('إعدادات مواقيت الصلاة'),
+    return BlocProvider(
+      create: (_) => getIt<PrayerTimesCubit>()..init(),
+      child: BlocBuilder<PrayerTimesCubit, PrayerTimesState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              ListTile(
+                title: const Text('تاريخ الصلاة'),
+                trailing:
+                    Text(DateFormat('yyyy-MM-dd').format(state.selectedDate)),
+                onTap: () async {
+                  final pickedDate = await showDatePicker(
+                    context: context,
+                    initialDate: state.selectedDate,
+                    firstDate: DateTime(2020),
+                    lastDate: DateTime(2030),
+                  );
+                  if (pickedDate != null) {
+                    context.read<PrayerTimesCubit>().changeDate(pickedDate);
+                  }
+                },
+              ),
+              ListTile(
+                title: const Text('طريقة الحساب'),
+                trailing: Text(state.calculationMethod),
+                onTap: () {
+                  _showCalculationMethodPicker(context);
+                },
+              ),
+              ListTile(
+                title: const Text('المذهب'),
+                trailing: Text(state.madhab),
+                onTap: () {
+                  _showMadhabPicker(context);
+                },
+              ),
+            ],
+          );
+        },
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+    );
+  }
+
+  void _showCalculationMethodPicker(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            // Date Picker
             ListTile(
-              title: const Text('اختر التاريخ'),
-              trailing: Obx(() => Text(DateFormat('yyyy-MM-dd').format(prayerTimesController.selectedDate.value))),
-              onTap: () async {
-                DateTime? pickedDate = await showDatePicker(
-                  context: context,
-                  initialDate: prayerTimesController.selectedDate.value,
-                  firstDate: DateTime(2000),
-                  lastDate: DateTime(2100),
-                );
-                if (pickedDate != null) {
-                  prayerTimesController.changeDate(pickedDate);
-                }
+              title: const Text('Egyptian General Authority of Survey'),
+              onTap: () {
+                context.read<PrayerTimesCubit>().changeCalculationMethod('5');
+                Navigator.pop(context);
               },
             ),
-            const Divider(),
-            // Calculation Method Picker
             ListTile(
-              title: const Text('طريقة الحساب'),
-              trailing: Obx(() => Text(prayerTimesController.calculationMethod.value)),
+              title: const Text('Muslim World League'),
               onTap: () {
-                Get.bottomSheet(
-                  Container(
-                    color: Colors.white,
-                    child: Wrap(
-                      children: [
-                        ListTile(
-                          title: const Text('جامعة العلوم الإسلامية بكراتشي'),
-                          onTap: () => prayerTimesController.changeCalculationMethod('1'),
-                        ),
-                        ListTile(
-                          title: const Text('رابطة العالم الإسلامي'),
-                          onTap: () => prayerTimesController.changeCalculationMethod('2'),
-                        ),
-                        ListTile(
-                          title: const Text('جامعة أم القرى'),
-                          onTap: () => prayerTimesController.changeCalculationMethod('3'),
-                        ),
-                        ListTile(
-                          title: const Text('الجمعية الإسلامية لأمريكا الشمالية'),
-                          onTap: () => prayerTimesController.changeCalculationMethod('4'),
-                        ),
-                        ListTile(
-                          title: const Text('الهيئة المصرية العامة للمساحة'),
-                          onTap: () => prayerTimesController.changeCalculationMethod('5'),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                context.read<PrayerTimesCubit>().changeCalculationMethod('3');
+                Navigator.pop(context);
               },
             ),
-            const Divider(),
-            // Madhab Picker
             ListTile(
-              title: const Text('المذهب'),
-              trailing: Obx(() => Text(prayerTimesController.madhab.value)),
+              title: const Text('Umm Al-Qura University'),
               onTap: () {
-                Get.bottomSheet(
-                  Container(
-                    color: Colors.white,
-                    child: Wrap(
-                      children: [
-                        ListTile(
-                          title: const Text('شافعي'),
-                          onTap: () => prayerTimesController.changeMadhab('Shafi'),
-                        ),
-                        ListTile(
-                          title: const Text('حنفي'),
-                          onTap: () => prayerTimesController.changeMadhab('Hanafi'),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                context.read<PrayerTimesCubit>().changeCalculationMethod('4');
+                Navigator.pop(context);
               },
             ),
           ],
-        ),
-      ),
+        );
+      },
+    );
+  }
+
+  void _showMadhabPicker(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              title: const Text('Shafi'),
+              onTap: () {
+                context.read<PrayerTimesCubit>().changeMadhab('Shafi');
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Hanafi'),
+              onTap: () {
+                context.read<PrayerTimesCubit>().changeMadhab('Hanafi');
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
