@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:muslim/Core/constant/themes.dart';
+import '../../../Core/constant/themes.dart';
 class RamadanItems extends StatelessWidget {
   final String number;
   final String label;

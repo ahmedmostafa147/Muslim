@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:quran/quran.dart' as quran;
 import 'package:visibility_detector/visibility_detector.dart';
 
-import 'package:muslim/Controller/sound_quran_package.dart';
-import 'package:muslim/Controller/surah_search.dart';
-import 'package:muslim/View/Quran/package/basmallah.dart';
+import '../../../Controller/sound_quran_package.dart';
+import '../../../Controller/surah_search.dart';
+import 'basmallah.dart';
 
 import 'row_for_icons.dart';
 import 'stack_of_number.dart';

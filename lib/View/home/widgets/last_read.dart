@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/surah_search.dart';
-import 'package:muslim/Core/constant/images.dart';
-import 'package:muslim/Core/constant/themes.dart';
-import 'package:muslim/View/Quran/book/view.dart';
-import 'package:muslim/View/Quran/package/surah_contain.dart';
-import 'package:muslim/widgets/matreial_button.dart';
+import '../../../Controller/surah_search.dart';
+import '../../../Core/constant/images.dart';
+import '../../../Core/constant/themes.dart';
+import '../../Quran/book/view.dart';
+import '../../Quran/package/surah_contain.dart';
+import '../../../widgets/matreial_button.dart';
 import 'package:quran/quran.dart' as quran;
 
 class LastRead extends StatelessWidget {

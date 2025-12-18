@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:muslim/Models/api_reciters.dart';
+import '../Models/api_reciters.dart';
 
 class RecitersController extends GetxController {
   var recitersList = <Reciter>[].obs;

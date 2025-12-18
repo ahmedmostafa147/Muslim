@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:muslim/Core/services/shared_perferance.dart';
+import '../Core/services/shared_perferance.dart';
 
 class BookmarkController extends GetxController {
   var bookmarkedVerses = <String>{}.obs;

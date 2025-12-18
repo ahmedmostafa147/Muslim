@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'package:muslim/Controller/date.dart';
+import '../Controller/date.dart';
 
 class DateRowClass extends StatelessWidget {
   const DateRowClass({super.key});

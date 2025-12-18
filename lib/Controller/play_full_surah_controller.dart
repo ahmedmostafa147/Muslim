@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
 import 'package:quran/quran.dart' as quran;
-import 'package:muslim/Models/api_reciters.dart';
+import '../Models/api_reciters.dart';
 
 class PlaySurahController extends GetxController {
   final AudioPlayer _player = AudioPlayer();

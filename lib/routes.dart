@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:muslim/View/Quran/screen/surah_name_p.dart';
+import 'View/Quran/screen/surah_name_p.dart';
 import 'View/salah/home_salah.dart';
 import 'View/home/Drawer/drawer.dart';
 import 'View/Splash Screen/splash_screen.dart';

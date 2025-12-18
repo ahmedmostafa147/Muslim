@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Models/load_quran.dart';
+import '../Models/load_quran.dart';
 
 class QuranController extends GetxController {
   var quranData = Quran(data: []).obs;

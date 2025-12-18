@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:muslim/Controller/prayer_times.dart';
+import '../../../Controller/prayer_times.dart';
 
 class PrayerTimesSettingsScreen extends StatelessWidget {
   final PrayerTimesController prayerTimesController =

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/get_tafser.dart';
-import 'package:muslim/Core/constant/themes.dart';
+import '../../../Controller/get_tafser.dart';
+import '../../../Core/constant/themes.dart';
 
 class TafseerScreenPackage extends StatelessWidget {
   final QuranController quranController = Get.put(QuranController());

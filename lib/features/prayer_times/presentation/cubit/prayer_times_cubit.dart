@@ -1,10 +1,12 @@
 import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
-import '../../domain/repositories/prayer_times_repository.dart';
+
 import '../../../location/presentation/cubit/location_cubit.dart';
 import '../../../notification/presentation/cubit/notification_cubit.dart';
+import '../../domain/repositories/prayer_times_repository.dart';
 import 'prayer_times_state.dart';
 
 @injectable

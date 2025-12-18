@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Core/constant/images.dart';
-import 'package:muslim/Core/constant/themes.dart';
-import 'package:muslim/Models/api_reciters.dart';
-import 'package:muslim/View/Reader/list_surah.dart';
-import 'package:muslim/widgets/container_custom.dart';
+import '../../Core/constant/images.dart';
+import '../../Core/constant/themes.dart';
+import '../../Models/api_reciters.dart';
+import 'list_surah.dart';
+import '../../widgets/container_custom.dart';
 
 class MoshafListScreen extends StatelessWidget {
   final Reciter reciter;

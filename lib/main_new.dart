@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/date_symbol_data_local.dart';
+
+import 'Core/constant/themes.dart';
 import 'core/di/injection.dart';
 import 'core/router/app_router.dart';
-import 'Core/constant/themes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

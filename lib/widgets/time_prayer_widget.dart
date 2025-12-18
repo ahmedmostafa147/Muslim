@@ -1,6 +1,6 @@
 
-import 'package:muslim/Controller/prayer_times.dart';
-import 'package:muslim/widgets/loading_widget.dart';
+import '../Controller/prayer_times.dart';
+import 'loading_widget.dart';
 import '../Core/constant/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

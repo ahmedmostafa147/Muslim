@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/get_tafser.dart';
-import 'package:muslim/Controller/surah_search.dart';
-import 'package:muslim/Controller/surah_view.dart';
-import 'package:muslim/Core/constant/themes.dart';
-import 'package:muslim/View/Quran/book/tafser.dart';
-import 'package:muslim/widgets/loading_widget.dart';
+import '../../../Controller/get_tafser.dart';
+import '../../../Controller/surah_search.dart';
+import '../../../Controller/surah_view.dart';
+import '../../../Core/constant/themes.dart';
+import 'tafser.dart';
+import '../../../widgets/loading_widget.dart';
 import 'package:preload_page_view/preload_page_view.dart';
 
 class QuranImagesScreen extends StatelessWidget {

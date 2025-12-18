@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/bookmark_favourit_cont.dart';
-import 'package:muslim/Core/constant/themes.dart';
-import 'package:muslim/View/Quran/package/surah_contain.dart';
+import '../../../Controller/bookmark_favourit_cont.dart';
+import '../../../Core/constant/themes.dart';
+import '../package/surah_contain.dart';
 import 'package:quran/quran.dart' as quran;
 
 class BookmarkListScreen extends StatelessWidget {

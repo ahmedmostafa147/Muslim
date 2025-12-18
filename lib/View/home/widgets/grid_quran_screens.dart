@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Core/constant/images.dart';
-import 'package:muslim/View/Quran/screen/surah_name_p.dart';
-import 'package:muslim/View/Radio/radio_home.dart';
-import 'package:muslim/View/Reader/RecitersListScreen.dart';
-import 'package:muslim/View/home/widgets/home_icon_text_for_grid.dart';
+import '../../../Core/constant/images.dart';
+import '../../Quran/screen/surah_name_p.dart';
+import '../../Radio/radio_home.dart';
+import '../../Reader/RecitersListScreen.dart';
+import 'home_icon_text_for_grid.dart';
 
 class GridQuranScreens extends StatelessWidget {
   const GridQuranScreens({super.key});

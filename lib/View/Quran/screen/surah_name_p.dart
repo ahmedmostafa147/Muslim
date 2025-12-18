@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/surah_search.dart';
-import 'package:muslim/View/Quran/screen/select_type.dart';
+import '../../../Controller/surah_search.dart';
+import 'select_type.dart';
 import 'package:quran/quran.dart' as quran;
 import '../../../widgets/loading_widget.dart';
 import '../package/stack_of_number.dart';
-import 'package:muslim/Core/constant/themes.dart';
+import '../../../Core/constant/themes.dart';
 
 class ListSurahNamePackage extends StatelessWidget {
   const ListSurahNamePackage({super.key});

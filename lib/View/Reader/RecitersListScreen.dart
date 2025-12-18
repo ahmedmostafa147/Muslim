@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/reciters_controller.dart';
-import 'package:muslim/Models/api_reciters.dart';
-import 'package:muslim/View/Reader/list_surah.dart';
-import 'package:muslim/View/Reader/type_mushaf.dart';
-import 'package:muslim/widgets/loading_widget.dart';
+import '../../Controller/reciters_controller.dart';
+import '../../Models/api_reciters.dart';
+import 'list_surah.dart';
+import 'type_mushaf.dart';
+import '../../widgets/loading_widget.dart';
 
 class RecitersListScreen extends StatelessWidget {
   final RecitersController controller = Get.put(RecitersController());

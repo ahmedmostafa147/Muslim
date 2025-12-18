@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/surah_search.dart';
-import 'package:muslim/Core/constant/themes.dart';
-import 'package:muslim/Models/api_reciters.dart';
-import 'package:muslim/View/Quran/package/stack_of_number.dart';
-import 'package:muslim/View/Reader/play_surah.dart';
+import '../../Controller/surah_search.dart';
+import '../../Core/constant/themes.dart';
+import '../../Models/api_reciters.dart';
+import '../Quran/package/stack_of_number.dart';
+import 'play_surah.dart';
 import 'package:quran/quran.dart' as quran;
 
 class SurahListScreen extends StatelessWidget {

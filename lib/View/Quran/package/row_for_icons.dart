@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/bookmark_favourit_cont.dart';
+import '../../../Controller/bookmark_favourit_cont.dart';
 import 'package:share_plus/share_plus.dart';
 
 class RowIconVerse extends StatelessWidget {

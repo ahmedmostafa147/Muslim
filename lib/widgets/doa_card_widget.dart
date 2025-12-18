@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../Core/constant/doe_verser.dart';
-import 'package:muslim/Core/constant/themes.dart';
+import '../Core/constant/themes.dart';
 import '../View/Quran/package/row_aya_copy_love_share.dart';
 
 class DoaCardWidget extends StatelessWidget {

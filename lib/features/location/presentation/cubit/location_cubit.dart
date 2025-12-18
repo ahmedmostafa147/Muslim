@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../domain/repositories/location_repository.dart';
 import 'location_state.dart';
 

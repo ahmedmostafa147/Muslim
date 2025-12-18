@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../Controller/prayer_times.dart';
-import '../../salah/home_salah.dart';
+
 import '../../../Controller/location.dart';
+import '../../../Controller/prayer_times.dart';
 import '../../../widgets/loading_widget.dart';
 import '../../../widgets/time_prayer_widget.dart';
+import '../../salah/home_salah.dart';
 
 class HomeLocationWidget extends StatelessWidget {
   HomeLocationWidget({super.key});

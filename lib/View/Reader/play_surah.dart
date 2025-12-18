@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/play_full_surah_controller.dart';
-import 'package:muslim/Core/constant/images.dart';
-import 'package:muslim/Core/constant/themes.dart';
-import 'package:muslim/Models/api_reciters.dart';
-import 'package:muslim/View/Reader/seek_bar.dart';
-import 'package:muslim/widgets/loading_widget.dart';
+import '../../Controller/play_full_surah_controller.dart';
+import '../../Core/constant/images.dart';
+import '../../Core/constant/themes.dart';
+import '../../Models/api_reciters.dart';
+import 'seek_bar.dart';
+import '../../widgets/loading_widget.dart';
 
 class PlaySurah extends StatelessWidget {
   final String surahUrl;

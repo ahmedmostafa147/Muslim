@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../Core/services/shared_perferance.dart';
 import 'bookmark_state.dart';
 

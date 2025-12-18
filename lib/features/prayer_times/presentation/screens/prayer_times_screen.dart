@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
-import '../../../../core/di/injection.dart';
+
 import '../../../../Core/constant/images.dart';
 import '../../../../Core/constant/themes.dart';
+import '../../../../core/di/injection.dart';
 import '../../../location/presentation/cubit/location_cubit.dart';
 import '../../../location/presentation/cubit/location_state.dart';
 import '../../../notification/presentation/cubit/notification_cubit.dart';
 import '../../../notification/presentation/cubit/notification_state.dart';
 import '../cubit/prayer_times_cubit.dart';
 import '../cubit/prayer_times_state.dart';
-import '../widgets/prayer_time_item.dart';
 import '../widgets/date_navigation_row.dart';
+import '../widgets/prayer_time_item.dart';
 
 class PrayerTimesScreenNew extends StatelessWidget {
   const PrayerTimesScreenNew({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
-import 'package:muslim/View/Quran/screen/surah_name_p.dart';
+import '../View/Quran/screen/surah_name_p.dart';
 
 import '../Core/constant/images.dart';
 import '../View/Azkar/azkar_home.dart';

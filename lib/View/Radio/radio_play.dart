@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 import '../../Core/constant/images.dart';
 
-import 'package:muslim/Core/constant/themes.dart';
+import '../../Core/constant/themes.dart';
 import '../../widgets/loading_widget.dart';
 import 'package:share_plus/share_plus.dart';
 

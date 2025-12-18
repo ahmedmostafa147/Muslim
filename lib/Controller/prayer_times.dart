@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
-import 'location.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../Models/prayer_time.dart';
+import 'location.dart';
 import 'notification.dart';
 
 class PrayerTimesController extends GetxController {

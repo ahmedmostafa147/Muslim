@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/sound_quran_package.dart';
-import 'package:muslim/Controller/surah_search.dart';
-import 'package:muslim/View/Quran/favourit_bookmark/bookmark.dart';
-import 'package:muslim/View/Quran/favourit_bookmark/fav.dart';
-import 'package:muslim/View/Quran/package/audio_player.dart';
-import 'package:muslim/View/Quran/package/tafseer_package.dart';
-import 'package:muslim/View/Quran/package/verse_item.dart';
+import '../../../Controller/sound_quran_package.dart';
+import '../../../Controller/surah_search.dart';
+import '../favourit_bookmark/bookmark.dart';
+import '../favourit_bookmark/fav.dart';
+import 'audio_player.dart';
+import 'tafseer_package.dart';
+import 'verse_item.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import 'recorder.dart';

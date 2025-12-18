@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Controller/notification.dart';
-import 'package:muslim/Core/constant/themes.dart';
+import '../../Controller/notification.dart';
+import '../../Core/constant/themes.dart';
 import 'package:intl/intl.dart';
-import 'package:muslim/Controller/prayer_times.dart';
-import 'package:muslim/Core/constant/images.dart';
+import '../../Controller/prayer_times.dart';
+import '../../Core/constant/images.dart';
 
 class NotificationAndPrayerTimesSettingsScreen extends StatelessWidget {
   final NotificationController notificationController =

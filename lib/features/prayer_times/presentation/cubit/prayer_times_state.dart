@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../../domain/entities/prayer_times_entity.dart';
 
 enum PrayerTimesStatus { initial, loading, loaded, error }

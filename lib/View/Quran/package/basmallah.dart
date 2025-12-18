@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:muslim/Core/constant/images.dart';
+import '../../../Core/constant/images.dart';
 
 class Basmallah extends StatefulWidget {
   const Basmallah({

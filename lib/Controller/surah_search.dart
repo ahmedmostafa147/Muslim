@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Core/services/shared_perferance.dart';
+import '../Core/services/shared_perferance.dart';
 import 'package:quran/quran.dart' as quran;
 
 class SurahController extends GetxController {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:muslim/Core/constant/images.dart';
-import 'package:muslim/View/Quran/book/view.dart';
-import 'package:muslim/View/Quran/package/surah_contain.dart';
-import 'package:muslim/widgets/container_custom.dart';
+import '../../../Core/constant/images.dart';
+import '../book/view.dart';
+import '../package/surah_contain.dart';
+import '../../../widgets/container_custom.dart';
 
 class SelectTypeReading extends StatelessWidget {
   const SelectTypeReading({super.key});
