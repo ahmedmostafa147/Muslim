@@ -4,11 +4,10 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:muslim/core/constants/images.dart';
+import 'package:muslim/core/constants/themes.dart';
+import 'package:muslim/features/widgets/loading_widget.dart';
 
-import '../../Core/constant/images.dart';
-
-import '../../Core/constant/themes.dart';
-import '../../widgets/loading_widget.dart';
 import 'package:share_plus/share_plus.dart';
 
 class AudioPlayerController extends GetxController {
@@ -107,7 +106,7 @@ class PlayRadio extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     image: DecorationImage(
                       image: AssetImage(
-                        Assets.imagesRadioLogo,
+                        Assets.imagesRadio,
                       ),
                       fit: BoxFit.contain,
                     ),

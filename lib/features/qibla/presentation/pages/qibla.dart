@@ -2,13 +2,13 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim/core/constants/images.dart';
+import 'package:muslim/features/location/presentation/cubit/location_cubit.dart';
+import 'package:muslim/features/location/presentation/cubit/location_state.dart';
 import 'package:qibla_direction/qibla_direction.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:vibration/vibration.dart';
-import '../../core/di/injection.dart';
-import '../../Core/constant/images.dart';
-import '../../features/location/presentation/cubit/location_cubit.dart';
-import '../../features/location/presentation/cubit/location_state.dart';
+import '../../../../core/di/injection.dart';
 
 class QiblaScreen extends StatelessWidget {
   const QiblaScreen({super.key});

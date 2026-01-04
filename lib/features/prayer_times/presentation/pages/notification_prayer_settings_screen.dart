@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import '../../core/di/injection.dart';
-import '../../Core/constant/themes.dart';
-import '../../features/notification/presentation/cubit/notification_cubit.dart';
-import '../../features/notification/presentation/cubit/notification_state.dart';
-import '../../features/prayer_times/presentation/cubit/prayer_times_cubit.dart';
-import '../../features/prayer_times/presentation/cubit/prayer_times_state.dart';
+import 'package:muslim/features/notification/presentation/cubit/notification_cubit.dart';
+import 'package:muslim/features/notification/presentation/cubit/notification_state.dart';
+import 'package:muslim/features/prayer_times/presentation/cubit/prayer_times_cubit.dart';
+import 'package:muslim/features/prayer_times/presentation/cubit/prayer_times_state.dart';
+import '../../../../core/di/injection.dart';
+
 
 class NotificationAndPrayerTimesSettingsScreen extends StatelessWidget {
   const NotificationAndPrayerTimesSettingsScreen({super.key});

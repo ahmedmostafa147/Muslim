@@ -3,17 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'core/di/injection.dart';
 import 'core/router/app_router.dart';
-import 'Core/constant/themes.dart';
+import 'core/constants/themes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Initialize dependency injection
   await configureDependencies();
-
-  // Initialize date formatting for Arabic
   await initializeDateFormatting('ar');
-
   runApp(const Muslim());
 }
 

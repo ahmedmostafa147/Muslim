@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:muslim/features/story/data/datasources/story_load_data.dart';
 
-import '../../Models/story_load_data.dart';
 import 'widget/story_item.dart';
 
 class StoryDetails extends StatelessWidget {

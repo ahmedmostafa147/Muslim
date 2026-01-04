@@ -1,4 +1,5 @@
-import '../../Core/constant/images.dart';
+import 'package:muslim/core/constants/images.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -7,47 +8,47 @@ import 'azkar_details.dart';
 class AzkarHome extends StatelessWidget {
   final List<Map<String, dynamic>> supplicationCategories = [
     {
-      'image': Assets.imagesDawn,
+      'image': Assets.imagesAzkar,
       'text': 'أذكار الصباح',
       'filePath': 'assets/database/أذكار الصباح .json',
     },
     {
-      'image': Assets.imagesNightwave,
+      'image': Assets.imagesAzkar,
       'text': 'أذكار المساء',
       'filePath': 'assets/database/أذكار المساء .json',
     },
     {
-      'image': Assets.imagesAlarm,
+      'image': Assets.imagesAzkar,
       'text': "أذكار الاستيقاظ",
       'filePath': 'assets/database/أذكار الاستيقاظ .json',
     },
     {
-      'image': Assets.imagesSleeping,
+      'image': Assets.imagesAzkar,
       'text': 'أذكار النوم ',
       'filePath': 'assets/database/أذكار النوم .json',
     },
     {
-      'image': Assets.imagesGridmosque,
+      'image': Assets.imagesAzkar,
       'text': 'أذكار المسجد',
       'filePath': 'assets/database/أذكار المسجد .json',
     },
     {
-      'image': Assets.imagesSalahmuslim,
+      'image': Assets.imagesAzkar,
       'text': 'أذكار الصلاه',
       'filePath': 'assets/database/أذكار الصلاه .json',
     },
     {
-      'image': Assets.imagesPrayingGrid,
+      'image': Assets.imagesAzkar,
       'text': 'أذكار بعد الصلاة ',
       'filePath': 'assets/database/أذكار بعد الصلاة .json',
     },
     {
-      'image': Assets.imagesIftar,
+      'image': Assets.imagesAzkar,
       'text': 'أذكار الطعام',
       'filePath': 'assets/database/أذكار الطعام .json',
     },
     {
-      'image': Assets.imagesHood,
+      'image': Assets.imagesAzkar,
       'text': 'أذكار اللباس الجديد',
       'filePath': 'assets/database/أذكار اللباس الجديد .json',
     },

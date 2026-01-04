@@ -1,0 +1,67 @@
+Analyzing muslim_pro...                                         
+
+warning - Unused import: 'package:flutter_screenutil/flutter_screenutil.dart' - lib\core\constants\themes.dart:2:8 - unused_import
+warning - Unused import: 'package:flutter/material.dart' - lib\core\router\app_router.dart:1:8 - unused_import
+  error - The name 'HomeSalah' isn't a class - lib\core\widgets\nav_bar_widget.dart:29:13 - creation_with_non_type
+  error - The name 'SelectType' isn't a class - lib\core\widgets\nav_bar_widget.dart:30:13 - creation_with_non_type
+  error - The constructor being called isn't a const constructor - lib\core\widgets\nav_bar_widget.dart:31:7 - const_with_non_const
+  error - The name 'RadioHome' isn't a class - lib\core\widgets\nav_bar_widget.dart:32:13 - creation_with_non_type
+   info - Don't invoke 'print' in production code - lib\features\azkar\data\datasources\azkar_load_data.dart:39:7 - avoid_print
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\azkar\presentation\pages\azkar_home.dart:87:61 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\azkar\presentation\pages\widget\azkar_items.dart:102:36 - deprecated_member_use
+   info - 'Share' is deprecated and shouldn't be used. Use SharePlus instead - lib\features\azkar\presentation\pages\widget\azkar_items.dart:124:33 - deprecated_member_use
+   info - 'share' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead - lib\features\azkar\presentation\pages\widget\azkar_items.dart:124:39 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\home\presentation\widgets\home_icon_text_for_grid.dart:28:53 - deprecated_member_use
+  error - The name 'LoadingWidget' isn't a class - lib\features\home\presentation\widgets\home_location_widget.dart:58:34 - creation_with_non_type
+   info - 'desiredAccuracy' is deprecated and shouldn't be used. use settings parameter with AndroidSettings, AppleSettings, WebSettings, or LocationSettings - lib\features\location\data\repositories\location_repository_impl.dart:39:7 - deprecated_member_use
+   info - Don't invoke 'print' in production code - lib\features\prayer_times\data\datasources\pray_load_data.dart:28:7 - avoid_print
+   info - Don't use 'BuildContext's across async gaps - lib\features\prayer_times\presentation\pages\notification_prayer_settings_screen.dart:43:27 - use_build_context_synchronously
+   info - 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre - lib\features\prayer_times\presentation\pages\notification_prayer_settings_screen.dart:72:23 - deprecated_member_use
+   info - 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre - lib\features\prayer_times\presentation\pages\notification_prayer_settings_screen.dart:79:23 - deprecated_member_use
+  error - The method 'CardTextIconWidget' isn't defined for the type 'AzkarSalahCard' - lib\features\prayer_times\presentation\pages\widget\azkar_salah_card.dart:11:12 - undefined_method
+warning - Unused import: 'package:flutter_screenutil/flutter_screenutil.dart' - lib\features\prayer_times\presentation\pages\widget\prayer_setting.dart:3:8 - unused_import
+   info - Don't use 'BuildContext's across async gaps - lib\features\prayer_times\presentation\pages\widget\prayer_setting.dart:32:21 - use_build_context_synchronously
+   info - Unnecessary instance of 'Container' - lib\features\prayer_times\presentation\widgets\pray_grid_view_home.dart:76:28 - avoid_unnecessary_containers
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\prayer_times\presentation\widgets\pray_grid_view_home.dart:90:38 - deprecated_member_use
+  error - The method 'CardTextIconWidget' isn't defined for the type 'PrayHome' - lib\features\prayer_times\presentation\widgets\pray_grid_view_home.dart:115:15 - undefined_method
+   info - The constant name 'EMPTY' isn't a lowerCamelCase identifier - lib\features\quran\data\models\load_quran.dart:156:23 - constant_identifier_names
+   info - The constant name 'REVELATION_TYPE' isn't a lowerCamelCase identifier - lib\features\quran\data\models\load_quran.dart:156:30 - constant_identifier_names
+warning - Unused import: 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart' - lib\features\quran\presentation\pages\package\recorder.dart:1:8 - unused_import
+warning - Unused import: 'package:ffmpeg_kit_flutter/return_code.dart' - lib\features\quran\presentation\pages\package\recorder.dart:2:8 - unused_import
+   info - Parameter 'key' could be a super parameter - lib\features\quran\presentation\pages\package\recorder.dart:14:9 - use_super_parameters
+   info - Invalid use of a private type in a public API - lib\features\quran\presentation\pages\package\recorder.dart:18:3 - library_private_types_in_public_api
+   info - Don't invoke 'print' in production code - lib\features\quran\presentation\pages\package\recorder.dart:66:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\quran\presentation\pages\package\recorder.dart:69:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\quran\presentation\pages\package\recorder.dart:109:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\quran\presentation\pages\package\recorder.dart:115:7 - avoid_print
+   info - 'Share' is deprecated and shouldn't be used. Use SharePlus instead - lib\features\quran\presentation\pages\package\row_aya_copy_love_share.dart:64:21 - deprecated_member_use
+   info - 'share' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead - lib\features\quran\presentation\pages\package\row_aya_copy_love_share.dart:64:27 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps - lib\features\quran\presentation\pages\package\row_aya_copy_love_share.dart:103:42 - use_build_context_synchronously
+   info - 'Share' is deprecated and shouldn't be used. Use SharePlus instead - lib\features\quran\presentation\pages\package\row_aya_copy_love_share.dart:127:27 - deprecated_member_use
+   info - 'share' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead - lib\features\quran\presentation\pages\package\row_aya_copy_love_share.dart:127:33 - deprecated_member_use
+   info - 'Share' is deprecated and shouldn't be used. Use SharePlus instead - lib\features\quran\presentation\pages\package\row_for_icons.dart:112:5 - deprecated_member_use
+   info - 'share' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead - lib\features\quran\presentation\pages\package\row_for_icons.dart:112:11 - deprecated_member_use
+warning - Unused import: 'package:muslim/core/constants/themes.dart' - lib\features\quran\presentation\pages\package\verse_item.dart:9:8 - unused_import
+warning - Unused import: 'package:muslim/core/di/injection.dart' - lib\features\quran\presentation\pages\package\verse_item.dart:10:8 - unused_import
+warning - Unused import: 'package:muslim/features/quran/presentation/presentation/cubit/tafseer_cubit.dart' - lib\features\quran\presentation\pages\package\verse_item.dart:11:8 - unused_import
+warning - Unused import: 'package:muslim/features/quran/presentation/presentation/cubit/tafseer_state.dart' - lib\features\quran\presentation\pages\package\verse_item.dart:12:8 - unused_import
+   info - 'Share' is deprecated and shouldn't be used. Use SharePlus instead - lib\features\radio\presentation\pages\radio_play.dart:39:26 - deprecated_member_use
+   info - 'share' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead - lib\features\radio\presentation\pages\radio_play.dart:39:32 - deprecated_member_use
+   info - 'onPopInvoked' is deprecated and shouldn't be used. Use onPopInvokedWithResult instead. This feature was deprecated after v3.22.0-12.0.pre - lib\features\radio\presentation\pages\radio_play.dart:87:7 - deprecated_member_use
+   info - Don't invoke 'print' in production code - lib\features\ramadan\data\datasources\ramadan_load_data.dart:33:7 - avoid_print
+warning - Unused import: '../../../home/presentation/pages/home.dart' - lib\features\splash\presentation\pages\splash_screen.dart:6:8 - unused_import
+   info - Empty catch block - lib\features\story\data\datasources\story_load_data.dart:32:17 - empty_catches
+  error - The getter 'imagesPray' isn't defined for the type 'Assets' - lib\features\widgets\home_grid_icons.dart:60:25 - undefined_getter
+  error - The getter 'imagesPray' isn't defined for the type 'Assets' - lib\features\widgets\home_grid_icons.dart:67:25 - undefined_getter
+  error - The getter 'imagesPray' isn't defined for the type 'Assets' - lib\features\widgets\home_grid_icons.dart:74:25 - undefined_getter
+  error - The getter 'imagesPray' isn't defined for the type 'Assets' - lib\features\widgets\home_grid_icons.dart:100:25 - undefined_getter
+  error - The getter 'imagesPray' isn't defined for the type 'Assets' - lib\features\widgets\home_grid_icons.dart:107:25 - undefined_getter
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\widgets\home_icon_text_for_grid.dart:28:53 - deprecated_member_use
+warning - Unused import: 'package:go_router/go_router.dart' - lib\features\widgets\home_location_widget.dart:4:8 - unused_import
+warning - Unused import: '../../../core/router/app_router.dart' - lib\features\widgets\home_location_widget.dart:6:8 - unused_import
+  error - The method 'CustomMaterialButton' isn't defined for the type 'LastRead' - lib\features\widgets\last_read.dart:132:21 - undefined_method
+   info - Unnecessary instance of 'Container' - lib\features\widgets\pray_grid_view_home.dart:75:28 - avoid_unnecessary_containers
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\widgets\pray_grid_view_home.dart:89:38 - deprecated_member_use
+  error - The method 'CardTextIconWidget' isn't defined for the type 'PrayHome' - lib\features\widgets\pray_grid_view_home.dart:114:15 - undefined_method
+
+63 issues found. (ran in 26.0s)

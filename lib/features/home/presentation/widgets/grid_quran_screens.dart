@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import '../../Reader/reciters_list_screen.dart';
-import '../../../Core/constant/images.dart';
-import '../../Quran/screen/surah_name_p.dart';
-import '../../Radio/radio_home.dart';
+import '../../../../core/constants/images.dart';
+import '../../../quran/presentation/pages/screen/surah_name_p.dart';
+import '../../../radio/presentation/pages/radio_home.dart';
 import 'home_icon_text_for_grid.dart';
 
 class GridQuranScreens extends StatelessWidget {
@@ -43,24 +41,31 @@ class GridQuranScreens extends StatelessWidget {
             children: [
               IconAndTextGridView(
                 onTap: () {
-                  Get.to(
-                    const ListSurahNamePackage(),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const ListSurahNamePackage(),
+                    ),
                   );
                 },
                 image: Assets.imagesQuranforselecte,
                 text: 'القرآن الكريم',
               ),
               IconAndTextGridView(
-                  onTap: () {
-                        Get.to(() => RecitersListScreen());
-                  },
-                  image: Assets.imagesAudioBook,
-                  text: "القراء"),
+                onTap: () {},
+                image: Assets.imagesAzkar,
+                text: "القراء",
+              ),
               IconAndTextGridView(
                 onTap: () {
-                  Get.to(const RadioHomeScreen());
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const RadioHomeScreen(),
+                    ),
+                  );
                 },
-                image: Assets.imagesRadiogrid,
+                image: Assets.imagesRadio,
                 text: 'الراديو',
               )
             ],

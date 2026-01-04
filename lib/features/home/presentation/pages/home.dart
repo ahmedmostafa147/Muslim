@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'widgets/grid_quran_screens.dart';
-import 'widgets/last_read.dart';
-
-import '../../Core/constant/images.dart';
-import '../Radio/radio_home.dart';
-import '../../widgets/card_text_icon_widget.dart';
-import '../../widgets/date_row_class.dart';
-import 'Drawer/drawer.dart';
-import 'widgets/home_grid_icons.dart';
-import 'widgets/home_location_widget.dart';
-import '../../widgets/doa_card_widget.dart';
-import 'widgets/home_aya_widget.dart';
+import '../widgets/grid_quran_screens.dart';
+import '../widgets/last_read.dart';
+import 'drawer.dart';
+import '../widgets/home_grid_icons.dart';
+import '../widgets/home_location_widget.dart';
+import '../widgets/home_aya_widget.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -22,19 +15,6 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("الرئيسية"),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Get.changeThemeMode(
-                  Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
-            },
-            icon: Get.isDarkMode
-                ? const Icon(Icons.dark_mode)
-                : const Icon(Icons.light_mode),
-          ),
-          // IconButton(
-          //     onPressed: () {}, icon: const Icon(Icons.ios_share_outlined))
-        ],
       ),
       drawer: const DrawerScreen(),
       body: Padding(
@@ -47,7 +27,6 @@ class Home extends StatelessWidget {
             Column(
               children: [
                 const Divider(),
-                const DateRowClass(),
                 const Divider(),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -72,16 +51,6 @@ class Home extends StatelessWidget {
                 const HomeAyaWidget(),
                 SizedBox(height: 10.h),
                 const HomeGridViewIcons(),
-                SizedBox(height: 10.h),
-                DoaCardWidget(),
-                SizedBox(height: 10.h),
-                CardTextIconWidget(
-                  onTap: () {
-                    Get.to(() => const RadioHomeScreen());
-                  },
-                  text: "إذاعة القرآن الكريم ",
-                  icon: Assets.imagesRadio,
-                ),
                 SizedBox(height: 10.h),
               ],
             ),

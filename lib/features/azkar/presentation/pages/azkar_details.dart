@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:muslim/features/azkar/data/datasources/azkar_load_data.dart';
 
-import '../../Models/azkar_load_data.dart';
 import 'widget/azkar_items.dart';
 
 class AzkarDetails extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:muslim/features/ramadan/data/datasources/ramadan_load_data.dart';
 
-import '../../Models/ramadan_load_data.dart';
 import 'widget/ramadan_items.dart';
 
 class RamadanDetails extends StatelessWidget {

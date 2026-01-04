@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:muslim/core/di/injection.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/bookmark_cubit.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/bookmark_state.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/favorite_cubit.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/favorite_state.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../../core/di/injection.dart';
-import '../../../features/bookmark/presentation/cubit/bookmark_cubit.dart';
-import '../../../features/bookmark/presentation/cubit/bookmark_state.dart';
-import '../../../features/favorite/presentation/cubit/favorite_cubit.dart';
-import '../../../features/favorite/presentation/cubit/favorite_state.dart';
 
 class RowIconVerse extends StatelessWidget {
   const RowIconVerse({

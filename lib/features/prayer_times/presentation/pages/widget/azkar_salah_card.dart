@@ -1,5 +1,6 @@
-import '../../../Core/constant/images.dart';
-import '../../../widgets/card_text_icon_widget.dart';
+import 'package:muslim/core/constants/images.dart';
+
+
 import 'package:flutter/material.dart';
 
 class AzkarSalahCard extends StatelessWidget {
@@ -10,7 +11,7 @@ class AzkarSalahCard extends StatelessWidget {
     return CardTextIconWidget(
       onTap: () {},
       text: "أذكار الصلاة",
-      icon: Assets.images14703159,
+      icon: Assets.imagesRadio,
     );
   }
 }

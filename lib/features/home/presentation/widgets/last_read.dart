@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran/quran.dart' as quran;
-import '../../../core/di/injection.dart';
-import '../../../Core/constant/images.dart';
-import '../../../Core/constant/themes.dart';
-import '../../../features/quran/presentation/cubit/last_read_cubit.dart';
-import '../../../features/quran/presentation/cubit/last_read_state.dart';
-import '../../Quran/book/view.dart';
-import '../../Quran/package/surah_contain.dart';
-import '../../../widgets/matreial_button.dart';
+import '../../../../core/di/injection.dart';
+import '../../../../core/constants/images.dart';
+import '../../../../core/constants/themes.dart';
+import '../../../../core/widgets/custom_material_button.dart';
+import '../../../quran/presentation/cubit/last_read_cubit.dart';
+import '../../../quran/presentation/cubit/last_read_state.dart';
+import '../../../quran/presentation/pages/book/view.dart';
+import '../../../quran/presentation/pages/package/surah_contain.dart';
 
 class LastRead extends StatelessWidget {
   const LastRead({super.key});
@@ -63,7 +63,7 @@ class LastRead extends StatelessWidget {
                               fontSize: 15.0.sp,
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).primaryColor,
-                              fontFamily: TextFontType.quran2Font,
+                              fontFamily: TextFontType.arefRuqaaFont,
                             ),
                           ),
                         ],
@@ -168,7 +168,7 @@ class LastRead extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: 10.0),
-                Image.asset(Assets.imagesRadioLogo, width: 80.w, height: 80.h),
+                Image.asset(Assets.imagesRadio, width: 80.w, height: 80.h),
               ],
             ),
           );

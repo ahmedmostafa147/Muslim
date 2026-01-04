@@ -1,7 +1,8 @@
+import 'package:muslim/core/constants/images.dart';
+
 import 'ramadan_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../Core/constant/images.dart';
 class RamadanHome extends StatelessWidget {
   const RamadanHome({super.key});
 
@@ -9,27 +10,27 @@ class RamadanHome extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> listData = [
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'أحكام وفتاوى رمضان المبارك',
         'filePath': 'assets/database/أحكام وفتاوى رمضان المبارك.json',
       },
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'أدعية لشهر رمضان المبارك',
         'filePath': 'assets/database/أدعية لشهر رمضان المبارك.json',
       },
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'صحتك في شهر رمضان المبارك',
         'filePath': 'assets/database/صحتك في شهر رمضان المبارك.json',
       },
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'طرق ختم القران الكريم في رمضان',
         'filePath': 'assets/database/طرق ختم القران الكريم في رمضان.json',
       },
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'نصائح لشهر رمضان المبارك',
         'filePath': 'assets/database/نصائح لشهر رمضان المبارك.json',
       },

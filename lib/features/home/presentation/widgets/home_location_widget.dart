@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import '../../../core/di/injection.dart';
-import '../../../core/router/app_router.dart';
-import '../../../features/location/presentation/cubit/location_cubit.dart';
-import '../../../features/location/presentation/cubit/location_state.dart';
-import '../../../features/prayer_times/presentation/cubit/prayer_times_cubit.dart';
-import '../../../widgets/loading_widget.dart';
-import '../../../widgets/time_prayer_widget.dart';
+import '../../../../core/di/injection.dart';
+import '../../../location/presentation/cubit/location_cubit.dart';
+import '../../../location/presentation/cubit/location_state.dart';
+import '../../../prayer_times/presentation/cubit/prayer_times_cubit.dart';
 
 class HomeLocationWidget extends StatelessWidget {
   const HomeLocationWidget({super.key});
@@ -72,10 +69,6 @@ class HomeLocationWidget extends StatelessWidget {
                     ),
                   );
                 },
-              ),
-              GestureDetector(
-                onTap: () => context.push(AppRoutes.prayerTimes),
-                child: const PrayerTimeRow(),
               ),
             ],
           ),

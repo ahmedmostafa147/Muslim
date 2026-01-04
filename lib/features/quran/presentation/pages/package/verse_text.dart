@@ -1,4 +1,4 @@
-import 'package:muslim/Core/constant/themes.dart';import 'package:flutter/material.dart';
+import 'package:muslim/core/constants/themes.dart';import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VerseText extends StatelessWidget {

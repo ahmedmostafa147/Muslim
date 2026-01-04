@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../Core/constant/themes.dart';
+import 'package:muslim/core/constants/themes.dart';
 
 class PrayItems extends StatelessWidget {
   final String pray;

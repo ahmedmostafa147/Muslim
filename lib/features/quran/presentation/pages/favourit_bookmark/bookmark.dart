@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim/core/constants/themes.dart';
+import 'package:muslim/core/di/injection.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/bookmark_cubit.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/bookmark_state.dart';
 import 'package:quran/quran.dart' as quran;
-import '../../../core/di/injection.dart';
-import '../../../Core/constant/themes.dart';
-import '../../../features/bookmark/presentation/cubit/bookmark_cubit.dart';
-import '../../../features/bookmark/presentation/cubit/bookmark_state.dart';
+
 import '../package/surah_contain.dart';
 
 class BookmarkListScreen extends StatelessWidget {

@@ -1,8 +1,9 @@
+import 'package:muslim/core/constants/images.dart';
+
 import 'story_details.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../Core/constant/images.dart';
 
 class StoryHome extends StatelessWidget {
   const StoryHome({super.key});
@@ -11,37 +12,37 @@ class StoryHome extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> listData = [
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'قصص الأنبياء',
         'filePath': 'assets/database/قصص الأنبياء.json',
       },
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'قصص الحيوان',
         'filePath': 'assets/database/قصص الحيوان.json',
       },
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': ' قصص الصحابة',
         'filePath': 'assets/database/قصص الصحابة.json',
       },
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'قصص الصحابيات',
         'filePath': 'assets/database/قصص الصحابيات.json',
       },
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'قصص القرآن',
         'filePath': 'assets/database/قصص القرآن.json',
       },
       {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'معجزات الأنبياء',
         'filePath': 'assets/database/معجزات الأنبياء.json',
       },
        {
-        'image': Assets.imagesHood,
+        'image': Assets.imagesRadio,
         'text': 'أسماء زوجات الرسل والأنبياء',
         'filePath': 'assets/database/أسماء زوجات الرسل والأنبياء.json',
       }

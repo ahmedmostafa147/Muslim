@@ -1,4 +1,5 @@
-import '../../Models/Pray_load_data.dart';
+import 'package:muslim/features/prayer_times/data/datasources/pray_load_data.dart';
+
 import 'widget/pray_items.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

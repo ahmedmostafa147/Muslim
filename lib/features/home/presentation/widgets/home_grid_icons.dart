@@ -1,19 +1,19 @@
-import '../../Reader/reciters_list_screen.dart';
 
-import '../../Quran/screen/surah_name_p.dart';
 
-import '../../salah/home_salah.dart';
+import 'package:muslim/features/azkar/presentation/pages/azkar_home.dart';
+import 'package:muslim/features/prayer_times/presentation/pages/home_salah.dart';
+import 'package:muslim/features/qibla/presentation/pages/qibla.dart';
+import 'package:muslim/features/quran/presentation/pages/screen/surah_name_p.dart';
+import 'package:muslim/features/radio/presentation/pages/radio_home.dart';
+import 'package:muslim/features/ramadan/presentation/pages/ramadan.dart';
+import 'package:muslim/features/story/presentation/pages/story.dart';
+import 'package:muslim/features/widgets/pray_grid_view_home.dart';
 
-import '../../../Core/constant/images.dart';
+import '../../../../core/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Azkar/azkar_home.dart';
-import '../../Pray/pray_grid_view_home.dart';
-import '../../Qibla/qibla.dart';
-import '../../Radio/radio_home.dart';
-import '../../Ramadan/ramadan.dart';
-import '../../Story/story.dart';
+
 import 'home_icon_text_for_grid.dart';
 
 class HomeGridViewIcons extends StatelessWidget {
@@ -38,17 +38,14 @@ class HomeGridViewIcons extends StatelessWidget {
           text: 'القرآن الكريم',
         ),
         IconAndTextGridView(
-            onTap: () {
-                                Get.to(() => RecitersListScreen());
-
-            },
-            image: Assets.imagesAudioBook,
+            
+            image: Assets.imagesRadio,
             text: "القراء"),
         IconAndTextGridView(
           onTap: () {
             Get.to(const RadioHomeScreen());
           },
-          image: Assets.imagesRadiogrid,
+          image: Assets.imagesRadio,
           text: 'الراديو',
         ),
         IconAndTextGridView(
@@ -57,21 +54,21 @@ class HomeGridViewIcons extends StatelessWidget {
               PrayerTimesScreen(),
             );
           },
-          image: Assets.imagesGridmosque,
+          image: Assets.imagesRadio,
           text: 'الصلاة',
         ),
         IconAndTextGridView(
           onTap: () {
             Get.to(AzkarHome());
           },
-          image: Assets.imagesPrayingGrid,
+          image: Assets.imagesRadio,
           text: 'الاذكار',
         ),
         IconAndTextGridView(
           onTap: () {
             Get.to(PrayHome());
           },
-          image: Assets.imagesPraying,
+          image: Assets.imagesRadio,
           text: 'الدعاء',
         ),
         // IconAndTextGridView(
@@ -90,21 +87,21 @@ class HomeGridViewIcons extends StatelessWidget {
           onTap: () {
             Get.to(const QiblaScreen());
           },
-          image: Assets.imagesMecca,
+          image: Assets.imagesRadio,
           text: 'اتجاة القبلة',
         ),
         IconAndTextGridView(
           onTap: () {
             Get.to(const StoryHome());
           },
-          image: Assets.imagesScript,
+          image: Assets.imagesRadio,
           text: 'قصص',
         ),
         IconAndTextGridView(
           onTap: () {
             Get.to(const RamadanHome());
           },
-          image: Assets.imagesRamdan,
+          image: Assets.imagesRamadan,
           text: 'رمضان',
         ),
         // IconAndTextGridView(

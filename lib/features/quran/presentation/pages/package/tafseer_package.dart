@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/di/injection.dart';
-import '../../../Core/constant/themes.dart';
-import '../../../features/tafseer/presentation/cubit/tafseer_cubit.dart';
-import '../../../features/tafseer/presentation/cubit/tafseer_state.dart';
+import 'package:muslim/core/constants/themes.dart';
+import 'package:muslim/core/di/injection.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/tafseer_cubit.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/tafseer_state.dart';
 
 class TafseerScreenPackage extends StatelessWidget {
   final int surahIndex;

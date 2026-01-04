@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../Quran/favourit_bookmark/bookmark.dart';
-import '../../Quran/favourit_bookmark/fav.dart';
+import 'package:muslim/features/quran/presentation/pages/favourit_bookmark/bookmark.dart';
+import 'package:muslim/features/quran/presentation/pages/favourit_bookmark/fav.dart';
+
 
 class DrawerScreen extends StatelessWidget {
   const DrawerScreen({super.key});

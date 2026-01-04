@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../Models/radio_load_data.dart';
+import 'package:muslim/features/radio/data/datasources/radio_load_data.dart';
 import 'radio_play.dart';
 import 'widget/radio_list.dart';
 

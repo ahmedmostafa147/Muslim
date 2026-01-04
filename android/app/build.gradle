@@ -30,7 +30,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace "com.example.muslim_pro"
-    compileSdkVersion 34
+    compileSdk = 36
     ndkVersion = "29.0.14033849"
     compileOptions {
         coreLibraryDesugaringEnabled true
@@ -48,7 +48,7 @@ android {
 
     defaultConfig {
         applicationId "com.ahmedmustafa.muslim"
-        minSdkVersion 24
+        minSdkVersion 30
         multiDexEnabled true
         targetSdkVersion flutter.targetSdkVersion
         versionCode 3

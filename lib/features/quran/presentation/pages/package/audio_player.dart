@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../features/quran_audio/presentation/cubit/quran_audio_cubit.dart';
-import '../../../features/quran_audio/presentation/cubit/quran_audio_state.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/quran_audio_cubit.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/quran_audio_state.dart';
 
 class AudioPlayerWidget extends StatelessWidget {
   const AudioPlayerWidget({super.key});

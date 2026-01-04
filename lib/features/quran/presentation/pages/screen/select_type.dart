@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../Core/constant/images.dart';
+import 'package:muslim/core/constants/images.dart';
+import 'package:muslim/features/widgets/container_custom.dart';
 import '../book/view.dart';
 import '../package/surah_contain.dart';
-import '../../../widgets/container_custom.dart';
 
 class SelectTypeReading extends StatelessWidget {
   final int surahIndex;

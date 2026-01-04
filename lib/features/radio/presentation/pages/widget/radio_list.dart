@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim/core/constants/images.dart';
+import 'package:muslim/core/constants/themes.dart';
 
-import '../../../Core/constant/images.dart';
-import '../../../Core/constant/themes.dart';
+
 
 class RadioListUi extends StatelessWidget {
   final String title;
@@ -34,7 +35,7 @@ class RadioListUi extends StatelessWidget {
             child: Row(
               children: [
                 ImageIcon(
-                  const AssetImage(Assets.imagesRadioLogo),
+                  const AssetImage(Assets.imagesRadio),
                   size: 30.r,
                   color: Theme.of(context).primaryColor,
                 ),

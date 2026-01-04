@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import '../../core/di/injection.dart';
-import '../../Core/constant/themes.dart';
-import '../../Core/constant/images.dart';
-import '../../features/location/presentation/cubit/location_cubit.dart';
-import '../../features/location/presentation/cubit/location_state.dart';
-import '../../features/notification/presentation/cubit/notification_cubit.dart';
-import '../../features/notification/presentation/cubit/notification_state.dart';
-import '../../features/prayer_times/presentation/cubit/prayer_times_cubit.dart';
-import '../../features/prayer_times/presentation/cubit/prayer_times_state.dart';
-import '../../widgets/date_row_class.dart';
+import 'package:muslim/core/constants/images.dart';
+import 'package:muslim/core/constants/themes.dart';
+import 'package:muslim/features/location/presentation/cubit/location_cubit.dart';
+import 'package:muslim/features/location/presentation/cubit/location_state.dart';
+import 'package:muslim/features/notification/presentation/cubit/notification_cubit.dart';
+import 'package:muslim/features/notification/presentation/cubit/notification_state.dart';
+import 'package:muslim/features/prayer_times/presentation/cubit/prayer_times_cubit.dart';
+import 'package:muslim/features/prayer_times/presentation/cubit/prayer_times_state.dart';
+import '../../../../core/di/injection.dart';
+
 import 'widget/prayer_column_items.dart';
 
 class PrayerTimesScreen extends StatelessWidget {
@@ -92,7 +92,7 @@ class _PrayerTimesView extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 children: [
                   const Divider(),
-                  const DateRowClass(),
+                 
                   const Divider(),
                   SizedBox(height: 10.h),
                   _buildLocationRow(context),
@@ -158,7 +158,7 @@ class _PrayerTimesView extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Theme.of(context).primaryColor, width: 1.0),
           image: DecorationImage(
-            image: const AssetImage(Assets.imagesMo),
+            image: const AssetImage(Assets.imagesRadio),
             fit: BoxFit.cover,
             opacity:
                 Theme.of(context).brightness == Brightness.dark ? 0.4 : 0.9,
@@ -209,7 +209,7 @@ class _PrayerTimesView extends StatelessWidget {
               ],
             ),
             Image(
-              image: const AssetImage(Assets.imagesSalahbetween),
+              image: const AssetImage(Assets.imagesRadio),
               width: 60.w,
               height: 60.h,
             ),
@@ -241,7 +241,7 @@ class _PrayerTimesView extends StatelessWidget {
       children: [
         BuildPrayerTimeItemColumn(
           name: 'الفجر',
-          imagePath: Assets.imagesFajr,
+          imagePath: Assets.imagesRadio,
           time: state.prayerTimes!.fajr,
           containerColor: state.nextPrayer == 'Fajr'
               ? Theme.of(context).primaryColor
@@ -249,7 +249,7 @@ class _PrayerTimesView extends StatelessWidget {
         ),
         BuildPrayerTimeItemColumn(
           name: 'الظهر',
-          imagePath: Assets.imagesDhuhr,
+          imagePath: Assets.imagesRadio,
           time: state.prayerTimes!.dhuhr,
           containerColor: state.nextPrayer == 'Dhuhr'
               ? Theme.of(context).primaryColor
@@ -257,7 +257,7 @@ class _PrayerTimesView extends StatelessWidget {
         ),
         BuildPrayerTimeItemColumn(
           name: 'العصر',
-          imagePath: Assets.imagesAsr,
+          imagePath: Assets.imagesRadio,
           time: state.prayerTimes!.asr,
           containerColor: state.nextPrayer == 'Asr'
               ? Theme.of(context).primaryColor
@@ -265,7 +265,7 @@ class _PrayerTimesView extends StatelessWidget {
         ),
         BuildPrayerTimeItemColumn(
           name: 'المغرب',
-          imagePath: Assets.imagesMaghrib,
+          imagePath: Assets.imagesRadio,
           time: state.prayerTimes!.maghrib,
           containerColor: state.nextPrayer == 'Maghrib'
               ? Theme.of(context).primaryColor
@@ -273,7 +273,7 @@ class _PrayerTimesView extends StatelessWidget {
         ),
         BuildPrayerTimeItemColumn(
           name: 'العشاء',
-          imagePath: Assets.imagesIsha,
+          imagePath: Assets.imagesRadio,
           time: state.prayerTimes!.isha,
           containerColor: state.nextPrayer == 'Isha'
               ? Theme.of(context).primaryColor
@@ -299,7 +299,7 @@ class _PrayerTimesView extends StatelessWidget {
               Text('تذكير بمواقيت الصلاة ', style: TextStyle(fontSize: 13.sp)),
               Container(
                 decoration: BoxDecoration(
-                  color: ColorsStyleApp.hoverLight,
+                  color: ColorsStyleApp.gold,
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 child: Checkbox(

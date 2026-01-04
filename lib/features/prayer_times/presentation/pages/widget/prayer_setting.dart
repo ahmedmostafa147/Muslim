@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import '../../../core/di/injection.dart';
-import '../../../features/prayer_times/presentation/cubit/prayer_times_cubit.dart';
-import '../../../features/prayer_times/presentation/cubit/prayer_times_state.dart';
+import 'package:muslim/core/di/injection.dart';
+import 'package:muslim/features/prayer_times/presentation/cubit/prayer_times_cubit.dart';
+import 'package:muslim/features/prayer_times/presentation/cubit/prayer_times_state.dart';
 
 class PrayerTimesSettingsScreen extends StatelessWidget {
   const PrayerTimesSettingsScreen({super.key});

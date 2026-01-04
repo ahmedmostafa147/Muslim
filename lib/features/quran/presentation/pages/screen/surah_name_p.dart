@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim/core/constants/themes.dart';
+import 'package:muslim/core/di/injection.dart';
+import 'package:muslim/features/quran/presentation/cubit/surah_cubit.dart';
+import 'package:muslim/features/quran/presentation/cubit/surah_state.dart';
+import 'package:muslim/features/widgets/loading_widget.dart';
 import 'package:quran/quran.dart' as quran;
-import '../../../core/di/injection.dart';
-import '../../../Core/constant/themes.dart';
-import '../../../features/quran/presentation/cubit/surah_cubit.dart';
-import '../../../features/quran/presentation/cubit/surah_state.dart';
-import '../../../widgets/loading_widget.dart';
+
 import '../package/stack_of_number.dart';
 import 'select_type.dart';
 

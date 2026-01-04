@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:muslim/core/di/injection.dart';
+import 'package:muslim/features/quran/presentation/cubit/last_read_cubit.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/quran_audio_cubit.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import '../../../core/di/injection.dart';
-import '../../../features/quran/presentation/cubit/last_read_cubit.dart';
-import '../../../features/quran_audio/presentation/cubit/quran_audio_cubit.dart';
+
 import '../favourit_bookmark/bookmark.dart';
 import '../favourit_bookmark/fav.dart';
 import 'audio_player.dart';

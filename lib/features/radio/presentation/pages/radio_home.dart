@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:muslim/features/radio/data/datasources/radio_load_data.dart';
 
-import '../../Models/radio_load_data.dart';
 import 'radio_title.dart';
 
 class RadioHomeScreen extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../Core/constant/images.dart';
+import 'package:muslim/core/constants/images.dart';
 
 class Basmallah extends StatefulWidget {
   const Basmallah({
@@ -23,7 +23,7 @@ class _BasmallahState extends State<Basmallah> {
             top: 8,
             bottom: 2),
         child: Image.asset(
-          Assets.imagesBasmala,
+          Assets.imagesQuranforselecte,
           color: Theme.of(context).primaryColor,
           width: MediaQuery.of(context).size.width * .4,
         ),

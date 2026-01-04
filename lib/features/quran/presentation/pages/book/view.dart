@@ -2,13 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim/features/quran/presentation/cubit/last_read_cubit.dart';
+import 'package:muslim/features/widgets/loading_widget.dart';
 import 'package:preload_page_view/preload_page_view.dart';
-import '../../../core/di/injection.dart';
-import '../../../Core/constant/themes.dart';
-import '../../../features/quran/presentation/cubit/last_read_cubit.dart';
-import '../../../features/tafseer/presentation/cubit/tafseer_cubit.dart';
-import '../../../features/tafseer/presentation/cubit/tafseer_state.dart';
-import '../../../widgets/loading_widget.dart';
+import 'package:muslim/core/constants/themes.dart';
+import 'package:muslim/core/di/injection.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/tafseer_cubit.dart';
+import 'package:muslim/features/quran/presentation/presentation/cubit/tafseer_state.dart';
+
 import 'tafser.dart';
 
 class QuranImagesScreen extends StatelessWidget {

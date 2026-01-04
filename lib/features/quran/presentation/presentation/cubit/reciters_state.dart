@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:muslim/Models/api_reciters.dart';
+import 'package:muslim/features/quran/data/models/api_reciters.dart';
 
 enum RecitersStatus { initial, loading, loaded, error }
 
